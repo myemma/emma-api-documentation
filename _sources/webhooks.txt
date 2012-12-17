@@ -1,0 +1,337 @@
+.. _webhook_usage:
+
+Webhook Usage
+=============
+
+Webhook Overview
+----------------
+
+Webhooks are an easy way to have Emma's system notify you when certain events 
+occur. In general, you will use our API to tell us which events you want to 
+be notified about. When those events occur, we will make a POST to the URL 
+you have provided with a particular set of data.
+
+We have a broad array of triggering events and an easy API interface 
+to create webhooks for each event. We do have :doc:`documentation of the webhook 
+API </api/external/webhooks>`.
+
+Below is a list of each triggering event we currently support and the data 
+that will be sent when that event occurs. 
+
+Webhook Post Data
+-----------------
+
+Member Signup
+~~~~~~~~~~~~~
+::
+
+	{
+		"event_name": "member_signup",
+		"data": {
+		    "account_id": account_id,
+		    "member_id": member_id,
+		    "mailing_id": mailing_id
+		    }
+	}
+
+Message Open
+~~~~~~~~~~~~
+::
+
+	{
+		"event_name": "message_open",
+		"data": {
+		    "account_id": account_id,
+		    "member_id": member_id,
+		    "mailing_id": mailing_id,
+		    "subject": mailing_subject,
+		    "timestamp": timestamp
+		    }
+	}
+
+Message Click
+~~~~~~~~~~~~~
+::
+
+	{
+		"event_name": "message_click",
+		"data": {
+		    "account_id": account_id,
+		    "member_id": member_id,
+		    "mailing_id": mailing_id,
+		    "subject": mailing_subject,
+		    "timestamp": timestamp,
+		    "link_id": link_id
+		    }
+	}
+
+Member Optout
+~~~~~~~~~~~~~
+::
+
+	{
+		"event_name": "member_optout",
+		"data": {
+		    "account_id": account_id,
+		    "member_id": member_id,
+		    "mailing_id": mailing_id,
+		    "subject": mailing_subject,
+		    "timestamp": timestamp
+		    }
+	}
+
+Message Share
+~~~~~~~~~~~~~
+::
+
+	{
+		"event_name": "message_share",
+		"data": {
+		    "account_id": account_id,
+		    "member_id": member_id,
+		    "mailing_id": mailing_id,
+		    "subject": mailing_subject,
+		    "timestamp": timestamp,
+		    "network": network_code
+		    }
+	}
+
+Message Share Click
+~~~~~~~~~~~~~~~~~~~
+::
+
+	{
+		"event_name": "message_share_click",
+		"data": {
+		    "account_id": account_id,
+		    "member_id": member_id,
+		    "mailing_id": mailing_id,
+		    "subject": mailing_subject,
+		    "timestamp": timestamp,
+		    "network": network_code
+		    }
+	}
+
+Message Forward
+~~~~~~~~~~~~~~~
+::
+
+	{
+		"event_name": "message_forward",
+		"data": {
+		    "account_id": account_id,
+		    "member_id": member_id,
+		    "mailing_id": mailing_id,
+		    "subject": mailing_subject,
+		    "timestamp": timestamp
+		    }
+	}
+
+Mailing Finish
+~~~~~~~~~~~~~~
+::
+
+	{
+		"event_name": "mailing_finish",
+		"data": {
+		    "mailing_id": mailing_id,
+		    "account_id": account_id,
+		    "subject": mailing_subject,
+		    "timestamp": timestamp
+		    }
+	}
+
+Import Finish
+~~~~~~~~~~~~~
+::
+
+	{
+		"event_name": "import_finish",
+		"data": {
+		    "import_id": import_id,
+		    "account_id": account_id,
+		    "timestamp": timestamp,
+		    "resource_url": resource_url
+		    }
+	}
+
+Member Add
+~~~~~~~~~~
+::
+
+	{
+		"event_name": "member_add",
+		"data": {
+		    "member_id": member_id,
+		    "account_id": account_id,
+		    "timestamp": timestamp,
+		    "signup_form_id": signup_form_id,
+		    "resource_url": resource_url
+		    }
+	}
+
+Member Update
+~~~~~~~~~~~~~
+::
+
+	{
+		"event_name": "member_update",
+		"data": {
+		    "member_id": member_id,
+		    "account_id": account_id,
+		    "timestamp": timestamp
+		    }
+	}
+
+Member Delete
+~~~~~~~~~~~~~
+::
+
+	{
+		"event_name": "member_delete",
+		"data": {
+		    "member_id": member_id,
+		    "account_id": account_id,
+		    "timestamp": timestamp
+		    }
+	}
+
+Member Add To Group
+~~~~~~~~~~~~~~~~~~~
+
+It's possible that instead of an array for `member_ids` or `group_ids` you 
+may receive a string with the text `all`. Because of calls that can add a 
+member to all groups or add all members to a single group, this is easier 
+than returning a giant list of IDs.
+
+::
+
+	{
+		"event_name": "member_add_to_group",
+		"data": {
+		    "member_ids": {member_ids},
+		    "account_id": account_id,
+		    "timestamp": timestamp.
+		    "group_ids": {group_ids}
+		    }
+	}
+
+Member Remove From Group
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+It's possible that instead of an array for `member_ids` or `group_ids` you 
+may receive a string with the text `all`. Because of calls that can remove a 
+member from all groups or remove all members from a single group, this is 
+easier than returning a giant list of IDs.
+
+::
+
+	{
+		"event_name": "member_remove_from_group",
+		"data": {
+		    "member_ids": {member_ids},
+		    "account_id": account_id,
+		    "timestamp": timestamp.
+		    "group_ids": {group_ids}
+		    }
+	}
+
+Group Create
+~~~~~~~~~~~~
+::
+
+	{
+		"event_name": "group_create",
+		"data": {
+		    "group_id": group_id,
+		    "group_name": group_name,
+		    "account_id": account_id,
+		    "timestamp": timestamp,
+		    "resource_url": resource_url
+		    }
+	}
+
+Group Delete
+~~~~~~~~~~~~
+::
+
+	{
+		"event_name": "group_delete",
+		"data": {
+		    "group_id": group_id,
+		    "account_id": account_id,
+		    "timestamp": timestamp,
+		    "resource_url": resource_url
+		    }
+	}
+
+Group Update
+~~~~~~~~~~~~
+::
+
+	{
+		"event_name": "group_update",
+		"data": {
+		    "group_id": group_id,
+		    "group_name": group_name,
+		    "account_id": account_id,
+		    "timestamp": timestamp,
+		    "resource_url": resource_url
+		    }
+	}
+
+Field Create
+~~~~~~~~~~~~
+::
+
+	{
+		"event_name": "field_create",
+		"data": {
+		    "field_id": field_id,
+		    "account_id": account_id,
+		    "timestamp": timestamp,
+		    "resource_url": resource_url
+		    }
+	}
+
+Field Delete
+~~~~~~~~~~~~
+::
+
+	{
+		"event_name": "field_delete",
+		"data": {
+		    "field_id": field_id,
+		    "account_id": account_id,
+		    "timestamp": timestamp,
+		    "resource_url": resource_url
+		    }
+	}
+
+Field Update
+~~~~~~~~~~~~
+::
+
+	{
+		"event_name": "field_update",
+		"data": {
+		    "field_id": field_id,
+		    "account_id": account_id,
+		    "timestamp": timestamp,
+		    "resource_url": resource_url
+		    }
+	}
+
+Member Status Update
+~~~~~~~~~~~~~~~~~~~~
+::
+
+	{
+		"event_name": "member_status_update",
+		"data": {
+		    "member_ids": {member_ids},
+		    "account_id": account_id,
+		    "new_status": new_status,
+		    "timestamp": timestamp
+		    }
+	}

@@ -1,0 +1,148 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Placeholder Syntax &mdash; audience 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/emma.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="audience 0.1 documentation" href="index.html" />
+    <link rel="next" title="Search Syntax" href="member_search.html" />
+    <link rel="prev" title="Pagination" href="pagination.html" />
+   
+  
+  <style type="text/css">
+    .resp-trigger, .resp-trigger:hover {font-size:10pt;text-decoration:none;}
+    div.sample-response.hide-response pre.response {display: none;}
+    div.sample-response .tshow,
+    div.sample-response.hide-response .thide {display: none;}
+    div.sample-response .thide,
+    div.sample-response.hide-response .tshow {display: inline;}
+  </style>
+  <script>
+    $().ready(function() {
+      $("a.resp-trigger").click(function(e) {
+        e.preventDefault();
+        $(this).parents("div.sample-response").toggleClass("hide-response");
+      });
+    });
+  </script>
+
+  </head>
+  <body>
+<header role="banner">
+	<h1>Emma API Documentation</h1>
+</header>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="http-routingtable.html" title="HTTP Routing Table"
+             >routing table</a> |</li>
+        <li class="right" >
+          <a href="member_search.html" title="Search Syntax"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="pagination.html" title="Pagination"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">audience 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="placeholder-syntax">
+<span id="id1"></span><h1>Placeholder Syntax<a class="headerlink" href="#placeholder-syntax" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="syntax-overview">
+<h2>Syntax Overview<a class="headerlink" href="#syntax-overview" title="Permalink to this headline">¶</a></h2>
+<p>The content of messages can be customized using the template tag library.
+Each template tag should be enclosed in a <tt class="docutils literal"><span class="pre">[%</span></tt> <tt class="docutils literal"><span class="pre">%]</span></tt> pair. Where a tag
+requires a qualifier value, the value should be attached with a colon.</p>
+<p>For example, the following extract shows a member&#8217;s name being inserted into a
+greeting:</p>
+<div class="highlight-python"><pre>Hello [% member:first_name %] [% member:last_name %],
+
+Welcome to the "Exciting Onions" mailing list, where you can be kept up to
+date on all the latest onion-related news ...</pre>
+</div>
+<p>Some tags also accept additional key/value pairs to control their behavior.
+For example, adding a default value to a member field:</p>
+<div class="highlight-python"><pre>Hello [% member:first_name default="Friend" %]</pre>
+</div>
+<p>...or specifying the link text for a trackable link:</p>
+<div class="highlight-python"><pre>Please visit [% link:http://fancyonions.com/home name="our website" %]</pre>
+</div>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">fully document the available tags</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Placeholder Syntax</a><ul>
+<li><a class="reference internal" href="#syntax-overview">Syntax Overview</a></li>
+</ul>
+</li>
+</ul>
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="pagination.html" title="previous chapter">Pagination</a></li>
+      <li>Next: <a href="member_search.html" title="next chapter">Search Syntax</a></li>
+  </ul></li>
+</ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2012, Emma.
+        Last updated on Dec 17, 2012 at 10:51.
+    </div>
+  </body>
+</html>

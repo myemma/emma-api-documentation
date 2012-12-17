@@ -1,0 +1,221 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Search Syntax &mdash; audience 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/emma.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="audience 0.1 documentation" href="index.html" />
+    <link rel="next" title="Webhook Usage" href="webhooks.html" />
+    <link rel="prev" title="Placeholder Syntax" href="placeholders.html" />
+   
+  
+  <style type="text/css">
+    .resp-trigger, .resp-trigger:hover {font-size:10pt;text-decoration:none;}
+    div.sample-response.hide-response pre.response {display: none;}
+    div.sample-response .tshow,
+    div.sample-response.hide-response .thide {display: none;}
+    div.sample-response .thide,
+    div.sample-response.hide-response .tshow {display: inline;}
+  </style>
+  <script>
+    $().ready(function() {
+      $("a.resp-trigger").click(function(e) {
+        e.preventDefault();
+        $(this).parents("div.sample-response").toggleClass("hide-response");
+      });
+    });
+  </script>
+
+  </head>
+  <body>
+<header role="banner">
+	<h1>Emma API Documentation</h1>
+</header>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="http-routingtable.html" title="HTTP Routing Table"
+             >routing table</a> |</li>
+        <li class="right" >
+          <a href="webhooks.html" title="Webhook Usage"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="placeholders.html" title="Placeholder Syntax"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">audience 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="search-syntax">
+<span id="id1"></span><h1>Search Syntax<a class="headerlink" href="#search-syntax" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="syntax-overview">
+<h2>Syntax Overview<a class="headerlink" href="#syntax-overview" title="Permalink to this headline">¶</a></h2>
+<p>Searches are constructed using nested JSON arrays of filters and boolean predicates. Here is an example of a simple filter:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="s">&quot;member_field:foo&quot;</span><span class="p">,</span> <span class="s">&quot;eq&quot;</span><span class="p">,</span> <span class="s">&quot;bar&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>A filter is composed of one or more parts. The first part is always a <em>filter term</em>. In general, a filter term maps directly to a field in the results. A filter term can accept an argument (the <tt class="docutils literal"><span class="pre">:foo</span></tt> in the example above) that will have different meanings for different filter terms. If the filter has more than one part, the second part is <em>always</em> an <em>operator</em>. The remaining parts are arguments for the operator. Different operators will have different arguments, but will always have at least one.</p>
+<p>In addition, filters can be <em>nested</em> using <em>boolean predicates</em>. Here&#8217;s an example of a nested query:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="s">&quot;and&quot;</span><span class="p">,</span>
+    <span class="p">[</span><span class="s">&quot;member_field:foo&quot;</span><span class="p">,</span> <span class="s">&quot;eq&quot;</span><span class="p">,</span> <span class="s">&quot;bar&quot;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s">&quot;member_since&quot;</span><span class="p">,</span> <span class="s">&quot;in last&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s">&quot;day&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">}]]</span>
+</pre></div>
+</div>
+<p>This example will return all members who joined in the last 5 days and have their member_field <tt class="docutils literal"><span class="pre">foo</span></tt> set to <tt class="docutils literal"><span class="pre">bar</span></tt>. The available boolean predicates and examples of their use are below.</p>
+</div>
+<div class="section" id="operators">
+<h2>Operators<a class="headerlink" href="#operators" title="Permalink to this headline">¶</a></h2>
+<p>There are a bunch of operators available:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">eq</span></tt> and <tt class="docutils literal"><span class="pre">=</span></tt>: Basic equality. Example: <tt class="docutils literal"><span class="pre">[&quot;member_field:some_string_field&quot;,</span> <span class="pre">&quot;eq&quot;,</span> <span class="pre">&quot;bar&quot;]</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">lt</span></tt> and <tt class="docutils literal"><span class="pre">&lt;</span></tt>: Less than. Example: <tt class="docutils literal"><span class="pre">[&quot;member_field:some_numeric_field&quot;,</span> <span class="pre">&quot;lt&quot;,</span> <span class="pre">5]</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">gt</span></tt> and <tt class="docutils literal"><span class="pre">&gt;</span></tt>: Greater than. Example: <tt class="docutils literal"><span class="pre">[&quot;member_field:some_numeric_field&quot;,</span> <span class="pre">&quot;gt&quot;,</span> <span class="pre">5]</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">between</span></tt>: Between. Takes two arguments. Example: <tt class="docutils literal"><span class="pre">[&quot;member_field:some_numeric_field&quot;,</span> <span class="pre">&quot;between&quot;,</span> <span class="pre">5,</span> <span class="pre">10]</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">in</span> <span class="pre">last</span></tt> and <tt class="docutils literal"><span class="pre">in</span> <span class="pre">next</span></tt>: Relative date. Takes an interval (explained below). Example: <tt class="docutils literal"><span class="pre">[&quot;member_since&quot;,</span> <span class="pre">&quot;in</span> <span class="pre">last&quot;,</span> <span class="pre">{&quot;day&quot;:</span> <span class="pre">4}]</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">datematch</span></tt>: Match a date argument. All parts of the date must match. Example: <tt class="docutils literal"><span class="pre">[&quot;member_since&quot;,</span> <span class="pre">&quot;datematch&quot;,</span> <span class="pre">{&quot;year&quot;:</span> <span class="pre">2011}]</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">contains</span></tt>: Match a string against a shell-glob-style expression. Example: <tt class="docutils literal"><span class="pre">[&quot;member_field:some_string_field&quot;,</span> <span class="pre">&quot;contains&quot;,</span> <span class="pre">&quot;*foo*&quot;]</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">in</span></tt>: Match a field against a list of values. Example: <tt class="docutils literal"><span class="pre">[&quot;member_field:some_number_field&quot;,</span> <span class="pre">&quot;in&quot;,</span> <span class="pre">3,</span> <span class="pre">4,</span> <span class="pre">5,</span> <span class="pre">6]</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">any</span></tt>: Match a given value against an array field. Example: <tt class="docutils literal"><span class="pre">[&quot;member_field:some_array_field&quot;,</span> <span class="pre">&quot;any&quot;,</span> <span class="pre">&quot;ten&quot;]</span></tt></li>
+</ul>
+<p>In addition to these basic operators, there is one advanced operator available:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">zip-radius:n</span></tt>: where <tt class="docutils literal"><span class="pre">n</span></tt> can be one of <tt class="docutils literal"><span class="pre">5</span></tt>, <tt class="docutils literal"><span class="pre">10</span></tt>, <tt class="docutils literal"><span class="pre">15</span></tt>, <tt class="docutils literal"><span class="pre">20</span></tt>, <tt class="docutils literal"><span class="pre">25</span></tt>, or <tt class="docutils literal"><span class="pre">50</span></tt>. Takes a single zip code which will be the center of the search. Example: <tt class="docutils literal"><span class="pre">[&quot;member_field:some_zipcode_field&quot;,</span> <span class="pre">&quot;zip-radius:10&quot;,</span> <span class="pre">&quot;97202&quot;]</span></tt> will return all members with a <tt class="docutils literal"><span class="pre">zip_code_field</span></tt> within 10 miles of <tt class="docutils literal"><span class="pre">97202</span></tt>.</li>
+</ul>
+<div class="section" id="intervals">
+<h3>Intervals<a class="headerlink" href="#intervals" title="Permalink to this headline">¶</a></h3>
+<p>An interval is defined as a hash that contains one or more of the following keys:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">year</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">month</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">day</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">hour</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">minute</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">second</span></tt></li>
+</ul>
+<p>For example, <tt class="docutils literal"><span class="pre">{&quot;year&quot;:</span> <span class="pre">2,</span> <span class="pre">&quot;day&quot;:</span> <span class="pre">4}</span></tt> would specify an interval of two years and four days.</p>
+</div>
+<div class="section" id="dates">
+<h3>Dates<a class="headerlink" href="#dates" title="Permalink to this headline">¶</a></h3>
+<p>A date is defined as a hash that contains one or more of the following keys:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">year</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">month</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">day</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">hour</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">minute</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">second</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">dow</span></tt> (day of week)</li>
+</ul>
+<p>For example, <tt class="docutils literal"><span class="pre">{&quot;day&quot;,</span> <span class="pre">31}</span></tt> would match the 31st of every month with a 31st day, while <tt class="docutils literal"><span class="pre">{&quot;dow&quot;:</span> <span class="pre">2}</span></tt> would match every Tuesday. Sunday is 0.</p>
+</div>
+</div>
+<div class="section" id="boolean-predicates">
+<h2>Boolean Predicates<a class="headerlink" href="#boolean-predicates" title="Permalink to this headline">¶</a></h2>
+<p>Boolean predicates operate on one or more nested clauses. These predicates are available:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">and</span></tt>: All clauses must be true. Example: <tt class="docutils literal"><span class="pre">[&quot;and&quot;,</span> <span class="pre">[&quot;member_field:foo&quot;,</span> <span class="pre">&quot;eq&quot;,</span> <span class="pre">1],</span> <span class="pre">[&quot;member_field:bar&quot;,</span> <span class="pre">&quot;eq&quot;,</span> <span class="pre">2]]</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">or</span></tt>: At least one clause must be true.  Example: <tt class="docutils literal"><span class="pre">[&quot;or&quot;,</span> <span class="pre">[&quot;member_field:foo&quot;,</span> <span class="pre">&quot;eq&quot;,</span> <span class="pre">1],</span> <span class="pre">[&quot;member_field:bar&quot;,</span> <span class="pre">&quot;eq&quot;,</span> <span class="pre">2]]</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">not</span></tt>: The single nested clause must not be true. Example: <tt class="docutils literal"><span class="pre">[&quot;not&quot;,</span> <span class="pre">[&quot;member_field:foo&quot;,</span> <span class="pre">&quot;eq&quot;,</span> <span class="pre">1]]</span></tt></li>
+</ul>
+</div>
+<div class="section" id="filter-terms">
+<h2>Filter Terms<a class="headerlink" href="#filter-terms" title="Permalink to this headline">¶</a></h2>
+<p>In general, every key in the result records can be used as a filter term. Just use the key as the filter term. For example, to filter on <tt class="docutils literal"><span class="pre">send_start</span></tt>, you&#8217;d say <tt class="docutils literal"><span class="pre">[&quot;send_start&quot;,</span> <span class="pre">&quot;gt&quot;,</span> <span class="pre">&quot;2011-12-15&quot;]</span></tt>. In addition, there is a large set of advanced filter terms for filtering members:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">opened</span></tt>, <tt class="docutils literal"><span class="pre">clicked</span></tt>, <tt class="docutils literal"><span class="pre">shared</span></tt>, <tt class="docutils literal"><span class="pre">forwarded</span></tt>. Will match on the timestamp of the corresponding response if it exists. All of these filter terms also allow a <tt class="docutils literal"><span class="pre">mailing_id</span></tt> as an argument (i.e. <tt class="docutils literal"><span class="pre">opened:12345</span></tt> matches if they opened mailing 12345.</li>
+<li><tt class="docutils literal"><span class="pre">member_field:x</span></tt> where <tt class="docutils literal"><span class="pre">x</span></tt> is the short name of a member field. You can also use <tt class="docutils literal"><span class="pre">x</span></tt> by itself without <tt class="docutils literal"><span class="pre">member_field:</span></tt>.</li>
+<li><tt class="docutils literal"><span class="pre">group</span></tt>. Will match the name of a member group. Takes the special operators <tt class="docutils literal"><span class="pre">defined</span></tt> (belongs to any group) and <tt class="docutils literal"><span class="pre">undefined</span></tt> (does not belong to any group).</li>
+<li><tt class="docutils literal"><span class="pre">received</span></tt> Will match if the member received a mailing. Takes an optional <tt class="docutils literal"><span class="pre">mailing_id</span></tt> argument. If not given, will match if the member has received <em>any</em> mailing.</li>
+<li><tt class="docutils literal"><span class="pre">clicked</span> <span class="pre">link</span></tt>. Will match if the member has clicked on a link. Takes an optional <tt class="docutils literal"><span class="pre">link_id</span></tt> argument. If not given, will match if the member has clicked on <em>any</em> link.</li>
+<li><tt class="docutils literal"><span class="pre">manage</span></tt>: Will match if the member has manged their preferences. Optionally takes a date filter on the timestamp of the manage action. Optionally takes a <tt class="docutils literal"><span class="pre">signup_form_id</span></tt> argument. Example: <tt class="docutils literal"><span class="pre">[&quot;manage:1234&quot;,</span> <span class="pre">&quot;in</span> <span class="pre">last&quot;,</span> <span class="pre">{&quot;day&quot;,</span> <span class="pre">30}]</span></tt>.</li>
+<li><tt class="docutils literal"><span class="pre">unsubscribed</span></tt>: Will match if the member has unsubscribed. Optionally takes a date filter on the timestamp of the opt-out action. Optionally takes a <tt class="docutils literal"><span class="pre">signup_form_id</span></tt> filter argument.</li>
+<li><tt class="docutils literal"><span class="pre">unsubscribed</span> <span class="pre">mailing</span></tt>: Will match if the member has unsubscribed. Optionally takes a date filter on the timestamp of the opt-out action. Optionally takes a <tt class="docutils literal"><span class="pre">mailing_id</span></tt> filter argument.</li>
+<li><tt class="docutils literal"><span class="pre">bounced</span></tt>: Will match if the member had either a soft or hard bounce. Optionally takes a date filter on the timestamp of the bounce. Optionally takes a <tt class="docutils literal"><span class="pre">mailing_id</span></tt> filter argument.</li>
+<li><tt class="docutils literal"><span class="pre">email_user</span></tt>: Will match on the user portion of the member&#8217;s email address</li>
+<li><tt class="docutils literal"><span class="pre">email_domain</span></tt>: Will match on the domain portion of the member&#8217;s email address</li>
+<li><tt class="docutils literal"><span class="pre">email</span></tt>: Will match on the member&#8217;s entire email address</li>
+<li><tt class="docutils literal"><span class="pre">signup</span></tt>: Will match if the member has signed up. Optionally takes a date filter on the timestamp of the signup action. Optionally takes a <tt class="docutils literal"><span class="pre">signup_form_id</span></tt> filter argument.</li>
+<li><tt class="docutils literal"><span class="pre">signup_mailing</span></tt>: Will match if the member has signed up. Optionally takes a date filter on the timestamp of the signup action. Optionally takes a <tt class="docutils literal"><span class="pre">mailing_id</span></tt> filter argument.</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Search Syntax</a><ul>
+<li><a class="reference internal" href="#syntax-overview">Syntax Overview</a></li>
+<li><a class="reference internal" href="#operators">Operators</a><ul>
+<li><a class="reference internal" href="#intervals">Intervals</a></li>
+<li><a class="reference internal" href="#dates">Dates</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#boolean-predicates">Boolean Predicates</a></li>
+<li><a class="reference internal" href="#filter-terms">Filter Terms</a></li>
+</ul>
+</li>
+</ul>
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="placeholders.html" title="previous chapter">Placeholder Syntax</a></li>
+      <li>Next: <a href="webhooks.html" title="next chapter">Webhook Usage</a></li>
+  </ul></li>
+</ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2012, Emma.
+        Last updated on Dec 17, 2012 at 10:51.
+    </div>
+  </body>
+</html>

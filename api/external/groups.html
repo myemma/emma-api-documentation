@@ -1,0 +1,667 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Groups &mdash; audience 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/emma.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="audience 0.1 documentation" href="../../index.html" />
+    <link rel="next" title="Mailings" href="mailings.html" />
+    <link rel="prev" title="Fields" href="fields.html" />
+   
+  
+  <style type="text/css">
+    .resp-trigger, .resp-trigger:hover {font-size:10pt;text-decoration:none;}
+    div.sample-response.hide-response pre.response {display: none;}
+    div.sample-response .tshow,
+    div.sample-response.hide-response .thide {display: none;}
+    div.sample-response .thide,
+    div.sample-response.hide-response .tshow {display: inline;}
+  </style>
+  <script>
+    $().ready(function() {
+      $("a.resp-trigger").click(function(e) {
+        e.preventDefault();
+        $(this).parents("div.sample-response").toggleClass("hide-response");
+      });
+    });
+  </script>
+
+  </head>
+  <body>
+<header role="banner">
+	<h1>Emma API Documentation</h1>
+</header>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../http-routingtable.html" title="HTTP Routing Table"
+             >routing table</a> |</li>
+        <li class="right" >
+          <a href="mailings.html" title="Mailings"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="fields.html" title="Fields"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">audience 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="groups">
+<h1>Groups<a class="headerlink" href="#groups" title="Permalink to this headline">¶</a></h1>
+<p>With these endpoints, you can manage all aspects of the groups in
+your account. In addition to various CRUD methods, you can also
+use these endpoints to manage the members of your groups. You&#8217;ll
+want to use these methods if you&#8217;re managing group membership for
+more than one member at a time. For dealing with single members,
+there are better methods in the <tt class="docutils literal"><span class="pre">members</span></tt> endpoints.</p>
+<dl class="get">
+<dt id="get--#account_id-groups">
+<tt class="descname">GET </tt><tt class="descname">/#account_id/groups</tt><a class="headerlink" href="#get--#account_id-groups" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a basic listing of all active member groups for a single account.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body"><p class="first">An array of groups.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>group_types</strong> (<em>string</em>) &#8211; Accepts a comma-separated string with one or
+more of the following group_types: &#8216;g&#8217; (group), &#8216;t&#8217; (test),
+&#8216;h&#8217; (hidden), &#8216;all&#8217; (all). Defaults to &#8216;g&#8217;.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>GET /100/groups?group_types=g,t</b>
+
+[
+  {
+    "active_count": 1,
+    "deleted_at": null,
+    "error_count": 0,
+    "optout_count": 1,
+    "group_type": "g",
+    "member_group_id": 150,
+    "account_id": 100,
+    "group_name": "Monthly Newsletter"
+  },
+  {
+    "active_count": 2,
+    "deleted_at": null,
+    "error_count": 0,
+    "optout_count": 0,
+    "group_type": "g",
+    "member_group_id": 151,
+    "account_id": 100,
+    "group_name": "Widget Buyers"
+  },
+  {
+    "active_count": 4,
+    "deleted_at": null,
+    "error_count": 0,
+    "optout_count": 0,
+    "group_type": "g",
+    "member_group_id": 152,
+    "account_id": 100,
+    "group_name": "Special Events"
+  }
+]
+
+</pre>
+</div>
+</p>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>GET /100/groups?group_types=all</b>
+
+[
+  {
+    "active_count": 1,
+    "deleted_at": null,
+    "error_count": 0,
+    "optout_count": 1,
+    "group_type": "g",
+    "member_group_id": 150,
+    "account_id": 100,
+    "group_name": "Monthly Newsletter"
+  },
+  {
+    "active_count": 2,
+    "deleted_at": null,
+    "error_count": 0,
+    "optout_count": 0,
+    "group_type": "g",
+    "member_group_id": 151,
+    "account_id": 100,
+    "group_name": "Widget Buyers"
+  },
+  {
+    "active_count": 4,
+    "deleted_at": null,
+    "error_count": 0,
+    "optout_count": 0,
+    "group_type": "g",
+    "member_group_id": 152,
+    "account_id": 100,
+    "group_name": "Special Events"
+  }
+]
+
+</pre>
+</div>
+</p>
+</dd></dl>
+
+<dl class="post">
+<dt id="post--#account_id-groups">
+<tt class="descname">POST </tt><tt class="descname">/#account_id/groups</tt><a class="headerlink" href="#post--#account_id-groups" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create one or more new member groups.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body"><p class="first">An array of the new group ids and group names.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>groups</strong> (<em>array</em>) &#8211; An array of group objects. Each object must contain
+a <cite>group_name</cite> parameter.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>POST /100/groups</b>
+{
+  "groups": [
+    {
+      "group_name": "My Grp"
+    }
+  ]
+}
+
+[
+  {
+    "member_group_id": 1024, 
+    "group_name": "My Grp"
+  }
+]
+</pre>
+</div>
+</p>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--#account_id-groups-#member_group_id">
+<tt class="descname">GET </tt><tt class="descname">/#account_id/groups/#member_group_id</tt><a class="headerlink" href="#get--#account_id-groups-#member_group_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the detailed information for a single member group.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body">A group.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the group does not exist.</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>GET /100/groups/150</b>
+
+{
+  "active_count": 1, 
+  "deleted_at": null, 
+  "error_count": 0, 
+  "optout_count": 1, 
+  "group_type": "g", 
+  "member_group_id": 150, 
+  "account_id": 100, 
+  "group_name": "Monthly Newsletter"
+}
+</pre>
+</div>
+</p>
+</dd></dl>
+
+<dl class="put">
+<dt id="put--#account_id-groups-#member_group_id">
+<tt class="descname">PUT </tt><tt class="descname">/#account_id/groups/#member_group_id</tt><a class="headerlink" href="#put--#account_id-groups-#member_group_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update information for a single member group.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>group_name</strong> (<em>string</em>) &#8211; Updated group name.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first">True if the update was successful</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first last"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the group does not exist.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>PUT /100/groups/150</b>
+{
+  "group_name": "New Group Name"
+}
+
+true
+</pre>
+</div>
+</p>
+</dd></dl>
+
+<dl class="delete">
+<dt id="delete--#account_id-groups-#member_group_id">
+<tt class="descname">DELETE </tt><tt class="descname">/#account_id/groups/#member_group_id</tt><a class="headerlink" href="#delete--#account_id-groups-#member_group_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete a single member group.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body">True if the group is deleted.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the group does not exist.</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>DELETE /100/groups/150</b>
+
+true
+</pre>
+</div>
+</p>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--#account_id-groups-#member_group_id-members">
+<tt class="descname">GET </tt><tt class="descname">/#account_id/groups/#member_group_id/members</tt><a class="headerlink" href="#get--#account_id-groups-#member_group_id-members" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the members in a single active member group.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body"><p class="first">An array of members.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>deleted</strong> (<em>boolean</em>) &#8211; include deleted members. Optional, defaults to false.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first last"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the group does not exist.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>GET /100/groups/150/members</b>
+
+[
+  {
+    "status": "active",
+    "confirmed_opt_in": null,
+    "account_id": 100,
+    "fields": {
+      "first_name": "Emma",
+      "last_name": "Smith",
+      "favorite_food": "tacos"
+    },
+    "member_id": 200,
+    "last_modified_at": null,
+    "member_status_id": "a",
+    "plaintext_preferred": false,
+    "email_error": null,
+    "member_since": "@D:2010-11-12T11:23:45",
+    "bounce_count": 0,
+    "deleted_at": null,
+    "email": "emma@myemma.com"
+  },
+  {
+    "status": "opt-out",
+    "confirmed_opt_in": null,
+    "account_id": 100,
+    "fields": {
+      "first_name": "Gladys",
+      "last_name": "Jones",
+      "favorite_food": "toast"
+    },
+    "member_id": 201,
+    "last_modified_at": null,
+    "member_status_id": "o",
+    "plaintext_preferred": false,
+    "email_error": null,
+    "member_since": "@D:2011-01-03T15:54:13",
+    "bounce_count": 0,
+    "deleted_at": null,
+    "email": "gladys@myemma.com"
+  }
+]
+
+</pre>
+</div>
+</p>
+</dd></dl>
+
+<dl class="put">
+<dt id="put--#account_id-groups-#member_group_id-members">
+<tt class="descname">PUT </tt><tt class="descname">/#account_id/groups/#member_group_id/members</tt><a class="headerlink" href="#put--#account_id-groups-#member_group_id-members" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a list of members to a single active member group.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>member_ids</strong> (<em>array</em>) &#8211; An array of member ids.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first">An array of references to the members added to the group. If
+a member already exists in the group or is not a valid member,
+that reference will not be returned.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first last"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the group does not exist.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>PUT /100/groups/150/members</b>
+{
+  "member_ids": [
+    202
+  ]
+}
+
+[
+  202
+]
+</pre>
+</div>
+</p>
+</dd></dl>
+
+<dl class="put">
+<dt id="put--#account_id-groups-#member_group_id-members-remove">
+<tt class="descname">PUT </tt><tt class="descname">/#account_id/groups/#member_group_id/members/remove</tt><a class="headerlink" href="#put--#account_id-groups-#member_group_id-members-remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove members from a single active member group.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>member_ids</strong> (<em>array</em>) &#8211; An array of member ids.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first">An array of references to the removed members.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first last"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the group does not exist.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>PUT /100/groups/150/members/remove</b>
+{
+  "member_ids": [
+    200, 
+    201
+  ]
+}
+
+[
+  200, 
+  201
+]
+</pre>
+</div>
+</p>
+</dd></dl>
+
+<dl class="delete">
+<dt id="delete--#account_id-groups-#member_group_id-members">
+<tt class="descname">DELETE </tt><tt class="descname">/#account_id/groups/#member_group_id/members</tt><a class="headerlink" href="#delete--#account_id-groups-#member_group_id-members" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove all members from a single active member group.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>member_status_id</strong> (<em>string</em>) &#8211; Optional.  This is &#8216;a&#8217; (active), &#8216;o&#8217; (optout),
+or &#8216;e&#8217; (error).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first">Returns the number of members removed from the group.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first last"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the group does not exist.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>DELETE /100/groups/151/members</b>
+
+2
+</pre>
+</div>
+
+
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>DELETE /100/groups/151/members?member_status_id=a</b>
+
+2
+</pre>
+</div>
+</p>
+</dd></dl>
+
+<dl class="delete">
+<dt id="delete--#account_id-groups-#member_group_id-members-remove">
+<tt class="descname">DELETE </tt><tt class="descname">/#account_id/groups/#member_group_id/members/remove</tt><a class="headerlink" href="#delete--#account_id-groups-#member_group_id-members-remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove all members from all active member groups as a background job.
+The member_status_id parameter must be set.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>member_status_id</strong> (<em>string</em>) &#8211; This is &#8216;a&#8217; (active), &#8216;o&#8217; (optout),
+or &#8216;e&#8217; (error).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first">Returns true.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first last"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the group does not exist.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>DELETE /100/groups/151/members/remove?member_status_id=a</b>
+
+true
+</pre>
+</div>
+
+
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>DELETE /100/groups/151/members/remove?member_status_id=a&delete_members=true</b>
+
+true
+</pre>
+</div>
+</p>
+</dd></dl>
+
+<dl class="put">
+<dt id="put--#account_id-groups-#from_group_id-#to_group_id-members-copy">
+<tt class="descname">PUT </tt><tt class="descname">/#account_id/groups/#from_group_id/#to_group_id/members/copy</tt><a class="headerlink" href="#put--#account_id-groups-#from_group_id-#to_group_id-members-copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copy all the users of one group into another group.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>member_status_id</strong> (<em>array</em>) &#8211; This is &#8216;a&#8217; (active), &#8216;o&#8217; (optout),
+or &#8216;e&#8217; (error).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first">True</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first last"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the group does not exist.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>PUT /100/groups/151/152/members/copy</b>
+{
+  "member_status_id": [
+    "a"
+  ]
+}
+
+true
+</pre>
+</div>
+</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="fields.html" title="previous chapter">Fields</a></li>
+      <li>Next: <a href="mailings.html" title="next chapter">Mailings</a></li>
+  </ul></li>
+</ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2012, Emma.
+        Last updated on Dec 17, 2012 at 10:51.
+    </div>
+  </body>
+</html>

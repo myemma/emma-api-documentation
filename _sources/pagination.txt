@@ -1,0 +1,27 @@
+.. _pagination:
+
+Pagination
+==========
+
+Responses with a large number of results should be paginated; the query 
+parameters ``start`` and ``end`` can be used to specify how large a set 
+of items to retrieve in each call, with a maximum page size of 500. 
+
+Additionally, for any call you can retrieve a count of the results (instead 
+of the results themselves) by appending a query parameter of ``count=true``.
+
+So, to pull a large number of results, you start with a count:
+
+  https://api.e2ma.net/123/members?count=true
+
+Then, iterate over the list in blocks of 500:
+
+  https://api.e2ma.net/123/members?start=0&end=500
+
+  https://api.e2ma.net/123/members?start=500&end=1000
+
+Requests for page sizes larger than 500 will limited to ``start`` + 500.
+
+Calls are rate-limited to prevent accidental overuse.  If you exceed the limit
+you will receive a response of ``403 Rate Limit Exceeded`` until enough time
+has elapsed between calls.

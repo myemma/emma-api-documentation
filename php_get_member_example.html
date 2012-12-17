@@ -1,0 +1,148 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>PHP Get Member By Email Example &mdash; audience 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/emma.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="audience 0.1 documentation" href="index.html" />
+    <link rel="prev" title="PHP Signup Example" href="php_signup_example.html" />
+   
+  
+  <style type="text/css">
+    .resp-trigger, .resp-trigger:hover {font-size:10pt;text-decoration:none;}
+    div.sample-response.hide-response pre.response {display: none;}
+    div.sample-response .tshow,
+    div.sample-response.hide-response .thide {display: none;}
+    div.sample-response .thide,
+    div.sample-response.hide-response .tshow {display: inline;}
+  </style>
+  <script>
+    $().ready(function() {
+      $("a.resp-trigger").click(function(e) {
+        e.preventDefault();
+        $(this).parents("div.sample-response").toggleClass("hide-response");
+      });
+    });
+  </script>
+
+  </head>
+  <body>
+<header role="banner">
+	<h1>Emma API Documentation</h1>
+</header>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="http-routingtable.html" title="HTTP Routing Table"
+             >routing table</a> |</li>
+        <li class="right" >
+          <a href="php_signup_example.html" title="PHP Signup Example"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">audience 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="php-get-member-by-email-example">
+<h1>PHP Get Member By Email Example<a class="headerlink" href="#php-get-member-by-email-example" title="Permalink to this headline">¶</a></h1>
+<p>Here&#8217;s the complete example of the PHP code to find a member by email address.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="c1">// Authentication Variables</span>
+<span class="nv">$account_id</span> <span class="o">=</span> <span class="s2">&quot;xxxx&quot;</span><span class="p">;</span>
+<span class="nv">$public_api_key</span> <span class="o">=</span> <span class="s2">&quot;xxxxx&quot;</span><span class="p">;</span>
+<span class="nv">$private_api_key</span> <span class="o">=</span> <span class="s2">&quot;xxxxx&quot;</span><span class="p">;</span>
+
+<span class="c1">// Form variable(s)</span>
+<span class="nv">$email</span> <span class="o">=</span> <span class="s1">&#39;me@test.com&#39;</span><span class="p">;</span>
+
+<span class="c1">// Set URL</span>
+<span class="nv">$url</span> <span class="o">=</span> <span class="s2">&quot;https://api.e2ma.net/&quot;</span> <span class="o">.</span> <span class="nv">$account_id</span> <span class="o">.</span> <span class="s2">&quot;/members/email/&quot;</span> <span class="o">.</span> <span class="nv">$email</span><span class="p">;</span>
+
+<span class="c1">// Open connection</span>
+<span class="nv">$ch</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
+
+<span class="c1">// Make the curl call</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_USERPWD</span><span class="p">,</span> <span class="nv">$public_api_key</span> <span class="o">.</span> <span class="s2">&quot;:&quot;</span> <span class="o">.</span> <span class="nv">$private_api_key</span><span class="p">);</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_URL</span><span class="p">,</span> <span class="nv">$url</span><span class="p">);</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_HTTPHEADER</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;Content-type: application/json&#39;</span><span class="p">));</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_SSL_VERIFYPEER</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span>
+<span class="nv">$head</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
+<span class="nv">$http_code</span> <span class="o">=</span> <span class="nb">curl_getinfo</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLINFO_HTTP_CODE</span><span class="p">);</span>
+<span class="nb">curl_close</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
+
+<span class="c1">// check for errors</span>
+<span class="k">if</span><span class="p">(</span><span class="nv">$http_code</span> <span class="o">&gt;</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">print</span> <span class="s2">&quot;Error getting member:</span><span class="se">\r\n</span><span class="s2">&quot;</span><span class="p">;</span>
+    <span class="nb">print_r</span><span class="p">(</span><span class="nv">$head</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">print</span> <span class="s2">&quot;Member information:</span><span class="se">\r\n</span><span class="s2">&quot;</span><span class="p">;</span>
+    <span class="nb">print_r</span><span class="p">(</span><span class="nv">$head</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="php_signup_example.html" title="previous chapter">PHP Signup Example</a></li>
+  </ul></li>
+</ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2012, Emma.
+        Last updated on Dec 17, 2012 at 10:51.
+    </div>
+  </body>
+</html>

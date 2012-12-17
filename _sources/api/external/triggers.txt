@@ -1,0 +1,8 @@
+Triggers
+========
+
+These endpoints provide CRUD operations for our trigger system. Creating a 
+trigger is probably the most widely used of these operations.
+
+.. autoemma:: audience.api.controllers.triggers:TriggerController
+

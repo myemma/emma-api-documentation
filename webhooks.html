@@ -1,0 +1,472 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Webhook Usage &mdash; audience 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/emma.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="audience 0.1 documentation" href="index.html" />
+    <link rel="next" title="PHP Signup Example" href="php_signup_example.html" />
+    <link rel="prev" title="Search Syntax" href="member_search.html" />
+   
+  
+  <style type="text/css">
+    .resp-trigger, .resp-trigger:hover {font-size:10pt;text-decoration:none;}
+    div.sample-response.hide-response pre.response {display: none;}
+    div.sample-response .tshow,
+    div.sample-response.hide-response .thide {display: none;}
+    div.sample-response .thide,
+    div.sample-response.hide-response .tshow {display: inline;}
+  </style>
+  <script>
+    $().ready(function() {
+      $("a.resp-trigger").click(function(e) {
+        e.preventDefault();
+        $(this).parents("div.sample-response").toggleClass("hide-response");
+      });
+    });
+  </script>
+
+  </head>
+  <body>
+<header role="banner">
+	<h1>Emma API Documentation</h1>
+</header>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="http-routingtable.html" title="HTTP Routing Table"
+             >routing table</a> |</li>
+        <li class="right" >
+          <a href="php_signup_example.html" title="PHP Signup Example"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="member_search.html" title="Search Syntax"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">audience 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="webhook-usage">
+<span id="id1"></span><h1>Webhook Usage<a class="headerlink" href="#webhook-usage" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="webhook-overview">
+<h2>Webhook Overview<a class="headerlink" href="#webhook-overview" title="Permalink to this headline">¶</a></h2>
+<p>Webhooks are an easy way to have Emma&#8217;s system notify you when certain events
+occur. In general, you will use our API to tell us which events you want to
+be notified about. When those events occur, we will make a POST to the URL
+you have provided with a particular set of data.</p>
+<p>We have a broad array of triggering events and an easy API interface
+to create webhooks for each event. We do have <a class="reference internal" href="api/external/webhooks.html"><em>documentation of the webhook
+API</em></a>.</p>
+<p>Below is a list of each triggering event we currently support and the data
+that will be sent when that event occurs.</p>
+</div>
+<div class="section" id="webhook-post-data">
+<h2>Webhook Post Data<a class="headerlink" href="#webhook-post-data" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="member-signup">
+<h3>Member Signup<a class="headerlink" href="#member-signup" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+        <span class="s">&quot;event_name&quot;</span><span class="p">:</span> <span class="s">&quot;member_signup&quot;</span><span class="p">,</span>
+        <span class="s">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">&quot;account_id&quot;</span><span class="p">:</span> <span class="n">account_id</span><span class="p">,</span>
+            <span class="s">&quot;member_id&quot;</span><span class="p">:</span> <span class="n">member_id</span><span class="p">,</span>
+            <span class="s">&quot;mailing_id&quot;</span><span class="p">:</span> <span class="n">mailing_id</span>
+            <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="message-open">
+<h3>Message Open<a class="headerlink" href="#message-open" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+        <span class="s">&quot;event_name&quot;</span><span class="p">:</span> <span class="s">&quot;message_open&quot;</span><span class="p">,</span>
+        <span class="s">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">&quot;account_id&quot;</span><span class="p">:</span> <span class="n">account_id</span><span class="p">,</span>
+            <span class="s">&quot;member_id&quot;</span><span class="p">:</span> <span class="n">member_id</span><span class="p">,</span>
+            <span class="s">&quot;mailing_id&quot;</span><span class="p">:</span> <span class="n">mailing_id</span><span class="p">,</span>
+            <span class="s">&quot;subject&quot;</span><span class="p">:</span> <span class="n">mailing_subject</span><span class="p">,</span>
+            <span class="s">&quot;timestamp&quot;</span><span class="p">:</span> <span class="n">timestamp</span>
+            <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="message-click">
+<h3>Message Click<a class="headerlink" href="#message-click" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+        <span class="s">&quot;event_name&quot;</span><span class="p">:</span> <span class="s">&quot;message_click&quot;</span><span class="p">,</span>
+        <span class="s">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">&quot;account_id&quot;</span><span class="p">:</span> <span class="n">account_id</span><span class="p">,</span>
+            <span class="s">&quot;member_id&quot;</span><span class="p">:</span> <span class="n">member_id</span><span class="p">,</span>
+            <span class="s">&quot;mailing_id&quot;</span><span class="p">:</span> <span class="n">mailing_id</span><span class="p">,</span>
+            <span class="s">&quot;subject&quot;</span><span class="p">:</span> <span class="n">mailing_subject</span><span class="p">,</span>
+            <span class="s">&quot;timestamp&quot;</span><span class="p">:</span> <span class="n">timestamp</span><span class="p">,</span>
+            <span class="s">&quot;link_id&quot;</span><span class="p">:</span> <span class="n">link_id</span>
+            <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="member-optout">
+<h3>Member Optout<a class="headerlink" href="#member-optout" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+        <span class="s">&quot;event_name&quot;</span><span class="p">:</span> <span class="s">&quot;member_optout&quot;</span><span class="p">,</span>
+        <span class="s">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">&quot;account_id&quot;</span><span class="p">:</span> <span class="n">account_id</span><span class="p">,</span>
+            <span class="s">&quot;member_id&quot;</span><span class="p">:</span> <span class="n">member_id</span><span class="p">,</span>
+            <span class="s">&quot;mailing_id&quot;</span><span class="p">:</span> <span class="n">mailing_id</span><span class="p">,</span>
+            <span class="s">&quot;subject&quot;</span><span class="p">:</span> <span class="n">mailing_subject</span><span class="p">,</span>
+            <span class="s">&quot;timestamp&quot;</span><span class="p">:</span> <span class="n">timestamp</span>
+            <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="message-share">
+<h3>Message Share<a class="headerlink" href="#message-share" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+        <span class="s">&quot;event_name&quot;</span><span class="p">:</span> <span class="s">&quot;message_share&quot;</span><span class="p">,</span>
+        <span class="s">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">&quot;account_id&quot;</span><span class="p">:</span> <span class="n">account_id</span><span class="p">,</span>
+            <span class="s">&quot;member_id&quot;</span><span class="p">:</span> <span class="n">member_id</span><span class="p">,</span>
+            <span class="s">&quot;mailing_id&quot;</span><span class="p">:</span> <span class="n">mailing_id</span><span class="p">,</span>
+            <span class="s">&quot;subject&quot;</span><span class="p">:</span> <span class="n">mailing_subject</span><span class="p">,</span>
+            <span class="s">&quot;timestamp&quot;</span><span class="p">:</span> <span class="n">timestamp</span><span class="p">,</span>
+            <span class="s">&quot;network&quot;</span><span class="p">:</span> <span class="n">network_code</span>
+            <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="message-share-click">
+<h3>Message Share Click<a class="headerlink" href="#message-share-click" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+        <span class="s">&quot;event_name&quot;</span><span class="p">:</span> <span class="s">&quot;message_share_click&quot;</span><span class="p">,</span>
+        <span class="s">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">&quot;account_id&quot;</span><span class="p">:</span> <span class="n">account_id</span><span class="p">,</span>
+            <span class="s">&quot;member_id&quot;</span><span class="p">:</span> <span class="n">member_id</span><span class="p">,</span>
+            <span class="s">&quot;mailing_id&quot;</span><span class="p">:</span> <span class="n">mailing_id</span><span class="p">,</span>
+            <span class="s">&quot;subject&quot;</span><span class="p">:</span> <span class="n">mailing_subject</span><span class="p">,</span>
+            <span class="s">&quot;timestamp&quot;</span><span class="p">:</span> <span class="n">timestamp</span><span class="p">,</span>
+            <span class="s">&quot;network&quot;</span><span class="p">:</span> <span class="n">network_code</span>
+            <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="message-forward">
+<h3>Message Forward<a class="headerlink" href="#message-forward" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+        <span class="s">&quot;event_name&quot;</span><span class="p">:</span> <span class="s">&quot;message_forward&quot;</span><span class="p">,</span>
+        <span class="s">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">&quot;account_id&quot;</span><span class="p">:</span> <span class="n">account_id</span><span class="p">,</span>
+            <span class="s">&quot;member_id&quot;</span><span class="p">:</span> <span class="n">member_id</span><span class="p">,</span>
+            <span class="s">&quot;mailing_id&quot;</span><span class="p">:</span> <span class="n">mailing_id</span><span class="p">,</span>
+            <span class="s">&quot;subject&quot;</span><span class="p">:</span> <span class="n">mailing_subject</span><span class="p">,</span>
+            <span class="s">&quot;timestamp&quot;</span><span class="p">:</span> <span class="n">timestamp</span>
+            <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="mailing-finish">
+<h3>Mailing Finish<a class="headerlink" href="#mailing-finish" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+        <span class="s">&quot;event_name&quot;</span><span class="p">:</span> <span class="s">&quot;mailing_finish&quot;</span><span class="p">,</span>
+        <span class="s">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">&quot;mailing_id&quot;</span><span class="p">:</span> <span class="n">mailing_id</span><span class="p">,</span>
+            <span class="s">&quot;account_id&quot;</span><span class="p">:</span> <span class="n">account_id</span><span class="p">,</span>
+            <span class="s">&quot;subject&quot;</span><span class="p">:</span> <span class="n">mailing_subject</span><span class="p">,</span>
+            <span class="s">&quot;timestamp&quot;</span><span class="p">:</span> <span class="n">timestamp</span>
+            <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="import-finish">
+<h3>Import Finish<a class="headerlink" href="#import-finish" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+        <span class="s">&quot;event_name&quot;</span><span class="p">:</span> <span class="s">&quot;import_finish&quot;</span><span class="p">,</span>
+        <span class="s">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">&quot;import_id&quot;</span><span class="p">:</span> <span class="n">import_id</span><span class="p">,</span>
+            <span class="s">&quot;account_id&quot;</span><span class="p">:</span> <span class="n">account_id</span><span class="p">,</span>
+            <span class="s">&quot;timestamp&quot;</span><span class="p">:</span> <span class="n">timestamp</span><span class="p">,</span>
+            <span class="s">&quot;resource_url&quot;</span><span class="p">:</span> <span class="n">resource_url</span>
+            <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="member-add">
+<h3>Member Add<a class="headerlink" href="#member-add" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+        <span class="s">&quot;event_name&quot;</span><span class="p">:</span> <span class="s">&quot;member_add&quot;</span><span class="p">,</span>
+        <span class="s">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">&quot;member_id&quot;</span><span class="p">:</span> <span class="n">member_id</span><span class="p">,</span>
+            <span class="s">&quot;account_id&quot;</span><span class="p">:</span> <span class="n">account_id</span><span class="p">,</span>
+            <span class="s">&quot;timestamp&quot;</span><span class="p">:</span> <span class="n">timestamp</span><span class="p">,</span>
+            <span class="s">&quot;signup_form_id&quot;</span><span class="p">:</span> <span class="n">signup_form_id</span><span class="p">,</span>
+            <span class="s">&quot;resource_url&quot;</span><span class="p">:</span> <span class="n">resource_url</span>
+            <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="member-update">
+<h3>Member Update<a class="headerlink" href="#member-update" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+        <span class="s">&quot;event_name&quot;</span><span class="p">:</span> <span class="s">&quot;member_update&quot;</span><span class="p">,</span>
+        <span class="s">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">&quot;member_id&quot;</span><span class="p">:</span> <span class="n">member_id</span><span class="p">,</span>
+            <span class="s">&quot;account_id&quot;</span><span class="p">:</span> <span class="n">account_id</span><span class="p">,</span>
+            <span class="s">&quot;timestamp&quot;</span><span class="p">:</span> <span class="n">timestamp</span>
+            <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="member-delete">
+<h3>Member Delete<a class="headerlink" href="#member-delete" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+        <span class="s">&quot;event_name&quot;</span><span class="p">:</span> <span class="s">&quot;member_delete&quot;</span><span class="p">,</span>
+        <span class="s">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">&quot;member_id&quot;</span><span class="p">:</span> <span class="n">member_id</span><span class="p">,</span>
+            <span class="s">&quot;account_id&quot;</span><span class="p">:</span> <span class="n">account_id</span><span class="p">,</span>
+            <span class="s">&quot;timestamp&quot;</span><span class="p">:</span> <span class="n">timestamp</span>
+            <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="member-add-to-group">
+<h3>Member Add To Group<a class="headerlink" href="#member-add-to-group" title="Permalink to this headline">¶</a></h3>
+<p>It&#8217;s possible that instead of an array for <cite>member_ids</cite> or <cite>group_ids</cite> you
+may receive a string with the text <cite>all</cite>. Because of calls that can add a
+member to all groups or add all members to a single group, this is easier
+than returning a giant list of IDs.</p>
+<div class="highlight-python"><pre>{
+        "event_name": "member_add_to_group",
+        "data": {
+            "member_ids": {member_ids},
+            "account_id": account_id,
+            "timestamp": timestamp.
+            "group_ids": {group_ids}
+            }
+}</pre>
+</div>
+</div>
+<div class="section" id="member-remove-from-group">
+<h3>Member Remove From Group<a class="headerlink" href="#member-remove-from-group" title="Permalink to this headline">¶</a></h3>
+<p>It&#8217;s possible that instead of an array for <cite>member_ids</cite> or <cite>group_ids</cite> you
+may receive a string with the text <cite>all</cite>. Because of calls that can remove a
+member from all groups or remove all members from a single group, this is
+easier than returning a giant list of IDs.</p>
+<div class="highlight-python"><pre>{
+        "event_name": "member_remove_from_group",
+        "data": {
+            "member_ids": {member_ids},
+            "account_id": account_id,
+            "timestamp": timestamp.
+            "group_ids": {group_ids}
+            }
+}</pre>
+</div>
+</div>
+<div class="section" id="group-create">
+<h3>Group Create<a class="headerlink" href="#group-create" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+        <span class="s">&quot;event_name&quot;</span><span class="p">:</span> <span class="s">&quot;group_create&quot;</span><span class="p">,</span>
+        <span class="s">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">&quot;group_id&quot;</span><span class="p">:</span> <span class="n">group_id</span><span class="p">,</span>
+            <span class="s">&quot;group_name&quot;</span><span class="p">:</span> <span class="n">group_name</span><span class="p">,</span>
+            <span class="s">&quot;account_id&quot;</span><span class="p">:</span> <span class="n">account_id</span><span class="p">,</span>
+            <span class="s">&quot;timestamp&quot;</span><span class="p">:</span> <span class="n">timestamp</span><span class="p">,</span>
+            <span class="s">&quot;resource_url&quot;</span><span class="p">:</span> <span class="n">resource_url</span>
+            <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="group-delete">
+<h3>Group Delete<a class="headerlink" href="#group-delete" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+        <span class="s">&quot;event_name&quot;</span><span class="p">:</span> <span class="s">&quot;group_delete&quot;</span><span class="p">,</span>
+        <span class="s">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">&quot;group_id&quot;</span><span class="p">:</span> <span class="n">group_id</span><span class="p">,</span>
+            <span class="s">&quot;account_id&quot;</span><span class="p">:</span> <span class="n">account_id</span><span class="p">,</span>
+            <span class="s">&quot;timestamp&quot;</span><span class="p">:</span> <span class="n">timestamp</span><span class="p">,</span>
+            <span class="s">&quot;resource_url&quot;</span><span class="p">:</span> <span class="n">resource_url</span>
+            <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="group-update">
+<h3>Group Update<a class="headerlink" href="#group-update" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+        <span class="s">&quot;event_name&quot;</span><span class="p">:</span> <span class="s">&quot;group_update&quot;</span><span class="p">,</span>
+        <span class="s">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">&quot;group_id&quot;</span><span class="p">:</span> <span class="n">group_id</span><span class="p">,</span>
+            <span class="s">&quot;group_name&quot;</span><span class="p">:</span> <span class="n">group_name</span><span class="p">,</span>
+            <span class="s">&quot;account_id&quot;</span><span class="p">:</span> <span class="n">account_id</span><span class="p">,</span>
+            <span class="s">&quot;timestamp&quot;</span><span class="p">:</span> <span class="n">timestamp</span><span class="p">,</span>
+            <span class="s">&quot;resource_url&quot;</span><span class="p">:</span> <span class="n">resource_url</span>
+            <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="field-create">
+<h3>Field Create<a class="headerlink" href="#field-create" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+        <span class="s">&quot;event_name&quot;</span><span class="p">:</span> <span class="s">&quot;field_create&quot;</span><span class="p">,</span>
+        <span class="s">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">&quot;field_id&quot;</span><span class="p">:</span> <span class="n">field_id</span><span class="p">,</span>
+            <span class="s">&quot;account_id&quot;</span><span class="p">:</span> <span class="n">account_id</span><span class="p">,</span>
+            <span class="s">&quot;timestamp&quot;</span><span class="p">:</span> <span class="n">timestamp</span><span class="p">,</span>
+            <span class="s">&quot;resource_url&quot;</span><span class="p">:</span> <span class="n">resource_url</span>
+            <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="field-delete">
+<h3>Field Delete<a class="headerlink" href="#field-delete" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+        <span class="s">&quot;event_name&quot;</span><span class="p">:</span> <span class="s">&quot;field_delete&quot;</span><span class="p">,</span>
+        <span class="s">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">&quot;field_id&quot;</span><span class="p">:</span> <span class="n">field_id</span><span class="p">,</span>
+            <span class="s">&quot;account_id&quot;</span><span class="p">:</span> <span class="n">account_id</span><span class="p">,</span>
+            <span class="s">&quot;timestamp&quot;</span><span class="p">:</span> <span class="n">timestamp</span><span class="p">,</span>
+            <span class="s">&quot;resource_url&quot;</span><span class="p">:</span> <span class="n">resource_url</span>
+            <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="field-update">
+<h3>Field Update<a class="headerlink" href="#field-update" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+        <span class="s">&quot;event_name&quot;</span><span class="p">:</span> <span class="s">&quot;field_update&quot;</span><span class="p">,</span>
+        <span class="s">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">&quot;field_id&quot;</span><span class="p">:</span> <span class="n">field_id</span><span class="p">,</span>
+            <span class="s">&quot;account_id&quot;</span><span class="p">:</span> <span class="n">account_id</span><span class="p">,</span>
+            <span class="s">&quot;timestamp&quot;</span><span class="p">:</span> <span class="n">timestamp</span><span class="p">,</span>
+            <span class="s">&quot;resource_url&quot;</span><span class="p">:</span> <span class="n">resource_url</span>
+            <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="member-status-update">
+<h3>Member Status Update<a class="headerlink" href="#member-status-update" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+        <span class="s">&quot;event_name&quot;</span><span class="p">:</span> <span class="s">&quot;member_status_update&quot;</span><span class="p">,</span>
+        <span class="s">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">&quot;member_ids&quot;</span><span class="p">:</span> <span class="p">{</span><span class="n">member_ids</span><span class="p">},</span>
+            <span class="s">&quot;account_id&quot;</span><span class="p">:</span> <span class="n">account_id</span><span class="p">,</span>
+            <span class="s">&quot;new_status&quot;</span><span class="p">:</span> <span class="n">new_status</span><span class="p">,</span>
+            <span class="s">&quot;timestamp&quot;</span><span class="p">:</span> <span class="n">timestamp</span>
+            <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Webhook Usage</a><ul>
+<li><a class="reference internal" href="#webhook-overview">Webhook Overview</a></li>
+<li><a class="reference internal" href="#webhook-post-data">Webhook Post Data</a><ul>
+<li><a class="reference internal" href="#member-signup">Member Signup</a></li>
+<li><a class="reference internal" href="#message-open">Message Open</a></li>
+<li><a class="reference internal" href="#message-click">Message Click</a></li>
+<li><a class="reference internal" href="#member-optout">Member Optout</a></li>
+<li><a class="reference internal" href="#message-share">Message Share</a></li>
+<li><a class="reference internal" href="#message-share-click">Message Share Click</a></li>
+<li><a class="reference internal" href="#message-forward">Message Forward</a></li>
+<li><a class="reference internal" href="#mailing-finish">Mailing Finish</a></li>
+<li><a class="reference internal" href="#import-finish">Import Finish</a></li>
+<li><a class="reference internal" href="#member-add">Member Add</a></li>
+<li><a class="reference internal" href="#member-update">Member Update</a></li>
+<li><a class="reference internal" href="#member-delete">Member Delete</a></li>
+<li><a class="reference internal" href="#member-add-to-group">Member Add To Group</a></li>
+<li><a class="reference internal" href="#member-remove-from-group">Member Remove From Group</a></li>
+<li><a class="reference internal" href="#group-create">Group Create</a></li>
+<li><a class="reference internal" href="#group-delete">Group Delete</a></li>
+<li><a class="reference internal" href="#group-update">Group Update</a></li>
+<li><a class="reference internal" href="#field-create">Field Create</a></li>
+<li><a class="reference internal" href="#field-delete">Field Delete</a></li>
+<li><a class="reference internal" href="#field-update">Field Update</a></li>
+<li><a class="reference internal" href="#member-status-update">Member Status Update</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="member_search.html" title="previous chapter">Search Syntax</a></li>
+      <li>Next: <a href="php_signup_example.html" title="next chapter">PHP Signup Example</a></li>
+  </ul></li>
+</ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2012, Emma.
+        Last updated on Dec 17, 2012 at 10:51.
+    </div>
+  </body>
+</html>

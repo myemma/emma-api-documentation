@@ -1,0 +1,19 @@
+Members
+=======
+
+In addition to the various CRUD endpoints here related to members, 
+you can also change the status of members, including opting them out. 
+
+You'll notice that there are calls related to individual members, but 
+we also provide quite a few calls to deal with bulk updates of members. 
+Please try to use these whenever possible as opposed to looping through 
+a list of members and calling the individual member calls. 
+
+Where this is especially important is when adding new members. To do a bulk 
+import, you'll POST to the ``/#account_id/members`` endpoint. In return, 
+you'll receive an import ID. You can use this ID to check the status and 
+results of your import. Imports are generally pretty fast, but the time 
+to completion can vary with greater system usage.
+
+.. autoemma:: audience.api.controllers.members:MemberController
+

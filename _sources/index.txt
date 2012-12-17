@@ -1,0 +1,153 @@
+Emma API
+========
+
+Overview
+--------
+
+Emma's platform is accessible through our public API.  The API provides access
+to the following areas:
+
+* Managing member lists
+    * importing, editing, deleting
+    * organizing members into groups
+    * searching for members
+* Sending mailings
+    * sending to individuals, groups and searches
+    * viewing past mailings
+    * controlling the status of pending mailings
+* Retrieving response
+    * Access mailing response information by mailing, member of time period
+    * Access response at summary and detail levels
+
+Quickstart
+----------
+
+Let's start by building some PHP code that will add a member to our audience. 
+
+First, you'll want to figure out how to authenticate. All calls require HTTP 
+Basic Auth autentication. Inside your Emma account, in the "Account Settings" 
+section, you'll find your API keys. There's a public key and a private key and 
+an account ID. It should look like this.
+
+.. image:: images/api_keys.jpg
+
+So, let's add these authentication bits to our code.
+
+.. code-block:: php
+
+  // Authentication Variables
+  $account_id = "xxx";
+  $public_api_key = "xxx";
+  $private_api_key = "xxx";
+
+Then, we'll want to capture the POSTed form variables from the request.
+
+.. code-block:: php
+
+  // Form variable(s)
+  $email = $_POST['email'];
+  $first_name = $_POST['first_name'];
+  $last_name = $_POST['last_name'];
+  $groups = array(123456, 654321);
+  
+  // Member data other than email should be passed in an array called "fields"
+  $member_data = array(
+    "email" => $email,
+    "fields" => array(
+      "name_first" => $first_name,
+      "name_last" => $last_name
+    ),
+    "group_ids" => $groups
+  );
+
+Please note that the ``group_ids`` to which the member will be added are passed
+as an array of integers. Of course, you'll want to make sure you sanitize any of 
+these form inputs to protect your application.
+
+Let's set the URL for the API call. The endpoint for all of our API calls is 
+https://api.e2ma.net/. In this case, we're using the endpoint that 
+corresponds to adding a single member. There's a separate call for adding bulk 
+members.
+
+.. code-block:: php
+
+  // Set URL
+  $url = "https://api.e2ma.net/".$account_id."/members/add";
+
+Next, we'll do a little dance with cURL that I'm sure is familiar. I'll 
+explain some particulars below the code block.
+
+.. code-block:: php
+  :emphasize-lines: 3,6,7
+
+  // setup and execute the cURL command
+  $ch = curl_init();
+  curl_setopt($ch, CURLOPT_USERPWD, $public_api_key . ":" . $private_api_key);
+  curl_setopt($ch, CURLOPT_URL, $url);
+  curl_setopt($ch, CURLOPT_POST, count($member_data));
+  curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($member_data));
+  curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-type: application/json'));
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+  curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+  $head = curl_exec($ch);
+  $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+  curl_close($ch);
+
+On line 3 is where we use the public/private keys to authenticate our call. 
+On lines 6-7, we force the API call to make its request in JSON and expect 
+JSON in return.
+
+At this point, the API call has been made.We might want to inspect the
+result to see what happened. The API returns true HTTP response codes which
+you can examine to determine a request's disposition.
+
+.. code-block:: php
+
+  //execute post
+  if($http_code > 200) {
+    $app_message = "Error sending subscription request";
+  } else {
+    $app_message = "Success!";
+  }
+
+  echo $app_message;
+
+You can :doc:`see the complete PHP script here <php_signup_example>`. 
+Additionally, there's a PHP example to :doc:`get members using their email
+address <php_get_member_example>`.
+
+To extend this example further, one could make the API call associate the 
+new member with a particular signup form. As written above, the member would 
+be added to the audience but would not appear in the "recent activity" type 
+searches or really any searches related to signups. We are working on a 
+cleaner way to handle this signup form issue in the future.
+
+
+API calls by category
+---------------------
+
+The API calls are organized by their main entity type in the following
+sections.  Each call includes sample request & response data.
+
+.. toctree::
+    :maxdepth: 2
+    :glob:
+
+    api/external/*
+
+Additional Documentation
+------------------------
+
+.. toctree::
+    :maxdepth: 2
+
+    pagination
+    placeholders
+    member_search
+    webhooks
+
+.. toctree::
+    :hidden:
+
+    php_signup_example
+    php_get_member_example

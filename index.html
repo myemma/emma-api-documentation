@@ -1,0 +1,290 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Emma API &mdash; audience 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/emma.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="audience 0.1 documentation" href="#" />
+    <link rel="next" title="Fields" href="api/external/fields.html" />
+   
+  
+  <style type="text/css">
+    .resp-trigger, .resp-trigger:hover {font-size:10pt;text-decoration:none;}
+    div.sample-response.hide-response pre.response {display: none;}
+    div.sample-response .tshow,
+    div.sample-response.hide-response .thide {display: none;}
+    div.sample-response .thide,
+    div.sample-response.hide-response .tshow {display: inline;}
+  </style>
+  <script>
+    $().ready(function() {
+      $("a.resp-trigger").click(function(e) {
+        e.preventDefault();
+        $(this).parents("div.sample-response").toggleClass("hide-response");
+      });
+    });
+  </script>
+
+  </head>
+  <body>
+<header role="banner">
+	<h1>Emma API Documentation</h1>
+</header>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="http-routingtable.html" title="HTTP Routing Table"
+             >routing table</a> |</li>
+        <li class="right" >
+          <a href="api/external/fields.html" title="Fields"
+             accesskey="N">next</a> |</li>
+        <li><a href="#">audience 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="emma-api">
+<h1>Emma API<a class="headerlink" href="#emma-api" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>Emma&#8217;s platform is accessible through our public API.  The API provides access
+to the following areas:</p>
+<ul>
+<li><dl class="first docutils">
+<dt>Managing member lists</dt>
+<dd><ul class="first last simple">
+<li>importing, editing, deleting</li>
+<li>organizing members into groups</li>
+<li>searching for members</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Sending mailings</dt>
+<dd><ul class="first last simple">
+<li>sending to individuals, groups and searches</li>
+<li>viewing past mailings</li>
+<li>controlling the status of pending mailings</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Retrieving response</dt>
+<dd><ul class="first last simple">
+<li>Access mailing response information by mailing, member of time period</li>
+<li>Access response at summary and detail levels</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="quickstart">
+<h2>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this headline">¶</a></h2>
+<p>Let&#8217;s start by building some PHP code that will add a member to our audience.</p>
+<p>First, you&#8217;ll want to figure out how to authenticate. All calls require HTTP
+Basic Auth autentication. Inside your Emma account, in the &#8220;Account Settings&#8221;
+section, you&#8217;ll find your API keys. There&#8217;s a public key and a private key and
+an account ID. It should look like this.</p>
+<img alt="_images/api_keys.jpg" src="_images/api_keys.jpg" />
+<p>So, let&#8217;s add these authentication bits to our code.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// Authentication Variables</span>
+<span class="nv">$account_id</span> <span class="o">=</span> <span class="s2">&quot;xxx&quot;</span><span class="p">;</span>
+<span class="nv">$public_api_key</span> <span class="o">=</span> <span class="s2">&quot;xxx&quot;</span><span class="p">;</span>
+<span class="nv">$private_api_key</span> <span class="o">=</span> <span class="s2">&quot;xxx&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Then, we&#8217;ll want to capture the POSTed form variables from the request.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// Form variable(s)</span>
+<span class="nv">$email</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">];</span>
+<span class="nv">$first_name</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;first_name&#39;</span><span class="p">];</span>
+<span class="nv">$last_name</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;last_name&#39;</span><span class="p">];</span>
+<span class="nv">$groups</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="mi">123456</span><span class="p">,</span> <span class="mi">654321</span><span class="p">);</span>
+
+<span class="c1">// Member data other than email should be passed in an array called &quot;fields&quot;</span>
+<span class="nv">$member_data</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+  <span class="s2">&quot;email&quot;</span> <span class="o">=&gt;</span> <span class="nv">$email</span><span class="p">,</span>
+  <span class="s2">&quot;fields&quot;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s2">&quot;name_first&quot;</span> <span class="o">=&gt;</span> <span class="nv">$first_name</span><span class="p">,</span>
+    <span class="s2">&quot;name_last&quot;</span> <span class="o">=&gt;</span> <span class="nv">$last_name</span>
+  <span class="p">),</span>
+  <span class="s2">&quot;group_ids&quot;</span> <span class="o">=&gt;</span> <span class="nv">$groups</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Please note that the <tt class="docutils literal"><span class="pre">group_ids</span></tt> to which the member will be added are passed
+as an array of integers. Of course, you&#8217;ll want to make sure you sanitize any of
+these form inputs to protect your application.</p>
+<p>Let&#8217;s set the URL for the API call. The endpoint for all of our API calls is
+<a class="reference external" href="https://api.e2ma.net/">https://api.e2ma.net/</a>. In this case, we&#8217;re using the endpoint that
+corresponds to adding a single member. There&#8217;s a separate call for adding bulk
+members.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// Set URL</span>
+<span class="nv">$url</span> <span class="o">=</span> <span class="s2">&quot;https://api.e2ma.net/&quot;</span><span class="o">.</span><span class="nv">$account_id</span><span class="o">.</span><span class="s2">&quot;/members/add&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Next, we&#8217;ll do a little dance with cURL that I&#8217;m sure is familiar. I&#8217;ll
+explain some particulars below the code block.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// setup and execute the cURL command</span>
+<span class="nv">$ch</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
+<span class="hll"><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_USERPWD</span><span class="p">,</span> <span class="nv">$public_api_key</span> <span class="o">.</span> <span class="s2">&quot;:&quot;</span> <span class="o">.</span> <span class="nv">$private_api_key</span><span class="p">);</span>
+</span><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_URL</span><span class="p">,</span> <span class="nv">$url</span><span class="p">);</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_POST</span><span class="p">,</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$member_data</span><span class="p">));</span>
+<span class="hll"><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_POSTFIELDS</span><span class="p">,</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nv">$member_data</span><span class="p">));</span>
+</span><span class="hll"><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_HTTPHEADER</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;Content-type: application/json&#39;</span><span class="p">));</span>
+</span><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_SSL_VERIFYPEER</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span>
+<span class="nv">$head</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
+<span class="nv">$http_code</span> <span class="o">=</span> <span class="nb">curl_getinfo</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLINFO_HTTP_CODE</span><span class="p">);</span>
+<span class="nb">curl_close</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>On line 3 is where we use the public/private keys to authenticate our call.
+On lines 6-7, we force the API call to make its request in JSON and expect
+JSON in return.</p>
+<p>At this point, the API call has been made.We might want to inspect the
+result to see what happened. The API returns true HTTP response codes which
+you can examine to determine a request&#8217;s disposition.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">//execute post</span>
+<span class="k">if</span><span class="p">(</span><span class="nv">$http_code</span> <span class="o">&gt;</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nv">$app_message</span> <span class="o">=</span> <span class="s2">&quot;Error sending subscription request&quot;</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="nv">$app_message</span> <span class="o">=</span> <span class="s2">&quot;Success!&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">echo</span> <span class="nv">$app_message</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>You can <a class="reference internal" href="php_signup_example.html"><em>see the complete PHP script here</em></a>.
+Additionally, there&#8217;s a PHP example to <a class="reference internal" href="php_get_member_example.html"><em>get members using their email
+address</em></a>.</p>
+<p>To extend this example further, one could make the API call associate the
+new member with a particular signup form. As written above, the member would
+be added to the audience but would not appear in the &#8220;recent activity&#8221; type
+searches or really any searches related to signups. We are working on a
+cleaner way to handle this signup form issue in the future.</p>
+</div>
+<div class="section" id="api-calls-by-category">
+<h2>API calls by category<a class="headerlink" href="#api-calls-by-category" title="Permalink to this headline">¶</a></h2>
+<p>The API calls are organized by their main entity type in the following
+sections.  Each call includes sample request &amp; response data.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api/external/fields.html">Fields</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/external/groups.html">Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/external/mailings.html">Mailings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/external/members.html">Members</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/external/response.html">Response</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/external/searches.html">Searches</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/external/triggers.html">Triggers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/external/webhooks.html">Webhooks</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="additional-documentation">
+<h2>Additional Documentation<a class="headerlink" href="#additional-documentation" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pagination.html">Pagination</a></li>
+<li class="toctree-l1"><a class="reference internal" href="placeholders.html">Placeholder Syntax</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="placeholders.html#syntax-overview">Syntax Overview</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="member_search.html">Search Syntax</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="member_search.html#syntax-overview">Syntax Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="member_search.html#operators">Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="member_search.html#boolean-predicates">Boolean Predicates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="member_search.html#filter-terms">Filter Terms</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="webhooks.html">Webhook Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="webhooks.html#webhook-overview">Webhook Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhooks.html#webhook-post-data">Webhook Post Data</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Emma API</a><ul>
+<li><a class="reference internal" href="#overview">Overview</a></li>
+<li><a class="reference internal" href="#quickstart">Quickstart</a></li>
+<li><a class="reference internal" href="#api-calls-by-category">API calls by category</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#additional-documentation">Additional Documentation</a><ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+      <li>Next: <a href="api/external/fields.html" title="next chapter">Fields</a></li>
+  </ul></li>
+</ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2012, Emma.
+        Last updated on Dec 17, 2012 at 10:51.
+    </div>
+  </body>
+</html>

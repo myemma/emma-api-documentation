@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: 
+Disallow: _images/
+Disallow: _sources/
+Disallow: _static/
+

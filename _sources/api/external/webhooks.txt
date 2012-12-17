@@ -1,0 +1,10 @@
+Webhooks
+========
+
+You can manage your webhooks with these endpoints. Of particular interest 
+might be the ``GET /#account_id/webhooks/events`` endpoint which lets you 
+know which events our system can send out webhooks for. You can :doc:`get more 
+info about how our webhooks work <../../webhooks>`.
+
+.. autoemma:: audience.api.controllers.webhooks:WebhookController
+

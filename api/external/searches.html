@@ -1,0 +1,476 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Searches &mdash; audience 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/emma.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="audience 0.1 documentation" href="../../index.html" />
+    <link rel="next" title="Triggers" href="triggers.html" />
+    <link rel="prev" title="Response" href="response.html" />
+   
+  
+  <style type="text/css">
+    .resp-trigger, .resp-trigger:hover {font-size:10pt;text-decoration:none;}
+    div.sample-response.hide-response pre.response {display: none;}
+    div.sample-response .tshow,
+    div.sample-response.hide-response .thide {display: none;}
+    div.sample-response .thide,
+    div.sample-response.hide-response .tshow {display: inline;}
+  </style>
+  <script>
+    $().ready(function() {
+      $("a.resp-trigger").click(function(e) {
+        e.preventDefault();
+        $(this).parents("div.sample-response").toggleClass("hide-response");
+      });
+    });
+  </script>
+
+  </head>
+  <body>
+<header role="banner">
+	<h1>Emma API Documentation</h1>
+</header>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../http-routingtable.html" title="HTTP Routing Table"
+             >routing table</a> |</li>
+        <li class="right" >
+          <a href="triggers.html" title="Triggers"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="response.html" title="Response"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">audience 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="searches">
+<h1>Searches<a class="headerlink" href="#searches" title="Permalink to this headline">¶</a></h1>
+<p>These endpoints allow you to create, edit, and delete searches. You can also
+retrieve the members matching any search created in your account. You can
+<a class="reference internal" href="../../member_search.html"><em>get more details on how to construct searches</em></a>.</p>
+<dl class="get">
+<dt id="get--#account_id-searches">
+<tt class="descname">GET </tt><tt class="descname">/#account_id/searches</tt><a class="headerlink" href="#get--#account_id-searches" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve a list of saved searches.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>deleted</strong> (<em>boolean</em>) &#8211; Accepts True or 1. Optional flag to include
+deleted searches.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first last">An array of searches.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>GET /100/searches</b>
+
+[
+  {
+    "search_id": 200,
+    "optout_count": 0,
+    "error_count": 0,
+    "name": "Test Search",
+    "criteria": "[\"or\", [\"group\", \"eq\", \"Monthly Newsletter\"],[\"group\", \"eq\", \"Widget Buyers\"]]",
+    "deleted_at": null,
+    "last_run_at": null,
+    "active_count": 0,
+    "account_id": 100
+  },
+  {
+    "search_id": 201,
+    "optout_count": 0,
+    "error_count": 0,
+    "name": "Second Test Search",
+    "criteria": "[\"group\", \"eq\", \"Special Events\"]",
+    "deleted_at": null,
+    "last_run_at": null,
+    "active_count": 0,
+    "account_id": 100
+  }
+]
+
+</pre>
+</div>
+</p>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--#account_id-searches-#search_id">
+<tt class="descname">GET </tt><tt class="descname">/#account_id/searches/#search_id</tt><a class="headerlink" href="#get--#account_id-searches-#search_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the details for a saved search.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body"><p class="first">A search.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>deleted</strong> (<em>boolean</em>) &#8211; Accepts True or 1. Optional flag to include
+deleted searches.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first last"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the search does not exist.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>GET /100/searches/200</b>
+
+{
+  "search_id": 200, 
+  "optout_count": 1, 
+  "error_count": 0, 
+  "name": "Test Search", 
+  "criteria": "[\"or\", [\"group\", \"eq\", \"Monthly Newsletter\"],[\"group\", \"eq\", \"Widget Buyers\"]]", 
+  "deleted_at": null, 
+  "last_run_at": "@D:2012-12-17T10:51:53", 
+  "active_count": 2, 
+  "account_id": 100
+}
+</pre>
+</div>
+</p>
+</dd></dl>
+
+<dl class="post">
+<dt id="post--#account_id-searches">
+<tt class="descname">POST </tt><tt class="descname">/#account_id/searches</tt><a class="headerlink" href="#post--#account_id-searches" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a saved search.</p>
+<p>The detail of a search is specified in a JSON structure that describes
+the clauses to be applied using groups of <em>filter</em> <em>type</em>, <em>operator</em>
+and <em>value</em>.  Where the <em>filter</em> <em>type</em> is <tt class="docutils literal"><span class="pre">member_field</span></tt>, the
+referenced field should be specified by joining with a colon.  For
+example:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">[</span><span class="s2">&quot;and&quot;</span><span class="p">,</span>
+    <span class="p">[</span><span class="s2">&quot;or&quot;</span><span class="p">,</span>
+        <span class="p">[</span><span class="s2">&quot;group&quot;</span><span class="p">,</span> <span class="s2">&quot;eq&quot;</span><span class="p">,</span> <span class="s2">&quot;my list&quot;</span><span class="p">],</span>
+        <span class="p">[</span><span class="s2">&quot;group&quot;</span><span class="p">,</span> <span class="s2">&quot;contains&quot;</span><span class="p">,</span> <span class="s2">&quot;old&quot;</span><span class="p">]</span>
+    <span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;not&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;member_field&quot;</span><span class="p">,</span> <span class="s2">&quot;soup&quot;</span><span class="p">,</span> <span class="s2">&quot;eq&quot;</span><span class="p">,</span> <span class="s2">&quot;lentil&quot;</span><span class="p">]],</span>
+    <span class="p">[</span><span class="s2">&quot;opened&quot;</span><span class="p">,</span> <span class="mi">123249</span><span class="p">,</span> <span class="s2">&quot;between&quot;</span><span class="p">,</span> <span class="s2">&quot;2011-01-22, 2011-01-31&quot;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;clicked&quot;</span><span class="p">,</span> <span class="mi">83927</span><span class="p">]</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>The following parameters are required:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>criteria</strong> (<em>array</em>) &#8211; A combination of search conditions, as described
+above.</li>
+<li><strong>name</strong> (<em>string</em>) &#8211; A name used to describe this search.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first">The ID of the new search</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first last"><tt class="docutils literal"><span class="pre">Http400</span></tt> if the search is invalid</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>POST /100/searches</b>
+{
+  "name": "New Search", 
+  "criteria": [
+    "or", 
+    [
+      "group", 
+      "eq", 
+      "Monthly Newsletter"
+    ], 
+    [
+      "group", 
+      "eq", 
+      "Widget Buyers"
+    ]
+  ]
+}
+
+1024
+</pre>
+</div>
+</p>
+</dd></dl>
+
+<dl class="put">
+<dt id="put--#account_id-searches-#search_id">
+<tt class="descname">PUT </tt><tt class="descname">/#account_id/searches/#search_id</tt><a class="headerlink" href="#put--#account_id-searches-#search_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update a saved search.</p>
+<p>No parameters are required, but either the <tt class="docutils literal"><span class="pre">name</span></tt> or <tt class="docutils literal"><span class="pre">criteria</span></tt>
+parameter must be present for an update to occur.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>criteria</strong> (<em>array</em>) &#8211; A combination of search conditions, as described
+above (see <cite>create_search</cite>).</li>
+<li><strong>name</strong> (<em>string</em>) &#8211; A name used to describe this search.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first">True if the update was successful</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the search does not exist.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><p class="first last"><tt class="docutils literal"><span class="pre">Http400</span></tt> if the search criteria is invalid</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>PUT /100/searches/200</b>
+{
+  "criteria": [
+    "or", 
+    [
+      "group", 
+      "eq", 
+      "Monthly Newsletter"
+    ], 
+    [
+      "group", 
+      "eq", 
+      "Special Events"
+    ]
+  ]
+}
+
+true
+</pre>
+</div>
+</p>
+</dd></dl>
+
+<dl class="delete">
+<dt id="delete--#account_id-searches-#search_id">
+<tt class="descname">DELETE </tt><tt class="descname">/#account_id/searches/#search_id</tt><a class="headerlink" href="#delete--#account_id-searches-#search_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete a saved search.  The member records referred to by the search
+are not affected.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body">True if the search is deleted.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the search does not exist.</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>DELETE /100/searches/200</b>
+
+true
+</pre>
+</div>
+</p>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--#account_id-searches-#search_id-members">
+<tt class="descname">GET </tt><tt class="descname">/#account_id/searches/#search_id/members</tt><a class="headerlink" href="#get--#account_id-searches-#search_id-members" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the members matching the search.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body">An array of members.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the search does not exist.</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>GET /100/searches/201/members</b>
+
+[
+  {
+    "status": "active",
+    "confirmed_opt_in": null,
+    "account_id": 100,
+    "fields": {
+      "first_name": "Emma",
+      "last_name": "Smith",
+      "favorite_food": "tacos"
+    },
+    "member_id": 200,
+    "last_modified_at": null,
+    "member_status_id": "a",
+    "plaintext_preferred": false,
+    "email_error": null,
+    "member_since": "@D:2010-11-12T11:23:45",
+    "bounce_count": 0,
+    "deleted_at": null,
+    "email": "emma@myemma.com"
+  },
+  {
+    "status": "opt-out",
+    "confirmed_opt_in": null,
+    "account_id": 100,
+    "fields": {
+      "first_name": "Gladys",
+      "last_name": "Jones",
+      "favorite_food": "toast"
+    },
+    "member_id": 201,
+    "last_modified_at": null,
+    "member_status_id": "o",
+    "plaintext_preferred": false,
+    "email_error": null,
+    "member_since": "@D:2011-01-03T15:54:13",
+    "bounce_count": 0,
+    "deleted_at": null,
+    "email": "gladys@myemma.com"
+  },
+  {
+    "status": "active",
+    "confirmed_opt_in": null,
+    "account_id": 100,
+    "fields": {
+      "first_name": "Tony",
+      "last_name": "Brown",
+      "favorite_food": "pizza"
+    },
+    "member_id": 202,
+    "last_modified_at": null,
+    "member_status_id": "a",
+    "plaintext_preferred": false,
+    "email_error": null,
+    "member_since": "@D:2010-11-12T09:12:33",
+    "bounce_count": 0,
+    "deleted_at": null,
+    "email": "tony@myemma.com"
+  },
+  {
+    "status": "active",
+    "confirmed_opt_in": null,
+    "account_id": 100,
+    "fields": {
+
+    },
+    "member_id": 204,
+    "last_modified_at": null,
+    "member_status_id": "a",
+    "plaintext_preferred": false,
+    "email_error": null,
+    "member_since": "@D:2010-12-13T23:12:44",
+    "bounce_count": 0,
+    "deleted_at": null,
+    "email": "bob@myemma.com"
+  }
+]
+
+</pre>
+</div>
+</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="response.html" title="previous chapter">Response</a></li>
+      <li>Next: <a href="triggers.html" title="next chapter">Triggers</a></li>
+  </ul></li>
+</ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2012, Emma.
+        Last updated on Dec 17, 2012 at 10:51.
+    </div>
+  </body>
+</html>
