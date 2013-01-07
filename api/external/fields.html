@@ -30,7 +30,7 @@
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <link rel="top" title="audience 0.1 documentation" href="../../index.html" />
+    <link rel="top" title="audience v0.1 documentation" href="../../index.html" />
     <link rel="next" title="Groups" href="groups.html" />
     <link rel="prev" title="Emma API" href="../../index.html" />
     <link rel="icon" href="http://myemma.com/static/global/favicons/favicon.ico?v=2" type="image/x-icon"> 
@@ -93,7 +93,7 @@
         <li class="right" >
           <a href="../../index.html" title="Emma API"
              accesskey="P">previous</a> |</li>
-        <li><a href="../../index.html">audience 0.1 documentation</a> &raquo;</li> 
+        <li><a href="../../index.html">audience v0.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -113,18 +113,19 @@ error or syncing issue.</p>
 <dl class="get">
 <dt id="get--#account_id-fields">
 <tt class="descname">GET </tt><tt class="descname">/#account_id/fields</tt><a class="headerlink" href="#get--#account_id-fields" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gets a list of this account&#8217;s defined fields.</p>
+<dd><p><tt class="docutils literal"><span class="pre">GET</span> <span class="pre">/#account_id/fields</span></tt></p>
+<p>Gets a list of this account&#8217;s defined fields.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>deleted</strong> (<em>boolean</em>) &#8211; Accepts True or 1. Optional flag to include
 deleted fields.</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first last">An array of fields.</p>
+<tr class="field"><th class="field-name">Returns :</th><td class="field-body"><p class="first last">An array of fields.</p>
 </td>
 </tr>
 </tbody>
@@ -199,21 +200,22 @@ deleted fields.</li>
 <dl class="get">
 <dt id="get--#account_id-fields-#field_id">
 <tt class="descname">GET </tt><tt class="descname">/#account_id/fields/#field_id</tt><a class="headerlink" href="#get--#account_id-fields-#field_id" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gets the detailed information about a particular field.</p>
+<dd><p><tt class="docutils literal"><span class="pre">GET</span> <span class="pre">/#account_id/fields/#field_id</span></tt></p>
+<p>Gets the detailed information about a particular field.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>deleted</strong> (<em>boolean</em>) &#8211; Accepts True or 1. Optionally show a field
 even if it has been deleted.</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first">A field.</p>
+<tr class="field"><th class="field-name">Returns :</th><td class="field-body"><p class="first">A field.</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first last"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the field does not exist.</p>
+<tr class="field"><th class="field-name">Raises :</th><td class="field-body"><p class="first last"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the field does not exist.</p>
 </td>
 </tr>
 </tbody>
@@ -246,13 +248,14 @@ even if it has been deleted.</li>
 <dl class="post">
 <dt id="post--#account_id-fields">
 <tt class="descname">POST </tt><tt class="descname">/#account_id/fields</tt><a class="headerlink" href="#post--#account_id-fields" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create a new field field.</p>
+<dd><p><tt class="docutils literal"><span class="pre">POST</span> <span class="pre">/#account_id/fields</span></tt></p>
+<p>Create a new field field.</p>
 <p>There must not already be a field with this name.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>shortcut_name</strong> (<em>string</em>) &#8211; The internal name for this field.</li>
 <li><strong>display_name</strong> (<em>string</em>) &#8211; Display name, used for forms and reports.</li>
 <li><strong>field_type</strong> (<em>string</em>) &#8211; The type of value this field will contain.
@@ -265,7 +268,7 @@ Accepts one of <tt class="docutils literal"><span class="pre">text</span></tt>, 
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first last">A reference to the new field.</p>
+<tr class="field"><th class="field-name">Returns :</th><td class="field-body"><p class="first last">A reference to the new field.</p>
 </td>
 </tr>
 </tbody>
@@ -292,12 +295,13 @@ Accepts one of <tt class="docutils literal"><span class="pre">text</span></tt>, 
 <dl class="delete">
 <dt id="delete--#account_id-fields-#field_id">
 <tt class="descname">DELETE </tt><tt class="descname">/#account_id/fields/#field_id</tt><a class="headerlink" href="#delete--#account_id-fields-#field_id" title="Permalink to this definition">¶</a></dt>
-<dd><p>Deletes a field.</p>
+<dd><p><tt class="docutils literal"><span class="pre">DELETE</span> <span class="pre">/#account_id/fields/#field_id</span></tt></p>
+<p>Deletes a field.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body">True if the field is deleted, False otherwise.</td>
+<tr class="field"><th class="field-name">Returns :</th><td class="field-body">True if the field is deleted, False otherwise.</td>
 </tr>
 </tbody>
 </table>
@@ -317,12 +321,13 @@ true
 <dl class="post">
 <dt id="post--#account_id-fields-#field_id-clear">
 <tt class="descname">POST </tt><tt class="descname">/#account_id/fields/#field_id/clear</tt><a class="headerlink" href="#post--#account_id-fields-#field_id-clear" title="Permalink to this definition">¶</a></dt>
-<dd><p>Clear the member data for the specified field.</p>
+<dd><p><tt class="docutils literal"><span class="pre">POST</span> <span class="pre">/#account_id/fields/#field_id/clear</span></tt></p>
+<p>Clear the member data for the specified field.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body">True if all of the member field data is deleted</td>
+<tr class="field"><th class="field-name">Returns :</th><td class="field-body">True if all of the member field data is deleted</td>
 </tr>
 </tbody>
 </table>
@@ -343,12 +348,13 @@ true
 <dl class="put">
 <dt id="put--#account_id-fields-#field_id">
 <tt class="descname">PUT </tt><tt class="descname">/#account_id/fields/#field_id</tt><a class="headerlink" href="#put--#account_id-fields-#field_id" title="Permalink to this definition">¶</a></dt>
-<dd><p>Updates an existing field.</p>
+<dd><p><tt class="docutils literal"><span class="pre">PUT</span> <span class="pre">/#account_id/fields/#field_id</span></tt></p>
+<p>Updates an existing field.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body">A reference to the updated field.</td>
+<tr class="field"><th class="field-name">Returns :</th><td class="field-body">A reference to the updated field.</td>
 </tr>
 </tbody>
 </table>
@@ -385,7 +391,7 @@ true
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" size="18" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -415,7 +421,7 @@ true
     </div>
     <div class="footer">
       &copy; Copyright 2013, Emma.
-        Last updated on Jan 04, 2013 at 09:46 AM.
+        Last updated on Jan 07, 2013 at 02:56 PM.
     </div>
   </body>
 </html>

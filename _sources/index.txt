@@ -54,8 +54,8 @@ Then, we'll want to capture the POSTed form variables from the request.
   $member_data = array(
     "email" => $email,
     "fields" => array(
-      "name_first" => $first_name,
-      "name_last" => $last_name
+      "first_name" => $first_name,
+      "last_name" => $last_name
     ),
     "group_ids" => $groups
   );

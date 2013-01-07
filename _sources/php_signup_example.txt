@@ -21,8 +21,8 @@ Here's the complete example of the PHP code to signup a single member.
     $member_data = array(
         "email" => $email,
         "fields" => array(
-            "name_first" => $first_name,
-            "name_last" => $last_name
+            "first_name" => $first_name,
+            "last_name" => $last_name
         ),
         "group_ids" => $groups
     );

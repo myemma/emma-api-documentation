@@ -30,7 +30,7 @@
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="audience 0.1 documentation" href="#" />
+    <link rel="top" title="audience v0.1 documentation" href="#" />
     <link rel="next" title="Fields" href="api/external/fields.html" />
     <link rel="icon" href="http://myemma.com/static/global/favicons/favicon.ico?v=2" type="image/x-icon"> 
     <link rel="shortcut icon" href="http://myemma.com/static/global/favicons/favicon.ico?v=2" type="image/x-icon">
@@ -89,7 +89,7 @@
         <li class="right" >
           <a href="api/external/fields.html" title="Fields"
              accesskey="N">next</a> |</li>
-        <li><a href="#">audience 0.1 documentation</a> &raquo;</li> 
+        <li><a href="#">audience v0.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -162,8 +162,8 @@ an account ID. It should look like this.</p>
 <span class="nv">$member_data</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
   <span class="s2">&quot;email&quot;</span> <span class="o">=&gt;</span> <span class="nv">$email</span><span class="p">,</span>
   <span class="s2">&quot;fields&quot;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
-    <span class="s2">&quot;name_first&quot;</span> <span class="o">=&gt;</span> <span class="nv">$first_name</span><span class="p">,</span>
-    <span class="s2">&quot;name_last&quot;</span> <span class="o">=&gt;</span> <span class="nv">$last_name</span>
+    <span class="s2">&quot;first_name&quot;</span> <span class="o">=&gt;</span> <span class="nv">$first_name</span><span class="p">,</span>
+    <span class="s2">&quot;last_name&quot;</span> <span class="o">=&gt;</span> <span class="nv">$last_name</span>
   <span class="p">),</span>
   <span class="s2">&quot;group_ids&quot;</span> <span class="o">=&gt;</span> <span class="nv">$groups</span>
 <span class="p">);</span>
@@ -182,20 +182,6 @@ members.</p>
 </div>
 <p>Next, we&#8217;ll do a little dance with cURL that I&#8217;m sure is familiar. I&#8217;ll
 explain some particulars below the code block.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="c1">// setup and execute the cURL command</span>
-<span class="nv">$ch</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
-<span class="hll"><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_USERPWD</span><span class="p">,</span> <span class="nv">$public_api_key</span> <span class="o">.</span> <span class="s2">&quot;:&quot;</span> <span class="o">.</span> <span class="nv">$private_api_key</span><span class="p">);</span>
-</span><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_URL</span><span class="p">,</span> <span class="nv">$url</span><span class="p">);</span>
-<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_POST</span><span class="p">,</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$member_data</span><span class="p">));</span>
-<span class="hll"><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_POSTFIELDS</span><span class="p">,</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nv">$member_data</span><span class="p">));</span>
-</span><span class="hll"><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_HTTPHEADER</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;Content-type: application/json&#39;</span><span class="p">));</span>
-</span><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
-<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_SSL_VERIFYPEER</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span>
-<span class="nv">$head</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
-<span class="nv">$http_code</span> <span class="o">=</span> <span class="nb">curl_getinfo</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLINFO_HTTP_CODE</span><span class="p">);</span>
-<span class="nb">curl_close</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
-</pre></div>
-</div>
 <p>On line 3 is where we use the public/private keys to authenticate our call.
 On lines 6-7, we force the API call to make its request in JSON and expect
 JSON in return.</p>
@@ -295,7 +281,7 @@ sections.  Each call includes sample request &amp; response data.</p>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" size="18" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -325,7 +311,7 @@ sections.  Each call includes sample request &amp; response data.</p>
     </div>
     <div class="footer">
       &copy; Copyright 2013, Emma.
-        Last updated on Jan 04, 2013 at 09:46 AM.
+        Last updated on Jan 07, 2013 at 02:56 PM.
     </div>
   </body>
 </html>
