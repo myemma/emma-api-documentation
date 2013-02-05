@@ -30,7 +30,7 @@
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <link rel="top" title="audience v0.1 documentation" href="../../index.html" />
+    <link rel="top" title="audience 0.1 documentation" href="../../index.html" />
     <link rel="next" title="Searches" href="searches.html" />
     <link rel="prev" title="Members" href="members.html" />
     <link rel="icon" href="http://myemma.com/static/global/favicons/favicon.ico?v=2" type="image/x-icon"> 
@@ -93,7 +93,7 @@
         <li class="right" >
           <a href="members.html" title="Members"
              accesskey="P">previous</a> |</li>
-        <li><a href="../../index.html">audience v0.1 documentation</a> &raquo;</li> 
+        <li><a href="../../index.html">audience 0.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -112,8 +112,7 @@ mailing.</p>
 <dl class="get">
 <dt id="get--#account_id-response">
 <tt class="descname">GET </tt><tt class="descname">/#account_id/response</tt><a class="headerlink" href="#get--#account_id-response" title="Permalink to this definition">¶</a></dt>
-<dd><p><tt class="docutils literal"><span class="pre">GET</span> <span class="pre">/#account_id/response</span></tt></p>
-<p>Get the response summary for an account.</p>
+<dd><p>Get the response summary for an account.</p>
 <p>This method will return a month-based time series of data including
 sends, opens, clicks, mailings, forwards, and opt-outs. Test mailings
 and forwards are not included in the data returned.</p>
@@ -146,7 +145,7 @@ object contains:</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>include_archived</strong> (<em>boolean</em>) &#8211; Accepts 1. All other values are False.
 Optional flag to include archived mailings in the list.</li>
 <li><strong>range</strong> (<em>string</em>) &#8211; Accepts 2 dates (YYYY-MM-DD) delimited by a tilde (~).
@@ -207,8 +206,7 @@ on that date will be included.</li>
 <dl class="get">
 <dt id="get--#account_id-response-#mailing_id">
 <tt class="descname">GET </tt><tt class="descname">/#account_id/response/#mailing_id</tt><a class="headerlink" href="#get--#account_id-response-#mailing_id" title="Permalink to this definition">¶</a></dt>
-<dd><p><tt class="docutils literal"><span class="pre">GET</span> <span class="pre">/#account_id/response/#mailing_id</span></tt></p>
-<p>Get the response summary for a particular mailing.</p>
+<dd><p>Get the response summary for a particular mailing.</p>
 <p>This method will return the counts of each type of response activity
 for a particular mailing.</p>
 <dl class="docutils">
@@ -233,9 +231,9 @@ for a particular mailing.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
 </tr>
-<tr class="field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid
 mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test mailings and
 &#8216;r&#8217; for trigger mailings.</td>
 </tr>
@@ -274,8 +272,7 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
 <dl class="get">
 <dt id="get--#account_id-response-#mailing_id-sends">
 <tt class="descname">GET </tt><tt class="descname">/#account_id/response/#mailing_id/sends</tt><a class="headerlink" href="#get--#account_id-response-#mailing_id-sends" title="Permalink to this definition">¶</a></dt>
-<dd><p><tt class="docutils literal"><span class="pre">GET</span> <span class="pre">/#account_id/response/#mailing_id/sends</span></tt></p>
-<p>Get the list of messages that have been sent to an MTA for delivery.</p>
+<dd><p>Get the list of messages that have been sent to an MTA for delivery.</p>
 <dl class="docutils">
 <dt><strong>Returns:</strong></dt>
 <dd><p class="first">An array of objects with the following fields:</p>
@@ -290,9 +287,9 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
 </tr>
-<tr class="field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid
 mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test mailings and
 &#8216;r&#8217; for trigger mailings.</td>
 </tr>
@@ -356,8 +353,7 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
 <dl class="get">
 <dt id="get--#account_id-response-#mailing_id-in_progress">
 <tt class="descname">GET </tt><tt class="descname">/#account_id/response/#mailing_id/in_progress</tt><a class="headerlink" href="#get--#account_id-response-#mailing_id-in_progress" title="Permalink to this definition">¶</a></dt>
-<dd><p><tt class="docutils literal"><span class="pre">GET</span> <span class="pre">/#account_id/response/#mailing_id/in_progress</span></tt></p>
-<p>Get the list of messages that are in the queue,
+<dd><p>Get the list of messages that are in the queue,
 possibly sent, but not yet delivered.</p>
 <dl class="docutils">
 <dt><strong>Returns:</strong></dt>
@@ -372,9 +368,9 @@ possibly sent, but not yet delivered.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
 </tr>
-<tr class="field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid
 mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test mailings and
 &#8216;r&#8217; for trigger mailings.</td>
 </tr>
@@ -422,8 +418,7 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
 <dl class="get">
 <dt id="get--#account_id-response-#mailing_id-deliveries">
 <tt class="descname">GET </tt><tt class="descname">/#account_id/response/#mailing_id/deliveries</tt><a class="headerlink" href="#get--#account_id-response-#mailing_id-deliveries" title="Permalink to this definition">¶</a></dt>
-<dd><p><tt class="docutils literal"><span class="pre">GET</span> <span class="pre">/#account_id/response/#mailing_id/deliveries</span></tt></p>
-<p>Get the list of messages that have finished delivery.</p>
+<dd><p>Get the list of messages that have finished delivery.</p>
 <p>This will include those that were successfully delivered, as well as
 those that failed due to hard or soft bounces.</p>
 <p>This list can be limited by <tt class="docutils literal"><span class="pre">delivery_type</span></tt>.</p>
@@ -431,7 +426,7 @@ those that failed due to hard or soft bounces.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>del_status</strong> (<em>string</em>) &#8211; Accepted options: &#8216;all&#8217;, &#8216;delivered&#8217;,
 &#8216;bounced&#8217;, &#8216;hard&#8217;, &#8216;soft&#8217;. Defaults to &#8216;all&#8217;, if not provided.</li>
 </ul>
@@ -454,9 +449,9 @@ those that failed due to hard or soft bounces.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
 </tr>
-<tr class="field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid
 mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test mailings and
 &#8216;r&#8217; for trigger mailings.</td>
 </tr>
@@ -497,8 +492,7 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
 <dl class="get">
 <dt id="get--#account_id-response-#mailing_id-opens">
 <tt class="descname">GET </tt><tt class="descname">/#account_id/response/#mailing_id/opens</tt><a class="headerlink" href="#get--#account_id-response-#mailing_id-opens" title="Permalink to this definition">¶</a></dt>
-<dd><p><tt class="docutils literal"><span class="pre">GET</span> <span class="pre">/#account_id/response/#mailing_id/opens</span></tt></p>
-<p>Get the list of opened messages for this campaign.</p>
+<dd><p>Get the list of opened messages for this campaign.</p>
 <dl class="docutils">
 <dt><strong>Returns:</strong></dt>
 <dd><p class="first">An array of objects with the following fields:</p>
@@ -513,9 +507,9 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
 </tr>
-<tr class="field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid
 mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test mailings and
 &#8216;r&#8217; for trigger mailings.</td>
 </tr>
@@ -565,13 +559,12 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
 <dl class="get">
 <dt id="get--#account_id-response-#mailing_id-links">
 <tt class="descname">GET </tt><tt class="descname">/#account_id/response/#mailing_id/links</tt><a class="headerlink" href="#get--#account_id-response-#mailing_id-links" title="Permalink to this definition">¶</a></dt>
-<dd><p><tt class="docutils literal"><span class="pre">GET</span> <span class="pre">/#account_id/response/#mailing_id/links</span></tt></p>
-<p>Get the list of links for this mailing.</p>
+<dd><p>Get the list of links for this mailing.</p>
 <dl class="docutils">
 <dt><strong>Returns:</strong></dt>
 <dd><p class="first">An array of objects with the following fields:</p>
 <ul class="last simple">
-<li><strong>link_id</strong> &#8211; id of the link</li>
+<li><strong>link_id</strong> &#8211; If the mailing is not a trigger, the                              individual id of the link will be included</li>
 <li><strong>link_order</strong> &#8211; order of the link in the mailing</li>
 <li><strong>link_name</strong> &#8211; friendly name for the link</li>
 <li><strong>link_target</strong> &#8211; link URL</li>
@@ -584,9 +577,9 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
 </tr>
-<tr class="field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid
 mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test mailings and
 &#8216;r&#8217; for trigger mailings.</td>
 </tr>
@@ -619,14 +612,13 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
 <dl class="get">
 <dt id="get--#account_id-response-#mailing_id-clicks">
 <tt class="descname">GET </tt><tt class="descname">/#account_id/response/#mailing_id/clicks</tt><a class="headerlink" href="#get--#account_id-response-#mailing_id-clicks" title="Permalink to this definition">¶</a></dt>
-<dd><p><tt class="docutils literal"><span class="pre">GET</span> <span class="pre">/#account_id/response/#mailing_id/clicks</span></tt></p>
-<p>Get the list of clicks for this mailing.</p>
+<dd><p>Get the list of clicks for this mailing.</p>
 <p>This list can also be limited by <tt class="docutils literal"><span class="pre">member_id</span></tt> or <tt class="docutils literal"><span class="pre">link_id</span></tt>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>member_id</strong> (<em>int</em>) &#8211; Limits results to a single member.</li>
 <li><strong>link_id</strong> (<em>int</em>) &#8211; Limits results to a single link.</li>
 </ul>
@@ -649,9 +641,9 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
 </tr>
-<tr class="field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid
 mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test mailings and
 &#8216;r&#8217; for trigger mailings.</td>
 </tr>
@@ -690,8 +682,7 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
 <dl class="get">
 <dt id="get--#account_id-response-#mailing_id-forwards">
 <tt class="descname">GET </tt><tt class="descname">/#account_id/response/#mailing_id/forwards</tt><a class="headerlink" href="#get--#account_id-response-#mailing_id-forwards" title="Permalink to this definition">¶</a></dt>
-<dd><p><tt class="docutils literal"><span class="pre">GET</span> <span class="pre">/#account_id/response/#mailing_id/forwards</span></tt></p>
-<p>Get the list of forwards for this mailing.</p>
+<dd><p>Get the list of forwards for this mailing.</p>
 <dl class="docutils">
 <dt><strong>Returns:</strong></dt>
 <dd><p class="first">An array of objects with the following fields:</p>
@@ -707,9 +698,9 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
 </tr>
-<tr class="field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid
 mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test mailings and
 &#8216;r&#8217; for trigger mailings.</td>
 </tr>
@@ -734,8 +725,7 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
 <dl class="get">
 <dt id="get--#account_id-response-#mailing_id-optouts">
 <tt class="descname">GET </tt><tt class="descname">/#account_id/response/#mailing_id/optouts</tt><a class="headerlink" href="#get--#account_id-response-#mailing_id-optouts" title="Permalink to this definition">¶</a></dt>
-<dd><p><tt class="docutils literal"><span class="pre">GET</span> <span class="pre">/#account_id/response/#mailing_id/optouts</span></tt></p>
-<p>Get the list of optouts for this mailing.</p>
+<dd><p>Get the list of optouts for this mailing.</p>
 <dl class="docutils">
 <dt><strong>Returns:</strong></dt>
 <dd><p class="first">An array of objects with the following fields:</p>
@@ -752,9 +742,9 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
 </tr>
-<tr class="field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid
 mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test mailings and
 &#8216;r&#8217; for trigger mailings.</td>
 </tr>
@@ -790,8 +780,7 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
 <dl class="get">
 <dt id="get--#account_id-response-#mailing_id-signups">
 <tt class="descname">GET </tt><tt class="descname">/#account_id/response/#mailing_id/signups</tt><a class="headerlink" href="#get--#account_id-response-#mailing_id-signups" title="Permalink to this definition">¶</a></dt>
-<dd><p><tt class="docutils literal"><span class="pre">GET</span> <span class="pre">/#account_id/response/#mailing_id/signups</span></tt></p>
-<p>Get the list of signups for this mailing.</p>
+<dd><p>Get the list of signups for this mailing.</p>
 <dl class="docutils">
 <dt><strong>Returns:</strong></dt>
 <dd><p class="first">An array of objects with the following fields:</p>
@@ -809,9 +798,9 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
 </tr>
-<tr class="field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid
 mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test mailings and
 &#8216;r&#8217; for trigger mailings.</td>
 </tr>
@@ -849,8 +838,7 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
 <dl class="get">
 <dt id="get--#account_id-response-#mailing_id-shares">
 <tt class="descname">GET </tt><tt class="descname">/#account_id/response/#mailing_id/shares</tt><a class="headerlink" href="#get--#account_id-response-#mailing_id-shares" title="Permalink to this definition">¶</a></dt>
-<dd><p><tt class="docutils literal"><span class="pre">GET</span> <span class="pre">/#account_id/response/#mailing_id/shares</span></tt></p>
-<p>Get the list of shares for this mailing</p>
+<dd><p>Get the list of shares for this mailing</p>
 <dl class="docutils">
 <dt><strong>Returns:</strong></dt>
 <dd><p class="first">An array of objects with the following fields:</p>
@@ -865,9 +853,9 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
 </tr>
-<tr class="field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid
 mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test mailings and
 &#8216;r&#8217; for trigger mailings.</td>
 </tr>
@@ -878,8 +866,7 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
 <dl class="get">
 <dt id="get--#account_id-response-#mailing_id-customer_shares">
 <tt class="descname">GET </tt><tt class="descname">/#account_id/response/#mailing_id/customer_shares</tt><a class="headerlink" href="#get--#account_id-response-#mailing_id-customer_shares" title="Permalink to this definition">¶</a></dt>
-<dd><p><tt class="docutils literal"><span class="pre">GET</span> <span class="pre">/#account_id/response/#mailing_id/customer_shares</span></tt></p>
-<p>Get the list of customer shares for this mailing</p>
+<dd><p>Get the list of customer shares for this mailing</p>
 <dl class="docutils">
 <dt><strong>Returns:</strong></dt>
 <dd><p class="first">An array of objects with the following fields:</p>
@@ -893,9 +880,9 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
 </tr>
-<tr class="field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid
 mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test mailings and
 &#8216;r&#8217; for trigger mailings.</td>
 </tr>
@@ -906,8 +893,7 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
 <dl class="get">
 <dt id="get--#account_id-response-#mailing_id-customer_share_clicks">
 <tt class="descname">GET </tt><tt class="descname">/#account_id/response/#mailing_id/customer_share_clicks</tt><a class="headerlink" href="#get--#account_id-response-#mailing_id-customer_share_clicks" title="Permalink to this definition">¶</a></dt>
-<dd><p><tt class="docutils literal"><span class="pre">GET</span> <span class="pre">/#account_id/response/#mailing_id/customer_share_clicks</span></tt></p>
-<p>Get the list of customer share clicks for this mailing</p>
+<dd><p>Get the list of customer share clicks for this mailing</p>
 <dl class="docutils">
 <dt><strong>Returns:</strong></dt>
 <dd><p class="first">An array of objects with the following fields:</p>
@@ -922,9 +908,9 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
 </tr>
-<tr class="field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid
 mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test mailings and
 &#8216;r&#8217; for trigger mailings.</td>
 </tr>
@@ -935,8 +921,7 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
 <dl class="get">
 <dt id="get--#account_id-response-#share_id-customer_share">
 <tt class="descname">GET </tt><tt class="descname">/#account_id/response/#share_id/customer_share</tt><a class="headerlink" href="#get--#account_id-response-#share_id-customer_share" title="Permalink to this definition">¶</a></dt>
-<dd><p><tt class="docutils literal"><span class="pre">GET</span> <span class="pre">/#account_id/response/#share_id/customer_share</span></tt></p>
-<p>Get the customer share associated with the share id.</p>
+<dd><p>Get the customer share associated with the share id.</p>
 <dl class="docutils">
 <dt><strong>Returns:</strong></dt>
 <dd><p class="first">An object with the following fields:</p>
@@ -951,9 +936,9 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
 </tr>
-<tr class="field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid
 mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test mailings and
 &#8216;r&#8217; for trigger mailings.</td>
 </tr>
@@ -964,8 +949,7 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
 <dl class="get">
 <dt id="get--#account_id-response-#mailing_id-shares-overview">
 <tt class="descname">GET </tt><tt class="descname">/#account_id/response/#mailing_id/shares/overview</tt><a class="headerlink" href="#get--#account_id-response-#mailing_id-shares-overview" title="Permalink to this definition">¶</a></dt>
-<dd><p><tt class="docutils literal"><span class="pre">GET</span> <span class="pre">/#account_id/response/#mailing_id/shares/overview</span></tt></p>
-<p>Get overview of shares pertaining to this mailing_id.</p>
+<dd><p>Get overview of shares pertaining to this mailing_id.</p>
 <dl class="docutils">
 <dt><strong>Returns:</strong></dt>
 <dd><p class="first">An array of objects with the following fields:</p>
@@ -980,9 +964,9 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
 </tr>
-<tr class="field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid</td>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid</td>
 </tr>
 </tbody>
 </table>
@@ -1005,7 +989,7 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" size="18" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -1035,7 +1019,7 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
     </div>
     <div class="footer">
       &copy; Copyright 2013, Emma.
-        Last updated on Jan 29, 2013 at 04:16 PM.
+        Last updated on Feb 05, 2013 at 03:36 PM.
     </div>
   </body>
 </html>

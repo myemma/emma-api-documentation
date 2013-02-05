@@ -30,7 +30,7 @@
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <link rel="top" title="audience v0.1 documentation" href="../../index.html" />
+    <link rel="top" title="audience 0.1 documentation" href="../../index.html" />
     <link rel="next" title="Triggers" href="triggers.html" />
     <link rel="prev" title="Response" href="response.html" />
     <link rel="icon" href="http://myemma.com/static/global/favicons/favicon.ico?v=2" type="image/x-icon"> 
@@ -93,7 +93,7 @@
         <li class="right" >
           <a href="response.html" title="Response"
              accesskey="P">previous</a> |</li>
-        <li><a href="../../index.html">audience v0.1 documentation</a> &raquo;</li> 
+        <li><a href="../../index.html">audience 0.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -110,19 +110,18 @@ retrieve the members matching any search created in your account. You can
 <dl class="get">
 <dt id="get--#account_id-searches">
 <tt class="descname">GET </tt><tt class="descname">/#account_id/searches</tt><a class="headerlink" href="#get--#account_id-searches" title="Permalink to this definition">¶</a></dt>
-<dd><p><tt class="docutils literal"><span class="pre">GET</span> <span class="pre">/#account_id/searches</span></tt></p>
-<p>Retrieve a list of saved searches.</p>
+<dd><p>Retrieve a list of saved searches.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>deleted</strong> (<em>boolean</em>) &#8211; Accepts True or 1. Optional flag to include
 deleted searches.</li>
 </ul>
 </td>
 </tr>
-<tr class="field"><th class="field-name">Returns :</th><td class="field-body"><p class="first last">An array of searches.</p>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first last">An array of searches.</p>
 </td>
 </tr>
 </tbody>
@@ -167,22 +166,21 @@ deleted searches.</li>
 <dl class="get">
 <dt id="get--#account_id-searches-#search_id">
 <tt class="descname">GET </tt><tt class="descname">/#account_id/searches/#search_id</tt><a class="headerlink" href="#get--#account_id-searches-#search_id" title="Permalink to this definition">¶</a></dt>
-<dd><p><tt class="docutils literal"><span class="pre">GET</span> <span class="pre">/#account_id/searches/#search_id</span></tt></p>
-<p>Get the details for a saved search.</p>
+<dd><p>Get the details for a saved search.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Returns :</th><td class="field-body"><p class="first">A search.</p>
+<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body"><p class="first">A search.</p>
 </td>
 </tr>
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>deleted</strong> (<em>boolean</em>) &#8211; Accepts True or 1. Optional flag to include
 deleted searches.</li>
 </ul>
 </td>
 </tr>
-<tr class="field"><th class="field-name">Raises :</th><td class="field-body"><p class="first last"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the search does not exist.</p>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first last"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the search does not exist.</p>
 </td>
 </tr>
 </tbody>
@@ -201,7 +199,7 @@ deleted searches.</li>
   "name": "Test Search", 
   "criteria": "[\"or\", [\"group\", \"eq\", \"Monthly Newsletter\"],[\"group\", \"eq\", \"Widget Buyers\"]]", 
   "deleted_at": null, 
-  "last_run_at": "@D:2013-01-29T16:16:02", 
+  "last_run_at": "@D:2013-02-05T15:36:33", 
   "active_count": 2, 
   "account_id": 100
 }
@@ -213,8 +211,7 @@ deleted searches.</li>
 <dl class="post">
 <dt id="post--#account_id-searches">
 <tt class="descname">POST </tt><tt class="descname">/#account_id/searches</tt><a class="headerlink" href="#post--#account_id-searches" title="Permalink to this definition">¶</a></dt>
-<dd><p><tt class="docutils literal"><span class="pre">POST</span> <span class="pre">/#account_id/searches</span></tt></p>
-<p>Create a saved search.</p>
+<dd><p>Create a saved search.</p>
 <p>The detail of a search is specified in a JSON structure that describes
 the clauses to be applied using groups of <em>filter</em> <em>type</em>, <em>operator</em>
 and <em>value</em>.  Where the <em>filter</em> <em>type</em> is <tt class="docutils literal"><span class="pre">member_field</span></tt>, the
@@ -236,17 +233,17 @@ example:</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>criteria</strong> (<em>array</em>) &#8211; A combination of search conditions, as described
 above.</li>
 <li><strong>name</strong> (<em>string</em>) &#8211; A name used to describe this search.</li>
 </ul>
 </td>
 </tr>
-<tr class="field"><th class="field-name">Returns :</th><td class="field-body"><p class="first">The ID of the new search</p>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first">The ID of the new search</p>
 </td>
 </tr>
-<tr class="field"><th class="field-name">Raises :</th><td class="field-body"><p class="first last"><tt class="docutils literal"><span class="pre">Http400</span></tt> if the search is invalid</p>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first last"><tt class="docutils literal"><span class="pre">Http400</span></tt> if the search is invalid</p>
 </td>
 </tr>
 </tbody>
@@ -283,28 +280,27 @@ above.</li>
 <dl class="put">
 <dt id="put--#account_id-searches-#search_id">
 <tt class="descname">PUT </tt><tt class="descname">/#account_id/searches/#search_id</tt><a class="headerlink" href="#put--#account_id-searches-#search_id" title="Permalink to this definition">¶</a></dt>
-<dd><p><tt class="docutils literal"><span class="pre">PUT</span> <span class="pre">/#account_id/searches/#search_id</span></tt></p>
-<p>Update a saved search.</p>
+<dd><p>Update a saved search.</p>
 <p>No parameters are required, but either the <tt class="docutils literal"><span class="pre">name</span></tt> or <tt class="docutils literal"><span class="pre">criteria</span></tt>
 parameter must be present for an update to occur.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>criteria</strong> (<em>array</em>) &#8211; A combination of search conditions, as described
 above (see <cite>create_search</cite>).</li>
 <li><strong>name</strong> (<em>string</em>) &#8211; A name used to describe this search.</li>
 </ul>
 </td>
 </tr>
-<tr class="field"><th class="field-name">Returns :</th><td class="field-body"><p class="first">True if the update was successful</p>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first">True if the update was successful</p>
 </td>
 </tr>
-<tr class="field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the search does not exist.</p>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the search does not exist.</p>
 </td>
 </tr>
-<tr class="field"><th class="field-name">Raises :</th><td class="field-body"><p class="first last"><tt class="docutils literal"><span class="pre">Http400</span></tt> if the search criteria is invalid</p>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><p class="first last"><tt class="docutils literal"><span class="pre">Http400</span></tt> if the search criteria is invalid</p>
 </td>
 </tr>
 </tbody>
@@ -340,16 +336,15 @@ true
 <dl class="delete">
 <dt id="delete--#account_id-searches-#search_id">
 <tt class="descname">DELETE </tt><tt class="descname">/#account_id/searches/#search_id</tt><a class="headerlink" href="#delete--#account_id-searches-#search_id" title="Permalink to this definition">¶</a></dt>
-<dd><p><tt class="docutils literal"><span class="pre">DELETE</span> <span class="pre">/#account_id/searches/#search_id</span></tt></p>
-<p>Delete a saved search.  The member records referred to by the search
+<dd><p>Delete a saved search.  The member records referred to by the search
 are not affected.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Returns :</th><td class="field-body">True if the search is deleted.</td>
+<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body">True if the search is deleted.</td>
 </tr>
-<tr class="field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the search does not exist.</td>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the search does not exist.</td>
 </tr>
 </tbody>
 </table>
@@ -369,15 +364,14 @@ true
 <dl class="get">
 <dt id="get--#account_id-searches-#search_id-members">
 <tt class="descname">GET </tt><tt class="descname">/#account_id/searches/#search_id/members</tt><a class="headerlink" href="#get--#account_id-searches-#search_id-members" title="Permalink to this definition">¶</a></dt>
-<dd><p><tt class="docutils literal"><span class="pre">GET</span> <span class="pre">/#account_id/searches/#search_id/members</span></tt></p>
-<p>Get the members matching the search.</p>
+<dd><p>Get the members matching the search.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Returns :</th><td class="field-body">An array of members.</td>
+<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body">An array of members.</td>
 </tr>
-<tr class="field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the search does not exist.</td>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the search does not exist.</td>
 </tr>
 </tbody>
 </table>
@@ -487,7 +481,7 @@ true
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" size="18" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -517,7 +511,7 @@ true
     </div>
     <div class="footer">
       &copy; Copyright 2013, Emma.
-        Last updated on Jan 29, 2013 at 04:16 PM.
+        Last updated on Feb 05, 2013 at 03:36 PM.
     </div>
   </body>
 </html>

@@ -30,7 +30,7 @@
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <link rel="top" title="audience v0.1 documentation" href="../../index.html" />
+    <link rel="top" title="audience 0.1 documentation" href="../../index.html" />
     <link rel="next" title="Pagination" href="../../pagination.html" />
     <link rel="prev" title="Triggers" href="triggers.html" />
     <link rel="icon" href="http://myemma.com/static/global/favicons/favicon.ico?v=2" type="image/x-icon"> 
@@ -93,7 +93,7 @@
         <li class="right" >
           <a href="triggers.html" title="Triggers"
              accesskey="P">previous</a> |</li>
-        <li><a href="../../index.html">audience v0.1 documentation</a> &raquo;</li> 
+        <li><a href="../../index.html">audience 0.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -111,13 +111,12 @@ info about how our webhooks work</em></a>.</p>
 <dl class="get">
 <dt id="get--#account_id-webhooks">
 <tt class="descname">GET </tt><tt class="descname">/#account_id/webhooks</tt><a class="headerlink" href="#get--#account_id-webhooks" title="Permalink to this definition">¶</a></dt>
-<dd><p><tt class="docutils literal"><span class="pre">GET</span> <span class="pre">/#account_id/webhooks</span></tt></p>
-<p>Get a basic listing of all webhooks associated with an account.</p>
+<dd><p>Get a basic listing of all webhooks associated with an account.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Returns :</th><td class="field-body">A list of webhooks that belong to the given account.</td>
+<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body">A list of webhooks that belong to the given account.</td>
 </tr>
 </tbody>
 </table>
@@ -153,15 +152,14 @@ info about how our webhooks work</em></a>.</p>
 <dl class="get">
 <dt id="get--#account_id-webhooks-#webhook_id">
 <tt class="descname">GET </tt><tt class="descname">/#account_id/webhooks/#webhook_id</tt><a class="headerlink" href="#get--#account_id-webhooks-#webhook_id" title="Permalink to this definition">¶</a></dt>
-<dd><p><tt class="docutils literal"><span class="pre">GET</span> <span class="pre">/#account_id/webhooks/#webhook_id</span></tt></p>
-<p>Get information for a specific webhook belonging to a specific account.</p>
+<dd><p>Get information for a specific webhook belonging to a specific account.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Returns :</th><td class="field-body">Details for a single webhook</td>
+<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body">Details for a single webhook</td>
 </tr>
-<tr class="field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if no webhook found</td>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if no webhook found</td>
 </tr>
 </tbody>
 </table>
@@ -187,14 +185,13 @@ info about how our webhooks work</em></a>.</p>
 <dl class="get">
 <dt id="get--#account_id-webhooks-events">
 <tt class="descname">GET </tt><tt class="descname">/#account_id/webhooks/events</tt><a class="headerlink" href="#get--#account_id-webhooks-events" title="Permalink to this definition">¶</a></dt>
-<dd><p><tt class="docutils literal"><span class="pre">GET</span> <span class="pre">/#account_id/webhooks/events</span></tt></p>
-<p>Get a listing of all event types that are available for
+<dd><p>Get a listing of all event types that are available for
 webhooks.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Returns :</th><td class="field-body">A list of event types and descriptions</td>
+<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body">A list of event types and descriptions</td>
 </tr>
 </tbody>
 </table>
@@ -326,8 +323,7 @@ webhooks.</p>
 <dl class="post">
 <dt id="post--#account_id-webhooks">
 <tt class="descname">POST </tt><tt class="descname">/#account_id/webhooks</tt><a class="headerlink" href="#post--#account_id-webhooks" title="Permalink to this definition">¶</a></dt>
-<dd><p><tt class="docutils literal"><span class="pre">POST</span> <span class="pre">/#account_id/webhooks</span></tt></p>
-<p>Create an new webhook.</p>
+<dd><p>Create an new webhook.</p>
 <p>If method is &#8216;POST&#8217;, the data will be posted to the given URL as a blob of JSON. If the method
 is &#8216;GET&#8217; the data will be added to the query string of your URL as a url encoded blob of JSON
 in a key called &#8216;payload&#8217;.</p>
@@ -335,7 +331,7 @@ in a key called &#8216;payload&#8217;.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>event</strong> (<em>string</em>) &#8211; The name of an event to register this webhook for</li>
 <li><strong>url</strong> (<em>string</em>) &#8211; The URL to call when the event happens</li>
 <li><strong>method</strong> (<em>string</em>) &#8211; The method to use when calling the webhook. Can be GET or POST. Defaults to POST.</li>
@@ -365,15 +361,14 @@ in a key called &#8216;payload&#8217;.</p>
 <dl class="put">
 <dt id="put--#account_id-webhooks-#webhook_id">
 <tt class="descname">PUT </tt><tt class="descname">/#account_id/webhooks/#webhook_id</tt><a class="headerlink" href="#put--#account_id-webhooks-#webhook_id" title="Permalink to this definition">¶</a></dt>
-<dd><p><tt class="docutils literal"><span class="pre">PUT</span> <span class="pre">/#account_id/webhooks/#webhook_id</span></tt></p>
-<p>Update an existing webhook. Takes the same params as create_webhook.</p>
+<dd><p>Update an existing webhook. Takes the same params as create_webhook.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Returns :</th><td class="field-body">The id of the updated webhook, or False if the update failed.</td>
+<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body">The id of the updated webhook, or False if the update failed.</td>
 </tr>
-<tr class="field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the webhook cannot be found.</td>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the webhook cannot be found.</td>
 </tr>
 </tbody>
 </table>
@@ -396,15 +391,14 @@ in a key called &#8216;payload&#8217;.</p>
 <dl class="delete">
 <dt id="delete--#account_id-webhooks-#webhook_id">
 <tt class="descname">DELETE </tt><tt class="descname">/#account_id/webhooks/#webhook_id</tt><a class="headerlink" href="#delete--#account_id-webhooks-#webhook_id" title="Permalink to this definition">¶</a></dt>
-<dd><p><tt class="docutils literal"><span class="pre">DELETE</span> <span class="pre">/#account_id/webhooks/#webhook_id</span></tt></p>
-<p>Deletes an existing webhook.</p>
+<dd><p>Deletes an existing webhook.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Returns :</th><td class="field-body">True if the webhook deleted successufully.</td>
+<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body">True if the webhook deleted successufully.</td>
 </tr>
-<tr class="field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if no webhook found</td>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if no webhook found</td>
 </tr>
 </tbody>
 </table>
@@ -424,13 +418,12 @@ true
 <dl class="delete">
 <dt id="delete--#account_id-webhooks">
 <tt class="descname">DELETE </tt><tt class="descname">/#account_id/webhooks</tt><a class="headerlink" href="#delete--#account_id-webhooks" title="Permalink to this definition">¶</a></dt>
-<dd><p><tt class="docutils literal"><span class="pre">DELETE</span> <span class="pre">/#account_id/webhooks</span></tt></p>
-<p>Delete all webhooks registered for an account.</p>
+<dd><p>Delete all webhooks registered for an account.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Returns :</th><td class="field-body">True if the webhooks deleted successufully.</td>
+<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body">True if the webhooks deleted successufully.</td>
 </tr>
 </tbody>
 </table>
@@ -464,7 +457,7 @@ true
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" size="18" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -494,7 +487,7 @@ true
     </div>
     <div class="footer">
       &copy; Copyright 2013, Emma.
-        Last updated on Jan 29, 2013 at 04:16 PM.
+        Last updated on Feb 05, 2013 at 03:36 PM.
     </div>
   </body>
 </html>

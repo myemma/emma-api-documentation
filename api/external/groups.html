@@ -30,7 +30,7 @@
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <link rel="top" title="audience v0.1 documentation" href="../../index.html" />
+    <link rel="top" title="audience 0.1 documentation" href="../../index.html" />
     <link rel="next" title="Mailings" href="mailings.html" />
     <link rel="prev" title="Fields" href="fields.html" />
     <link rel="icon" href="http://myemma.com/static/global/favicons/favicon.ico?v=2" type="image/x-icon"> 
@@ -93,7 +93,7 @@
         <li class="right" >
           <a href="fields.html" title="Fields"
              accesskey="P">previous</a> |</li>
-        <li><a href="../../index.html">audience v0.1 documentation</a> &raquo;</li> 
+        <li><a href="../../index.html">audience 0.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -113,16 +113,15 @@ there are better methods in the <tt class="docutils literal"><span class="pre">m
 <dl class="get">
 <dt id="get--#account_id-groups">
 <tt class="descname">GET </tt><tt class="descname">/#account_id/groups</tt><a class="headerlink" href="#get--#account_id-groups" title="Permalink to this definition">¶</a></dt>
-<dd><p><tt class="docutils literal"><span class="pre">GET</span> <span class="pre">/#account_id/groups</span></tt></p>
-<p>Get a basic listing of all active member groups for a single account.</p>
+<dd><p>Get a basic listing of all active member groups for a single account.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Returns :</th><td class="field-body"><p class="first">An array of groups.</p>
+<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body"><p class="first">An array of groups.</p>
 </td>
 </tr>
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>group_types</strong> (<em>string</em>) &#8211; Accepts a comma-separated string with one or
 more of the following group_types: &#8216;g&#8217; (group), &#8216;t&#8217; (test),
 &#8216;h&#8217; (hidden), &#8216;all&#8217; (all). Defaults to &#8216;g&#8217;.</li>
@@ -222,16 +221,15 @@ more of the following group_types: &#8216;g&#8217; (group), &#8216;t&#8217; (tes
 <dl class="post">
 <dt id="post--#account_id-groups">
 <tt class="descname">POST </tt><tt class="descname">/#account_id/groups</tt><a class="headerlink" href="#post--#account_id-groups" title="Permalink to this definition">¶</a></dt>
-<dd><p><tt class="docutils literal"><span class="pre">POST</span> <span class="pre">/#account_id/groups</span></tt></p>
-<p>Create one or more new member groups.</p>
+<dd><p>Create one or more new member groups.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Returns :</th><td class="field-body"><p class="first">An array of the new group ids and group names.</p>
+<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body"><p class="first">An array of the new group ids and group names.</p>
 </td>
 </tr>
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>groups</strong> (<em>array</em>) &#8211; An array of group objects. Each object must contain
 a <cite>group_name</cite> parameter.</li>
 </ul>
@@ -267,15 +265,14 @@ a <cite>group_name</cite> parameter.</li>
 <dl class="get">
 <dt id="get--#account_id-groups-#member_group_id">
 <tt class="descname">GET </tt><tt class="descname">/#account_id/groups/#member_group_id</tt><a class="headerlink" href="#get--#account_id-groups-#member_group_id" title="Permalink to this definition">¶</a></dt>
-<dd><p><tt class="docutils literal"><span class="pre">GET</span> <span class="pre">/#account_id/groups/#member_group_id</span></tt></p>
-<p>Get the detailed information for a single member group.</p>
+<dd><p>Get the detailed information for a single member group.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Returns :</th><td class="field-body">A group.</td>
+<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body">A group.</td>
 </tr>
-<tr class="field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the group does not exist.</td>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the group does not exist.</td>
 </tr>
 </tbody>
 </table>
@@ -304,21 +301,20 @@ a <cite>group_name</cite> parameter.</li>
 <dl class="put">
 <dt id="put--#account_id-groups-#member_group_id">
 <tt class="descname">PUT </tt><tt class="descname">/#account_id/groups/#member_group_id</tt><a class="headerlink" href="#put--#account_id-groups-#member_group_id" title="Permalink to this definition">¶</a></dt>
-<dd><p><tt class="docutils literal"><span class="pre">PUT</span> <span class="pre">/#account_id/groups/#member_group_id</span></tt></p>
-<p>Update information for a single member group.</p>
+<dd><p>Update information for a single member group.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>group_name</strong> (<em>string</em>) &#8211; Updated group name.</li>
 </ul>
 </td>
 </tr>
-<tr class="field"><th class="field-name">Returns :</th><td class="field-body"><p class="first">True if the update was successful</p>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first">True if the update was successful</p>
 </td>
 </tr>
-<tr class="field"><th class="field-name">Raises :</th><td class="field-body"><p class="first last"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the group does not exist.</p>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first last"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the group does not exist.</p>
 </td>
 </tr>
 </tbody>
@@ -342,15 +338,14 @@ true
 <dl class="delete">
 <dt id="delete--#account_id-groups-#member_group_id">
 <tt class="descname">DELETE </tt><tt class="descname">/#account_id/groups/#member_group_id</tt><a class="headerlink" href="#delete--#account_id-groups-#member_group_id" title="Permalink to this definition">¶</a></dt>
-<dd><p><tt class="docutils literal"><span class="pre">DELETE</span> <span class="pre">/#account_id/groups/#member_group_id</span></tt></p>
-<p>Delete a single member group.</p>
+<dd><p>Delete a single member group.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Returns :</th><td class="field-body">True if the group is deleted.</td>
+<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body">True if the group is deleted.</td>
 </tr>
-<tr class="field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the group does not exist.</td>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the group does not exist.</td>
 </tr>
 </tbody>
 </table>
@@ -370,21 +365,20 @@ true
 <dl class="get">
 <dt id="get--#account_id-groups-#member_group_id-members">
 <tt class="descname">GET </tt><tt class="descname">/#account_id/groups/#member_group_id/members</tt><a class="headerlink" href="#get--#account_id-groups-#member_group_id-members" title="Permalink to this definition">¶</a></dt>
-<dd><p><tt class="docutils literal"><span class="pre">GET</span> <span class="pre">/#account_id/groups/#member_group_id/members</span></tt></p>
-<p>Get the members in a single active member group.</p>
+<dd><p>Get the members in a single active member group.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Returns :</th><td class="field-body"><p class="first">An array of members.</p>
+<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body"><p class="first">An array of members.</p>
 </td>
 </tr>
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>deleted</strong> (<em>boolean</em>) &#8211; include deleted members. Optional, defaults to false.</li>
 </ul>
 </td>
 </tr>
-<tr class="field"><th class="field-name">Raises :</th><td class="field-body"><p class="first last"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the group does not exist.</p>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first last"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the group does not exist.</p>
 </td>
 </tr>
 </tbody>
@@ -445,23 +439,22 @@ true
 <dl class="put">
 <dt id="put--#account_id-groups-#member_group_id-members">
 <tt class="descname">PUT </tt><tt class="descname">/#account_id/groups/#member_group_id/members</tt><a class="headerlink" href="#put--#account_id-groups-#member_group_id-members" title="Permalink to this definition">¶</a></dt>
-<dd><p><tt class="docutils literal"><span class="pre">PUT</span> <span class="pre">/#account_id/groups/#member_group_id/members</span></tt></p>
-<p>Add a list of members to a single active member group.</p>
+<dd><p>Add a list of members to a single active member group.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>member_ids</strong> (<em>array</em>) &#8211; An array of member ids.</li>
 </ul>
 </td>
 </tr>
-<tr class="field"><th class="field-name">Returns :</th><td class="field-body"><p class="first">An array of references to the members added to the group. If
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first">An array of references to the members added to the group. If
 a member already exists in the group or is not a valid member,
 that reference will not be returned.</p>
 </td>
 </tr>
-<tr class="field"><th class="field-name">Raises :</th><td class="field-body"><p class="first last"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the group does not exist.</p>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first last"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the group does not exist.</p>
 </td>
 </tr>
 </tbody>
@@ -489,21 +482,20 @@ that reference will not be returned.</p>
 <dl class="put">
 <dt id="put--#account_id-groups-#member_group_id-members-remove">
 <tt class="descname">PUT </tt><tt class="descname">/#account_id/groups/#member_group_id/members/remove</tt><a class="headerlink" href="#put--#account_id-groups-#member_group_id-members-remove" title="Permalink to this definition">¶</a></dt>
-<dd><p><tt class="docutils literal"><span class="pre">PUT</span> <span class="pre">/#account_id/groups/#member_group_id/members/remove</span></tt></p>
-<p>Remove members from a single active member group.</p>
+<dd><p>Remove members from a single active member group.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>member_ids</strong> (<em>array</em>) &#8211; An array of member ids.</li>
 </ul>
 </td>
 </tr>
-<tr class="field"><th class="field-name">Returns :</th><td class="field-body"><p class="first">An array of references to the removed members.</p>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first">An array of references to the removed members.</p>
 </td>
 </tr>
-<tr class="field"><th class="field-name">Raises :</th><td class="field-body"><p class="first last"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the group does not exist.</p>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first last"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the group does not exist.</p>
 </td>
 </tr>
 </tbody>
@@ -533,22 +525,21 @@ that reference will not be returned.</p>
 <dl class="delete">
 <dt id="delete--#account_id-groups-#member_group_id-members">
 <tt class="descname">DELETE </tt><tt class="descname">/#account_id/groups/#member_group_id/members</tt><a class="headerlink" href="#delete--#account_id-groups-#member_group_id-members" title="Permalink to this definition">¶</a></dt>
-<dd><p><tt class="docutils literal"><span class="pre">DELETE</span> <span class="pre">/#account_id/groups/#member_group_id/members</span></tt></p>
-<p>Remove all members from a single active member group.</p>
+<dd><p>Remove all members from a single active member group.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>member_status_id</strong> (<em>string</em>) &#8211; Optional.  This is &#8216;a&#8217; (active), &#8216;o&#8217; (optout),
 or &#8216;e&#8217; (error).</li>
 </ul>
 </td>
 </tr>
-<tr class="field"><th class="field-name">Returns :</th><td class="field-body"><p class="first">Returns the number of members removed from the group.</p>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first">Returns the number of members removed from the group.</p>
 </td>
 </tr>
-<tr class="field"><th class="field-name">Raises :</th><td class="field-body"><p class="first last"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the group does not exist.</p>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first last"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the group does not exist.</p>
 </td>
 </tr>
 </tbody>
@@ -580,23 +571,22 @@ or &#8216;e&#8217; (error).</li>
 <dl class="delete">
 <dt id="delete--#account_id-groups-#member_group_id-members-remove">
 <tt class="descname">DELETE </tt><tt class="descname">/#account_id/groups/#member_group_id/members/remove</tt><a class="headerlink" href="#delete--#account_id-groups-#member_group_id-members-remove" title="Permalink to this definition">¶</a></dt>
-<dd><p><tt class="docutils literal"><span class="pre">DELETE</span> <span class="pre">/#account_id/groups/#member_group_id/members/remove</span></tt></p>
-<p>Remove all members from all active member groups as a background job.
+<dd><p>Remove all members from all active member groups as a background job.
 The member_status_id parameter must be set.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>member_status_id</strong> (<em>string</em>) &#8211; This is &#8216;a&#8217; (active), &#8216;o&#8217; (optout),
 or &#8216;e&#8217; (error).</li>
 </ul>
 </td>
 </tr>
-<tr class="field"><th class="field-name">Returns :</th><td class="field-body"><p class="first">Returns true.</p>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first">Returns true.</p>
 </td>
 </tr>
-<tr class="field"><th class="field-name">Raises :</th><td class="field-body"><p class="first last"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the group does not exist.</p>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first last"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the group does not exist.</p>
 </td>
 </tr>
 </tbody>
@@ -628,22 +618,21 @@ true
 <dl class="put">
 <dt id="put--#account_id-groups-#from_group_id-#to_group_id-members-copy">
 <tt class="descname">PUT </tt><tt class="descname">/#account_id/groups/#from_group_id/#to_group_id/members/copy</tt><a class="headerlink" href="#put--#account_id-groups-#from_group_id-#to_group_id-members-copy" title="Permalink to this definition">¶</a></dt>
-<dd><p><tt class="docutils literal"><span class="pre">PUT</span> <span class="pre">/#account_id/groups/#from_group_id/#to_group_id/members/copy</span></tt></p>
-<p>Copy all the users of one group into another group.</p>
+<dd><p>Copy all the users of one group into another group.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>member_status_id</strong> (<em>array</em>) &#8211; This is &#8216;a&#8217; (active), &#8216;o&#8217; (optout),
 or &#8216;e&#8217; (error).</li>
 </ul>
 </td>
 </tr>
-<tr class="field"><th class="field-name">Returns :</th><td class="field-body"><p class="first">True</p>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first">True</p>
 </td>
 </tr>
-<tr class="field"><th class="field-name">Raises :</th><td class="field-body"><p class="first last"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the group does not exist.</p>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first last"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the group does not exist.</p>
 </td>
 </tr>
 </tbody>
@@ -683,7 +672,7 @@ true
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" size="18" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -713,7 +702,7 @@ true
     </div>
     <div class="footer">
       &copy; Copyright 2013, Emma.
-        Last updated on Jan 29, 2013 at 04:16 PM.
+        Last updated on Feb 05, 2013 at 03:36 PM.
     </div>
   </body>
 </html>
