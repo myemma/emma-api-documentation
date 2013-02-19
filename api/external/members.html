@@ -488,10 +488,13 @@ on bulk members please use the <cite>/members</cite> call above.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>email</strong> (<em>string</em>) &#8211; Email address of member to add or update</li>
 <li><strong>fields</strong> (<em>dictionary</em>) &#8211; Names and values of user-defined fields to update</li>
-<li><strong>group_ids</strong> (<em>integer</em>) &#8211; Optional. Add imported members to this list of groups.</li>
-<li><strong>signup_form_id</strong> &#8211; Optional. Indicate that this member used a particular signup form.
+<li><strong>group_ids</strong> (<em>array of integers</em>) &#8211; Optional. Add imported members to this list of groups.</li>
+<li><strong>signup_form_id</strong> (<em>integer</em>) &#8211; <p>Optional. Indicate that this member used a particular signup form.
 This is important if you have custom confirmation messages for a particular signup form and
-so that signup-based triggers will be fired.</li>
+so that signup-based triggers will be fired.</p>
+<p><em>Note: Members who are added to your audience using this API call will not appear
+in &#8220;recent activity&#8221; searches within your account.</em></p>
+</li>
 </ul>
 </td>
 </tr>
@@ -1214,7 +1217,7 @@ true
     </div>
     <div class="footer">
       &copy; Copyright 2013, Emma.
-        Last updated on Feb 05, 2013 at 04:12 PM.
+        Last updated on Feb 19, 2013 at 11:41 AM.
     </div>
   </body>
 </html>

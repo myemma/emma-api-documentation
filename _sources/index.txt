@@ -11,8 +11,7 @@ to the following areas:
     * importing, editing, deleting
     * organizing members into groups
     * searching for members
-* Sending mailings
-    * sending to individuals, groups and searches
+* Mailings
     * viewing past mailings
     * controlling the status of pending mailings
 * Retrieving response
@@ -22,11 +21,11 @@ to the following areas:
 Quickstart
 ----------
 
-Let's start by building some PHP code that will add a member to our audience. 
+Let's start by building some PHP code that will add a member to our audience.
 
-First, you'll want to figure out how to authenticate. All calls require HTTP 
-Basic Auth autentication. Inside your Emma account, in the "Account Settings" 
-section, you'll find your API keys. There's a public key and a private key and 
+First, you'll want to figure out how to authenticate. All calls require HTTP
+Basic Auth autentication. Inside your Emma account, in the "Account Settings"
+section, you'll find your API keys. There's a public key and a private key and
 an account ID. It should look like this.
 
 .. image:: images/api_keys.jpg
@@ -49,7 +48,7 @@ Then, we'll want to capture the POSTed form variables from the request.
   $first_name = $_POST['first_name'];
   $last_name = $_POST['last_name'];
   $groups = array(123456, 654321);
-  
+
   // Member data other than email should be passed in an array called "fields"
   $member_data = array(
     "email" => $email,
@@ -61,12 +60,12 @@ Then, we'll want to capture the POSTed form variables from the request.
   );
 
 Please note that the ``group_ids`` to which the member will be added are passed
-as an array of integers. Of course, you'll want to make sure you sanitize any of 
+as an array of integers. Of course, you'll want to make sure you sanitize any of
 these form inputs to protect your application.
 
-Let's set the URL for the API call. The endpoint for all of our API calls is 
-https://api.e2ma.net/. In this case, we're using the endpoint that 
-corresponds to adding a single member. There's a separate call for adding bulk 
+Let's set the URL for the API call. The endpoint for all of our API calls is
+https://api.e2ma.net/. In this case, we're using the endpoint that
+corresponds to adding a single member. There's a separate call for adding bulk
 members.
 
 .. code-block:: php
@@ -74,7 +73,7 @@ members.
   // Set URL
   $url = "https://api.e2ma.net/".$account_id."/members/add";
 
-Next, we'll do a little dance with cURL that I'm sure is familiar. I'll 
+Next, we'll do a little dance with cURL that I'm sure is familiar. I'll
 explain some particulars below the code block.
 
 .. code-block:: php
@@ -93,8 +92,8 @@ explain some particulars below the code block.
   $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
   curl_close($ch);
 
-On line 3 is where we use the public/private keys to authenticate our call. 
-On lines 6-7, we force the API call to make its request in JSON and expect 
+On line 3 is where we use the public/private keys to authenticate our call.
+On lines 6-7, we force the API call to make its request in JSON and expect
 JSON in return.
 
 At this point, the API call has been made.We might want to inspect the
@@ -112,14 +111,14 @@ you can examine to determine a request's disposition.
 
   echo $app_message;
 
-You can :doc:`see the complete PHP script here <php_signup_example>`. 
+You can :doc:`see the complete PHP script here <php_signup_example>`.
 Additionally, there's a PHP example to :doc:`get members using their email
 address <php_get_member_example>`.
 
-To extend this example further, one could make the API call associate the 
-new member with a particular signup form. As written above, the member would 
-be added to the audience but would not appear in the "recent activity" type 
-searches or really any searches related to signups. We are working on a 
+To extend this example further, one could make the API call associate the
+new member with a particular signup form. As written above, the member would
+be added to the audience but would not appear in the "recent activity" type
+searches or really any searches related to signups. We are working on a
 cleaner way to handle this signup form issue in the future.
 
 
