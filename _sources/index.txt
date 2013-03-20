@@ -18,6 +18,31 @@ to the following areas:
     * Access mailing response information by mailing, member of time period
     * Access response at summary and detail levels
 
+API Wrappers
+------------
+
+Emma's wrappers make it easy to connect to our API in the programming language you're working in. Just select your language to integrate with Emma without having to study all the ins and outs of our API first.
+
+This collection is young, but growing, and includes wrappers commissioned by Emma, as well as those built by members of our community. Unless otherwise noted, all wrappers provide full coverage of our current API. If you see something that needs to be fixed or improved, please don't hesitate to fork the repo and submit a pull request. And if you've built a wrapper that you would like listed here, `let us know!  <mailto:integrations@myemma.com>`_
+
+**PHP**
+    `EmmaPHP <https://github.com/myemma/EmmaPHP>`_ : Commissioned by Emma and built by Nashville developer `Dennis Monsewicz <https://github.com/dennismonsewicz>`_.
+
+    `OhMyEmma <https://github.com/jwoodcock/OhMyEmma>`_: Built by Nashville developer `Jacques Woodcock <https://github.com/jwoodcock>`_.
+
+**Python**
+    `EmmaPython <https://github.com/myemma/EmmaPython>`_: Built by Emma's own `Doug Hurst <https://github.com/dalanhurst>`_.
+
+**Ruby**
+    `EmmaRuby <https://github.com/myemma/EmmaRuby>`_: Commissioned by Emma and built by Nashville developer `Dennis Monsewicz <https://github.com/dennismonsewicz>`_.
+
+**Objective-C**
+    Coming Soon!
+
+**.NET Framework**
+    Coming Soon!
+
+
 Quickstart
 ----------
 
