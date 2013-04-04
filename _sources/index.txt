@@ -37,7 +37,7 @@ This collection is young, but growing, and includes wrappers commissioned by Emm
     `EmmaRuby <https://github.com/myemma/EmmaRuby>`_: Commissioned by Emma and built by Nashville developer `Dennis Monsewicz <https://github.com/dennismonsewicz>`_.
 
 **Objective-C**
-    `EmmaRuby <https://github.com/myemma/EmmaSDK>`_: Commissioned by Emma and built by Portland developer `Benjamin Van Der Veen <https://github.com/bvanderveen>`_.
+    `EmmaSDK <https://github.com/myemma/EmmaSDK>`_: Commissioned by Emma and built by Portland developer `Benjamin Van Der Veen <https://github.com/bvanderveen>`_.
 
 **.NET Framework**
     Coming Soon!
