@@ -39,10 +39,6 @@ This collection is young, but growing, and includes wrappers commissioned by Emm
 **Objective-C**
     `EmmaSDK <https://github.com/myemma/EmmaSDK>`_: Commissioned by Emma and built by Portland developer `Benjamin Van Der Veen <https://github.com/bvanderveen>`_.
 
-**.NET Framework**
-    Coming Soon!
-
-
 Quickstart
 ----------
 
