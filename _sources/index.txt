@@ -39,17 +39,13 @@ This collection is young, but growing, and includes wrappers commissioned by Emm
 **Objective-C**
     `EmmaSDK <https://github.com/myemma/EmmaSDK>`_: Commissioned by Emma and built by Portland developer `Benjamin Van Der Veen <https://github.com/bvanderveen>`_.
 
-**.NET Framework**
-    Coming Soon!
-
-
 Quickstart
 ----------
 
 Let's start by building some PHP code that will add a member to our audience.
 
 First, you'll want to figure out how to authenticate. All calls require HTTP
-Basic Auth autentication. Inside your Emma account, in the "Account Settings"
+Basic Auth authentication. Inside your Emma account, in the "Account Settings"
 section, you'll find your API keys. There's a public key and a private key and
 an account ID. It should look like this.
 
