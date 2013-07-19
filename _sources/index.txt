@@ -1,8 +1,8 @@
 Emma API
 ========
 
-Support
--------
+A Word To The Wise...
+---------------------
 
 Use the documentation here to set up and troubleshoot your API calls. We don't offer one-on-one support
 for Emma's public API, but our system is monitored around the clock. If there's ever a dropped connection
