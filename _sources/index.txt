@@ -37,6 +37,8 @@ This collection is young, but growing, and includes wrappers commissioned by Emm
 
     `OhMyEmma <https://github.com/jwoodcock/OhMyEmma>`_: Built by Nashville developer `Jacques Woodcock <https://github.com/jwoodcock>`_.
 
+    `Emma <https://github.com/markroland/emma>`_: Built by Nashville-based `Abenity, Inc <http://www.abenity.com/>`_.
+
 **Python**
     `EmmaPython <https://github.com/myemma/EmmaPython>`_: Built by Emma's own `Doug Hurst <https://github.com/dalanhurst>`_.
 
