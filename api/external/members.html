@@ -488,12 +488,6 @@ on bulk members please use the <cite>/members</cite> call above.</p>
 <li><strong>email</strong> (<em>string</em>) &#8211; Email address of member to add or update</li>
 <li><strong>fields</strong> (<em>dictionary</em>) &#8211; Names and values of user-defined fields to update</li>
 <li><strong>group_ids</strong> (<em>array of integers</em>) &#8211; Optional. Add imported members to this list of groups.</li>
-<li><strong>signup_form_id</strong> (<em>integer</em>) &#8211; <p>Optional. Indicate that this member used a particular signup form.
-This is important if you have custom confirmation messages for a particular signup form and
-so that signup-based triggers will be fired.</p>
-<p><em>Note: Members who are added to your audience using this API call will not appear
-in &#8220;recent activity&#8221; searches within your account.</em></p>
-</li>
 </ul>
 </td>
 </tr>
@@ -520,6 +514,76 @@ status will be reported as &#8216;a&#8217; (active), &#8216;e&#8217; (error), or
 {
   "status": "a", 
   "added": true, 
+  "member_id": 1024
+}
+</pre>
+</div>
+</p>
+</dd></dl>
+
+<dl class="post">
+<dt id="post--#account_id-members-signup">
+<tt class="descname">POST </tt><tt class="descname">/#account_id/members/signup</tt><a class="headerlink" href="#post--#account_id-members-signup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes the necessary actions to signup a member and enlist them in the
+provided group ids. You can send the same member multiple times and
+pass in new group ids to signup.</p>
+<p>This process trigger the opt-out workflow, and will send a mailing to
+the member on new group enlistments. If no new groups are provided for
+an existing member, the endpoint will respond back with their status
+and member_id, performing no additional actions.</p>
+<dl class="docutils">
+<dt><a href="#id1"><span class="problematic" id="id2">*</span></a>Note: Members who are added to your audience using this API call will</dt>
+<dd>not appear in &#8220;recent activity&#8221; searches within your account.*</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>email</strong> (<em>string</em>) &#8211; Email address of the member to sign-up.</li>
+<li><strong>group_ids</strong> (<em>Array of strings (group_ids)</em>) &#8211; An array of group ids to associate
+sign-up with.</li>
+<li><strong>fields</strong> (<em>dictionary</em>) &#8211; Optional. Names and values of user-defined fields to
+update.</li>
+<li><strong>signup_form_id</strong> (<em>integer</em>) &#8211; Optional. Indicate that this member used a
+particular signup form. This is important if you
+have custom mailings for a particular signup form
+and so that signup-based triggers will be fired.</li>
+<li><strong>opt_in_subject</strong> (<em>string</em>) &#8211; Optional. Override the confirmation message
+subject with your own copy.</li>
+<li><strong>opt_in_message</strong> (<em>string</em>) &#8211; Optional. Override the confirmation message body
+with your own copy. Must include the following
+tags: [rsvp_name], [rsvp_email], [opt_in_url],
+[opt_out_url].</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return :</th><td class="field-body"><p class="first last">The member_id of the member, and their status. The status will
+be reported as &#8216;a&#8217; (active), &#8216;e&#8217; (error), or &#8216;o&#8217; (optout).</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>POST /100/members/signup</b>
+{
+  "fields": {
+    "first_name": "Ryan"
+  }, 
+  "group_ids": [
+    "1", 
+    "2"
+  ], 
+  "email": "example@myemma.com", 
+  "signup_form_id": 1
+}
+
+{
+  "status": "a", 
   "member_id": 1024
 }
 </pre>
@@ -1219,7 +1283,7 @@ true
     </div>
     <div class="footer">
       &copy; Copyright 2013, Emma.
-        Last updated on Jul 24, 2013 at 10:25 AM.
+        Last updated on Jul 29, 2013 at 08:21 AM.
     </div>
   </body>
 </html>

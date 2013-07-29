@@ -1,13 +1,6 @@
 Emma API
 ========
 
-A Word To The Wise...
----------------------
-
-Use the documentation here to set up and troubleshoot your API calls. We don't offer one-on-one support
-for Emma's public API, but our system is monitored around the clock. If there's ever a dropped connection
-or outage, we'll notify users on our `status page <http://myemma.com/status>`_.
-
 Overview
 --------
 
@@ -36,8 +29,6 @@ This collection is young, but growing, and includes wrappers commissioned by Emm
     `EmmaPHP <https://github.com/myemma/EmmaPHP>`_ : Commissioned by Emma and built by Nashville developer `Dennis Monsewicz <https://github.com/dennismonsewicz>`_.
 
     `OhMyEmma <https://github.com/jwoodcock/OhMyEmma>`_: Built by Nashville developer `Jacques Woodcock <https://github.com/jwoodcock>`_.
-
-    `Emma <https://github.com/markroland/emma>`_: Built by Nashville-based `Abenity, Inc <http://www.abenity.com/>`_.
 
 **Python**
     `EmmaPython <https://github.com/myemma/EmmaPython>`_: Built by Emma's own `Doug Hurst <https://github.com/dalanhurst>`_.
