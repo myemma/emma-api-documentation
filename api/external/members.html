@@ -524,8 +524,7 @@ status will be reported as &#8216;a&#8217; (active), &#8216;e&#8217; (error), or
 <dl class="post">
 <dt id="post--#account_id-members-signup">
 <tt class="descname">POST </tt><tt class="descname">/#account_id/members/signup</tt><a class="headerlink" href="#post--#account_id-members-signup" title="Permalink to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Takes the necessary actions to signup a member and enlist them in the
+<dd><p>Takes the necessary actions to signup a member and enlist them in the
 provided group ids. You can send the same member multiple times and
 pass in new group ids to signup.</p>
 <p>This process triggers the opt-out workflow, and will send a mailing to
@@ -540,81 +539,30 @@ and member_id, performing no additional actions.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">param email:</th><td class="field-body">Email address of the member to sign-up.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">type email:</th><td class="field-body">string</td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
-<dl class="docutils">
-<dt>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</dt>
-<dd><table class="first last docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2">param group_ids:</th></tr>
-<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">An array of group ids to associate sign-up with.</td>
-</tr>
-</tbody>
-</table>
-</dd>
-</dl>
-<blockquote>
-<div><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2">param group_ids:</th></tr>
-<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">An array of group ids to associate
-sign-up with.</td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
-<dl class="docutils">
-<dt>&gt;&gt;&gt;&gt;&gt;&gt;&gt; updates per scot</dt>
-<dd><table class="first docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">type group_ids:</th><td class="field-body">Array of strings (group_ids)</td>
-</tr>
-<tr class="field-even field"><th class="field-name">param fields:</th><td class="field-body">Optional. Names and values of user-defined fields to update.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">type fields:</th><td class="field-body">dictionary</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">param signup_form_id:</th></tr>
-<tr class="field-even field"><td>&nbsp;</td><td class="field-body">Optional. Indicate that this member used a
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>email</strong> (<em>string</em>) &#8211; Email address of the member to sign-up.</li>
+<li><strong>group_ids</strong> (<em>Array of strings (group_ids)</em>) &#8211; An array of group ids to associate sign-up with.</li>
+<li><strong>fields</strong> (<em>dictionary</em>) &#8211; Optional. Names and values of user-defined fields to update.</li>
+<li><strong>signup_form_id</strong> (<em>integer</em>) &#8211; Optional. Indicate that this member used a
 particular signup form. This is important if you
 have custom mailings for a particular signup form
-and so that signup-based triggers will be fired.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">type signup_form_id:</th></tr>
-<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">integer</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">param opt_in_subject:</th></tr>
-<tr class="field-even field"><td>&nbsp;</td><td class="field-body">Optional. Override the confirmation message
-subject with your own copy.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">type opt_in_subject:</th></tr>
-<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">string</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">param opt_in_message:</th></tr>
-<tr class="field-even field"><td>&nbsp;</td><td class="field-body">Optional. Override the confirmation message body
+and so that signup-based triggers will be fired.</li>
+<li><strong>opt_in_subject</strong> (<em>string</em>) &#8211; Optional. Override the confirmation message
+subject with your own copy.</li>
+<li><strong>opt_in_message</strong> (<em>string</em>) &#8211; Optional. Override the confirmation message body
 with your own copy. Must include the following
 tags: [rsvp_name], [rsvp_email], [opt_in_url],
-[opt_out_url].</td>
+[opt_out_url].</li>
+</ul>
+</td>
 </tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">type opt_in_message:</th></tr>
-<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">string</td>
-</tr>
-<tr class="field-even field"><th class="field-name">return:</th><td class="field-body">The member_id of the member, and their status. The status will
-be reported as &#8216;a&#8217; (active), &#8216;e&#8217; (error), or &#8216;o&#8217; (optout).</td>
+<tr class="field-even field"><th class="field-name">Return :</th><td class="field-body"><p class="first last">The member_id of the member, and their status. The status will
+be reported as &#8216;a&#8217; (active), &#8216;e&#8217; (error), or &#8216;o&#8217; (optout).</p>
+</td>
 </tr>
 </tbody>
 </table>
-<p class="last">
+<p>
 <div class="sample-response hide-response">
 <span style="font-weight:bold;">Sample Response</span>
 <a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
@@ -639,8 +587,6 @@ be reported as &#8216;a&#8217; (active), &#8216;e&#8217; (error), or &#8216;o&#8
 </pre>
 </div>
 </p>
-</dd>
-</dl>
 </dd></dl>
 
 <dl class="put">
@@ -1335,7 +1281,7 @@ true
     </div>
     <div class="footer">
       &copy; Copyright 2013, Emma.
-        Last updated on Aug 22, 2013 at 08:35 AM.
+        Last updated on Aug 22, 2013 at 09:41 AM.
     </div>
   </body>
 </html>
