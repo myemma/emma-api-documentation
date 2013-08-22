@@ -212,9 +212,10 @@ for a particular mailing.</p>
 <dt><strong>Returns:</strong></dt>
 <dd>A single object with the following fields:
 * <strong>name</strong> &#8211; name of mailing
+* <strong>subject</strong> &#8211; subject of the mailing
 * <strong>sent</strong> &#8211; messages sent
 * <strong>delivered</strong> &#8211; messages delivered
-* <strong>bounced</strong> &#8211; messages that failed delivery due to a hard or                                soft bounce
+* <strong>bounced</strong> &#8211; messages that failed delivery due to a hard or soft bounce
 * <strong>opened</strong> &#8211; messages opened
 * <strong>clicked_unique</strong> &#8211; link clicks, unique on message
 * <strong>clicked</strong> &#8211; total link clicks, including duplicates
@@ -232,9 +233,8 @@ for a particular mailing.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid
-mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test mailings and
-&#8216;r&#8217; for trigger mailings.</td>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid mailing type - &#8216;m&#8217; for
+standard mailings, &#8216;t&#8217; for test mailings and &#8216;r&#8217; for trigger mailings.</td>
 </tr>
 </tbody>
 </table>
@@ -249,19 +249,20 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
   "delivered": 0, 
   "signed_up": 0, 
   "clicked": 0, 
-  "name": "Sample Mailing", 
+  "forwarded": 0, 
   "clicked_unique": 0, 
   "webview_share_clicked": 0, 
+  "subject": "Sample Mailing for [% member:first_name %] [% member:last_name %]", 
   "opened": 0, 
   "opted_out": 0, 
   "share_clicked": 0, 
-  "webview_shared": 0, 
   "shared": 0, 
+  "webview_shared": 0, 
   "in_progress": 0, 
   "bounced": 0, 
   "recipient_count": 0, 
   "sent": 0, 
-  "forwarded": 0
+  "name": "Sample Mailing"
 }
 </pre>
 </div>
@@ -1018,7 +1019,7 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
     </div>
     <div class="footer">
       &copy; Copyright 2013, Emma.
-        Last updated on Jul 30, 2013 at 03:26 PM.
+        Last updated on Aug 22, 2013 at 08:35 AM.
     </div>
   </body>
 </html>

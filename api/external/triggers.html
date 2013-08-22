@@ -125,18 +125,23 @@ trigger is probably the most widely used of these operations.</p>
       "mailing_id": 200,
       "plaintext": "Hello [% member:first_name %]!",
       "recipient_count": 0,
-      "year": null,
+      "cancel_ts": null,
+      "created_ts": "@D:2013-08-22T08:35:16",
       "month": null,
-      "disabled": false,
-      "parent_mailing_id": null,
+      "failure_ts": null,
+      "year": null,
+      "datacenter": null,
       "started_or_finished": null,
       "account_id": 100,
-      "datacenter": null,
+      "disabled": false,
       "mailing_status": "c",
       "plaintext_only": false,
       "sender": "Kevin McConnell",
+      "parent_mailing_id": null,
+      "failure_message": null,
       "name": "Sample Mailing",
       "send_finished": null,
+      "cancel_by_user_id": null,
       "send_at": null,
       "reply_to": null,
       "subject": "Sample Mailing for [% member:first_name %] [% member:last_name %]",
@@ -148,17 +153,18 @@ trigger is probably the most widely used of these operations.</p>
     "event_type": "r",
     "links": null,
     "field_id": 203,
+    "signup_integrations": null,
     "push_offset_units": "0:-14:0:0",
-    "start_ts": "@D:2013-07-30T15:26:32",
+    "start_ts": "@D:2013-08-22T08:35:16",
     "trigger_id": 100,
+    "name": "Birthday triggers",
     "signups": null,
     "push_offset": "@I:-1209600.0",
-    "account_id": 100,
     "groups": null,
     "parent_mailing_id": 200,
     "deleted_at": null,
     "is_disabled": false,
-    "name": "Birthday triggers"
+    "account_id": 100
   },
   {
     "parent_mailing": {
@@ -168,18 +174,23 @@ trigger is probably the most widely used of these operations.</p>
       "mailing_id": 200,
       "plaintext": "Hello [% member:first_name %]!",
       "recipient_count": 0,
-      "year": null,
+      "cancel_ts": null,
+      "created_ts": "@D:2013-08-22T08:35:16",
       "month": null,
-      "disabled": false,
-      "parent_mailing_id": null,
+      "failure_ts": null,
+      "year": null,
+      "datacenter": null,
       "started_or_finished": null,
       "account_id": 100,
-      "datacenter": null,
+      "disabled": false,
       "mailing_status": "c",
       "plaintext_only": false,
       "sender": "Kevin McConnell",
+      "parent_mailing_id": null,
+      "failure_message": null,
       "name": "Sample Mailing",
       "send_finished": null,
+      "cancel_by_user_id": null,
       "send_at": null,
       "reply_to": null,
       "subject": "Sample Mailing for [% member:first_name %] [% member:last_name %]",
@@ -191,21 +202,22 @@ trigger is probably the most widely used of these operations.</p>
     "event_type": "s",
     "links": null,
     "field_id": null,
+    "signup_integrations": null,
     "push_offset_units": "0:3:0:0",
-    "start_ts": "@D:2013-07-30T15:26:32",
+    "start_ts": "@D:2013-08-22T08:35:16",
     "trigger_id": 101,
+    "name": "Test Signup Form triggers",
     "signups": [
       1,
       2,
       3
     ],
     "push_offset": "@I:259200.0",
-    "account_id": 100,
     "groups": null,
     "parent_mailing_id": 200,
     "deleted_at": null,
     "is_disabled": false,
-    "name": "Test Signup Form triggers"
+    "account_id": 100
   }
 ]
 
@@ -222,17 +234,30 @@ trigger is probably the most widely used of these operations.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>name</strong> (<em>string</em>) &#8211; A descriptive name for the trigger.</li>
-<li><strong>event_type</strong> (<em>string</em>) &#8211; The type of event that causes this trigger to fire.
-Accepts one of &#8216;s&#8217; (signup), &#8216;c&#8217; (click), &#8216;u&#8217; (survey), &#8216;d&#8217; (date),
-&#8216;r&#8217; (recurring date).</li>
+<li><strong>event_type</strong> &#8211; The type of event that causes this trigger to fire.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Accepts one of &#8216;s&#8217; (signup), &#8216;c&#8217; (click), &#8216;u&#8217; (survey),
+&#8216;si&#8217; (signup_integration), &#8216;d&#8217; (date), &#8216;r&#8217; (recurring date).
+:type event_type: string</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>parent_mailing_id</strong> (<em>integer</em>) &#8211; The id of the mailing this trigger will use
 as a template for message generation.</li>
 <li><strong>groups</strong> (<em>array</em>) &#8211; An optional array of group ids to which this trigger
 will apply.</li>
 <li><strong>links</strong> (<em>array</em>) &#8211; An array of link_ids for click triggers.</li>
 <li><strong>signups</strong> (<em>array</em>) &#8211; An array of signup_form_ids for signup triggers.</li>
+<li><strong>signup_integrations</strong> (<em>array</em>) &#8211; An array of oauth app ids for
+signup integration triggers.</li>
 <li><strong>surveys</strong> (<em>array</em>) &#8211; An array of survey_ids for survey triggers.</li>
 <li><strong>field_id</strong> (<em>integer</em>) &#8211; A field id to which this trigger will apply if it is
 a date or recurring date trigger.</li>
@@ -307,18 +332,23 @@ from this trigger (specified in seconds).</li>
     "mailing_id": 200, 
     "plaintext": "Hello [% member:first_name %]!", 
     "recipient_count": 0, 
-    "year": null, 
+    "cancel_ts": null, 
+    "created_ts": "@D:2013-08-22T08:35:16", 
     "month": null, 
-    "disabled": false, 
-    "parent_mailing_id": null, 
+    "failure_ts": null, 
+    "year": null, 
+    "datacenter": null, 
     "started_or_finished": null, 
     "account_id": 100, 
-    "datacenter": null, 
+    "disabled": false, 
     "mailing_status": "c", 
     "plaintext_only": false, 
     "sender": "Kevin McConnell", 
+    "parent_mailing_id": null, 
+    "failure_message": null, 
     "name": "Sample Mailing", 
     "send_finished": null, 
+    "cancel_by_user_id": null, 
     "send_at": null, 
     "reply_to": null, 
     "subject": "Sample Mailing for [% member:first_name %] [% member:last_name %]", 
@@ -330,17 +360,18 @@ from this trigger (specified in seconds).</li>
   "event_type": "r", 
   "links": null, 
   "field_id": 203, 
+  "signup_integrations": null, 
   "push_offset_units": "0:-14:0:0", 
-  "start_ts": "@D:2013-07-30T15:26:32", 
+  "start_ts": "@D:2013-08-22T08:35:16", 
   "trigger_id": 100, 
+  "name": "Birthday triggers", 
   "signups": null, 
   "push_offset": "@I:-1209600.0", 
-  "account_id": 100, 
   "groups": null, 
   "parent_mailing_id": 200, 
   "deleted_at": null, 
   "is_disabled": false, 
-  "name": "Birthday triggers"
+  "account_id": 100
 }
 </pre>
 </div>
@@ -433,18 +464,23 @@ true
     "mailing_id": 200,
     "plaintext": "Hello [% member:first_name %]!",
     "recipient_count": 0,
-    "year": null,
+    "cancel_ts": null,
+    "created_ts": "@D:2013-08-22T08:35:16",
     "month": null,
-    "disabled": false,
-    "parent_mailing_id": null,
+    "failure_ts": null,
+    "year": null,
+    "datacenter": null,
     "started_or_finished": null,
     "account_id": 100,
-    "datacenter": null,
+    "disabled": false,
     "mailing_status": "c",
     "plaintext_only": false,
     "sender": "Kevin McConnell",
+    "parent_mailing_id": null,
+    "failure_message": null,
     "name": "Sample Mailing",
     "send_finished": null,
+    "cancel_by_user_id": null,
     "send_at": null,
     "reply_to": null,
     "subject": "Sample Mailing for [% member:first_name %] [% member:last_name %]",
@@ -506,7 +542,7 @@ true
     </div>
     <div class="footer">
       &copy; Copyright 2013, Emma.
-        Last updated on Jul 30, 2013 at 03:26 PM.
+        Last updated on Aug 22, 2013 at 08:35 AM.
     </div>
   </body>
 </html>
