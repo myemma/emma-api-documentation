@@ -1,0 +1,492 @@
+
+<!doctype html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Emma API Documentation | Emma, Inc.</title>
+
+    
+    <link rel="stylesheet" href="../../_static/emma.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    
+    <script src="http://code.jquery.com/jquery-1.4.min.js"></script>
+    <script>window.jQuery || document.write('<script src="_static/jquery.js"><\/script>')</script>
+    
+    <script type="text/javascript" src="//use.typekit.net/zfm0nfo.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="audience 0.1 documentation" href="../../index.html" />
+    <link rel="next" title="Pagination" href="../../pagination.html" />
+    <link rel="prev" title="Triggers" href="triggers.html" />
+    <link rel="icon" href="http://myemma.com/static/global/favicons/favicon.ico?v=2" type="image/x-icon">
+    <link rel="shortcut icon" href="http://myemma.com/static/global/favicons/favicon.ico?v=2" type="image/x-icon">
+    <link rel="apple-touch-icon-precomposed" href="http://myemma.com/static/global/favicons/apple-iphone.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://myemma.com/static/global/favicons/apple-ipad.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://myemma.com/static/global/favicons/apple-iphone-2x.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://myemma.com/static/global/favicons/apple-ipad-2x.png" />
+
+    <style type="text/css">
+      .resp-trigger, .resp-trigger:hover {font-size:10pt;text-decoration:none;}
+      div.sample-response.hide-response pre.response {display: none;}
+      div.sample-response .tshow,
+      div.sample-response.hide-response .thide {display: none;}
+      div.sample-response .thide,
+      div.sample-response.hide-response .tshow {display: inline;}
+    </style>
+    <script>
+      $().ready(function() {
+        $("a.resp-trigger").click(function(e) {
+          e.preventDefault();
+          $(this).parents("div.sample-response").toggleClass("hide-response");
+        });
+      });
+    </script>
+
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-512410-18']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+
+  </head>
+  <body>
+  <header role="banner">
+    <a href="/index.html">
+      <h1>Emma API Documentation</h1>
+    </a>
+  </header>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../http-routingtable.html" title="HTTP Routing Table"
+             >routing table</a> |</li>
+        <li class="right" >
+          <a href="../../pagination.html" title="Pagination"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="triggers.html" title="Triggers"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">audience 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="webhooks">
+<h1>Webhooks<a class="headerlink" href="#webhooks" title="Permalink to this headline">¶</a></h1>
+<p>You can manage your webhooks with these endpoints. Of particular interest
+might be the <tt class="docutils literal"><span class="pre">GET</span> <span class="pre">/#account_id/webhooks/events</span></tt> endpoint which lets you
+know which events our system can send out webhooks for. You can <a class="reference internal" href="../../webhooks.html"><em>get more
+info about how our webhooks work</em></a>.</p>
+<dl class="get">
+<dt id="get--#account_id-webhooks">
+<tt class="descname">GET </tt><tt class="descname">/#account_id/webhooks</tt><a class="headerlink" href="#get--#account_id-webhooks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a basic listing of all webhooks associated with an account.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body">A list of webhooks that belong to the given account.</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>GET /100/webhooks</b>
+
+[
+  {
+    "url": "http://myemma.com",
+    "webhook_id": 100,
+    "method": "POST",
+    "account_id": 100,
+    "event": "mailing_finish"
+  },
+  {
+    "url": "http://tech.myemma.com",
+    "webhook_id": 101,
+    "method": "POST",
+    "account_id": 100,
+    "event": "mailing_finish"
+  }
+]
+
+</pre>
+</div>
+</p>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--#account_id-webhooks-#webhook_id">
+<tt class="descname">GET </tt><tt class="descname">/#account_id/webhooks/#webhook_id</tt><a class="headerlink" href="#get--#account_id-webhooks-#webhook_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get information for a specific webhook belonging to a specific account.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body">Details for a single webhook</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if no webhook found</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>GET /100/webhooks/100</b>
+
+{
+  "url": "http://myemma.com", 
+  "event": "mailing_finish", 
+  "method": "POST", 
+  "account_id": 100, 
+  "webhook_id": 100
+}
+</pre>
+</div>
+</p>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--#account_id-webhooks-events">
+<tt class="descname">GET </tt><tt class="descname">/#account_id/webhooks/events</tt><a class="headerlink" href="#get--#account_id-webhooks-events" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a listing of all event types that are available for
+webhooks.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body">A list of event types and descriptions</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>GET /100/webhooks/events</b>
+
+[
+  {
+    "event_name": "mailing_finish",
+    "webhook_event_id": 1,
+    "description": "Fired when a mailing is finished."
+  },
+  {
+    "event_name": "mailing_start",
+    "webhook_event_id": 2,
+    "description": "Fired when a mailing starts."
+  },
+  {
+    "event_name": "member_signup",
+    "webhook_event_id": 3,
+    "description": "Fired when a member signs up through a signup form."
+  },
+  {
+    "event_name": "message_open",
+    "webhook_event_id": 4,
+    "description": "Fired when a message is opened."
+  },
+  {
+    "event_name": "message_click",
+    "webhook_event_id": 5,
+    "description": "Fired when a link in a message is clicked."
+  },
+  {
+    "event_name": "member_optout",
+    "webhook_event_id": 6,
+    "description": "Fired when a member opts out."
+  },
+  {
+    "event_name": "message_share",
+    "webhook_event_id": 7,
+    "description": "Fired when a member shares a message."
+  },
+  {
+    "event_name": "message_share_click",
+    "webhook_event_id": 8,
+    "description": "Fired when a someone follows a link a member has shared."
+  },
+  {
+    "event_name": "import_finish",
+    "webhook_event_id": 9,
+    "description": "Fired when a member import completes."
+  },
+  {
+    "event_name": "member_update",
+    "webhook_event_id": 10,
+    "description": "Fired when a member is updated."
+  },
+  {
+    "event_name": "member_delete",
+    "webhook_event_id": 11,
+    "description": "Fired when a member is deleted."
+  },
+  {
+    "event_name": "member_add_to_group",
+    "webhook_event_id": 12,
+    "description": "Fired when a member(s) is added to a group(s)."
+  },
+  {
+    "event_name": "member_remove_from_group",
+    "webhook_event_id": 13,
+    "description": "Fired when a member(s) is removed from a group(s)."
+  },
+  {
+    "event_name": "group_create",
+    "webhook_event_id": 14,
+    "description": "Fired when a group is created."
+  },
+  {
+    "event_name": "group_delete",
+    "webhook_event_id": 15,
+    "description": "Fired when a group is deleted."
+  },
+  {
+    "event_name": "group_update",
+    "webhook_event_id": 16,
+    "description": "Fired when a group is updated."
+  },
+  {
+    "event_name": "member_status_update",
+    "webhook_event_id": 17,
+    "description": "Fired when a member's status changes."
+  },
+  {
+    "event_name": "message_forward",
+    "webhook_event_id": 18,
+    "description": "Fired when a message is forwarded."
+  },
+  {
+    "event_name": "member_add",
+    "webhook_event_id": 19,
+    "description": "Fired when a single member is added."
+  },
+  {
+    "event_name": "field_create",
+    "webhook_event_id": 20,
+    "description": "Fired when a field is created."
+  },
+  {
+    "event_name": "field_delete",
+    "webhook_event_id": 21,
+    "description": "Fired when a field is deleted."
+  },
+  {
+    "event_name": "field_update",
+    "webhook_event_id": 22,
+    "description": "Fired when a field is updated."
+  }
+]
+
+</pre>
+</div>
+</p>
+</dd></dl>
+
+<dl class="post">
+<dt id="post--#account_id-webhooks">
+<tt class="descname">POST </tt><tt class="descname">/#account_id/webhooks</tt><a class="headerlink" href="#post--#account_id-webhooks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an new webhook.</p>
+<p>If method is &#8216;POST&#8217;, the data will be posted to the given URL as a blob of JSON. If the method
+is &#8216;GET&#8217; the data will be added to the query string of your URL as a url encoded blob of JSON
+in a key called &#8216;payload&#8217;.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>event</strong> (<em>string</em>) &#8211; The name of an event to register this webhook for</li>
+<li><strong>url</strong> (<em>string</em>) &#8211; The URL to call when the event happens</li>
+<li><strong>method</strong> (<em>string</em>) &#8211; The method to use when calling the webhook. Can be GET or POST. Defaults to POST.</li>
+<li><strong>public_key</strong> &#8211; The public_key to use for authentication. Note: this can also be spelled &#8220;user_id&#8221; but this is deprecated.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>POST /100/webhooks</b>
+{
+  "url": "http://myemma.com/blog/", 
+  "event": "mailing_finish"
+}
+
+1024
+</pre>
+</div>
+</p>
+</dd></dl>
+
+<dl class="put">
+<dt id="put--#account_id-webhooks-#webhook_id">
+<tt class="descname">PUT </tt><tt class="descname">/#account_id/webhooks/#webhook_id</tt><a class="headerlink" href="#put--#account_id-webhooks-#webhook_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update an existing webhook. Takes the same params as create_webhook.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body">The id of the updated webhook, or False if the update failed.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the webhook cannot be found.</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>PUT /100/webhooks/100</b>
+{
+  "url": "http://tech.myemma.com/"
+}
+
+100
+</pre>
+</div>
+</p>
+</dd></dl>
+
+<dl class="delete">
+<dt id="delete--#account_id-webhooks-#webhook_id">
+<tt class="descname">DELETE </tt><tt class="descname">/#account_id/webhooks/#webhook_id</tt><a class="headerlink" href="#delete--#account_id-webhooks-#webhook_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes an existing webhook.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body">True if the webhook deleted successufully.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if no webhook found</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>DELETE /100/webhooks/101</b>
+
+true
+</pre>
+</div>
+</p>
+</dd></dl>
+
+<dl class="delete">
+<dt id="delete--#account_id-webhooks">
+<tt class="descname">DELETE </tt><tt class="descname">/#account_id/webhooks</tt><a class="headerlink" href="#delete--#account_id-webhooks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete all webhooks registered for an account.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body">True if the webhooks deleted successufully.</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>DELETE /100/webhooks</b>
+
+true
+</pre>
+</div>
+</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="triggers.html" title="previous chapter">Triggers</a></li>
+      <li>Next: <a href="../../pagination.html" title="next chapter">Pagination</a></li>
+  </ul></li>
+</ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div id="emma-links">
+  <h3>Emma Links</h3>
+  <ul>
+    <li><a href="http://myemma.com" title="Visit Emma's homepage" target="_blank">Emma Home</a></li>
+
+    <li><a href="http://myemma.com/blog" title="Visit the Emma Blog" target="_blank">Emma Blog</a></li>
+    <li><a href="http://myemma.com/help" title="Visit Emma's help guide" target="_blank">Emma Help</a></li>
+  </ul>
+</div>
+
+<div id="inquiry">
+  <h3>Interested in Emma?</h3>
+  <p>Emma's email marketing makes communicating simple and stylish. <a href="http://myemma.com/get-started/inquire" title="Get started today.">Get started today</a>.</p>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2013, Emma.
+        Last updated on Aug 22, 2013 at 09:41 AM.
+    </div>
+  </body>
+</html>

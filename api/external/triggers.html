@@ -1,0 +1,570 @@
+<!doctype html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Emma API Documentation | Emma, Inc.</title>
+
+    
+    <link rel="stylesheet" href="../../_static/emma.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    
+    <script src="http://code.jquery.com/jquery-1.4.min.js"></script>
+    <script>window.jQuery || document.write('<script src="_static/jquery.js"><\/script>')</script>
+    
+    <script type="text/javascript" src="//use.typekit.net/zfm0nfo.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="audience 0.1 documentation" href="../../index.html" />
+    <link rel="next" title="Webhooks" href="webhooks.html" />
+    <link rel="prev" title="Searches" href="searches.html" />
+    <link rel="icon" href="http://myemma.com/static/global/favicons/favicon.ico?v=2" type="image/x-icon">
+    <link rel="shortcut icon" href="http://myemma.com/static/global/favicons/favicon.ico?v=2" type="image/x-icon">
+    <link rel="apple-touch-icon-precomposed" href="http://myemma.com/static/global/favicons/apple-iphone.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://myemma.com/static/global/favicons/apple-ipad.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://myemma.com/static/global/favicons/apple-iphone-2x.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://myemma.com/static/global/favicons/apple-ipad-2x.png" />
+
+    <style type="text/css">
+      .resp-trigger, .resp-trigger:hover {font-size:10pt;text-decoration:none;}
+      div.sample-response.hide-response pre.response {display: none;}
+      div.sample-response .tshow,
+      div.sample-response.hide-response .thide {display: none;}
+      div.sample-response .thide,
+      div.sample-response.hide-response .tshow {display: inline;}
+    </style>
+    <script>
+      $().ready(function() {
+        $("a.resp-trigger").click(function(e) {
+          e.preventDefault();
+          $(this).parents("div.sample-response").toggleClass("hide-response");
+        });
+      });
+    </script>
+
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-512410-18']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+
+  </head>
+  <body>
+  <header role="banner">
+    <a href="/index.html">
+      <h1>Emma API Documentation</h1>
+    </a>
+  </header>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../http-routingtable.html" title="HTTP Routing Table"
+             >routing table</a> |</li>
+        <li class="right" >
+          <a href="webhooks.html" title="Webhooks"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="searches.html" title="Searches"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">audience 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="triggers">
+<h1>Triggers<a class="headerlink" href="#triggers" title="Permalink to this headline">¶</a></h1>
+<p>These endpoints provide CRUD operations for our trigger system. Creating a
+trigger is probably the most widely used of these operations.</p>
+<dl class="get">
+<dt id="get--#account_id-triggers">
+<tt class="descname">GET </tt><tt class="descname">/#account_id/triggers</tt><a class="headerlink" href="#get--#account_id-triggers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a basic listing of all triggers in an account.</p>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>GET /100/triggers</b>
+
+[
+  {
+    "parent_mailing": {
+      "mailing_type": "m",
+      "send_started": null,
+      "signup_form_id": null,
+      "mailing_id": 200,
+      "plaintext": "Hello [% member:first_name %]!",
+      "recipient_count": 0,
+      "cancel_ts": null,
+      "created_ts": "@D:2013-08-22T09:41:45",
+      "month": null,
+      "failure_ts": null,
+      "year": null,
+      "datacenter": null,
+      "started_or_finished": null,
+      "account_id": 100,
+      "disabled": false,
+      "mailing_status": "c",
+      "plaintext_only": false,
+      "sender": "Kevin McConnell",
+      "parent_mailing_id": null,
+      "failure_message": null,
+      "name": "Sample Mailing",
+      "send_finished": null,
+      "cancel_by_user_id": null,
+      "send_at": null,
+      "reply_to": null,
+      "subject": "Sample Mailing for [% member:first_name %] [% member:last_name %]",
+      "purged_at": null,
+      "archived_ts": null,
+      "html_body": "&lt;p&gt;Hello [% member:first_name %]!&lt;/p&gt;"
+    },
+    "surveys": null,
+    "event_type": "r",
+    "links": null,
+    "field_id": 203,
+    "signup_integrations": null,
+    "push_offset_units": "0:-14:0:0",
+    "start_ts": "@D:2013-08-22T09:41:45",
+    "trigger_id": 100,
+    "name": "Birthday triggers",
+    "signups": null,
+    "push_offset": "@I:-1209600.0",
+    "groups": null,
+    "parent_mailing_id": 200,
+    "deleted_at": null,
+    "is_disabled": false,
+    "account_id": 100
+  },
+  {
+    "parent_mailing": {
+      "mailing_type": "m",
+      "send_started": null,
+      "signup_form_id": null,
+      "mailing_id": 200,
+      "plaintext": "Hello [% member:first_name %]!",
+      "recipient_count": 0,
+      "cancel_ts": null,
+      "created_ts": "@D:2013-08-22T09:41:45",
+      "month": null,
+      "failure_ts": null,
+      "year": null,
+      "datacenter": null,
+      "started_or_finished": null,
+      "account_id": 100,
+      "disabled": false,
+      "mailing_status": "c",
+      "plaintext_only": false,
+      "sender": "Kevin McConnell",
+      "parent_mailing_id": null,
+      "failure_message": null,
+      "name": "Sample Mailing",
+      "send_finished": null,
+      "cancel_by_user_id": null,
+      "send_at": null,
+      "reply_to": null,
+      "subject": "Sample Mailing for [% member:first_name %] [% member:last_name %]",
+      "purged_at": null,
+      "archived_ts": null,
+      "html_body": "&lt;p&gt;Hello [% member:first_name %]!&lt;/p&gt;"
+    },
+    "surveys": null,
+    "event_type": "s",
+    "links": null,
+    "field_id": null,
+    "signup_integrations": null,
+    "push_offset_units": "0:3:0:0",
+    "start_ts": "@D:2013-08-22T09:41:45",
+    "trigger_id": 101,
+    "name": "Test Signup Form triggers",
+    "signups": [
+      1,
+      2,
+      3
+    ],
+    "push_offset": "@I:259200.0",
+    "groups": null,
+    "parent_mailing_id": 200,
+    "deleted_at": null,
+    "is_disabled": false,
+    "account_id": 100
+  }
+]
+
+</pre>
+</div>
+</p>
+</dd></dl>
+
+<dl class="post">
+<dt id="post--#account_id-triggers">
+<tt class="descname">POST </tt><tt class="descname">/#account_id/triggers</tt><a class="headerlink" href="#post--#account_id-triggers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new trigger.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<em>string</em>) &#8211; A descriptive name for the trigger.</li>
+<li><strong>event_type</strong> &#8211; The type of event that causes this trigger to fire.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Accepts one of &#8216;s&#8217; (signup), &#8216;c&#8217; (click), &#8216;f&#8217; (trigger flag), &#8216;u&#8217; (survey),
+&#8216;si&#8217; (signup_integration), &#8216;d&#8217; (date), &#8216;r&#8217; (recurring date).
+:type event_type: string</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>parent_mailing_id</strong> (<em>integer</em>) &#8211; The id of the mailing this trigger will use
+as a template for message generation.</li>
+<li><strong>groups</strong> (<em>array</em>) &#8211; An optional array of group ids to which this trigger
+will apply.</li>
+<li><strong>links</strong> (<em>array</em>) &#8211; An array of link_ids for click triggers.</li>
+<li><strong>signups</strong> (<em>array</em>) &#8211; An array of signup_form_ids for signup triggers.</li>
+<li><strong>signup_integrations</strong> (<em>array</em>) &#8211; An array of oauth app ids for
+signup integration triggers.</li>
+<li><strong>surveys</strong> (<em>array</em>) &#8211; An array of survey_ids for survey triggers.</li>
+<li><strong>field_id</strong> (<em>integer</em>) &#8211; A field id to which this trigger will apply if it is
+a date or recurring date trigger.</li>
+<li><strong>push_offset</strong> (<em>integer</em>) &#8211; An optional delay interval for messages created
+from this trigger (specified in seconds).</li>
+<li><strong>is_disabled</strong> (<em>boolean</em>) &#8211; An optional flag to disable the trigger.</li>
+<li><strong>from_operator</strong> (<em>string</em>) &#8211; A string that specifies an operator value for the <em>from</em> operator field.</li>
+<li><strong>from_value</strong> (<em>string</em>) &#8211; A string that specifies the value of the <em>from</em> member data field.</li>
+<li><strong>to_operator</strong> (<em>string</em>) &#8211; A string that specifies an operator value for the <em>to</em> operator field.</li>
+<li><strong>to_value</strong> (<em>string</em>) &#8211; A string that specifies the value of the <em>to</em> member data field.</li>
+</ul>
+</td>
+</tr>
+<br/>
+<tr class="field-even field"><th class="field-name">To/From Values :</th><td class="field-body"><p class="first">These are the specific values used in the <em>from_operator</em> and <em>to_operator</em> parameters.</p>
+</td>
+    <tbody valign="top">
+    <tr class="field-odd field"><th class="field-name"></th><td class="field-body"><ul class="first simple">
+        <li>anything</li>
+        <li>contains</li>
+        <li>equals</li>
+        <li>does-not-equal</li>
+        <li>empty</li>
+        <li>greater-than</li>
+        <li>greater-than-or-equal-to</li>
+        <li>less-than</li>
+        <li>less-than-or-equal-to</li>
+    </ul>
+    </td>
+    </tr>
+    </tbody>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first">The new trigger&#8217;s id.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">Http500</span></tt> if object_ids is null and event_type is one of:
+&#8216;s&#8217; (signup), &#8216;c&#8217; (click), &#8216;u&#8217; (survey).</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><p class="first last"><tt class="docutils literal"><span class="pre">Http500</span></tt> if field_id is null and event_type is one of:
+&#8216;d&#8217; (date), &#8216;r&#8217; (recurring date).</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>POST /100/triggers</b>
+{
+  "parent_mailing_id": 200, 
+  "object_ids": [
+    10, 
+    20, 
+    30
+  ], 
+  "name": "Test", 
+  "event_type": "c"
+}
+
+1024
+</pre>
+</div>
+</p>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--#account_id-triggers-#trigger_id">
+<tt class="descname">GET </tt><tt class="descname">/#account_id/triggers/#trigger_id</tt><a class="headerlink" href="#get--#account_id-triggers-#trigger_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Look up a trigger by trigger id.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body">A trigger.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if no trigger is found.</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>GET /100/triggers/100</b>
+
+{
+  "parent_mailing": {
+    "mailing_type": "m", 
+    "send_started": null, 
+    "signup_form_id": null, 
+    "mailing_id": 200, 
+    "plaintext": "Hello [% member:first_name %]!", 
+    "recipient_count": 0, 
+    "cancel_ts": null, 
+    "created_ts": "@D:2013-08-22T09:41:45", 
+    "month": null, 
+    "failure_ts": null, 
+    "year": null, 
+    "datacenter": null, 
+    "started_or_finished": null, 
+    "account_id": 100, 
+    "disabled": false, 
+    "mailing_status": "c", 
+    "plaintext_only": false, 
+    "sender": "Kevin McConnell", 
+    "parent_mailing_id": null, 
+    "failure_message": null, 
+    "name": "Sample Mailing", 
+    "send_finished": null, 
+    "cancel_by_user_id": null, 
+    "send_at": null, 
+    "reply_to": null, 
+    "subject": "Sample Mailing for [% member:first_name %] [% member:last_name %]", 
+    "purged_at": null, 
+    "archived_ts": null, 
+    "html_body": "&lt;p&gt;Hello [% member:first_name %]!&lt;/p&gt;"
+  }, 
+  "surveys": null, 
+  "event_type": "r", 
+  "links": null, 
+  "field_id": 203, 
+  "signup_integrations": null, 
+  "push_offset_units": "0:-14:0:0", 
+  "start_ts": "@D:2013-08-22T09:41:45", 
+  "trigger_id": 100, 
+  "name": "Birthday triggers", 
+  "signups": null, 
+  "push_offset": "@I:-1209600.0", 
+  "groups": null, 
+  "parent_mailing_id": 200, 
+  "deleted_at": null, 
+  "is_disabled": false, 
+  "account_id": 100
+}
+</pre>
+</div>
+</p>
+</dd></dl>
+
+<dl class="put">
+<dt id="put--#account_id-triggers-#trigger_id">
+<tt class="descname">PUT </tt><tt class="descname">/#account_id/triggers/#trigger_id</tt><a class="headerlink" href="#put--#account_id-triggers-#trigger_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update or edit a trigger.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body">The id of the updated trigger.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if no trigger is found.</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>PUT /100/triggers/100</b>
+{
+  "name": "A Better Trigger"
+}
+
+100
+</pre>
+</div>
+</p>
+</dd></dl>
+
+<dl class="delete">
+<dt id="delete--#account_id-triggers-#trigger_id">
+<tt class="descname">DELETE </tt><tt class="descname">/#account_id/triggers/#trigger_id</tt><a class="headerlink" href="#delete--#account_id-triggers-#trigger_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete a trigger.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body">True if the trigger is deleted.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if no trigger is found.</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>DELETE /100/triggers/100</b>
+
+true
+</pre>
+</div>
+</p>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--#account_id-triggers-#trigger_id-mailings">
+<tt class="descname">GET </tt><tt class="descname">/#account_id/triggers/#trigger_id/mailings</tt><a class="headerlink" href="#get--#account_id-triggers-#trigger_id-mailings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get mailings sent by a trigger.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body">An array of mailings.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if no trigger is found.</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>GET /100/triggers/101/mailings</b>
+
+[
+  {
+    "mailing_type": "m",
+    "send_started": null,
+    "signup_form_id": null,
+    "mailing_id": 200,
+    "plaintext": "Hello [% member:first_name %]!",
+    "recipient_count": 0,
+    "cancel_ts": null,
+    "created_ts": "@D:2013-08-22T09:41:45",
+    "month": null,
+    "failure_ts": null,
+    "year": null,
+    "datacenter": null,
+    "started_or_finished": null,
+    "account_id": 100,
+    "disabled": false,
+    "mailing_status": "c",
+    "plaintext_only": false,
+    "sender": "Kevin McConnell",
+    "parent_mailing_id": null,
+    "failure_message": null,
+    "name": "Sample Mailing",
+    "send_finished": null,
+    "cancel_by_user_id": null,
+    "send_at": null,
+    "reply_to": null,
+    "subject": "Sample Mailing for [% member:first_name %] [% member:last_name %]",
+    "purged_at": null,
+    "archived_ts": null,
+    "html_body": "&lt;p&gt;Hello [% member:first_name %]!&lt;/p&gt;"
+  }
+]
+
+</pre>
+</div>
+</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="searches.html" title="previous chapter">Searches</a></li>
+      <li>Next: <a href="webhooks.html" title="next chapter">Webhooks</a></li>
+  </ul></li>
+</ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div id="emma-links">
+  <h3>Emma Links</h3>
+  <ul>
+    <li><a href="http://myemma.com" title="Visit Emma's homepage" target="_blank">Emma Home</a></li>
+
+    <li><a href="http://myemma.com/blog" title="Visit the Emma Blog" target="_blank">Emma Blog</a></li>
+    <li><a href="http://myemma.com/help" title="Visit Emma's help guide" target="_blank">Emma Help</a></li>
+  </ul>
+</div>
+
+<div id="inquiry">
+  <h3>Interested in Emma?</h3>
+  <p>Emma's email marketing makes communicating simple and stylish. <a href="http://myemma.com/get-started/inquire" title="Get started today.">Get started today</a>.</p>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2013, Emma.
+        Last updated on Aug 22, 2013 at 09:41 AM.
+    </div>
+  </body>
+</html>

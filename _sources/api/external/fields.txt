@@ -1,0 +1,12 @@
+Fields
+======
+
+These endpoints let you create, edit, update and delete all of the custom 
+fields in your account. Of particular interest is the 
+``/#account_id/fields/#field_id/clear`` endpoint which lets you clear out 
+all the data in a single field for all members in your account. This makes 
+it easy to re-initialize a dataset if you're looking to correct an import 
+error or syncing issue.
+
+.. autoemma:: audience.api.controllers.fields:FieldController
+

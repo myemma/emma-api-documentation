@@ -1,0 +1,1024 @@
+<!doctype html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Emma API Documentation | Emma, Inc.</title>
+
+    
+    <link rel="stylesheet" href="../../_static/emma.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    
+    <script src="http://code.jquery.com/jquery-1.4.min.js"></script>
+    <script>window.jQuery || document.write('<script src="_static/jquery.js"><\/script>')</script>
+    
+    <script type="text/javascript" src="//use.typekit.net/zfm0nfo.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="audience 0.1 documentation" href="../../index.html" />
+    <link rel="next" title="Searches" href="searches.html" />
+    <link rel="prev" title="Members" href="members.html" />
+    <link rel="icon" href="http://myemma.com/static/global/favicons/favicon.ico?v=2" type="image/x-icon">
+    <link rel="shortcut icon" href="http://myemma.com/static/global/favicons/favicon.ico?v=2" type="image/x-icon">
+    <link rel="apple-touch-icon-precomposed" href="http://myemma.com/static/global/favicons/apple-iphone.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://myemma.com/static/global/favicons/apple-ipad.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://myemma.com/static/global/favicons/apple-iphone-2x.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://myemma.com/static/global/favicons/apple-ipad-2x.png" />
+
+    <style type="text/css">
+      .resp-trigger, .resp-trigger:hover {font-size:10pt;text-decoration:none;}
+      div.sample-response.hide-response pre.response {display: none;}
+      div.sample-response .tshow,
+      div.sample-response.hide-response .thide {display: none;}
+      div.sample-response .thide,
+      div.sample-response.hide-response .tshow {display: inline;}
+    </style>
+    <script>
+      $().ready(function() {
+        $("a.resp-trigger").click(function(e) {
+          e.preventDefault();
+          $(this).parents("div.sample-response").toggleClass("hide-response");
+        });
+      });
+    </script>
+
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-512410-18']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+
+  </head>
+  <body>
+  <header role="banner">
+    <a href="/index.html">
+      <h1>Emma API Documentation</h1>
+    </a>
+  </header>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../http-routingtable.html" title="HTTP Routing Table"
+             >routing table</a> |</li>
+        <li class="right" >
+          <a href="searches.html" title="Searches"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="members.html" title="Members"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">audience 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="response">
+<h1>Response<a class="headerlink" href="#response" title="Permalink to this headline">¶</a></h1>
+<p>We know that you want to do some fancy pivot tables with your response
+data, so we&#8217;ve provided quite a few endpoints here to give you access
+to that response data. You can get overview numbers for all of your mailings
+and also drill down into finding out the actual members who opened a particular
+mailing.</p>
+<dl class="get">
+<dt id="get--#account_id-response">
+<tt class="descname">GET </tt><tt class="descname">/#account_id/response</tt><a class="headerlink" href="#get--#account_id-response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the response summary for an account.</p>
+<p>This method will return a month-based time series of data including
+sends, opens, clicks, mailings, forwards, and opt-outs. Test mailings
+and forwards are not included in the data returned.</p>
+<dl class="docutils">
+<dt><strong>Returns:</strong></dt>
+<dd><p class="first">A list of objects with each object representing one month. Each
+object contains:</p>
+<ul class="last simple">
+<li><strong>account_id</strong> &#8211; The account_id for this line of stats</li>
+<li><strong>month</strong> &#8211; two digit integer for month</li>
+<li><strong>year</strong> &#8211; four digit integer for year</li>
+<li><strong>mailings</strong> &#8211; number of mailings sent</li>
+<li><strong>sent</strong> &#8211; number of messages sent</li>
+<li><strong>delivered</strong> &#8211; number of messages delivered</li>
+<li><strong>bounced</strong> &#8211; number of messages that failed delivery due to a                                 hard or soft bounce</li>
+<li><strong>opened</strong> &#8211; number of messages opened</li>
+<li><strong>clicked_unique</strong> &#8211; link clicks, unique on message</li>
+<li><strong>clicked</strong> &#8211; total link clicks, including duplicates</li>
+<li><strong>forwarded</strong> &#8211; times the mailing was forwarded</li>
+<li><strong>shared</strong> &#8211; total times a mailing has been shared</li>
+<li><strong>share_clicked</strong> &#8211; total times a shared mailing has been seen</li>
+<li><strong>webview_shared</strong> &#8211; total times a customer has shared their mailing</li>
+<li><strong>webview_share_clicked</strong> &#8211; total times a customer-shared mailing has been seen</li>
+<li><strong>opted_out</strong> &#8211; people who opted out based on this mailing</li>
+<li><strong>signed_up</strong> &#8211; people who signed up based on this mailing</li>
+</ul>
+</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>include_archived</strong> (<em>boolean</em>) &#8211; Accepts 1. All other values are False.
+Optional flag to include archived mailings in the list.</li>
+<li><strong>range</strong> (<em>string</em>) &#8211; Accepts 2 dates (YYYY-MM-DD) delimited by a tilde (~).
+Example: <tt class="docutils literal"><span class="pre">2011-04-01~2011-09-01</span></tt>
+Optional argument to limit results to a date range. If one of the
+dates is omitted, the default will be either min date or now. If
+a single date is provided with no tilde, then only mailings sent
+on that date will be included.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>GET /100/response</b>
+
+[
+
+]
+
+</pre>
+</div>
+</p>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>GET /100/response?range=2011-04-01~</b>
+
+[
+
+]
+
+</pre>
+</div>
+</p>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>GET /100/response?range=2011-04-01~2011-09-01</b>
+
+[
+
+]
+
+</pre>
+</div>
+</p>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--#account_id-response-#mailing_id">
+<tt class="descname">GET </tt><tt class="descname">/#account_id/response/#mailing_id</tt><a class="headerlink" href="#get--#account_id-response-#mailing_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the response summary for a particular mailing.</p>
+<p>This method will return the counts of each type of response activity
+for a particular mailing.</p>
+<dl class="docutils">
+<dt><strong>Returns:</strong></dt>
+<dd>A single object with the following fields:
+* <strong>name</strong> &#8211; name of mailing
+* <strong>subject</strong> &#8211; subject of the mailing
+* <strong>sent</strong> &#8211; messages sent
+* <strong>delivered</strong> &#8211; messages delivered
+* <strong>bounced</strong> &#8211; messages that failed delivery due to a hard or soft bounce
+* <strong>opened</strong> &#8211; messages opened
+* <strong>clicked_unique</strong> &#8211; link clicks, unique on message
+* <strong>clicked</strong> &#8211; total link clicks, including duplicates
+* <strong>forwarded</strong> &#8211; times the mailing was forwarded
+* <strong>opted_out</strong> &#8211; people who opted out based on this mailing
+* <strong>signed_up</strong> &#8211; people who signed up based on this mailing
+* <strong>shared</strong> &#8211; people who shared this mailing
+* <strong>share_clicked</strong> &#8211; number of clicks shares of this mailing received
+* <strong>webview_shared</strong> &#8211; number of times the customer has shared
+* <strong>webview_share_clicked</strong> &#8211; number of clicks customer-shares of this mailing received</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid mailing type - &#8216;m&#8217; for
+standard mailings, &#8216;t&#8217; for test mailings and &#8216;r&#8217; for trigger mailings.</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>GET /100/response/200</b>
+
+{
+  "delivered": 0, 
+  "signed_up": 0, 
+  "clicked": 0, 
+  "forwarded": 0, 
+  "clicked_unique": 0, 
+  "webview_share_clicked": 0, 
+  "subject": "Sample Mailing for [% member:first_name %] [% member:last_name %]", 
+  "opened": 0, 
+  "opted_out": 0, 
+  "share_clicked": 0, 
+  "shared": 0, 
+  "webview_shared": 0, 
+  "in_progress": 0, 
+  "bounced": 0, 
+  "recipient_count": 0, 
+  "sent": 0, 
+  "name": "Sample Mailing"
+}
+</pre>
+</div>
+</p>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--#account_id-response-#mailing_id-sends">
+<tt class="descname">GET </tt><tt class="descname">/#account_id/response/#mailing_id/sends</tt><a class="headerlink" href="#get--#account_id-response-#mailing_id-sends" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of messages that have been sent to an MTA for delivery.</p>
+<dl class="docutils">
+<dt><strong>Returns:</strong></dt>
+<dd><p class="first">An array of objects with the following fields:</p>
+<ul class="last simple">
+<li><strong>timestamp</strong> &#8211; time the message was sent</li>
+<li><strong>member_id</strong> &#8211; id of the message addressee</li>
+<li><strong>email</strong> &#8211; email of the message addressee</li>
+</ul>
+</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid
+mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test mailings and
+&#8216;r&#8217; for trigger mailings.</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>GET /100/response/200/sends</b>
+
+[
+  {
+    "fields": {
+      "first_name": "Emma",
+      "last_name": "Smith",
+      "favorite_food": "tacos"
+    },
+    "timestamp": "@D:2011-01-02T10:27:43",
+    "member_id": 200,
+    "member_since": "@D:2010-11-12T11:23:45",
+    "email_domain": "myemma.com",
+    "email_user": "emma",
+    "email": "emma@myemma.com",
+    "member_status_id": "a"
+  },
+  {
+    "fields": {
+      "first_name": "Gladys",
+      "last_name": "Jones",
+      "favorite_food": "toast"
+    },
+    "timestamp": "@D:2011-01-02T10:27:43",
+    "member_id": 201,
+    "member_since": "@D:2011-01-03T15:54:13",
+    "email_domain": "myemma.com",
+    "email_user": "gladys",
+    "email": "gladys@myemma.com",
+    "member_status_id": "o"
+  },
+  {
+    "fields": {
+
+    },
+    "timestamp": "@D:2011-01-02T10:27:43",
+    "member_id": 204,
+    "member_since": "@D:2010-12-13T23:12:44",
+    "email_domain": "myemma.com",
+    "email_user": "bob",
+    "email": "bob@myemma.com",
+    "member_status_id": "a"
+  }
+]
+
+</pre>
+</div>
+</p>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--#account_id-response-#mailing_id-in_progress">
+<tt class="descname">GET </tt><tt class="descname">/#account_id/response/#mailing_id/in_progress</tt><a class="headerlink" href="#get--#account_id-response-#mailing_id-in_progress" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of messages that are in the queue,
+possibly sent, but not yet delivered.</p>
+<dl class="docutils">
+<dt><strong>Returns:</strong></dt>
+<dd><p class="first">An array of objects with the following fields:</p>
+<ul class="last simple">
+<li><strong>member_id</strong> &#8211; id of the message addressee</li>
+<li><strong>email</strong> &#8211; email of the message addressee</li>
+</ul>
+</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid
+mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test mailings and
+&#8216;r&#8217; for trigger mailings.</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>GET /100/response/200/in_progress</b>
+
+[
+  {
+    "fields": {
+      "first_name": "Gladys",
+      "last_name": "Jones",
+      "favorite_food": "toast"
+    },
+    "member_id": 201,
+    "member_since": "@D:2011-01-03T15:54:13",
+    "email_domain": "myemma.com",
+    "email_user": "gladys",
+    "email": "gladys@myemma.com",
+    "member_status_id": "o"
+  },
+  {
+    "fields": {
+
+    },
+    "member_id": 204,
+    "member_since": "@D:2010-12-13T23:12:44",
+    "email_domain": "myemma.com",
+    "email_user": "bob",
+    "email": "bob@myemma.com",
+    "member_status_id": "a"
+  }
+]
+
+</pre>
+</div>
+</p>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--#account_id-response-#mailing_id-deliveries">
+<tt class="descname">GET </tt><tt class="descname">/#account_id/response/#mailing_id/deliveries</tt><a class="headerlink" href="#get--#account_id-response-#mailing_id-deliveries" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of messages that have finished delivery.</p>
+<p>This will include those that were successfully delivered, as well as
+those that failed due to hard or soft bounces.</p>
+<p>This list can be limited by <tt class="docutils literal"><span class="pre">delivery_type</span></tt>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>del_status</strong> (<em>string</em>) &#8211; Accepted options: &#8216;all&#8217;, &#8216;delivered&#8217;,
+&#8216;bounced&#8217;, &#8216;hard&#8217;, &#8216;soft&#8217;. Defaults to &#8216;all&#8217;, if not provided.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt><strong>Returns:</strong></dt>
+<dd><p class="first">An array of objects with the following fields:</p>
+<ul class="last simple">
+<li><strong>timestamp</strong> &#8211; time the message was delivered</li>
+<li><strong>delivery_type</strong> &#8211; delivery outcome: <tt class="docutils literal"><span class="pre">delivered</span></tt>, <tt class="docutils literal"><span class="pre">hard</span></tt>,                                    (bounce), or <tt class="docutils literal"><span class="pre">soft</span></tt> (bounce)</li>
+<li><strong>member_id</strong> &#8211; id of the message addressee</li>
+<li><strong>email</strong> &#8211; email of the message addressee</li>
+</ul>
+</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid
+mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test mailings and
+&#8216;r&#8217; for trigger mailings.</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>GET /100/response/200/deliveries</b>
+
+[
+  {
+    "delivery_type": "delivered",
+    "email_domain": "myemma.com",
+    "fields": {
+      "first_name": "Emma",
+      "last_name": "Smith",
+      "favorite_food": "tacos"
+    },
+    "mailing_id": 200,
+    "timestamp": "@D:2011-01-02T10:29:36",
+    "member_id": 200,
+    "member_status_id": "a",
+    "member_since": "@D:2010-11-12T11:23:45",
+    "mailing_name": "Sample Mailing",
+    "email_user": "emma",
+    "email": "emma@myemma.com"
+  }
+]
+
+</pre>
+</div>
+</p>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--#account_id-response-#mailing_id-opens">
+<tt class="descname">GET </tt><tt class="descname">/#account_id/response/#mailing_id/opens</tt><a class="headerlink" href="#get--#account_id-response-#mailing_id-opens" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of opened messages for this campaign.</p>
+<dl class="docutils">
+<dt><strong>Returns:</strong></dt>
+<dd><p class="first">An array of objects with the following fields:</p>
+<ul class="last simple">
+<li><strong>timestamp</strong> &#8211; time the message was opened</li>
+<li><strong>member_id</strong> &#8211; id of the message addressee</li>
+<li><strong>email</strong> &#8211; email of the message addressee</li>
+</ul>
+</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid
+mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test mailings and
+&#8216;r&#8217; for trigger mailings.</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>GET /100/response/200/opens</b>
+
+[
+  {
+    "fields": {
+      "first_name": "Emma",
+      "last_name": "Smith",
+      "favorite_food": "tacos"
+    },
+    "timestamp": "@D:2011-01-02T11:13:51",
+    "member_id": 200,
+    "member_since": "@D:2010-11-12T11:23:45",
+    "email_domain": "myemma.com",
+    "email_user": "emma",
+    "email": "emma@myemma.com",
+    "member_status_id": "a"
+  },
+  {
+    "fields": {
+
+    },
+    "timestamp": "@D:2011-01-02T13:55:51",
+    "member_id": 204,
+    "member_since": "@D:2010-12-13T23:12:44",
+    "email_domain": "myemma.com",
+    "email_user": "bob",
+    "email": "bob@myemma.com",
+    "member_status_id": "a"
+  }
+]
+
+</pre>
+</div>
+</p>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--#account_id-response-#mailing_id-links">
+<tt class="descname">GET </tt><tt class="descname">/#account_id/response/#mailing_id/links</tt><a class="headerlink" href="#get--#account_id-response-#mailing_id-links" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of links for this mailing.</p>
+<dl class="docutils">
+<dt><strong>Returns:</strong></dt>
+<dd><p class="first">An array of objects with the following fields:</p>
+<ul class="last simple">
+<li><strong>link_id</strong> &#8211; If the mailing is not a trigger, the                              individual id of the link will be included</li>
+<li><strong>link_order</strong> &#8211; order of the link in the mailing</li>
+<li><strong>link_name</strong> &#8211; friendly name for the link</li>
+<li><strong>link_target</strong> &#8211; link URL</li>
+<li><strong>unique_clicks</strong> &#8211; clicks on the link, unique per message</li>
+<li><strong>total_clicks</strong> &#8211; clicks on the link, total</li>
+</ul>
+</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid
+mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test mailings and
+&#8216;r&#8217; for trigger mailings.</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>GET /100/response/200/links</b>
+
+[
+  {
+    "link_order": 1,
+    "link_name": "Emma",
+    "unique_clicks": 1,
+    "plaintext": false,
+    "link_target": "http://www.myemma.com",
+    "total_clicks": 1,
+    "link_id": 200
+  }
+]
+
+</pre>
+</div>
+</p>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--#account_id-response-#mailing_id-clicks">
+<tt class="descname">GET </tt><tt class="descname">/#account_id/response/#mailing_id/clicks</tt><a class="headerlink" href="#get--#account_id-response-#mailing_id-clicks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of clicks for this mailing.</p>
+<p>This list can also be limited by <tt class="docutils literal"><span class="pre">member_id</span></tt> or <tt class="docutils literal"><span class="pre">link_id</span></tt>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>member_id</strong> (<em>int</em>) &#8211; Limits results to a single member.</li>
+<li><strong>link_id</strong> (<em>int</em>) &#8211; Limits results to a single link.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt><strong>Returns:</strong></dt>
+<dd><p class="first">An array of objects with the following fields:</p>
+<ul class="last simple">
+<li><strong>link_id</strong> &#8211; id of the clicked link</li>
+<li><strong>timestamp</strong> &#8211; time the link was clicked</li>
+<li><strong>member_id</strong> &#8211; id of the message addressee</li>
+<li><strong>email</strong> &#8211; email of the message addressee</li>
+</ul>
+</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid
+mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test mailings and
+&#8216;r&#8217; for trigger mailings.</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>GET /100/response/200/clicks</b>
+
+[
+  {
+    "link_id": 200,
+    "fields": {
+      "first_name": "Emma",
+      "last_name": "Smith",
+      "favorite_food": "tacos"
+    },
+    "timestamp": "@D:2011-01-02T11:14:32",
+    "member_id": 200,
+    "member_since": "@D:2010-11-12T11:23:45",
+    "email_domain": "myemma.com",
+    "email_user": "emma",
+    "email": "emma@myemma.com",
+    "member_status_id": "a"
+  }
+]
+
+</pre>
+</div>
+</p>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--#account_id-response-#mailing_id-forwards">
+<tt class="descname">GET </tt><tt class="descname">/#account_id/response/#mailing_id/forwards</tt><a class="headerlink" href="#get--#account_id-response-#mailing_id-forwards" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of forwards for this mailing.</p>
+<dl class="docutils">
+<dt><strong>Returns:</strong></dt>
+<dd><p class="first">An array of objects with the following fields:</p>
+<ul class="last simple">
+<li><strong>timestamp</strong> &#8211; time the mailing was forwarded</li>
+<li><strong>forward_mailing_id</strong> &#8211; id of the new mailing created to                                        send the forward</li>
+<li><strong>member_id</strong> &#8211; id of the forwarding member</li>
+<li><strong>email</strong> &#8211; email of the forwarding member</li>
+</ul>
+</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid
+mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test mailings and
+&#8216;r&#8217; for trigger mailings.</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>GET /100/response/200/forwards</b>
+
+[
+
+]
+
+</pre>
+</div>
+</p>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--#account_id-response-#mailing_id-optouts">
+<tt class="descname">GET </tt><tt class="descname">/#account_id/response/#mailing_id/optouts</tt><a class="headerlink" href="#get--#account_id-response-#mailing_id-optouts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of optouts for this mailing.</p>
+<dl class="docutils">
+<dt><strong>Returns:</strong></dt>
+<dd><p class="first">An array of objects with the following fields:</p>
+<ul class="last simple">
+<li><strong>timestamp</strong> &#8211; time of the optout</li>
+<li><strong>member_id</strong> &#8211; id of the opted out member</li>
+<li><strong>email</strong> &#8211; email of the opted out member</li>
+<li><strong>first_name</strong> &#8211; first name of the opted out member</li>
+<li><strong>last_name</strong> &#8211; last name of the opted out member</li>
+</ul>
+</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid
+mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test mailings and
+&#8216;r&#8217; for trigger mailings.</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>GET /100/response/200/optouts</b>
+
+[
+  {
+    "fields": {
+
+    },
+    "timestamp": "@D:2011-01-02T13:56:16",
+    "member_id": 204,
+    "member_since": "@D:2010-12-13T23:12:44",
+    "email_domain": "myemma.com",
+    "email_user": "bob",
+    "email": "bob@myemma.com",
+    "member_status_id": "a"
+  }
+]
+
+</pre>
+</div>
+</p>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--#account_id-response-#mailing_id-signups">
+<tt class="descname">GET </tt><tt class="descname">/#account_id/response/#mailing_id/signups</tt><a class="headerlink" href="#get--#account_id-response-#mailing_id-signups" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of signups for this mailing.</p>
+<dl class="docutils">
+<dt><strong>Returns:</strong></dt>
+<dd><p class="first">An array of objects with the following fields:</p>
+<ul class="last simple">
+<li><strong>member_id</strong> &#8211; id of the signed up member</li>
+<li><strong>email</strong> &#8211; email of the signed up member</li>
+<li><strong>timestamp</strong> &#8211; time of the signup</li>
+<li><strong>first_name</strong> &#8211; first name of the signed up member</li>
+<li><strong>last_name</strong> &#8211; last name of the signed up member</li>
+<li><strong>ref_member_id</strong> &#8211; id of the referring member</li>
+</ul>
+</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid
+mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test mailings and
+&#8216;r&#8217; for trigger mailings.</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>GET /100/response/200/signups</b>
+
+[
+  {
+    "ref_member_id": 200,
+    "mailing_mailing_id": 200,
+    "fields": {
+
+    },
+    "timestamp": "@D:2011-01-05T15:28:11",
+    "member_id": 205,
+    "member_since": "@D:2011-01-05T15:28:11",
+    "email_domain": "myemma.com",
+    "email_user": "newbie",
+    "email": "newbie@myemma.com",
+    "member_status_id": "a"
+  }
+]
+
+</pre>
+</div>
+</p>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--#account_id-response-#mailing_id-shares">
+<tt class="descname">GET </tt><tt class="descname">/#account_id/response/#mailing_id/shares</tt><a class="headerlink" href="#get--#account_id-response-#mailing_id-shares" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of shares for this mailing</p>
+<dl class="docutils">
+<dt><strong>Returns:</strong></dt>
+<dd><p class="first">An array of objects with the following fields:</p>
+<ul class="last simple">
+<li><strong>member_id</strong> &#8211; id of the shared message</li>
+<li><strong>network</strong> &#8211; name of the network the share happened on</li>
+<li><strong>clicks</strong> &#8211; number of clicks that the shared link received</li>
+</ul>
+</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid
+mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test mailings and
+&#8216;r&#8217; for trigger mailings.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--#account_id-response-#mailing_id-customer_shares">
+<tt class="descname">GET </tt><tt class="descname">/#account_id/response/#mailing_id/customer_shares</tt><a class="headerlink" href="#get--#account_id-response-#mailing_id-customer_shares" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of customer shares for this mailing</p>
+<dl class="docutils">
+<dt><strong>Returns:</strong></dt>
+<dd><p class="first">An array of objects with the following fields:</p>
+<ul class="last simple">
+<li><strong>timestamp</strong> &#8211; timestamp of the shared link click</li>
+<li><strong>network</strong> &#8211; name of the network the share happened on</li>
+</ul>
+</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid
+mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test mailings and
+&#8216;r&#8217; for trigger mailings.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--#account_id-response-#mailing_id-customer_share_clicks">
+<tt class="descname">GET </tt><tt class="descname">/#account_id/response/#mailing_id/customer_share_clicks</tt><a class="headerlink" href="#get--#account_id-response-#mailing_id-customer_share_clicks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of customer share clicks for this mailing</p>
+<dl class="docutils">
+<dt><strong>Returns:</strong></dt>
+<dd><p class="first">An array of objects with the following fields:</p>
+<ul class="last simple">
+<li><strong>timestamp</strong> &#8211; timestamp of the shared link click</li>
+<li><strong>network</strong> &#8211; name of the network the share happened on</li>
+<li><strong>clicks</strong> &#8211; number of clicks that the shared link received</li>
+</ul>
+</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid
+mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test mailings and
+&#8216;r&#8217; for trigger mailings.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--#account_id-response-#share_id-customer_share">
+<tt class="descname">GET </tt><tt class="descname">/#account_id/response/#share_id/customer_share</tt><a class="headerlink" href="#get--#account_id-response-#share_id-customer_share" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the customer share associated with the share id.</p>
+<dl class="docutils">
+<dt><strong>Returns:</strong></dt>
+<dd><p class="first">An object with the following fields:</p>
+<ul class="last simple">
+<li><strong>timestamp</strong> &#8211; timestamp of the share</li>
+<li><strong>network</strong> &#8211; name of the network the share happened on</li>
+<li><strong>share_status</strong> &#8211; status of the share</li>
+</ul>
+</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid
+mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test mailings and
+&#8216;r&#8217; for trigger mailings.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--#account_id-response-#mailing_id-shares-overview">
+<tt class="descname">GET </tt><tt class="descname">/#account_id/response/#mailing_id/shares/overview</tt><a class="headerlink" href="#get--#account_id-response-#mailing_id-shares-overview" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get overview of shares pertaining to this mailing_id.</p>
+<dl class="docutils">
+<dt><strong>Returns:</strong></dt>
+<dd><p class="first">An array of objects with the following fields:</p>
+<ul class="last simple">
+<li><strong>network</strong> &#8211; name of the network the share happened on</li>
+<li><strong>share_clicks</strong> &#8211; number of clicks that the shared link received</li>
+<li><strong>share_count</strong> &#8211; number of shares to that network</li>
+</ul>
+</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="members.html" title="previous chapter">Members</a></li>
+      <li>Next: <a href="searches.html" title="next chapter">Searches</a></li>
+  </ul></li>
+</ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div id="emma-links">
+  <h3>Emma Links</h3>
+  <ul>
+    <li><a href="http://myemma.com" title="Visit Emma's homepage" target="_blank">Emma Home</a></li>
+
+    <li><a href="http://myemma.com/blog" title="Visit the Emma Blog" target="_blank">Emma Blog</a></li>
+    <li><a href="http://myemma.com/help" title="Visit Emma's help guide" target="_blank">Emma Help</a></li>
+  </ul>
+</div>
+
+<div id="inquiry">
+  <h3>Interested in Emma?</h3>
+  <p>Emma's email marketing makes communicating simple and stylish. <a href="http://myemma.com/get-started/inquire" title="Get started today.">Get started today</a>.</p>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2013, Emma.
+        Last updated on Aug 22, 2013 at 09:41 AM.
+    </div>
+  </body>
+</html>

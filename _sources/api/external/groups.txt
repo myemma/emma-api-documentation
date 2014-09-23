@@ -1,0 +1,12 @@
+Groups
+======
+
+With these endpoints, you can manage all aspects of the groups in 
+your account. In addition to various CRUD methods, you can also 
+use these endpoints to manage the members of your groups. You'll 
+want to use these methods if you're managing group membership for 
+more than one member at a time. For dealing with single members, 
+there are better methods in the ``members`` endpoints.
+
+.. autoemma:: audience.api.controllers.groups:MemberGroupController
+

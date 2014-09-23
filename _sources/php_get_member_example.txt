@@ -1,0 +1,41 @@
+PHP Get Member By Email Example
+===============================
+
+Here's the complete example of the PHP code to find a member by email address.
+
+.. code-block:: php
+
+    <?php
+    // Authentication Variables
+    $account_id = "xxxx";
+    $public_api_key = "xxxxx";
+    $private_api_key = "xxxxx";
+
+    // Form variable(s)
+    $email = 'me@test.com';
+
+    // Set URL
+    $url = "https://api.e2ma.net/" . $account_id . "/members/email/" . $email;
+
+    // Open connection
+    $ch = curl_init();
+
+    // Make the curl call
+    curl_setopt($ch, CURLOPT_USERPWD, $public_api_key . ":" . $private_api_key);
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-type: application/json'));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    $head = curl_exec($ch);
+    $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
+
+    // check for errors
+    if($http_code > 200) {
+        print "Error getting member:\r\n";
+        print_r($head);
+    } else {
+        print "Member information:\r\n";
+        print_r($head);
+    }
+    ?>

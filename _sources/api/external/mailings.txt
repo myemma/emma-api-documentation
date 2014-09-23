@@ -1,0 +1,9 @@
+Mailings
+========
+
+With these endpoints, you can get information about your mailings including 
+their HTML contents. You can retrieve the members to whom the mailing was sent. 
+You can also pause mailings and cancel mailings that are pending or paused.
+
+.. autoemma:: audience.api.controllers.mailings:MailingController
+

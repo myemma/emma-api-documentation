@@ -1,0 +1,32 @@
+.. _placeholder_syntax:
+
+Placeholder Syntax
+==================
+
+Syntax Overview
+---------------
+
+The content of messages can be customized using the template tag library.
+Each template tag should be enclosed in a ``[%`` ``%]`` pair. Where a tag
+requires a qualifier value, the value should be attached with a colon.
+
+For example, the following extract shows a member's name being inserted into a
+greeting::
+
+    Hello [% member:first_name %] [% member:last_name %],
+
+    Welcome to the "Exciting Onions" mailing list, where you can be kept up to
+    date on all the latest onion-related news ...
+
+Some tags also accept additional key/value pairs to control their behavior.
+For example, adding a default value to a member field::
+
+    Hello [% member:first_name default="Friend" %]
+
+...or specifying the link text for a trackable link::
+
+    Please visit [% link:http://fancyonions.com/home name="our website" %]
+
+
+.. todo::
+    fully document the available tags

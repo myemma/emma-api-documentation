@@ -1,0 +1,173 @@
+
+<!doctype html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Emma API Documentation | Emma, Inc.</title>
+
+    
+    <link rel="stylesheet" href="_static/emma.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    
+    <script src="http://code.jquery.com/jquery-1.4.min.js"></script>
+    <script>window.jQuery || document.write('<script src="_static/jquery.js"><\/script>')</script>
+    
+    <script type="text/javascript" src="//use.typekit.net/zfm0nfo.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="audience 0.1 documentation" href="index.html" />
+    <link rel="next" title="Placeholder Syntax" href="placeholders.html" />
+    <link rel="prev" title="Webhooks" href="api/external/webhooks.html" />
+    <link rel="icon" href="http://myemma.com/static/global/favicons/favicon.ico?v=2" type="image/x-icon">
+    <link rel="shortcut icon" href="http://myemma.com/static/global/favicons/favicon.ico?v=2" type="image/x-icon">
+    <link rel="apple-touch-icon-precomposed" href="http://myemma.com/static/global/favicons/apple-iphone.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://myemma.com/static/global/favicons/apple-ipad.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://myemma.com/static/global/favicons/apple-iphone-2x.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://myemma.com/static/global/favicons/apple-ipad-2x.png" />
+
+    <style type="text/css">
+      .resp-trigger, .resp-trigger:hover {font-size:10pt;text-decoration:none;}
+      div.sample-response.hide-response pre.response {display: none;}
+      div.sample-response .tshow,
+      div.sample-response.hide-response .thide {display: none;}
+      div.sample-response .thide,
+      div.sample-response.hide-response .tshow {display: inline;}
+    </style>
+    <script>
+      $().ready(function() {
+        $("a.resp-trigger").click(function(e) {
+          e.preventDefault();
+          $(this).parents("div.sample-response").toggleClass("hide-response");
+        });
+      });
+    </script>
+
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-512410-18']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+
+  </head>
+  <body>
+  <header role="banner">
+    <a href="/index.html">
+      <h1>Emma API Documentation</h1>
+    </a>
+  </header>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="http-routingtable.html" title="HTTP Routing Table"
+             >routing table</a> |</li>
+        <li class="right" >
+          <a href="placeholders.html" title="Placeholder Syntax"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="api/external/webhooks.html" title="Webhooks"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">audience 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="pagination">
+<span id="id1"></span><h1>Pagination<a class="headerlink" href="#pagination" title="Permalink to this headline">¶</a></h1>
+<p>Responses with a large number of results should be paginated; the query
+parameters <tt class="docutils literal"><span class="pre">start</span></tt> and <tt class="docutils literal"><span class="pre">end</span></tt> can be used to specify how large a set
+of items to retrieve in each call, with a maximum page size of 500.</p>
+<p>Additionally, for any call you can retrieve a count of the results (instead
+of the results themselves) by appending a query parameter of <tt class="docutils literal"><span class="pre">count=true</span></tt>.</p>
+<p>So, to pull a large number of results, you start with a count:</p>
+<blockquote>
+<div><a class="reference external" href="https://api.e2ma.net/123/members?count=true">https://api.e2ma.net/123/members?count=true</a></div></blockquote>
+<p>Then, iterate over the list in blocks of 500:</p>
+<blockquote>
+<div><p><a class="reference external" href="https://api.e2ma.net/123/members?start=0&amp;end=500">https://api.e2ma.net/123/members?start=0&amp;end=500</a></p>
+<p><a class="reference external" href="https://api.e2ma.net/123/members?start=500&amp;end=1000">https://api.e2ma.net/123/members?start=500&amp;end=1000</a></p>
+</div></blockquote>
+<p>Requests for page sizes larger than 500 will limited to <tt class="docutils literal"><span class="pre">start</span></tt> + 500.</p>
+<p>Calls are rate-limited to prevent accidental overuse.  If you exceed the limit
+you will receive a response of <tt class="docutils literal"><span class="pre">403</span> <span class="pre">Rate</span> <span class="pre">Limit</span> <span class="pre">Exceeded</span></tt> until enough time
+has elapsed between calls.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="api/external/webhooks.html" title="previous chapter">Webhooks</a></li>
+      <li>Next: <a href="placeholders.html" title="next chapter">Placeholder Syntax</a></li>
+  </ul></li>
+</ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div id="emma-links">
+  <h3>Emma Links</h3>
+  <ul>
+    <li><a href="http://myemma.com" title="Visit Emma's homepage" target="_blank">Emma Home</a></li>
+
+    <li><a href="http://myemma.com/blog" title="Visit the Emma Blog" target="_blank">Emma Blog</a></li>
+    <li><a href="http://myemma.com/help" title="Visit Emma's help guide" target="_blank">Emma Help</a></li>
+  </ul>
+</div>
+
+<div id="inquiry">
+  <h3>Interested in Emma?</h3>
+  <p>Emma's email marketing makes communicating simple and stylish. <a href="http://myemma.com/get-started/inquire" title="Get started today.">Get started today</a>.</p>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2013, Emma.
+        Last updated on Aug 22, 2013 at 09:41 AM.
+    </div>
+  </body>
+</html>

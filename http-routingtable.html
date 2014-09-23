@@ -1,0 +1,622 @@
+
+<!doctype html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Emma API Documentation | Emma, Inc.</title>
+
+    
+    <link rel="stylesheet" href="_static/emma.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    
+    <script src="http://code.jquery.com/jquery-1.4.min.js"></script>
+    <script>window.jQuery || document.write('<script src="_static/jquery.js"><\/script>')</script>
+    
+    <script type="text/javascript" src="//use.typekit.net/zfm0nfo.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="audience 0.1 documentation" href="index.html" />
+
+    <link rel="icon" href="http://myemma.com/static/global/favicons/favicon.ico?v=2" type="image/x-icon">
+    <link rel="shortcut icon" href="http://myemma.com/static/global/favicons/favicon.ico?v=2" type="image/x-icon">
+    <link rel="apple-touch-icon-precomposed" href="http://myemma.com/static/global/favicons/apple-iphone.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://myemma.com/static/global/favicons/apple-ipad.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://myemma.com/static/global/favicons/apple-iphone-2x.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://myemma.com/static/global/favicons/apple-ipad-2x.png" />
+
+    <style type="text/css">
+      .resp-trigger, .resp-trigger:hover {font-size:10pt;text-decoration:none;}
+      div.sample-response.hide-response pre.response {display: none;}
+      div.sample-response .tshow,
+      div.sample-response.hide-response .thide {display: none;}
+      div.sample-response .thide,
+      div.sample-response.hide-response .tshow {display: inline;}
+    </style>
+    <script>
+      $().ready(function() {
+        $("a.resp-trigger").click(function(e) {
+          e.preventDefault();
+          $(this).parents("div.sample-response").toggleClass("hide-response");
+        });
+      });
+    </script>
+
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-512410-18']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+
+
+    <script type="text/javascript">
+      DOCUMENTATION_OPTIONS.COLLAPSE_INDEX = true;
+    </script>
+
+
+  </head>
+  <body>
+  <header role="banner">
+    <a href="/index.html">
+      <h1>Emma API Documentation</h1>
+    </a>
+  </header>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="#" title="HTTP Routing Table"
+             >routing table</a> |</li>
+        <li><a href="index.html">audience 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+
+   <h1>HTTP Routing Table</h1>
+
+   <div class="modindex-jumpbox">
+   <a href="#cap-/#account_id"><strong>/#account_id</strong></a>
+   </div>
+
+   <table class="indextable modindextable" cellspacing="0" cellpadding="2">
+     <tr class="pcap"><td></td><td>&nbsp;</td><td></td></tr>
+     <tr class="cap" id="cap-/#account_id"><td></td><td>
+       <strong>/#account_id</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/fields.html#get--#account_id-fields"><tt class="xref">GET /#account_id/fields</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/fields.html#post--#account_id-fields"><tt class="xref">POST /#account_id/fields</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/fields.html#get--#account_id-fields-#field_id"><tt class="xref">GET /#account_id/fields/#field_id</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/fields.html#put--#account_id-fields-#field_id"><tt class="xref">PUT /#account_id/fields/#field_id</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/fields.html#delete--#account_id-fields-#field_id"><tt class="xref">DELETE /#account_id/fields/#field_id</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/fields.html#post--#account_id-fields-#field_id-clear"><tt class="xref">POST /#account_id/fields/#field_id/clear</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/mailings.html#post--#account_id-forwards-#mailing_id-#member_id"><tt class="xref">POST /#account_id/forwards/#mailing_id/#member_id</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/groups.html#get--#account_id-groups"><tt class="xref">GET /#account_id/groups</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/groups.html#post--#account_id-groups"><tt class="xref">POST /#account_id/groups</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/groups.html#put--#account_id-groups-#from_group_id-#to_group_id-members-copy"><tt class="xref">PUT /#account_id/groups/#from_group_id/#to_group_id/members/copy</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/groups.html#get--#account_id-groups-#member_group_id"><tt class="xref">GET /#account_id/groups/#member_group_id</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/groups.html#put--#account_id-groups-#member_group_id"><tt class="xref">PUT /#account_id/groups/#member_group_id</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/groups.html#delete--#account_id-groups-#member_group_id"><tt class="xref">DELETE /#account_id/groups/#member_group_id</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/groups.html#get--#account_id-groups-#member_group_id-members"><tt class="xref">GET /#account_id/groups/#member_group_id/members</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/groups.html#put--#account_id-groups-#member_group_id-members"><tt class="xref">PUT /#account_id/groups/#member_group_id/members</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/groups.html#delete--#account_id-groups-#member_group_id-members"><tt class="xref">DELETE /#account_id/groups/#member_group_id/members</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/groups.html#put--#account_id-groups-#member_group_id-members-remove"><tt class="xref">PUT /#account_id/groups/#member_group_id/members/remove</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/groups.html#delete--#account_id-groups-#member_group_id-members-remove"><tt class="xref">DELETE /#account_id/groups/#member_group_id/members/remove</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/mailings.html#get--#account_id-mailings"><tt class="xref">GET /#account_id/mailings</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/mailings.html#post--#account_id-mailings"><tt class="xref">POST /#account_id/mailings</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/mailings.html#get--#account_id-mailings-#mailing_id"><tt class="xref">GET /#account_id/mailings/#mailing_id</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/mailings.html#put--#account_id-mailings-#mailing_id"><tt class="xref">PUT /#account_id/mailings/#mailing_id</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/mailings.html#post--#account_id-mailings-#mailing_id"><tt class="xref">POST /#account_id/mailings/#mailing_id</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/mailings.html#delete--#account_id-mailings-#mailing_id"><tt class="xref">DELETE /#account_id/mailings/#mailing_id</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/mailings.html#get--#account_id-mailings-#mailing_id-groups"><tt class="xref">GET /#account_id/mailings/#mailing_id/groups</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/mailings.html#get--#account_id-mailings-#mailing_id-headsup"><tt class="xref">GET /#account_id/mailings/#mailing_id/headsup</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/mailings.html#get--#account_id-mailings-#mailing_id-members"><tt class="xref">GET /#account_id/mailings/#mailing_id/members</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/mailings.html#get--#account_id-mailings-#mailing_id-messages-#member_id"><tt class="xref">GET /#account_id/mailings/#mailing_id/messages/#member_id</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/mailings.html#get--#account_id-mailings-#mailing_id-searches"><tt class="xref">GET /#account_id/mailings/#mailing_id/searches</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/mailings.html#post--#account_id-mailings-#mailing_id-winner-#winner_id"><tt class="xref">POST /#account_id/mailings/#mailing_id/winner/#winner_id</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/mailings.html#delete--#account_id-mailings-cancel-#mailing_id"><tt class="xref">DELETE /#account_id/mailings/cancel/#mailing_id</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/mailings.html#post--#account_id-mailings-validate"><tt class="xref">POST /#account_id/mailings/validate</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/members.html#get--#account_id-members"><tt class="xref">GET /#account_id/members</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/members.html#post--#account_id-members"><tt class="xref">POST /#account_id/members</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/members.html#delete--#account_id-members"><tt class="xref">DELETE /#account_id/members</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/members.html#put--#account_id-members-#group_id-copy"><tt class="xref">PUT /#account_id/members/#group_id/copy</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/members.html#get--#account_id-members-#member_id"><tt class="xref">GET /#account_id/members/#member_id</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/members.html#put--#account_id-members-#member_id"><tt class="xref">PUT /#account_id/members/#member_id</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/members.html#delete--#account_id-members-#member_id"><tt class="xref">DELETE /#account_id/members/#member_id</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/members.html#get--#account_id-members-#member_id-groups"><tt class="xref">GET /#account_id/members/#member_id/groups</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/members.html#put--#account_id-members-#member_id-groups"><tt class="xref">PUT /#account_id/members/#member_id/groups</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/members.html#delete--#account_id-members-#member_id-groups"><tt class="xref">DELETE /#account_id/members/#member_id/groups</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/members.html#put--#account_id-members-#member_id-groups-remove"><tt class="xref">PUT /#account_id/members/#member_id/groups/remove</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/members.html#get--#account_id-members-#member_id-mailings"><tt class="xref">GET /#account_id/members/#member_id/mailings</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/members.html#get--#account_id-members-#member_id-optout"><tt class="xref">GET /#account_id/members/#member_id/optout</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/members.html#post--#account_id-members-add"><tt class="xref">POST /#account_id/members/add</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/members.html#put--#account_id-members-delete"><tt class="xref">PUT /#account_id/members/delete</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/members.html#get--#account_id-members-email--email"><tt class="xref">GET /#account_id/members/email/:email</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/members.html#put--#account_id-members-email-optout--email"><tt class="xref">PUT /#account_id/members/email/optout/:email</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/members.html#put--#account_id-members-groups-remove"><tt class="xref">PUT /#account_id/members/groups/remove</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/members.html#get--#account_id-members-imports"><tt class="xref">GET /#account_id/members/imports</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/members.html#get--#account_id-members-imports-#import_id"><tt class="xref">GET /#account_id/members/imports/#import_id</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/members.html#get--#account_id-members-imports-#import_id-members"><tt class="xref">GET /#account_id/members/imports/#import_id/members</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/members.html#delete--#account_id-members-imports-delete"><tt class="xref">DELETE /#account_id/members/imports/delete</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/members.html#post--#account_id-members-signup"><tt class="xref">POST /#account_id/members/signup</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/members.html#put--#account_id-members-status"><tt class="xref">PUT /#account_id/members/status</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/members.html#put--#account_id-members-status--status_from-to--status_to"><tt class="xref">PUT /#account_id/members/status/:status_from/to/:status_to</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/response.html#get--#account_id-response"><tt class="xref">GET /#account_id/response</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/response.html#get--#account_id-response-#mailing_id"><tt class="xref">GET /#account_id/response/#mailing_id</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/response.html#get--#account_id-response-#mailing_id-clicks"><tt class="xref">GET /#account_id/response/#mailing_id/clicks</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/response.html#get--#account_id-response-#mailing_id-customer_share_clicks"><tt class="xref">GET /#account_id/response/#mailing_id/customer_share_clicks</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/response.html#get--#account_id-response-#mailing_id-customer_shares"><tt class="xref">GET /#account_id/response/#mailing_id/customer_shares</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/response.html#get--#account_id-response-#mailing_id-deliveries"><tt class="xref">GET /#account_id/response/#mailing_id/deliveries</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/response.html#get--#account_id-response-#mailing_id-forwards"><tt class="xref">GET /#account_id/response/#mailing_id/forwards</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/response.html#get--#account_id-response-#mailing_id-in_progress"><tt class="xref">GET /#account_id/response/#mailing_id/in_progress</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/response.html#get--#account_id-response-#mailing_id-links"><tt class="xref">GET /#account_id/response/#mailing_id/links</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/response.html#get--#account_id-response-#mailing_id-opens"><tt class="xref">GET /#account_id/response/#mailing_id/opens</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/response.html#get--#account_id-response-#mailing_id-optouts"><tt class="xref">GET /#account_id/response/#mailing_id/optouts</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/response.html#get--#account_id-response-#mailing_id-sends"><tt class="xref">GET /#account_id/response/#mailing_id/sends</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/response.html#get--#account_id-response-#mailing_id-shares"><tt class="xref">GET /#account_id/response/#mailing_id/shares</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/response.html#get--#account_id-response-#mailing_id-shares-overview"><tt class="xref">GET /#account_id/response/#mailing_id/shares/overview</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/response.html#get--#account_id-response-#mailing_id-signups"><tt class="xref">GET /#account_id/response/#mailing_id/signups</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/response.html#get--#account_id-response-#share_id-customer_share"><tt class="xref">GET /#account_id/response/#share_id/customer_share</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/searches.html#get--#account_id-searches"><tt class="xref">GET /#account_id/searches</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/searches.html#post--#account_id-searches"><tt class="xref">POST /#account_id/searches</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/searches.html#get--#account_id-searches-#search_id"><tt class="xref">GET /#account_id/searches/#search_id</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/searches.html#put--#account_id-searches-#search_id"><tt class="xref">PUT /#account_id/searches/#search_id</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/searches.html#delete--#account_id-searches-#search_id"><tt class="xref">DELETE /#account_id/searches/#search_id</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/searches.html#get--#account_id-searches-#search_id-members"><tt class="xref">GET /#account_id/searches/#search_id/members</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/triggers.html#get--#account_id-triggers"><tt class="xref">GET /#account_id/triggers</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/triggers.html#post--#account_id-triggers"><tt class="xref">POST /#account_id/triggers</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/triggers.html#get--#account_id-triggers-#trigger_id"><tt class="xref">GET /#account_id/triggers/#trigger_id</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/triggers.html#put--#account_id-triggers-#trigger_id"><tt class="xref">PUT /#account_id/triggers/#trigger_id</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/triggers.html#delete--#account_id-triggers-#trigger_id"><tt class="xref">DELETE /#account_id/triggers/#trigger_id</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/triggers.html#get--#account_id-triggers-#trigger_id-mailings"><tt class="xref">GET /#account_id/triggers/#trigger_id/mailings</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/webhooks.html#get--#account_id-webhooks"><tt class="xref">GET /#account_id/webhooks</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/webhooks.html#post--#account_id-webhooks"><tt class="xref">POST /#account_id/webhooks</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/webhooks.html#delete--#account_id-webhooks"><tt class="xref">DELETE /#account_id/webhooks</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/webhooks.html#get--#account_id-webhooks-#webhook_id"><tt class="xref">GET /#account_id/webhooks/#webhook_id</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/webhooks.html#put--#account_id-webhooks-#webhook_id"><tt class="xref">PUT /#account_id/webhooks/#webhook_id</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/webhooks.html#delete--#account_id-webhooks-#webhook_id"><tt class="xref">DELETE /#account_id/webhooks/#webhook_id</tt></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="api/external/webhooks.html#get--#account_id-webhooks-events"><tt class="xref">GET /#account_id/webhooks/events</tt></a></td><td>
+       <em></em></td></tr>
+   </table>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div id="emma-links">
+  <h3>Emma Links</h3>
+  <ul>
+    <li><a href="http://myemma.com" title="Visit Emma's homepage" target="_blank">Emma Home</a></li>
+
+    <li><a href="http://myemma.com/blog" title="Visit the Emma Blog" target="_blank">Emma Blog</a></li>
+    <li><a href="http://myemma.com/help" title="Visit Emma's help guide" target="_blank">Emma Help</a></li>
+  </ul>
+</div>
+
+<div id="inquiry">
+  <h3>Interested in Emma?</h3>
+  <p>Emma's email marketing makes communicating simple and stylish. <a href="http://myemma.com/get-started/inquire" title="Get started today.">Get started today</a>.</p>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2013, Emma.
+        Last updated on Aug 22, 2013 at 09:41 AM.
+    </div>
+  </body>
+</html>

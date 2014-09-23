@@ -1,0 +1,104 @@
+.. _search_syntax:
+
+Search Syntax
+=============
+
+Syntax Overview
+---------------
+
+Searches are constructed using nested JSON arrays of filters and boolean predicates. Here is an example of a simple filter:
+
+::
+
+    ["member_field:foo", "eq", "bar"]
+    
+A filter is composed of one or more parts. The first part is always a *filter term*. In general, a filter term maps directly to a field in the results. A filter term can accept an argument (the ``:foo`` in the example above) that will have different meanings for different filter terms. If the filter has more than one part, the second part is *always* an *operator*. The remaining parts are arguments for the operator. Different operators will have different arguments, but will always have at least one.
+
+In addition, filters can be *nested* using *boolean predicates*. Here's an example of a nested query:
+
+::
+
+    ["and",
+        ["member_field:foo", "eq", "bar"],
+        ["member_since", "in last", {"day": 5}]]
+
+        
+This example will return all members who joined in the last 5 days and have their member_field ``foo`` set to ``bar``. The available boolean predicates and examples of their use are below.
+
+Operators
+---------
+
+There are a bunch of operators available:
+
+* ``eq`` and ``=``: Basic equality. Example: ``["member_field:some_string_field", "eq", "bar"]``
+* ``lt`` and ``<``: Less than. Example: ``["member_field:some_numeric_field", "lt", 5]``
+* ``gt`` and ``>``: Greater than. Example: ``["member_field:some_numeric_field", "gt", 5]``
+
+* ``between``: Between. Takes two arguments. Example: ``["member_field:some_numeric_field", "between", 5, 10]``
+* ``in last`` and ``in next``: Relative date. Takes an interval (explained below). Example: ``["member_since", "in last", {"day": 4}]``
+* ``datematch``: Match a date argument. All parts of the date must match. Example: ``["member_since", "datematch", {"year": 2011}]``
+* ``contains``: Match a string against a shell-glob-style expression. Example: ``["member_field:some_string_field", "contains", "*foo*"]``
+* ``in``: Match a field against a list of values. Example: ``["member_field:some_number_field", "in", 3, 4, 5, 6]``
+* ``any``: Match a given value against an array field. Example: ``["member_field:some_array_field", "any", "ten"]``
+
+In addition to these basic operators, there is one advanced operator available:
+
+* ``zip-radius:n``: where ``n`` can be one of ``5``, ``10``, ``15``, ``20``, ``25``, or ``50``. Takes a single zip code which will be the center of the search. Example: ``["member_field:some_zipcode_field", "zip-radius:10", "97202"]`` will return all members with a ``zip_code_field`` within 10 miles of ``97202``.
+
+Intervals
+~~~~~~~~~
+
+An interval is defined as a hash that contains one or more of the following keys:
+
+* ``year``
+* ``month``
+* ``day``
+* ``hour``
+* ``minute``
+* ``second``
+
+For example, ``{"year": 2, "day": 4}`` would specify an interval of two years and four days.
+
+Dates
+~~~~~
+
+A date is defined as a hash that contains one or more of the following keys:
+
+* ``year``
+* ``month``
+* ``day``
+* ``hour``
+* ``minute``
+* ``second``
+* ``dow`` (day of week)
+
+For example, ``{"day", 31}`` would match the 31st of every month with a 31st day, while ``{"dow": 2}`` would match every Tuesday. Sunday is 0.
+
+Boolean Predicates
+------------------
+
+Boolean predicates operate on one or more nested clauses. These predicates are available:
+
+* ``and``: All clauses must be true. Example: ``["and", ["member_field:foo", "eq", 1], ["member_field:bar", "eq", 2]]``
+* ``or``: At least one clause must be true.  Example: ``["or", ["member_field:foo", "eq", 1], ["member_field:bar", "eq", 2]]``
+* ``not``: The single nested clause must not be true. Example: ``["not", ["member_field:foo", "eq", 1]]``
+
+Filter Terms
+------------
+
+In general, every key in the result records can be used as a filter term. Just use the key as the filter term. For example, to filter on ``send_start``, you'd say ``["send_start", "gt", "2011-12-15"]``. In addition, there is a large set of advanced filter terms for filtering members:
+
+* ``opened``, ``clicked``, ``shared``, ``forwarded``. Will match on the timestamp of the corresponding response if it exists. All of these filter terms also allow a ``mailing_id`` as an argument (i.e. ``opened:12345`` matches if they opened mailing 12345.
+* ``member_field:x`` where ``x`` is the short name of a member field. You can also use ``x`` by itself without ``member_field:``.
+* ``group``. Will match the name of a member group. Takes the special operators ``defined`` (belongs to any group) and ``undefined`` (does not belong to any group). 
+* ``received`` Will match if the member received a mailing. Takes an optional ``mailing_id`` argument. If not given, will match if the member has received *any* mailing.
+* ``clicked link``. Will match if the member has clicked on a link. Takes an optional ``link_id`` argument. If not given, will match if the member has clicked on *any* link.
+* ``manage``: Will match if the member has manged their preferences. Optionally takes a date filter on the timestamp of the manage action. Optionally takes a ``signup_form_id`` argument. Example: ``["manage:1234", "in last", {"day", 30}]``. 
+* ``unsubscribed``: Will match if the member has unsubscribed. Optionally takes a date filter on the timestamp of the opt-out action. Optionally takes a ``signup_form_id`` filter argument.
+* ``unsubscribed mailing``: Will match if the member has unsubscribed. Optionally takes a date filter on the timestamp of the opt-out action. Optionally takes a ``mailing_id`` filter argument.
+* ``bounced``: Will match if the member had either a soft or hard bounce. Optionally takes a date filter on the timestamp of the bounce. Optionally takes a ``mailing_id`` filter argument.
+* ``email_user``: Will match on the user portion of the member's email address
+* ``email_domain``: Will match on the domain portion of the member's email address
+* ``email``: Will match on the member's entire email address
+* ``signup``: Will match if the member has signed up. Optionally takes a date filter on the timestamp of the signup action. Optionally takes a ``signup_form_id`` filter argument.
+* ``signup_mailing``: Will match if the member has signed up. Optionally takes a date filter on the timestamp of the signup action. Optionally takes a ``mailing_id`` filter argument.

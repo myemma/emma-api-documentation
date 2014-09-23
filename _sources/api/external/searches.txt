@@ -1,0 +1,9 @@
+Searches
+========
+
+These endpoints allow you to create, edit, and delete searches. You can also 
+retrieve the members matching any search created in your account. You can 
+:doc:`get more details on how to construct searches <../../member_search>`.
+
+.. autoemma:: audience.api.controllers.searches:SearchController
+
