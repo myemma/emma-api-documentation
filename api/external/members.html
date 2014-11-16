@@ -479,6 +479,7 @@ name of a member field.</p>
 <tt class="descname">POST </tt><tt class="descname">/#account_id/members/add</tt><a class="headerlink" href="#post--#account_id-members-add" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds or updates a single audience member. If you are performing actions
 on bulk members please use the <cite>/members</cite> call above.</p>
+<p>Members added with this call will not receive a confirmation email from the system. To trigger that confirmation email, please use the <cite>/signup</cite> call below.</p>
 <dl class="docutils">
 <dt><em>Note</em>: Members who are added to your audience using this API call will</dt>
 <dd>not appear in &#8220;recent activity&#8221; searches within your account.</dd>
@@ -491,6 +492,10 @@ on bulk members please use the <cite>/members</cite> call above.</p>
 <li><strong>email</strong> (<em>string</em>) &#8211; Email address of member to add or update</li>
 <li><strong>fields</strong> (<em>dictionary</em>) &#8211; Names and values of user-defined fields to update</li>
 <li><strong>group_ids</strong> (<em>array of integers</em>) &#8211; Optional. Add imported members to this list of groups.</li>
+<li><strong>signup_form_id</strong> (<em>integer</em>) &#8211; Optional. Indicate that this member used a
+particular signup form. This is important if you
+have custom mailings for a particular signup form
+and so that signup-based triggers will be fired.</li>
 <li><strong>field_triggers</strong> (<em>boolean</em>) &#8211; Optional. Fires related field change autoresponders when set to <em>true</em>.</li>
 </ul>
 </td>
