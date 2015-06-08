@@ -102,7 +102,7 @@
             
   <div class="section" id="triggers">
 <h1>Triggers<a class="headerlink" href="#triggers" title="Permalink to this headline">¶</a></h1>
-<p>These endpoints provide CRUD operations for our trigger system. Creating a
+<p>These endpoints provide CRUD operations for our trigger system. Viewing a
 trigger is probably the most widely used of these operations.</p>
 <dl class="get">
 <dt id="get--#account_id-triggers">
@@ -224,107 +224,6 @@ trigger is probably the most widely used of these operations.</p>
 </div>
 </p>
 </dd></dl>
-
-<dl class="post">
-<dt id="post--#account_id-triggers">
-<tt class="descname">POST </tt><tt class="descname">/#account_id/triggers</tt><a class="headerlink" href="#post--#account_id-triggers" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create a new trigger.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>name</strong> (<em>string</em>) &#8211; A descriptive name for the trigger.</li>
-<li><strong>event_type</strong> &#8211; The type of event that causes this trigger to fire.</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-<p>Accepts one of &#8216;s&#8217; (signup), &#8216;c&#8217; (click), &#8216;f&#8217; (trigger flag), &#8216;u&#8217; (survey),
-&#8216;si&#8217; (signup_integration), &#8216;d&#8217; (date), &#8216;r&#8217; (recurring date).
-:type event_type: string</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>parent_mailing_id</strong> (<em>integer</em>) &#8211; The id of the mailing this trigger will use
-as a template for message generation.</li>
-<li><strong>groups</strong> (<em>array</em>) &#8211; An optional array of group ids to which this trigger
-will apply.</li>
-<li><strong>links</strong> (<em>array</em>) &#8211; An array of link_ids for click triggers.</li>
-<li><strong>signups</strong> (<em>array</em>) &#8211; An array of signup_form_ids for signup triggers.</li>
-<li><strong>signup_integrations</strong> (<em>array</em>) &#8211; An array of oauth app ids for
-signup integration triggers.</li>
-<li><strong>surveys</strong> (<em>array</em>) &#8211; An array of survey_ids for survey triggers.</li>
-<li><strong>field_id</strong> (<em>integer</em>) &#8211; A field id to which this trigger will apply if it is
-a date or recurring date trigger.</li>
-<li><strong>push_offset</strong> (<em>integer</em>) &#8211; An optional delay interval for messages created
-from this trigger (specified in seconds).</li>
-<li><strong>is_disabled</strong> (<em>boolean</em>) &#8211; An optional flag to disable the trigger.</li>
-<li><strong>from_operator</strong> (<em>string</em>) &#8211; A string that specifies an operator value for the <em>from</em> operator field.</li>
-<li><strong>from_value</strong> (<em>string</em>) &#8211; A string that specifies the value of the <em>from</em> member data field.</li>
-<li><strong>to_operator</strong> (<em>string</em>) &#8211; A string that specifies an operator value for the <em>to</em> operator field.</li>
-<li><strong>to_value</strong> (<em>string</em>) &#8211; A string that specifies the value of the <em>to</em> member data field.</li>
-</ul>
-</td>
-</tr>
-<br/>
-<tr class="field-even field"><th class="field-name">To/From Values :</th><td class="field-body"><p class="first">These are the specific values used in the <em>from_operator</em> and <em>to_operator</em> parameters.</p>
-</td>
-    <tbody valign="top">
-    <tr class="field-odd field"><th class="field-name"></th><td class="field-body"><ul class="first simple">
-        <li>anything</li>
-        <li>contains</li>
-        <li>equals</li>
-        <li>does-not-equal</li>
-        <li>empty</li>
-        <li>greater-than</li>
-        <li>greater-than-or-equal-to</li>
-        <li>less-than</li>
-        <li>less-than-or-equal-to</li>
-    </ul>
-    </td>
-    </tr>
-    </tbody>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first">The new trigger&#8217;s id.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">Http500</span></tt> if object_ids is null and event_type is one of:
-&#8216;s&#8217; (signup), &#8216;c&#8217; (click), &#8216;u&#8217; (survey).</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><p class="first last"><tt class="docutils literal"><span class="pre">Http500</span></tt> if field_id is null and event_type is one of:
-&#8216;d&#8217; (date), &#8216;r&#8217; (recurring date).</p>
-</td>
-</tr>
-</tbody>
-</table>
-<p>
-<div class="sample-response hide-response">
-<span style="font-weight:bold;">Sample Response</span>
-<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
-<pre class="response">
-<b>POST /100/triggers</b>
-{
-  "parent_mailing_id": 200, 
-  "object_ids": [
-    10, 
-    20, 
-    30
-  ], 
-  "name": "Test", 
-  "event_type": "c"
-}
-
-1024
-</pre>
-</div>
-</p>
-</dd></dl>
-
 <dl class="get">
 <dt id="get--#account_id-triggers-#trigger_id">
 <tt class="descname">GET </tt><tt class="descname">/#account_id/triggers/#trigger_id</tt><a class="headerlink" href="#get--#account_id-triggers-#trigger_id" title="Permalink to this definition">¶</a></dt>
@@ -563,8 +462,13 @@ true
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy; Copyright 2013, Emma.
-        Last updated on Aug 22, 2013 at 09:41 AM.
+      &copy; Copyright 2003-<script language="JavaScript" type="text/javascript">
+          now = new Date
+          theYear=now.getYear()
+          if (theYear < 1900)
+          theYear=theYear+1900
+          document.write(theYear)
+      </script>, Emma.
     </div>
   </body>
 </html>
