@@ -497,6 +497,7 @@ header[role="banner"] { height:140px; max-width:940px; margin:16px auto 0; }
 header[role="banner"] h1 { width:342px; height:86px; margin:0; background:url(img/logo.png) no-repeat; text-indent:-9999px; }
 
 /*Page*/
+div.api_key_img { overflow: hidden; height:300px; }
 div.document { position:relative; margin-top:0; }
 
 /*Sidebar*/
