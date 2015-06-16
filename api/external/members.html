@@ -558,8 +558,9 @@ with your own copy. Must include the following
 tags: [rsvp_name], [rsvp_email], [opt_in_url],
 [opt_out_url].</li>
 <li><strong>field_triggers</strong> (<em>boolean</em>) &#8211; Optional. Fires related field change autoresponders when set to <em>true</em>.</li>
-</ul>
+<li><strong>opt_in_confirmation</strong> (<em>boolean</em>) &#8211; Optional. Sends the default plaintext confirmation email when set to <em>true</em>. NOTE: Confirmation email will be sent by default if this parameter is left out. </li>
 </td>
+</ul>
 </tr>
 <tr class="field-even field"><th class="field-name">Return :</th><td class="field-body"><p class="first last">The member_id of the member, and their status. The status will
 be reported as &#8216;a&#8217; (active), &#8216;e&#8217; (error), or &#8216;o&#8217; (optout).</p>
@@ -582,7 +583,8 @@ be reported as &#8216;a&#8217; (active), &#8216;e&#8217; (error), or &#8216;o&#8
     "2"
   ], 
   "email": "example@myemma.com", 
-  "signup_form_id": 1
+  "signup_form_id": 1,
+  "opt_in_confirmation": true
 }
 
 {
