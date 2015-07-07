@@ -99,40 +99,37 @@
   <div class="section" id="emma-api">
 <h1>Emma API<a class="headerlink" href="#emma-api" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="a-word-to-the-wise">
-<h2>A Word To The Wise...<a class="headerlink" href="#a-word-to-the-wise" title="Permalink to this headline">¶</a></h2>
-<p>Use the documentation here to set up and troubleshoot your API calls. We don&#8217;t offer one-on-one support
-for Emma&#8217;s public API, but our system is monitored around the clock. If there&#8217;s ever a dropped connection
-or outage, we&#8217;ll notify users on our <a class="reference external" href="http://myemma.com/status">status page</a>.</p>
+<h2>A word to the wise...<a class="headerlink" href="#a-word-to-the-wise" title="Permalink to this headline">¶</a></h2>
+<p>Use the information on this page to set up and troubleshoot your API calls. While Emma doesn’t offer one-on-one support for our public API, our system is monitored around the clock – and if there’s ever a dropped connection or outage, we’ll be sure to notify users on our <a class="reference external" target="_blank" href="http://myemma.com/status">status page</a>.</p>
 </div>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>Emma&#8217;s platform is accessible through our public API.  The API provides access
-to the following areas:</p>
+<p>Emma’s platform is accessible through our public API, which provides access to the following areas:</p>
 <ul>
 <li><dl class="first docutils">
-<dt>Managing member lists</dt>
+<dt>Managing member lists:</dt>
 <dd><ul class="first last simple">
-<li>importing, editing, deleting</li>
-<li>organizing members into groups</li>
-<li>searching for members</li>
+<li>Importing, editing and deleting</li>
+<li>Organizing members into groups</li>
+<li>Searching for members</li>
 </ul>
 </dd>
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt>Mailings</dt>
+<dt>Mailings:</dt>
 <dd><ul class="first last simple">
-<li>viewing past mailings</li>
-<li>controlling the status of pending mailings</li>
+<li>Viewing past mailings</li>
+<li>Controlling the status of pending mailings</li>
 </ul>
 </dd>
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt>Retrieving response</dt>
+<dt>Retrieving response:</dt>
 <dd><ul class="first last simple">
-<li>Access mailing response information by mailing, member of time period</li>
-<li>Access response at summary and detail levels</li>
+<li>Accessing mailing response information by mailing or member of time period</li>
+<li>Accessing response at summary and detail levels</li>
 </ul>
 </dd>
 </dl>
@@ -140,9 +137,9 @@ to the following areas:</p>
 </ul>
 </div>
 <div class="section" id="api-wrappers">
-<h2>API Wrappers<a class="headerlink" href="#api-wrappers" title="Permalink to this headline">¶</a></h2>
-<p>Emma&#8217;s wrappers make it easy to connect to our API in the programming language you&#8217;re working in.&nbsp;Just select your language to integrate with Emma without having to study all the ins and outs of our API first.</p>
-<p>This collection is young, but growing, and includes wrappers commissioned by Emma, as well as those built by members of our community. Unless otherwise noted, all wrappers provide full coverage of our current API. If you see something that needs to be fixed or improved, please don&#8217;t hesitate to fork the repo and submit a pull request. And if you&#8217;ve built a wrapper that you would like listed here, <a class="reference external" href="mailto:integrations&#37;&#52;&#48;myemma&#46;com">let us know!</a></p>
+<h2>API wrappers<a class="headerlink" href="#api-wrappers" title="Permalink to this headline">¶</a></h2>
+<p>Emma’s wrappers make it a breeze to connect to our API no matter which programming language you like to use. Just select your language and you’ll be able to integrate with Emma without the hassle of having to study all the ins and outs of our API first.</p>
+<p>This collection is young (but growing!) and includes wrappers commissioned by Emma as well as some built by members of our community. Unless otherwise noted, all wrappers provide full coverage of our current API. If you see something that needs to be fixed or improved, please don’t hesitate submit a pull request. And if you’ve built a wrapper that you’d like to have listed here,<a class="reference external" href="mailto:integrations&#37;&#52;&#48;myemma&#46;com">let us know!</a></p>
 <dl class="docutils">
 <dt><strong>PHP</strong></dt>
 <dd><p class="first"><a class="reference external" href="https://github.com/myemma/EmmaPHP">EmmaPHP</a> : Commissioned by Emma and built by Nashville developer <a class="reference external" href="https://github.com/dennismonsewicz">Dennis Monsewicz</a>.</p>
@@ -163,20 +160,17 @@ to the following areas:</p>
 </div>
 <div class="section" id="quickstart">
 <h2>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this headline">¶</a></h2>
-<p>Let&#8217;s start by building some PHP code that will add a member to our audience.</p>
-<p>First, you&#8217;ll want to figure out how to authenticate. All calls require HTTP
-Basic Auth authentication. Inside your Emma account, in the &#8220;Account Settings&#8221;
-section, you&#8217;ll find your API keys. There&#8217;s a public key and a private key and
-an account ID. It should look like this.</p>
+<p>Let’s get started by building some PHP code that will add a member to our audience.</p>
+First, you’ll want to figure out how to authenticate (all calls require HTTP Basic Auth authentication). You’ll find your API keys inside your Emma account in the “Account Settings” section. There’s a public key, a private key and an account ID. It should look like this:
 <div class="api_key_img"><img alt="Emma Billing &amp; Settings API Key" src="_images/api_key.png" /></div>
-<p>So, let&#8217;s add these authentication bits to our code.</p>
+<p>Next, let’s add these authentication bits to our code.</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="c1">// Authentication Variables</span>
 <span class="nv">$account_id</span> <span class="o">=</span> <span class="s2">&quot;xxx&quot;</span><span class="p">;</span>
 <span class="nv">$public_api_key</span> <span class="o">=</span> <span class="s2">&quot;xxx&quot;</span><span class="p">;</span>
 <span class="nv">$private_api_key</span> <span class="o">=</span> <span class="s2">&quot;xxx&quot;</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>Then, we&#8217;ll want to capture the POSTed form variables from the request.</p>
+<p>Then we’ll want to capture the POSTed form variables from the request.</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="c1">// Form variable(s)</span>
 <span class="nv">$email</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">];</span>
 <span class="nv">$first_name</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;first_name&#39;</span><span class="p">];</span>
@@ -194,19 +188,14 @@ an account ID. It should look like this.</p>
 <span class="p">);</span>
 </pre></div>
 </div>
-<p>Please note that the <tt class="docutils literal"><span class="pre">group_ids</span></tt> to which the member will be added are passed
-as an array of integers. Of course, you&#8217;ll want to make sure you sanitize any of
-these form inputs to protect your application.</p>
-<p>Let&#8217;s set the URL for the API call. The endpoint for all of our API calls is
-<a class="reference external" href="https://api.e2ma.net/">https://api.e2ma.net/</a>. In this case, we&#8217;re using the endpoint that
-corresponds to adding a single member. There&#8217;s a separate call for adding bulk
-members.</p>
+<p>Please note that the <tt class="docutils literal"><span class="pre">group_ids</span></tt> hat you’re adding members to are passed as an array of integers. In addition, you’ll always want to make sure that you sanitize any of these form inputs to protect your application.</p>
+<p>Now we’ll need to set the URL for the API call. The endpoint for all of our API calls is
+<a class="reference external" href="https://api.e2ma.net/">https://api.e2ma.net/</a>. In this case, we’re using the endpoint that corresponds to adding a single member. There’s a separate call for adding bulk members.</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="c1">// Set URL</span>
 <span class="nv">$url</span> <span class="o">=</span> <span class="s2">&quot;https://api.e2ma.net/&quot;</span><span class="o">.</span><span class="nv">$account_id</span><span class="o">.</span><span class="s2">&quot;/members/add&quot;</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>Next, we&#8217;ll do a little dance with cURL that I&#8217;m sure is familiar. I&#8217;ll
-explain some particulars below the code block.</p>
+<p>Next, we’ll do a little dance with cURL that should look familiar to you. We’ll explain some particulars below the code block.</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="c1">// setup and execute the cURL command</span>
 <span class="nv">$ch</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
 <span class="hll"><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_USERPWD</span><span class="p">,</span> <span class="nv">$public_api_key</span> <span class="o">.</span> <span class="s2">&quot;:&quot;</span> <span class="o">.</span> <span class="nv">$private_api_key</span><span class="p">);</span>
@@ -221,12 +210,8 @@ explain some particulars below the code block.</p>
 <span class="nb">curl_close</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>On line 3 is where we use the public/private keys to authenticate our call.
-On lines 6-7, we force the API call to make its request in JSON and expect
-JSON in return.</p>
-<p>At this point, the API call has been made.We might want to inspect the
-result to see what happened. The API returns true HTTP response codes which
-you can examine to determine a request&#8217;s disposition.</p>
+<p>Line 3 is where we use the public/private keys to authenticate our call. On lines 6-7, we force the API call to make its request in JSON and expect JSON in return.</p>
+<p>At this point, the API call has been made. We might also want to inspect the result to see what happened. The API returns true HTTP response codes that you can examine to determine a request’s disposition.</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="c1">//execute post</span>
 <span class="k">if</span><span class="p">(</span><span class="nv">$http_code</span> <span class="o">&gt;</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
   <span class="nv">$app_message</span> <span class="o">=</span> <span class="s2">&quot;Error sending subscription request&quot;</span><span class="p">;</span>
@@ -238,18 +223,17 @@ you can examine to determine a request&#8217;s disposition.</p>
 </pre></div>
 </div>
 <p>You can <a class="reference internal" href="php_signup_example.html"><em>see the complete PHP script here</em></a>.
-Additionally, there&#8217;s a PHP example to <a class="reference internal" href="php_get_member_example.html"><em>get members using their email
+There’s also a PHP example to <a class="reference internal" href="php_get_member_example.html"><em>get members using their email
 address</em></a>.</p>
-<p>To extend this example further, one could make the API call associate the
-new member with a particular signup form. As written above, the member would
-be added to the audience but would not appear in the &#8220;recent activity&#8221; type
-searches or really any searches related to signups. We are working on a
-cleaner way to handle this signup form issue in the future.</p>
+<p>
+  To extend this example further, you could make the API call associate the new member with a particular signup form. As written above, the member would be added to the audience but would not appear in the “recent activity” type searches or really any searches related to signups. Don’t worry – we’re currently working on a cleaner way to handle this signup form issue in the future.
+</p>
 </div>
 <div class="section" id="api-calls-by-category">
 <h2>API calls by category<a class="headerlink" href="#api-calls-by-category" title="Permalink to this headline">¶</a></h2>
-<p>The API calls are organized by their main entity type in the following
-sections.  Each call includes sample request &amp; response data.</p>
+<p>
+  In the following sections, we’ve organized API calls by their main entity type. Each call includes sample request and response data.
+</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="api/external/fields.html">Fields</a></li>
@@ -265,11 +249,14 @@ sections.  Each call includes sample request &amp; response data.</p>
 </div>
 </div>
 <div class="section" id="api-rate-limit">
-<h2>API Rate Limit<a class="headerlink" href="#api-rate-limit" title="Permalink to this headline">¶</a></h2>
-<p>To prevent accidental overuse, calls to Emma's API are rate limited to 180 calls per minute. If you exceed the limit, you will receive a response of 403 Rate Limit Exceeded until enough time has elapsed between calls.</p>
+<h2>API rate limit<a class="headerlink" href="#api-rate-limit" title="Permalink to this headline">¶</a></h2>
+<p>
+  To prevent accidental overuse, calls to Emma's API are limited to 180 calls per 
+minute. If you exceed the limit, you‘ll receive a response of 403 Rate Limit Exceeded until enough time has elapsed between calls.
+</p>
 </div>
 <div class="section" id="additional-documentation">
-<h2>Additional Documentation<a class="headerlink" href="#additional-documentation" title="Permalink to this headline">¶</a></h2>
+<h2>Additional documentation<a class="headerlink" href="#additional-documentation" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pagination.html">Pagination</a></li>
