@@ -577,7 +577,7 @@ or &#8216;e&#8217; (error).</li>
 <dl class="delete">
 <dt id="delete--#account_id-groups-#member_group_id-members-remove">
 <tt class="descname">DELETE </tt><tt class="descname">/#account_id/groups/#member_group_id/members/remove</tt><a class="headerlink" href="#delete--#account_id-groups-#member_group_id-members-remove" title="Permalink to this definition">¶</a></dt>
-<dd><p>Remove all members from all active member groups as a background job.
+<dd><p> Delete all members in this group (with the specified status) from all active member groups as a background job.
 The member_status_id parameter must be set.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -603,17 +603,6 @@ or &#8216;e&#8217; (error).</li>
 <a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
 <pre class="response">
 <b>DELETE /100/groups/151/members/remove?member_status_id=a</b>
-
-true
-</pre>
-</div>
-
-
-<div class="sample-response hide-response">
-<span style="font-weight:bold;">Sample Response</span>
-<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
-<pre class="response">
-<b>DELETE /100/groups/151/members/remove?member_status_id=a&delete_members=true</b>
 
 true
 </pre>
