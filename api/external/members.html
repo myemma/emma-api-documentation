@@ -4,13 +4,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
+
     <title>Emma API Documentation | Emma, Inc.</title>
 
-    
+
     <link rel="stylesheet" href="../../_static/emma.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    
+
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
@@ -20,10 +20,10 @@
         HAS_SOURCE:  true
       };
     </script>
-    
+
     <script src="http://code.jquery.com/jquery-1.4.min.js"></script>
     <script>window.jQuery || document.write('<script src="_static/jquery.js"><\/script>')</script>
-    
+
     <script type="text/javascript" src="//use.typekit.net/zfm0nfo.js"></script>
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
@@ -91,15 +91,15 @@
         <li class="right" >
           <a href="mailings.html" title="Mailings"
              accesskey="P">previous</a> |</li>
-        <li><a href="../../index.html">audience 0.1 documentation</a> &raquo;</li> 
+        <li><a href="../../index.html">audience 0.1 documentation</a> &raquo;</li>
       </ul>
-    </div>  
+    </div>
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
           <div class="body">
-            
+
   <div class="section" id="members">
 <h1>Members<a class="headerlink" href="#members" title="Permalink to this headline">¶</a></h1>
 <p>In addition to the various CRUD endpoints here related to members,
@@ -265,22 +265,22 @@ members.</li>
 <b>GET /100/members/201</b>
 
 {
-  "status": "opt-out", 
-  "confirmed_opt_in": null, 
-  "account_id": 100, 
+  "status": "opt-out",
+  "confirmed_opt_in": null,
+  "account_id": 100,
   "fields": {
-    "first_name": "Gladys", 
-    "last_name": "Jones", 
+    "first_name": "Gladys",
+    "last_name": "Jones",
     "favorite_food": "toast"
-  }, 
-  "member_id": 201, 
-  "last_modified_at": null, 
-  "member_status_id": "o", 
-  "plaintext_preferred": false, 
-  "email_error": null, 
-  "member_since": "@D:2011-01-03T15:54:13", 
-  "bounce_count": 0, 
-  "deleted_at": null, 
+  },
+  "member_id": 201,
+  "last_modified_at": null,
+  "member_status_id": "o",
+  "plaintext_preferred": false,
+  "email_error": null,
+  "member_since": "@D:2011-01-03T15:54:13",
+  "bounce_count": 0,
+  "deleted_at": null,
   "email": "gladys@myemma.com"
 }
 </pre>
@@ -319,22 +319,22 @@ members.</li>
 <b>GET /100/members/email/tony@myemma.com</b>
 
 {
-  "status": "active", 
-  "confirmed_opt_in": null, 
-  "account_id": 100, 
+  "status": "active",
+  "confirmed_opt_in": null,
+  "account_id": 100,
   "fields": {
-    "first_name": "Tony", 
-    "last_name": "Brown", 
+    "first_name": "Tony",
+    "last_name": "Brown",
     "favorite_food": "pizza"
-  }, 
-  "member_id": 202, 
-  "last_modified_at": null, 
-  "member_status_id": "a", 
-  "plaintext_preferred": false, 
-  "email_error": null, 
-  "member_since": "@D:2010-11-12T09:12:33", 
-  "bounce_count": 0, 
-  "deleted_at": null, 
+  },
+  "member_id": 202,
+  "last_modified_at": null,
+  "member_status_id": "a",
+  "plaintext_preferred": false,
+  "email_error": null,
+  "member_since": "@D:2010-11-12T09:12:33",
+  "bounce_count": 0,
+  "deleted_at": null,
   "email": "tony@myemma.com"
 }
 </pre>
@@ -459,7 +459,7 @@ name of a member field.</p>
   "members": [
     {
       "email": "michelle@myemma.com"
-    }, 
+    },
     {
       "email": "nathan@myemma.com"
     }
@@ -482,6 +482,8 @@ on bulk members please use the <cite>/members</cite> call above.</p>
 <dl class="docutils">
 <dt><em>Note</em>: Members who are added to your audience using this API call will</dt>
 <dd>not appear in &#8220;recent activity&#8221; searches within your account.</dd>
+<dt><em>Note</em>: If you are using Signup trigger events in Automation, please</dt>
+<dd>this <a href="https://support.e2ma.net/Resource_Center/Guide_to_Automation/Trigger_events%3A_signup">guide</a> for more information on how this API call affects those trigger events.</dd>
 </dl>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -511,13 +513,13 @@ status will be reported as &#8216;a&#8217; (active), &#8216;e&#8217; (error), or
 {
   "fields": {
     "first_name": "Benjamin"
-  }, 
+  },
   "email": "benjamin@myemma.com"
 }
 
 {
-  "status": "a", 
-  "added": true, 
+  "status": "a",
+  "added": true,
   "member_id": 1024
 }
 </pre>
@@ -538,6 +540,8 @@ and member_id, performing no additional actions.</p>
 <dl class="docutils">
 <dt><em>Note</em>: Members who are added to your audience using this API call will</dt>
 <dd>not appear in &#8220;recent activity&#8221; searches within your account.</dd>
+<dt><em>Note</em>: If you are using Signup trigger events in Automation, please</dt>
+<dd>this <a href="https://support.e2ma.net/Resource_Center/Guide_to_Automation/Trigger_events%3A_signup">guide</a> for more information on how this API call affects those trigger events.</dd>
 </dl>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -577,18 +581,18 @@ be reported as &#8216;a&#8217; (active), &#8216;e&#8217; (error), or &#8216;o&#8
 {
   "fields": {
     "first_name": "Ryan"
-  }, 
+  },
   "group_ids": [
-    "1", 
+    "1",
     "2"
-  ], 
-  "email": "example@myemma.com", 
+  ],
+  "email": "example@myemma.com",
   "signup_form_id": 1,
   "opt_in_confirmation": true
 }
 
 {
-  "status": "a", 
+  "status": "a",
   "member_id": 1024
 }
 </pre>
@@ -623,7 +627,7 @@ be reported as &#8216;a&#8217; (active), &#8216;e&#8217; (error), or &#8216;o&#8
 <b>PUT /100/members/delete</b>
 {
   "member_ids": [
-    100, 
+    100,
     101
   ]
 }
@@ -664,9 +668,9 @@ False.</p>
 <b>PUT /100/members/status</b>
 {
   "member_ids": [
-    200, 
+    200,
     202
-  ], 
+  ],
   "status_to": "e"
 }
 
@@ -711,10 +715,10 @@ member.</li>
 <b>PUT /100/members/200</b>
 {
   "fields": {
-    "first_name": "Ella", 
+    "first_name": "Ella",
     "last_name": "Jones"
-  }, 
-  "email": "ella@myemma.com", 
+  },
+  "email": "ella@myemma.com",
   "status_to": "a"
 }
 
@@ -844,13 +848,13 @@ true
 <b>PUT /100/members/200/groups</b>
 {
   "group_ids": [
-    150, 
+    150,
     151
   ]
 }
 
 [
-  150, 
+  150,
   151
 ]
 </pre>
@@ -988,7 +992,7 @@ true
 {
   "group_ids": [
     151
-  ], 
+  ],
   "member_ids": [
     202
   ]
@@ -1093,19 +1097,19 @@ true
 <b>GET /100/members/imports/200</b>
 
 {
-  "import_id": 200, 
-  "status": "o", # for okay (or "e" for error) 
-  "style": null, 
-  "import_started": "@D:2010-12-13T23:12:44", 
-  "account_id": 100, 
-  "error_message": null, 
-  "num_members_updated": 0, 
-  "source_filename": null, 
-  "fields_updated": [], 
-  "num_members_added": 0, 
-  "import_finished": null, 
-  "groups_updated": [], 
-  "num_skipped": 0, 
+  "import_id": 200,
+  "status": "o", # for okay (or "e" for error)
+  "style": null,
+  "import_started": "@D:2010-12-13T23:12:44",
+  "account_id": 100,
+  "error_message": null,
+  "num_members_updated": 0,
+  "source_filename": null,
+  "fields_updated": [],
+  "num_members_added": 0,
+  "import_finished": null,
+  "groups_updated": [],
+  "num_skipped": 0,
   "num_duplicates": 0
 }
 </pre>
@@ -1170,7 +1174,7 @@ true
 <b>PUT /100/members/152/copy</b>
 {
   "member_status_id": [
-    "a", 
+    "a",
     "e"
   ]
 }
