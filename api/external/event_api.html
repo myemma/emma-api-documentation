@@ -105,14 +105,14 @@
                     <h1>Emma Event API<a class="headerlink" href="#event_api" title="Permalink to this headline">¶</a></h1>
                     <h2>Access to the Event API is available only to Emma Plus, Premium and Enterprise customers.</h2>
                     <p>The Emma Event API is used to automate and personalize emails that are triggered by audience activities in other platforms. While it is often used to power automated workflows triggered by activities like purchases and event registration and attendance, the Event API can receive events and data of any type from any service.</p>
-                    <p>You can post events to Emma using the endpoint below. Workflows that are triggered by events shared to this endpoint can be configured in the Automation workflow builder (link). For more information about the event API and its capabilities, visit our Resource Center (link).</p>
+                    <p>You can post events to Emma using the endpoint below. Workflows that are triggered by events shared to this endpoint can be configured in the Automation <a href="https://support.e2ma.net/Resource_Center/Guide_to_Automation/Trigger_events%3A_custom_API_event">workflow builder</a>. For more information about the event API and its capabilities, visit our <a href="https://support.e2ma.net/Resource_Center/Account_how-to/Event_API">Resource Center</a>.</p>
                     <dl class="post">
                         <dt id="post--#events">
                             <tt class="descname">POST </tt><tt class="descname">/#account_id/events</tt><a class="headerlink" href="#post--#events" title="Permalink to this definition">¶</a></dt>
                         <dd><p>This endpoint allows you to post any type of valid JSON to Emma. In order for an event to power an automated workflow, the following conditions must be met:
                             <li>Must include a valid email address as a value with a key of "email"`</li>
                             <li>Email address must belong to a contact who is currently in “Active” status within your audience</li>
-                            <li>Automated workflow must be configured to match key/value pairs contained within JSON post (more information here (link)).</li>
+                            <li>Automated workflow must be configured to match key/value pairs contained within JSON post (more information <a href="https://support.e2ma.net/Resource_Center/Guide_to_Automation/Trigger_events%3A_custom_API_event">here</a>).</li>
                             <li>JSON payload must not exceed 256KB (262,035 bytes)</li>
                             </p>
                             <!-- <table class="docutils field-list" frame="void" rules="none">
