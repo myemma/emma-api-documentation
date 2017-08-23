@@ -193,7 +193,8 @@ First, you’ll want to figure out how to authenticate (all calls require HTTP B
 </div>
 <p>Please note that the <tt class="docutils literal"><span class="pre">group_ids</span></tt> hat you’re adding members to are passed as an array of integers. In addition, you’ll always want to make sure that you sanitize any of these form inputs to protect your application.</p>
 <p>Now we’ll need to set the URL for the API call. The endpoint for all of our API calls is
-<a class="reference external" href="https://api.e2ma.net/">https://api.e2ma.net/</a>. In this case, we’re using the endpoint that corresponds to adding a single member. There’s a separate call for adding bulk members.</p>
+  <a class="reference external" href="https://api.e2ma.net/">https://api.e2ma.net/</a>. <b>NOTE:</b> You must use TLS version 1.1 or higher to connect. TLSv1 and all versions of SSL ciphers (e.g. SSLv2, SSLv3) are not supported.</br>
+In this case, we’re using the endpoint that corresponds to adding a single member. There’s a separate call for adding bulk members.</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="c1">// Set URL</span>
 <span class="nv">$url</span> <span class="o">=</span> <span class="s2">&quot;https://api.e2ma.net/&quot;</span><span class="o">.</span><span class="nv">$account_id</span><span class="o">.</span><span class="s2">&quot;/members/add&quot;</span><span class="p">;</span>
 </pre></div>
@@ -208,6 +209,7 @@ First, you’ll want to figure out how to authenticate (all calls require HTTP B
 </span><span class="hll"><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_HTTPHEADER</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;Content-type: application/json&#39;</span><span class="p">));</span>
 </span><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
 <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_SSL_VERIFYPEER</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_SSLVERSION</span><span class="p">,</span> <span class="k">6</span><span class="p">);</span>
 <span class="nv">$head</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
 <span class="nv">$http_code</span> <span class="o">=</span> <span class="nb">curl_getinfo</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLINFO_HTTP_CODE</span><span class="p">);</span>
 <span class="nb">curl_close</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
