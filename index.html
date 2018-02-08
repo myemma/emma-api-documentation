@@ -164,8 +164,24 @@
 <div class="section" id="quickstart">
 <h2>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this headline">¶</a></h2>
 <p>Let’s get started by building some PHP code that will add a member to our audience.</p>
-First, you’ll want to figure out how to authenticate (all calls require HTTP Basic Auth authentication). You’ll find your API keys inside your Emma account in the “Account Settings” section. There’s a public key, a private key and an account ID. It should look like this:
-<div class="api_key_img"><img alt="Emma Billing &amp; Settings API Key" src="_images/api_key.png" /></div>
+
+<p>
+    Before you do this, you will need a valid set of API keys.  If you have a <b>regular account</b> you can
+    generate your API keys using these steps:
+</p>
+<ol>
+    <li>Go to account settings</li>
+    <li>Find the "API Key" tab</li>
+    <li>Click "Generate API Key"</li>
+</ol>
+
+<p>If your account is part of an <b>agency account</b>, you will need to follow these steps instead:</p>
+<ol>
+    <li>Go to "Menu" and select "Accounts"</li>
+    <li>Click the downward-pointing arrow to the right of the account you need a key for and select its settings</li>
+    <li>Scroll to the API key section to generate the key</li>
+</ol>
+
 <p>Next, let’s add these authentication bits to our code.</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="c1">// Authentication Variables</span>
 <span class="nv">$account_id</span> <span class="o">=</span> <span class="s2">&quot;xxx&quot;</span><span class="p">;</span>
