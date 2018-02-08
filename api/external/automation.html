@@ -149,6 +149,57 @@
 
         <dl class="get">
             <dt id="get--#account_id-fields">
+                <tt class="descname">GET </tt><tt class="descname">/#account_id/automation/workflows/#workflow_id</tt>
+                <a class="headerlink" href="#get--#account_id-fields" title="Permalink to this definition">¶</a>
+            </dt>
+            <dd>
+                <p>Gets detailed information about a single workflow.</p>
+                <table class="docutils field-list" frame="void" rules="none">
+                    <col class="field-name" />
+                    <col class="field-body" />
+                    <tbody valign="top">
+                        <tr class="field-odd field">
+                        </tr>
+                        <tr class="field-even field">
+                            <th class="field-name">Returns :</th>
+                            <td class="field-body">
+                                <p class="first last">
+                                    A single workflow if one exists
+                                </p>
+                            </td>
+                        </tr>
+                        <tr class="field-even field">
+                            <th class="field-name">Raises :</th>
+                            <td class="field-body">
+                                <p class="first last">
+                                    <tt class="docutils literal"><span class="pre">Http404</span></tt>
+                                    if no workflow is found.
+                                </p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>
+                    <div class="sample-response hide-response">
+                        <span style="font-weight:bold;">Sample Response</span>
+                        <a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+                        <pre class="response">
+<b>GET /100/automation/workflows/596ee017-abf9-4884-bb43-79724422de25</b>
+{
+  "workflow_id": "596ee017-abf9-4884-bb43-79724422de25",
+  "name": "Test",
+  "status": "inactive",
+  "updated_at": "2017-10-30 23:31:49.661228",
+  "created_at": "2017-10-30 23:30:42.067754"
+}
+                        </pre>
+                    </div>
+                </p>
+            </dd>
+        </dl>
+
+        <dl class="get">
+            <dt id="get--#account_id-fields">
                 <tt class="descname">GET </tt><tt class="descname">/#account_id/automation/workflows/counts</tt>
                 <a class="headerlink" href="#get--#account_id-fields" title="Permalink to this definition">¶</a>
             </dt>
