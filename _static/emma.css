@@ -494,7 +494,7 @@ pre { background:#fff; z-index:3; -webkit-border-radius:0; -moz-border-radius:0;
 
 /*Header - Main*/
 header[role="banner"] { height:140px; max-width:940px; margin:16px auto 0; }
-header[role="banner"] h1 { width:342px; height:86px; margin:0; background:url(img/logo.png) no-repeat; text-indent:-9999px; background-size: 100%; }
+header[role="banner"] h1 { width:342px; height:86px; margin:40px 0 0 0; background:url(img/logo.png) no-repeat; text-indent:-9999px; background-size: 50%; }
 
 /*Page*/
 div.api_key_img { overflow: hidden; height:300px; }
