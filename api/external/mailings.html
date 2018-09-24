@@ -102,13 +102,13 @@
           <div class="body">
             
   <div class="section" id="mailings">
-<h1>Mailings<a class="headerlink" href="#mailings" title="Permalink to this headline">¶</a></h1>
+<h1>Mailings<a class="headerlink" href="#mailings" title="Permalink to this headline">&para;</a></h1>
 <p>With these endpoints, you can get information about your mailings including
 their HTML contents. You can retrieve the members to whom the mailing was sent.
 You can also pause mailings and cancel mailings that are pending or paused.</p>
 <dl class="get">
 <dt id="get--#account_id-mailings">
-<tt class="descname">GET </tt><tt class="descname">/#account_id/mailings</tt><a class="headerlink" href="#get--#account_id-mailings" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">GET </tt><tt class="descname">/#account_id/mailings</tt><a class="headerlink" href="#get--#account_id-mailings" title="Permalink to this definition">&para;</a></dt>
 <dd><p>Get information about current mailings.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -116,17 +116,18 @@ You can also pause mailings and cancel mailings that are pending or paused.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>include_archived</strong> (<em>boolean</em>) &#8211; Optional flag to include archived mailings in the list.</li>
-<li><strong>mailing_types</strong> (<em>string</em>) &#8211; Accepts a comma-separated string with one or more
+<li><strong>mailing_types</strong> (<em>string</em>) &#8211; Optional parameter that accepts a comma-separated string with one or more
 of the following mailing types: &#8216;m&#8217; (standard), &#8216;t&#8217; (test),
-&#8216;r&#8217; (trigger), &#8216;s&#8217; (split). Defaults to &#8216;m,t&#8217;, standard and test mailings,
+&#8216;r&#8217; (trigger), &#8216;s&#8217; (subject line split test), &#8216;c&#8217; (content split test).
+Defaults to &#8216;m,t&#8217;, standard and test mailings, when none are specified.</li>
+<li><strong>mailing_statuses</strong> (<em>string</em>) &#8211; Optional parameter that accepts a comma-separated string with one or
+more of the following mailing statuses: &#8216;p&#8217; (pending), &#8216;a&#8217; (paused), &#8216;i&#8217; (injecting),
+&#8216;s&#8217; (sending), &#8216;x&#8217; (canceled), &#8216;c&#8217; (complete), &#8216;w&#8217; (waiting),
+&#8216;u&#8217; (unapproved), &#8216;f&#8217; (failed). Defaults to &#8216;p,a,i,s,x,c,w,u,f&#8217;, all statuses,
 when none are specified.</li>
-<li><strong>mailing_statuses</strong> (<em>string</em>) &#8211; Accepts a comma-separated string with one or
-more of the following mailing statuses: &#8216;p&#8217; (pending), &#8216;a&#8217; (paused),
-&#8216;s&#8217; (sending), &#8216;x&#8217; (canceled), &#8216;c&#8217; (complete), &#8216;u&#8217; (unapproved), &#8216;f&#8217; (failed).
-Defaults to &#8216;p,a,s,x,c,u,f&#8217;, all statuses, when none are specified.</li>
-<li><strong>is_scheduled</strong> (<em>boolean</em>) &#8211; Mailings that have a scheduled timestamp.</li>
-<li><strong>with_html_body</strong> (<em>boolean</em>) &#8211; Include the html_body content.</li>
-<li><strong>with_plaintext</strong> (<em>boolean</em>) &#8211; Include the plaintext content.</li>
+<li><strong>is_scheduled</strong> (<em>boolean</em>) &#8211; Optional flag for mailings that have a scheduled timestamp.</li>
+<li><strong>with_html_body</strong> (<em>boolean</em>) &#8211; Optional flag to include the html_body content.</li>
+<li><strong>with_plaintext</strong> (<em>boolean</em>) &#8211; Optional flag to include the plaintext content.</li>
 </ul>
 </td>
 </tr>
@@ -283,13 +284,121 @@ Defaults to &#8216;p,a,s,x,c,u,f&#8217;, all statuses, when none are specified.<
 </dd></dl>
 
 <dl class="get">
+<dt id="get--#account_id-calendar">
+<tt class="descname">GET </tt><tt class="descname">/#account_id/calendar</tt><a class="headerlink" href="#get--#account_id-calendar" title="Permalink to this definition">&para;</a></dt>
+<dd><p>Get information about sent and scheduled mailings for the calendar.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>start_date</strong> (<em>string</em>) &#8211; Include sent or scheduled mailings starting on this date</li>
+<li><strong>end_date</strong> (<em>string</em>) &#8211; Include sent or scheduled mailings up to this end date</li>
+<li><strong>with_html_body</strong> (<em>boolean</em>) &#8211; Optional flag to include the html_body content.</li>
+<li><strong>with_plaintext</strong> (<em>boolean</em>) &#8211; Optional flag to include the plaintext content.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">Http400</span></tt> if the start and end dates are invalid or missing.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body"><p class="first last">An array of mailings.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>GET /100/calendar?start_date=2018-09-16&end_date=2018-09-17</b>
+
+[
+  {
+    "mailing_type": "m",
+    "send_started": "@D:2018-09-16T10:30:10",
+    "cancel_by_user_id": null,
+    "mailing_id": 210,
+    "recipient_count": 1,
+    "cancel_ts": null,
+    "mailing_status": "c",
+    "account_id": 100,
+    "month": 9,
+    "failure_ts": null,
+    "reply_to": null,
+    "year": 2018,
+    "deleted_at": null,
+    "started_or_finished": "@D:2018-09-16T10:30:10",
+    "subject": "Sample Mailing for [% member:first_name %] [% member:last_name %]",
+    "disabled": false,
+    "created_ts": "@D:2018-09-13T10:18:34",
+    "sender": "Kevin McConnell",
+    "plaintext_only": false,
+    "name": "Sample Mailing",
+    "hour": 10,
+    "parent_mailing_id": null,
+    "failure_message": null,
+    "day": 16,
+    "send_finished": "@D:2018-09-16T10:30:16",
+    "datacenter": null,
+    "send_at": "@D:2018-09-16T10:30:00",
+    "signup_form_id": null,
+    "purged_at: null,
+    archived_ts: null
+  },
+  {
+    "mailing_type": "m",
+    "send_started": null,
+    "cancel_by_user_id": null,
+    "mailing_id": 211,
+    "recipient_count": 0,
+    "cancel_ts": null,
+    "mailing_status": "p",
+    "account_id": 100,
+    "month": null,
+    "failure_ts": null,
+    "reply_to": null,
+    "year": null,
+    "deleted_at": null,
+    "started_or_finished": null,
+    "subject": "Scheduled Mailing",
+    "disabled": false,
+    "created_ts": "@D:2018-09-13T10:16:54",
+    "sender": "Donna Smith",
+    "plaintext_only": false,
+    "name": "Scheduled Mailing",
+    "hour": null,
+    "parent_mailing_id": null,
+    "failure_message": null,
+    "day": null,
+    "send_finished": null,
+    "datacenter": null,
+    "send_at": "@D:2018-09-22T10:30:00",
+    "signup_form_id": null,
+    "purged_at": null,
+    "archived_ts": null
+  }
+]
+
+</pre>
+</div>
+</p>
+</dd></dl>
+
+
+<dl class="get">
 <dt id="get--#account_id-mailings-#mailing_id">
-<tt class="descname">GET </tt><tt class="descname">/#account_id/mailings/#mailing_id</tt><a class="headerlink" href="#get--#account_id-mailings-#mailing_id" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">GET </tt><tt class="descname">/#account_id/mailings/#mailing_id</tt><a class="headerlink" href="#get--#account_id-mailings-#mailing_id" title="Permalink to this definition">&para;</a></dt>
 <dd><p>Get detailed information for one mailing.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>include_segment_names</strong> (<em>boolean</em>) &#8211; Optional flag to include segment names under recipient_segments. False by default.</li>
+</tr>
+</li>
 <tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body">A mailing.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if no mailing is found.</td>
@@ -328,12 +437,14 @@ Defaults to &#8216;p,a,s,x,c,u,f&#8217;, all statuses, when none are specified.<
   "recipient_count": 0, 
   "public_webview_url": "http://localhost/webview/uf/6db0cc7e6fdb2da589b65f29d90c96b6", 
   "mailing_type": "m", 
+  "recipient_segments": [],
   "parent_mailing_id": null, 
   "recipient_searches": [], 
+  "deleted_at": null,
   "account_id": 100, 
   "recipient_members": [
     {
-      "email": "emma@myemma.com", 
+      "email": "youremma@myemma.com", 
       "member_id": 200
     }
   ], 
@@ -342,6 +453,7 @@ Defaults to &#8216;p,a,s,x,c,u,f&#8217;, all statuses, when none are specified.<
   "name": "Sample Mailing", 
   "send_finished": null, 
   "send_at": null, 
+  "reply_to": null,
   "subject": "Sample Mailing for [% member:first_name %] [% member:last_name %]", 
   "archived_ts": null, 
   "html_body": "&lt;p&gt;Hello [% member:first_name %]!&lt;/p&gt;"
@@ -353,7 +465,7 @@ Defaults to &#8216;p,a,s,x,c,u,f&#8217;, all statuses, when none are specified.<
 
 <dl class="get">
 <dt id="get--#account_id-mailings-#mailing_id-members">
-<tt class="descname">GET </tt><tt class="descname">/#account_id/mailings/#mailing_id/members</tt><a class="headerlink" href="#get--#account_id-mailings-#mailing_id-members" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">GET </tt><tt class="descname">/#account_id/mailings/#mailing_id/members</tt><a class="headerlink" href="#get--#account_id-mailings-#mailing_id-members" title="Permalink to this definition">&para;</a></dt>
 <dd><p>Get the list of members to whom the given mailing was sent. This
 does not include groups or searches.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -391,7 +503,7 @@ does not include groups or searches.</p>
     "member_since": "@D:2010-11-12T11:23:45",
     "bounce_count": 0,
     "deleted_at": null,
-    "email": "emma@myemma.com"
+    "email": "youremma@myemma.com"
   }
 ]
 
@@ -402,7 +514,7 @@ does not include groups or searches.</p>
 
 <dl class="get">
 <dt id="get--#account_id-mailings-#mailing_id-messages-#member_id">
-<tt class="descname">GET </tt><tt class="descname">/#account_id/mailings/#mailing_id/messages/#member_id</tt><a class="headerlink" href="#get--#account_id-mailings-#mailing_id-messages-#member_id" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">GET </tt><tt class="descname">/#account_id/mailings/#mailing_id/messages/#member_id</tt><a class="headerlink" href="#get--#account_id-mailings-#mailing_id-messages-#member_id" title="Permalink to this definition">&para;</a></dt>
 <dd><p>Gets the personalized message content as sent to a specific member
 as part of the specified mailing.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -410,7 +522,7 @@ as part of the specified mailing.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>type</strong> (<em>string</em>) &#8211; Accepts: &#8216;all&#8217;, &#8216;html&#8217;, &#8216;plaintext&#8217;, &#8216;subject&#8217;. Defaults
+<li><strong>type</strong> (<em>string</em>) &#8211; Accepts: &#8216;all&#8217;, &#8216;html&#8217;, &#8216;plaintext&#8217;, &#8216;subject&#8217;, &#8216;webview_url&#8217;. Defaults
 to &#8216;all&#8217;, if not provided.</li>
 </ul>
 </td>
@@ -422,6 +534,9 @@ default, or just the type of content specified by <cite>type</cite>.</p>
 </tr>
 <tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first last"><tt class="docutils literal"><span class="pre">Http404</span></tt> if no message is found.</p>
 </td>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first last"><tt class="docutils literal"><span class="pre">Http500</span></tt> if allowed_types is not valid.</p>
+</td>
+</tr>
 </tr>
 </tbody>
 </table>
@@ -435,7 +550,8 @@ default, or just the type of content specified by <cite>type</cite>.</p>
 {
   "plaintext": "Hello !", 
   "subject": "Sample Mailing for  ", 
-  "html_body": "&lt;p&gt;Hello !&lt;/p&gt;"
+  "html_body": "&lt;p&gt;Hello !&lt;/p&gt;",
+  "webview_url": "https://tracker/message/200/200"
 }
 </pre>
 </div>
@@ -457,7 +573,7 @@ default, or just the type of content specified by <cite>type</cite>.</p>
 
 <dl class="get">
 <dt id="get--#account_id-mailings-#mailing_id-groups">
-<tt class="descname">GET </tt><tt class="descname">/#account_id/mailings/#mailing_id/groups</tt><a class="headerlink" href="#get--#account_id-mailings-#mailing_id-groups" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">GET </tt><tt class="descname">/#account_id/mailings/#mailing_id/groups</tt><a class="headerlink" href="#get--#account_id-mailings-#mailing_id-groups" title="Permalink to this definition">&para;</a></dt>
 <dd><p>Get the groups to which a particular mailing was sent.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -497,7 +613,7 @@ default, or just the type of content specified by <cite>type</cite>.</p>
 
 <dl class="get">
 <dt id="get--#account_id-mailings-#mailing_id-searches">
-<tt class="descname">GET </tt><tt class="descname">/#account_id/mailings/#mailing_id/searches</tt><a class="headerlink" href="#get--#account_id-mailings-#mailing_id-searches" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">GET </tt><tt class="descname">/#account_id/mailings/#mailing_id/searches</tt><a class="headerlink" href="#get--#account_id-mailings-#mailing_id-searches" title="Permalink to this definition">&para;</a></dt>
 <dd><p>Get all searches associated with a sent mailing.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -517,7 +633,128 @@ default, or just the type of content specified by <cite>type</cite>.</p>
 <b>GET /100/mailings/200/searches</b>
 
 [
+  {
+    "optout_count": 0,
+    "account_id": 100,
+    "cached_at": null,
+    "last_run_at": "@D:2018-02-06T16:27:06",
+    "active_count": 4,
+    "error_count": 0,
+    "criteria": "["and", ["and", ["member_field:name_first", "contains", "*Kevin*"]]]",
+    "deleted_at": null,
+    "purged_at": null,
+    "search_id": 400,
+    "name": "All the Kevins"
+  }
+]
 
+</pre>
+</div>
+</p>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--#account_id-mailings-#mailing_id-suppressed-searches">
+<tt class="descname">GET </tt><tt class="descname">/#account_id/mailings/#mailing_id/suppressed_searches</tt><a class="headerlink" href="#get--#account_id-mailings-#mailing_id-suppressed-searches" title="Permalink to this definition">&para;</a></dt>
+<dd><p>Get all suppressed searches associated with a sent mailing.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body">An array of suppressed searches.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if no mailing is found.</td>
+</tr>
+</td>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>GET|/100/mailings/200/suppressed_searches</b>
+
+[
+  {
+    "optout_count": 0,
+    "account_id": 200,
+    "cached_at": "@D:2018-08-13T14:28:12",
+    "last_run_at": "@D:2018-08-13T14:28:12",
+    "active_count": 772,
+    "error_count": 0,
+    "criteria": "["and", ["and", ["not", ["opened", "in last", {"week": "52"}]]]]",
+    "deleted_at": null,
+    "purged_at": null,
+    "search_id": 401,
+    "name": "Inactive 12+ Months"
+  }
+]
+
+</pre>
+</div>
+</p>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--#account_id-mailings-#mailing_id-suppressed-members">
+<tt class="descname">GET </tt><tt class="descname">/#account_id/mailings/#mailing_id/suppressed_members</tt><a class="headerlink" href="#get--#account_id-mailings-#mailing_id-suppressed-members" title="Permalink to this definition">&para;</a></dt>
+<dd><p>Get all suppressed members for a particular mailing.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body">An array of suppressed members.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if no mailing is found.</td>
+</tr>
+</td>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>GET|/100/mailings/200/suppressed_members</b>
+
+[
+  {
+    "status": "active",
+    "confirmed_opt_in": null,
+    "account_id": 100,
+    "fields": {
+        "first_name": "Kevin",
+        "last_name": "McConnell,"
+    },
+    "member_id": 200,
+    "last_modified_at": "@D:2017-05-09T08:14:30",
+    "member_status_id": "a",
+    "plaintext_preferred": false,
+    "email_error": null,
+    "member_since": "@D:2017-05-09T08:14:30",
+    "bounce_count": 0,
+    "deleted_at": null,
+    "email": "youremma@myemma.com"
+  },
+  { 
+    "status": "active",
+    "confirmed_opt_in": null,
+    "account_id": 100,
+    "fields": {
+        "first_name": "Emma",
+        "last_name": "Smith"
+    },
+    "member_id": 201,
+    "last_modified_at": "@D:2017-05-09T08:14:30",
+    "member_status_id": "a",
+    "plaintext_preferred": false,
+    "email_error": null,
+    "member_since": "@D:2017-05-09T08:14:30",
+    "bounce_count": 0,
+    "deleted_at": null,
+    "email": "theiremma@myemma.com"
+  },
 ]
 
 </pre>
@@ -527,18 +764,42 @@ default, or just the type of content specified by <cite>type</cite>.</p>
 
 <dl class="put">
 <dt id="put--#account_id-mailings-#mailing_id">
-<tt class="descname">PUT </tt><tt class="descname">/#account_id/mailings/#mailing_id</tt><a class="headerlink" href="#put--#account_id-mailings-#mailing_id" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">PUT </tt><tt class="descname">/#account_id/mailings/#mailing_id</tt><a class="headerlink" href="#put--#account_id-mailings-#mailing_id" title="Permalink to this definition">&para;</a></dt>
 <dd><p>Update status of a current mailing</p>
-<p>The status can be one of <tt class="docutils literal"><span class="pre">canceled</span></tt>, <tt class="docutils literal"><span class="pre">paused</span></tt> or <tt class="docutils literal"><span class="pre">ready</span></tt>.  This
+<p>The status can be one of <tt class="docutils literal"><span class="pre">canceled</span></tt>, <tt class="docutils literal"><span class="pre">paused</span></tt> or <tt class="docutils literal"><span class="pre">ready</span></tt>. This
 method can be used to control the progress of a mailing by pausing,
-canceling or resuming it.  Once a mailing is canceled it can&#8217;t be
+canceling or resuming it. Once a mailing is canceled it can&#8217;t be
 resumed, and will not show in the normal <tt class="docutils literal"><span class="pre">mailing_list</span></tt> output.</p>
-<p>Returns the mailing&#8217;s new status</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>status</strong> (<em>string</em>) &#8211; Accepts &#8216;canceled&#8217;, &#8216;paused&#8217; or &#8216;ready&#8217;.</li>
+</ul>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if no mailing is found.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http400</span></tt> if the mailing is already in Completed or Sending status and cannot be updated.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http400</span></tt> if the mailing is in Pending or Unapproved status and the html or plaintext is missing a required tag.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http400</span></tt> if the mailing is in Pending or Unapproved status and cannot be rescheduled.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http400</span></tt> if an invalid status is passed in.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http400</span></tt> if the mailing is already canceled.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body">The updated mailing</td>
+</tr>
+</td>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="delete">
 <dt id="delete--#account_id-mailings-#mailing_id">
-<tt class="descname">DELETE </tt><tt class="descname">/#account_id/mailings/#mailing_id</tt><a class="headerlink" href="#delete--#account_id-mailings-#mailing_id" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">DELETE </tt><tt class="descname">/#account_id/mailings/#mailing_id</tt><a class="headerlink" href="#delete--#account_id-mailings-#mailing_id" title="Permalink to this definition">&para;</a></dt>
 <dd><p>Sets archived timestamp for a mailing so it is no longer included in
 mailing_list.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -564,14 +825,18 @@ true
 
 <dl class="delete">
 <dt id="delete--#account_id-mailings-cancel-#mailing_id">
-<tt class="descname">DELETE </tt><tt class="descname">/#account_id/mailings/cancel/#mailing_id</tt><a class="headerlink" href="#delete--#account_id-mailings-cancel-#mailing_id" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">DELETE </tt><tt class="descname">/#account_id/mailings/cancel/#mailing_id</tt><a class="headerlink" href="#delete--#account_id-mailings-cancel-#mailing_id" title="Permalink to this definition">&para;</a></dt>
 <dd><p>Cancels a mailing that has a current status of pending or
-paused. All other statuses will result in a 404.</p>
+paused. All other statuses will result in a 403.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body">True if mailing marked as cancelled.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http403</span></tt> if the current mailing status is not pending or paused.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if no mailing is found.</td>
 </tr>
 </tbody>
 </table>
@@ -590,7 +855,7 @@ true
 
 <dl class="post">
 <dt id="post--#account_id-forwards-#mailing_id-#member_id">
-<tt class="descname">POST </tt><tt class="descname">/#account_id/forwards/#mailing_id/#member_id</tt><a class="headerlink" href="#post--#account_id-forwards-#mailing_id-#member_id" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">POST </tt><tt class="descname">/#account_id/forwards/#mailing_id/#member_id</tt><a class="headerlink" href="#post--#account_id-forwards-#mailing_id-#member_id" title="Permalink to this definition">&para;</a></dt>
 <dd><p>Forward a previous message to additional recipients.  If these
 recipients are not already in the audience, they will be added with a
 status of FORWARDED.</p>
@@ -599,14 +864,14 @@ status of FORWARDED.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>heads_up_emails</strong> (<em>array</em>) &#8211; An array of email addresses that heads up
+notification emails will be sent to.</li>
 <li><strong>recipient_emails</strong> (<em>array</em>) &#8211; An array of email addresses to which to
 forward the specified message.</li>
-<li><strong>note</strong> (<em>string</em>) &#8211; A note to include in the forward. This note will be HTML
-encoded and is limited to 500 characters.</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first">A reference to the new mailing.</p>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first">A reference to the new mailing_id.</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first last"><tt class="docutils literal"><span class="pre">Http404</span></tt> if no message is found.</p>
@@ -637,7 +902,7 @@ encoded and is limited to 500 characters.</li>
 
 <dl class="post">
 <dt id="post--#account_id-mailings-#mailing_id">
-<tt class="descname">POST </tt><tt class="descname">/#account_id/mailings/#mailing_id</tt><a class="headerlink" href="#post--#account_id-mailings-#mailing_id" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">POST </tt><tt class="descname">/#account_id/mailings/#mailing_id</tt><a class="headerlink" href="#post--#account_id-mailings-#mailing_id" title="Permalink to this definition">&para;</a></dt>
 <dd><p>Send a prior mailing to additional recipients.  A new mailing will be
 created that inherits its content from the original.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -647,18 +912,22 @@ created that inherits its content from the original.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>sender</strong> (<em>string</em>) &#8211; The message sender.  If this is not supplied, the
 sender of the original mailing will be used.</li>
-<li><strong>heads_up_emails</strong> (<em>array</em>) &#8211; A list of email addresses that heads up
+<li><strong>heads_up_emails</strong> (<em>array</em>) &#8211; An array of email addresses that heads up
 notification emails will be sent to.</li>
 <li><strong>recipient_emails</strong> (<em>array</em>) &#8211; An array of email addresses to which the new
 mailing should be sent.</li>
 <li><strong>recipient_groups</strong> (<em>array</em>) &#8211; An array of member groups to which the new
 mailing should be sent.</li>
-<li><strong>recipient_searches</strong> (<em>array</em>) &#8211; A list of searches that this mailing should
+<li><strong>recipient_searches</strong> (<em>array</em>) &#8211; An array of searches that this mailing should
 be sent to.</li>
+<li><strong>recipient_segments</strong> (<em>array</em>) &#8211; An array of segments that this mailing should
+be sent to.</li>
+<li><strong>suppression_segments</strong> (<em>array</em>) &#8211; An array of suppressed segments that this mailing should
+not be sent to.</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first">A reference to the new mailing.</p>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first">A reference to the new mailing_id.</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first last"><tt class="docutils literal"><span class="pre">Http404</span></tt> if no mailing is found.</p>
@@ -688,7 +957,7 @@ be sent to.</li>
 
 <dl class="get">
 <dt id="get--#account_id-mailings-#mailing_id-headsup">
-<tt class="descname">GET </tt><tt class="descname">/#account_id/mailings/#mailing_id/headsup</tt><a class="headerlink" href="#get--#account_id-mailings-#mailing_id-headsup" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">GET </tt><tt class="descname">/#account_id/mailings/#mailing_id/headsup</tt><a class="headerlink" href="#get--#account_id-mailings-#mailing_id-headsup" title="Permalink to this definition">&para;</a></dt>
 <dd><p>Get heads up email address(es) related to a mailing.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -708,7 +977,16 @@ be sent to.</li>
 <b>GET /100/mailings/200/headsup</b>
 
 [
-
+  {
+    "sent_ts": null,
+    "email": "myemma@myemma.com",
+    "mailing_id": 200
+  },
+  {
+    "sent_ts": null,
+    "email": "youremma@myemma.com",
+    "mailing_id": 200
+  }
 ]
 
 </pre>
@@ -718,7 +996,7 @@ be sent to.</li>
 
 <dl class="post">
 <dt id="post--#account_id-mailings-validate">
-<tt class="descname">POST </tt><tt class="descname">/#account_id/mailings/validate</tt><a class="headerlink" href="#post--#account_id-mailings-validate" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">POST </tt><tt class="descname">/#account_id/mailings/validate</tt><a class="headerlink" href="#post--#account_id-mailings-validate" title="Permalink to this definition">&para;</a></dt>
 <dd><p>Validate that a mailing has valid personalization-tag syntax. Checks
 tag syntax in three params:</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -726,10 +1004,9 @@ tag syntax in three params:</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>html_body</strong> (<em>string</em>) &#8211; The html contents of the mailing</li>
-<li><strong>plaintext</strong> (<em>string</em>) &#8211; The plaintext contents of the mailing. Unlike in
-<tt class="docutils literal"><span class="pre">create_mailing</span></tt>, this param is not required.</li>
-<li><strong>subject</strong> (<em>string</em>) &#8211; The subject of the mailing</li>
+<li><strong>html_body</strong> (<em>string</em>) &#8211; Optional html contents of the mailing.</li>
+<li><strong>plaintext</strong> (<em>string</em>) &#8211; Optional plaintext contents of the mailing.</li>
+<li><strong>subject</strong> (<em>string</em>) &#8211; Optional subject of the mailing.</li>
 </ul>
 </td>
 </tr>
@@ -760,7 +1037,7 @@ true
 
 <dl class="post">
 <dt id="post--#account_id-mailings-#mailing_id-winner-#winner_id">
-<tt class="descname">POST </tt><tt class="descname">/#account_id/mailings/#mailing_id/winner/#winner_id</tt><a class="headerlink" href="#post--#account_id-mailings-#mailing_id-winner-#winner_id" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">POST </tt><tt class="descname">/#account_id/mailings/#mailing_id/winner/#winner_id</tt><a class="headerlink" href="#post--#account_id-mailings-#mailing_id-winner-#winner_id" title="Permalink to this definition">&para;</a></dt>
 <dd><p>Declare the winner of a split test manually.  In the event that the test
 duration has not elapsed, the current stats for each test will be frozen
 and the content defined in the user declared winner will sent to the
@@ -774,6 +1051,10 @@ assigned to them when the test was initially constructed.</p>
 <tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body">True on success.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http403</span></tt> if the winner cannot be manually declared.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not found.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the winning_id mailing is not found.</td>
 </tr>
 </tbody>
 </table>
