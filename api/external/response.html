@@ -4,13 +4,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
+
     <title>Emma API Documentation | Emma, Inc.</title>
 
-    
+
     <link rel="stylesheet" href="../../_static/emma.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    
+
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
@@ -20,10 +20,10 @@
         HAS_SOURCE:  true
       };
     </script>
-    
+
     <script src="http://code.jquery.com/jquery-1.4.min.js"></script>
     <script>window.jQuery || document.write('<script src="_static/jquery.js"><\/script>')</script>
-    
+
     <script type="text/javascript" src="//use.typekit.net/zfm0nfo.js"></script>
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
@@ -93,13 +93,13 @@
              accesskey="P">previous</a> |</li>
         <li><a href="../../index.html">audience 0.1 documentation</a> &raquo;</li> 
       </ul>
-    </div>  
+    </div>
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
           <div class="body">
-            
+
   <div class="section" id="response">
 <h1>Response<a class="headerlink" href="#response" title="Permalink to this headline">¶</a></h1>
 <p>We know that you want to do some fancy pivot tables with your response
@@ -125,7 +125,7 @@ object contains:</p>
 <li><strong>mailings</strong> &#8211; number of mailings sent</li>
 <li><strong>sent</strong> &#8211; number of messages sent</li>
 <li><strong>delivered</strong> &#8211; number of messages delivered</li>
-<li><strong>bounced</strong> &#8211; number of messages that failed delivery due to a                                 hard or soft bounce</li>
+<li><strong>bounced</strong> &#8211; number of messages that failed delivery due to a hard or soft bounce</li>
 <li><strong>opened</strong> &#8211; number of messages opened</li>
 <li><strong>clicked_unique</strong> &#8211; link clicks, unique on message</li>
 <li><strong>clicked</strong> &#8211; total link clicks, including duplicates</li>
@@ -136,6 +136,8 @@ object contains:</p>
 <li><strong>webview_share_clicked</strong> &#8211; total times a customer-shared mailing has been seen</li>
 <li><strong>opted_out</strong> &#8211; people who opted out based on this mailing</li>
 <li><strong>signed_up</strong> &#8211; people who signed up based on this mailing</li>
+<li><strong>count_purchased</strong> &#8211; the total number of orders made</li>
+<li><strong>sum_purchased</strong> &#8211; the total dollar amount of orders</li>
 </ul>
 </dd>
 </dl>
@@ -144,7 +146,7 @@ object contains:</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>include_archived</strong> (<em>boolean</em>) &#8211; Accepts 1. All other values are False.
+<li><strong>include_deleted</strong> (<em>boolean</em>) &#8211; Accepts 1. All other values are False.
 Optional flag to include archived mailings in the list.</li>
 <li><strong>range</strong> (<em>string</em>) &#8211; Accepts 2 dates (YYYY-MM-DD) delimited by a tilde (~).
 Example: <tt class="docutils literal"><span class="pre">2011-04-01~2011-09-01</span></tt>
@@ -165,7 +167,48 @@ on that date will be included.</li>
 <b>GET /100/response</b>
 
 [
-
+  {
+    "count_purchased": 0,
+    "delivered": 0,
+    "clicked": 0,
+    "account_id": 100,
+    "clicked_unique": 0,
+    "shared": 0,
+    "mailings": 0,
+    "year": 2018,
+    "month": 4,
+    "opened": 7,
+    "opted_out": 0,
+    "sent": 0,
+    "signed_up": 0,
+    "webview_shared": 0,
+    "share_clicked": 0,
+    "bounced": 0,
+    "webview_share_clicked": 0,
+    "sum_purchased": 0,
+    "forwarded": 0
+  },
+  {
+    "count_purchased": 0,
+    "delivered": 0,
+    "clicked": 0,
+    "account_id": 100,
+    "clicked_unique": 0,
+    "shared": 0,
+    "mailings": 0,
+    "year": 2018,
+    "month": 3,
+    "opened": 0,
+    "opted_out": 0,
+    "sent": 0,
+    "signed_up": 0,
+    "webview_shared": 0,
+    "share_clicked": 0,
+    "bounced": 0,
+    "webview_share_clicked": 0,
+    "sum_purchased": 0,
+    "forwarded": 0
+  }
 ]
 
 </pre>
@@ -176,24 +219,51 @@ on that date will be included.</li>
 <span style="font-weight:bold;">Sample Response</span>
 <a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
 <pre class="response">
-<b>GET /100/response?range=2011-04-01~</b>
+<b>GET /100/response?range=2018-04-01~2018-06-01</b>
 
 [
-
-]
-
-</pre>
-</div>
-</p>
-<p>
-<div class="sample-response hide-response">
-<span style="font-weight:bold;">Sample Response</span>
-<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
-<pre class="response">
-<b>GET /100/response?range=2011-04-01~2011-09-01</b>
-
-[
-
+  {
+    "count_purchased": 0,
+    "delivered": 0,
+    "clicked": 0,
+    "account_id": 100,
+    "clicked_unique": 0,
+    "shared": 0,
+    "mailings": 0,
+    "year": 2018,
+    "month": 5,
+    "opened": 0,
+    "opted_out": 0,
+    "sent": 0,
+    "signed_up": 0,
+    "webview_shared": 0,
+    "share_clicked": 0,
+    "bounced": 0,
+    "webview_share_clicked": 0,
+    "sum_purchased": 0,
+    "forwarded": 0
+  },
+  {
+    "count_purchased": 0,
+    "delivered": 0,
+    "clicked": 0,
+    "account_id": 100,
+    "clicked_unique": 0,
+    "shared": 0,
+    "mailings": 0,
+    "year": 2018,
+    "month": 4,
+    "opened": 0,
+    "opted_out": 0,
+    "sent": 0,
+    "signed_up": 0,
+    "webview_shared": 0,
+    "share_clicked": 0,
+    "bounced": 0,
+    "webview_share_clicked": 0,
+    "sum_purchased": 0,
+    "forwarded": 0
+  }
 ]
 
 </pre>
@@ -210,21 +280,30 @@ for a particular mailing.</p>
 <dl class="docutils">
 <dt><strong>Returns:</strong></dt>
 <dd>A single object with the following fields:
-* <strong>name</strong> &#8211; name of mailing
-* <strong>subject</strong> &#8211; subject of the mailing
-* <strong>sent</strong> &#8211; messages sent
-* <strong>delivered</strong> &#8211; messages delivered
-* <strong>bounced</strong> &#8211; messages that failed delivery due to a hard or soft bounce
-* <strong>opened</strong> &#8211; messages opened
-* <strong>clicked_unique</strong> &#8211; link clicks, unique on message
-* <strong>clicked</strong> &#8211; total link clicks, including duplicates
-* <strong>forwarded</strong> &#8211; times the mailing was forwarded
-* <strong>opted_out</strong> &#8211; people who opted out based on this mailing
-* <strong>signed_up</strong> &#8211; people who signed up based on this mailing
-* <strong>shared</strong> &#8211; people who shared this mailing
-* <strong>share_clicked</strong> &#8211; number of clicks shares of this mailing received
-* <strong>webview_shared</strong> &#8211; number of times the customer has shared
-* <strong>webview_share_clicked</strong> &#8211; number of clicks customer-shares of this mailing received</dd>
+<li><strong>name</strong> &#8211; name of mailing</li>
+<li><strong>subject</strong> &#8211; subject of the mailing</li>
+<li><strong>recipient_count</strong> &#8211; count of people this mailing was sent to</li>
+<li><strong>sent</strong> &#8211; messages sent</li>
+<li><strong>delivered</strong> &#8211; messages delivered</li>
+<li><strong>in_progress</strong> &#8211; messages still being attempted</li>
+<li><strong>bounced</strong> &#8211; messages that failed delivery due to a hard or soft bounce</li>
+<li><strong>opened</strong> &#8211; messages opened</li>
+<li><strong>clicked_unique</strong> &#8211; link clicks, unique on message</li>
+<li><strong>clicked</strong> &#8211; total link clicks, including duplicates</li>
+<li><strong>forwarded</strong> &#8211; times the mailing was forwarded</li>
+<li><strong>opted_out</strong> &#8211; people who opted out based on this mailing</li>
+<li><strong>signed_up</strong> &#8211; people who signed up based on this mailing</li>
+<li><strong>shared</strong> &#8211; people who shared this mailing</li>
+<li><strong>share_clicked</strong> &#8211; number of clicks shares of this mailing received</li>
+<li><strong>webview_shared</strong> &#8211; number of times the customer has shared</li>
+<li><strong>webview_share_clicked</strong> &#8211; number of clicks customer-shares of this mailing received</li>
+<li><strong>count_purchased</strong> &#8211; the total number of ecommerce orders
+(this value will be 0 for accounts not using an ecommerce integration)</li>
+<li><strong>sum_purchased</strong> &#8211; the total dollar amount of all ecommerce orders
+(this value will be 0 for accounts not using an ecommerce integration)</li>
+<li><strong>purchase_metrics</strong> &#8211; an object containing purchase metrics if ecommerce integrations are enabled
+(this object will be empty for accounts not using an ecommerce integration)</li>
+</dd>
 </dl>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -233,7 +312,8 @@ for a particular mailing.</p>
 <tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid mailing type - &#8216;m&#8217; for
-standard mailings, &#8216;t&#8217; for test mailings and &#8216;r&#8217; for trigger mailings.</td>
+standard mailings, &#8216;t&#8217; for test mailings, &#8216;s&#8217; for
+subject split test mailings, and &#8216;r&#8217; for trigger mailings.</td>
 </tr>
 </tbody>
 </table>
@@ -245,23 +325,26 @@ standard mailings, &#8216;t&#8217; for test mailings and &#8216;r&#8217; for tri
 <b>GET /100/response/200</b>
 
 {
-  "delivered": 0, 
-  "signed_up": 0, 
-  "clicked": 0, 
-  "forwarded": 0, 
-  "clicked_unique": 0, 
-  "webview_share_clicked": 0, 
-  "subject": "Sample Mailing for [% member:first_name %] [% member:last_name %]", 
-  "opened": 0, 
-  "opted_out": 0, 
-  "share_clicked": 0, 
-  "shared": 0, 
-  "webview_shared": 0, 
-  "in_progress": 0, 
-  "bounced": 0, 
-  "recipient_count": 0, 
-  "sent": 0, 
-  "name": "Sample Mailing"
+  "purchase_metrics": {},
+  "subject": "Sample Mailing for [% member:first_name %] [% member:last_name %]",
+  "count_purchased": 0,
+  "delivered": 0,
+  "clicked": 0,
+  "opened": 0,
+  "webview_shared": 0,
+  "recipient_count": 0,
+  "sent": 0,
+  "clicked_unique": 0,
+  "webview_share_clicked": 0,
+  "shared": 0,
+  "in_progress": 0,
+  "sum_purchased": 0,
+  "forwarded": 0,
+  "name": "Sample Mailing",
+  "opted_out": 0,
+  "signed_up": 0,
+  "share_clicked": 0,
+  "bounced": 0
 }
 </pre>
 </div>
@@ -278,7 +361,12 @@ standard mailings, &#8216;t&#8217; for test mailings and &#8216;r&#8217; for tri
 <ul class="last simple">
 <li><strong>timestamp</strong> &#8211; time the message was sent</li>
 <li><strong>member_id</strong> &#8211; id of the message addressee</li>
+<li><strong>member_since</strong> &#8211; time member was added to your audience</li>
 <li><strong>email</strong> &#8211; email of the message addressee</li>
+<li><strong>email_user</strong> &#8211; email user of the message addressee</li>
+<li><strong>email_domain</strong> &#8211; email domain of the message addressee</li>
+<li><strong>member_status_id</strong> &#8211; addressee's status; a (active), e (error), o (opt out), or f (forward)</li>
+<li><strong>fields</strong> &#8211; member field object</li>
 </ul>
 </dd>
 </dl>
@@ -288,9 +376,10 @@ standard mailings, &#8216;t&#8217; for test mailings and &#8216;r&#8217; for tri
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid
-mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test mailings and
-&#8216;r&#8217; for trigger mailings.</td>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt>if the mailing is not valid mailing type - &#8216;m&#8217; for
+standard mailings, &#8216;t&#8217; for test mailings, &#8216;s&#8217; for
+subject split test mailings, and &#8216;r&#8217; for
+trigger mailings.</td>
 </tr>
 </tbody>
 </table>
@@ -308,9 +397,9 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
       "last_name": "Smith",
       "favorite_food": "tacos"
     },
-    "timestamp": "@D:2011-01-02T10:27:43",
+    "timestamp": "@D:2018-01-12T10:27:40",
     "member_id": 200,
-    "member_since": "@D:2010-11-12T11:23:45",
+    "member_since": "@D:2017-11-12T11:23:45",
     "email_domain": "myemma.com",
     "email_user": "emma",
     "email": "emma@myemma.com",
@@ -322,9 +411,9 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
       "last_name": "Jones",
       "favorite_food": "toast"
     },
-    "timestamp": "@D:2011-01-02T10:27:43",
+    "timestamp": "@D:2018-01-12T10:27:40",
     "member_id": 201,
-    "member_since": "@D:2011-01-03T15:54:13",
+    "member_since": "@D:2018-01-03T15:54:13",
     "email_domain": "myemma.com",
     "email_user": "gladys",
     "email": "gladys@myemma.com",
@@ -334,13 +423,27 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
     "fields": {
 
     },
-    "timestamp": "@D:2011-01-02T10:27:43",
+    "timestamp": "@D:2018-01-12T10:27:43",
     "member_id": 204,
-    "member_since": "@D:2010-12-13T23:12:44",
+    "member_since": "@D:2017-12-13T23:12:44",
     "email_domain": "myemma.com",
     "email_user": "bob",
     "email": "bob@myemma.com",
-    "member_status_id": "a"
+    "member_status_id": "e"
+  },
+  {
+    "fields": {
+      "first_name": "Han",
+      "last_name": "Smith",
+      "favorite_food": "chocolate pudding"
+    },
+    "timestamp": "@D:2018-01-12T10:27:43",
+    "member_id": 201,
+    "member_since": "@D:2018-01-03T15:54:13",
+    "email_domain": "myemma.com",
+    "email_user": "gladys",
+    "email": "gladys@myemma.com",
+    "member_status_id": "f"
   }
 ]
 
@@ -360,6 +463,11 @@ possibly sent, but not yet delivered.</p>
 <ul class="last simple">
 <li><strong>member_id</strong> &#8211; id of the message addressee</li>
 <li><strong>email</strong> &#8211; email of the message addressee</li>
+<li><strong>email_user</strong> &#8211; email user of the addressee</li>
+<li><strong>email_domain</strong> &#8211; email domain of the addressee</li>
+<li><strong>member_since</strong> &#8211; date member was added to audience</li>
+<li><strong>member_status_id</strong> &#8211; status of the member</li>
+<li><strong>fields</strong> &#8211; member field object</li>
 </ul>
 </dd>
 </dl>
@@ -370,7 +478,7 @@ possibly sent, but not yet delivered.</p>
 <tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid
-mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test mailings and
+mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test mailings, &#8216;s&#8217; for subject split test mailings, and
 &#8216;r&#8217; for trigger mailings.</td>
 </tr>
 </tbody>
@@ -426,8 +534,12 @@ those that failed due to hard or soft bounces.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>result</strong> (<em>string</em>) &#8211; Accepted options: &#8216;all&#8217;, &#8216;delivered&#8217;,
+<li><strong>delivery_type</strong> (<em>string</em>) &#8211; Accepted options: &#8216;all&#8217;, &#8216;delivered&#8217;,
 &#8216;bounced&#8217;, &#8216;hard&#8217;, &#8216;soft&#8217;. Defaults to &#8216;all&#8217;, if not provided.</li>
+<li><strong>del_status</strong> (<em>string</em>) &#8211; Accepted options: &#8216;all&#8217;, &#8216;delivered&#8217;,
+&#8216;bounced&#8217;, &#8216;hard&#8217;, &#8216;soft&#8217;. Defaults to &#8216;all&#8217;, if not provided.</li>
+<li><strong>include_custom_fields</strong> (<em>boolean</em>) &#8211; flag to include custom member fields (defaults to true).</li>
+<li><strong>include_children</strong> (<em>boolean</em>) &#8211; flag to include child mailings (defaults to true)</li>
 </ul>
 </td>
 </tr>
@@ -441,6 +553,11 @@ those that failed due to hard or soft bounces.</p>
 <li><strong>delivery_type</strong> &#8211; delivery outcome: <tt class="docutils literal"><span class="pre">delivered</span></tt>, <tt class="docutils literal"><span class="pre">hard</span></tt>,                                    (bounce), or <tt class="docutils literal"><span class="pre">soft</span></tt> (bounce)</li>
 <li><strong>member_id</strong> &#8211; id of the message addressee</li>
 <li><strong>email</strong> &#8211; email of the message addressee</li>
+<li><strong>email_user</strong> &#8211; email user of the addressee</li>
+<li><strong>email_domain</strong> &#8211; email domain of the addressee</li>
+<li><strong>member_since</strong> &#8211; date member was added to audience</li>
+<li><strong>member_status_id</strong> &#8211; status of the member</li>
+<li><strong>fields</strong> &#8211; member field object</li>
 </ul>
 </dd>
 </dl>
@@ -451,7 +568,7 @@ those that failed due to hard or soft bounces.</p>
 <tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid
-mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test mailings and
+mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test mailings, &#8216;s&#8217; for subject split test mailings, and
 &#8216;r&#8217; for trigger mailings.</td>
 </tr>
 </tbody>
@@ -499,6 +616,11 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
 <li><strong>timestamp</strong> &#8211; time the message was opened</li>
 <li><strong>member_id</strong> &#8211; id of the message addressee</li>
 <li><strong>email</strong> &#8211; email of the message addressee</li>
+<li><strong>email_user</strong> &#8211; email user of the addressee</li>
+<li><strong>email_domain</strong> &#8211; email domain of the addressee</li>
+<li><strong>member_since</strong> &#8211; date member was added to audience</li>
+<li><strong>member_status_id</strong> &#8211; status of the member</li>
+<li><strong>fields</strong> &#8211; member field object</li>
 </ul>
 </dd>
 </dl>
@@ -509,7 +631,7 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
 <tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid
-mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test mailings and
+mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test mailings, &#8216;s&#8217; for subject split test mailings, and
 &#8216;r&#8217; for trigger mailings.</td>
 </tr>
 </tbody>
@@ -556,6 +678,15 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
 </dd></dl>
 
 <dl class="get">
+<dt id="get--#account_id-response-#mailing_id-opens-#member_id">
+<tt class="descname">GET </tt><tt class="descname">/#account_id/response/#mailing_id/opens/#member_id</tt><a class="headerlink" href="#get--#account_id-response-#mailing_id-opens-#member_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine if the specified member opened the mailing.</p>
+<dl class="docutils">
+<dt><strong>Returns:</strong></dt>
+<dd><p class="first">True or False depending on if the member opened the specified mailing</p>
+</dd></dl></dd></dl>
+
+<dl class="get">
 <dt id="get--#account_id-response-#mailing_id-links">
 <tt class="descname">GET </tt><tt class="descname">/#account_id/response/#mailing_id/links</tt><a class="headerlink" href="#get--#account_id-response-#mailing_id-links" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the list of links for this mailing.</p>
@@ -567,6 +698,7 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
 <li><strong>link_order</strong> &#8211; order of the link in the mailing</li>
 <li><strong>link_name</strong> &#8211; friendly name for the link</li>
 <li><strong>link_target</strong> &#8211; link URL</li>
+<li><strong>plaintext</strong> &#8211; boolean, is the link plaintext</li>
 <li><strong>unique_clicks</strong> &#8211; clicks on the link, unique per message</li>
 <li><strong>total_clicks</strong> &#8211; clicks on the link, total</li>
 </ul>
@@ -579,7 +711,7 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
 <tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid
-mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test mailings and
+mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test mailings, &#8216;s&#8217; for subject split test mailings, and
 &#8216;r&#8217; for trigger mailings.</td>
 </tr>
 </tbody>
@@ -620,6 +752,8 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>member_id</strong> (<em>int</em>) &#8211; Limits results to a single member.</li>
 <li><strong>link_id</strong> (<em>int</em>) &#8211; Limits results to a single link.</li>
+<li><strong>include_custom_fields</strong> (<em>boolean</em>) &#8211; flag to include custom member fields (defaults to true).</li>
+<li><strong>include_children</strong> (<em>boolean</em>) &#8211; flag to include child mailings (defaults to true).</li>
 </ul>
 </td>
 </tr>
@@ -631,8 +765,12 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
 <ul class="last simple">
 <li><strong>link_id</strong> &#8211; id of the clicked link</li>
 <li><strong>timestamp</strong> &#8211; time the link was clicked</li>
-<li><strong>member_id</strong> &#8211; id of the message addressee</li>
 <li><strong>email</strong> &#8211; email of the message addressee</li>
+<li><strong>email_user</strong> &#8211; email user of the addressee</li>
+<li><strong>email_domain</strong> &#8211; email domain of the addressee</li>
+<li><strong>member_since</strong> &#8211; date member was added to audience</li>
+<li><strong>member_status_id</strong> &#8211; status of the member</li>
+<li><strong>fields</strong> &#8211; member field object</li>
 </ul>
 </dd>
 </dl>
@@ -643,7 +781,7 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
 <tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid
-mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test mailings and
+mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test mailings, &#8216;s&#8217; for subject split test mailings, and
 &#8216;r&#8217; for trigger mailings.</td>
 </tr>
 </tbody>
@@ -679,6 +817,54 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
 </dd></dl>
 
 <dl class="get">
+<dt id="get--#account_id-response-#mailing_id-clicks-#member_id">
+<tt class="descname">GET </tt><tt class="descname">/#account_id/response/#mailing_id/clicks/#member_id</tt><a class="headerlink" href="#get--#account_id-response-#mailing_id-clicks-#member_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of clicks for this mailing for the specified member.</p>
+<dl class="docutils">
+<dt><strong>Returns:</strong></dt>
+<dd><p class="first">An array of objects with the following fields:</p>
+<ul class="last simple">
+<li><strong>link_id</strong> &#8211; id of the clicked link</li>
+<li><strong>link_name</strong> &#8211; name of the link</li>
+<li><strong>link_target</strong> &#8211; link url</li>
+<li><strong>plaintext</strong> &#8211; bool, is link plaintext</li>
+<li><strong>timestamp</strong> &#8211; timestamp when link was clicked</li>
+</ul>
+</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>GET /100/response/200/clicks/300</b>
+
+[
+  {
+    "plaintext": false,
+    "timestamp": "@D:2018-09-12T15:22:03",
+    "link_name": "Emma",
+    "link_target": "http://www.myemma.com",
+    "link_id": 400
+  }
+]
+
+</pre>
+</div>
+</p>
+</dd></dl>
+
+<dl class="get">
 <dt id="get--#account_id-response-#mailing_id-forwards">
 <tt class="descname">GET </tt><tt class="descname">/#account_id/response/#mailing_id/forwards</tt><a class="headerlink" href="#get--#account_id-response-#mailing_id-forwards" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the list of forwards for this mailing.</p>
@@ -689,7 +875,12 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
 <li><strong>timestamp</strong> &#8211; time the mailing was forwarded</li>
 <li><strong>forward_mailing_id</strong> &#8211; id of the new mailing created to                                        send the forward</li>
 <li><strong>member_id</strong> &#8211; id of the forwarding member</li>
-<li><strong>email</strong> &#8211; email of the forwarding member</li>
+<li><strong>email</strong> &#8211; email of the message addressee</li>
+<li><strong>email_user</strong> &#8211; email user of the addressee</li>
+<li><strong>email_domain</strong> &#8211; email domain of the addressee</li>
+<li><strong>member_since</strong> &#8211; date member was added to audience</li>
+<li><strong>member_status_id</strong> &#8211; status of the member</li>
+<li><strong>fields</strong> &#8211; member field object</li>
 </ul>
 </dd>
 </dl>
@@ -700,7 +891,7 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
 <tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid
-mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test mailings and
+mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test mailings, &#8216;s&#8217; for subject split test mailings, and
 &#8216;r&#8217; for trigger mailings.</td>
 </tr>
 </tbody>
@@ -713,7 +904,28 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
 <b>GET /100/response/200/forwards</b>
 
 [
-
+  {
+    "forward_mailing_id": 401,
+    "fields": {},
+    "timestamp": "@D:2018-05-02T14:35:38",
+    "member_id": 300,
+    "member_since": "@D:2017-01-04T08:40:06",
+    "email_domain": "myemma.com",
+    "email_user": "susansmith",
+    "email": "susansmit@myemma.com",
+    "member_status_id": "a"
+  },
+  {
+    "forward_mailing_id": 400,
+    "fields": {},
+    "timestamp": "@D:2018-05-02T14:41:16",
+    "member_id": 500,
+    "member_since": "@D:2018-01-03T09:33:24",
+    "email_domain": "myemma.com",
+    "email_user": "janedoe",
+    "email": "janedoe@myemma.com",
+    "member_status_id": "a"
+  }
 ]
 
 </pre>
@@ -731,9 +943,12 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
 <ul class="last simple">
 <li><strong>timestamp</strong> &#8211; time of the optout</li>
 <li><strong>member_id</strong> &#8211; id of the opted out member</li>
-<li><strong>email</strong> &#8211; email of the opted out member</li>
-<li><strong>first_name</strong> &#8211; first name of the opted out member</li>
-<li><strong>last_name</strong> &#8211; last name of the opted out member</li>
+<li><strong>email</strong> &#8211; email of the message addressee</li>
+<li><strong>email_user</strong> &#8211; email user of the addressee</li>
+<li><strong>email_domain</strong> &#8211; email domain of the addressee</li>
+<li><strong>member_since</strong> &#8211; date member was added to audience</li>
+<li><strong>member_status_id</strong> &#8211; status of the member</li>
+<li><strong>fields</strong> &#8211; member field object</li>
 </ul>
 </dd>
 </dl>
@@ -744,7 +959,7 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
 <tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid
-mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test mailings and
+mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test mailings, &#8216;s&#8217; for subject split test mailings, and
 &#8216;r&#8217; for trigger mailings.</td>
 </tr>
 </tbody>
@@ -758,9 +973,7 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
 
 [
   {
-    "fields": {
-
-    },
+    "fields": {},
     "timestamp": "@D:2011-01-02T13:56:16",
     "member_id": 204,
     "member_since": "@D:2010-12-13T23:12:44",
@@ -785,11 +998,14 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
 <dd><p class="first">An array of objects with the following fields:</p>
 <ul class="last simple">
 <li><strong>member_id</strong> &#8211; id of the signed up member</li>
-<li><strong>email</strong> &#8211; email of the signed up member</li>
 <li><strong>timestamp</strong> &#8211; time of the signup</li>
-<li><strong>first_name</strong> &#8211; first name of the signed up member</li>
-<li><strong>last_name</strong> &#8211; last name of the signed up member</li>
 <li><strong>ref_member_id</strong> &#8211; id of the referring member</li>
+<li><strong>email</strong> &#8211; email of the message addressee</li>
+<li><strong>email_user</strong> &#8211; email user of the addressee</li>
+<li><strong>email_domain</strong> &#8211; email domain of the addressee</li>
+<li><strong>member_since</strong> &#8211; date member was added to audience</li>
+<li><strong>member_status_id</strong> &#8211; status of the member</li>
+<li><strong>fields</strong> &#8211; member field object</li>
 </ul>
 </dd>
 </dl>
@@ -800,7 +1016,7 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
 <tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid
-mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test mailings and
+mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test mailings, &#8216;s&#8217; for subject split test mailings, and
 &#8216;r&#8217; for trigger mailings.</td>
 </tr>
 </tbody>
@@ -816,9 +1032,7 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
   {
     "ref_member_id": 200,
     "mailing_mailing_id": 200,
-    "fields": {
-
-    },
+    "fields": {},
     "timestamp": "@D:2011-01-05T15:28:11",
     "member_id": 205,
     "member_since": "@D:2011-01-05T15:28:11",
@@ -844,8 +1058,51 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
 <ul class="last simple">
 <li><strong>member_id</strong> &#8211; id of the shared message</li>
 <li><strong>network</strong> &#8211; name of the network the share happened on</li>
-<li><strong>clicks</strong> &#8211; number of clicks that the shared link received</li>
+<li><strong>share_clicks</strong> &#8211; number of clicks that the shared link received</li>
+<li><strong>email</strong> &#8211; email of the message addressee</li>
+<li><strong>email_user</strong> &#8211; email user of the addressee</li>
+<li><strong>email_domain</strong> &#8211; email domain of the addressee</li>
+<li><strong>member_since</strong> &#8211; date member was added to audience</li>
+<li><strong>member_status_id</strong> &#8211; status of the member</li>
+<li><strong>fields</strong> &#8211; member field object</li>
 </ul>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>GET /100/response/200/shares</b>
+
+[
+  {
+    "network": "email",
+    "share_clicks": 0,
+    "fields": {},
+    "timestamp": "@D:2018-05-02T14:35:25",
+    "member_id": 123,
+    "member_since": "@D:2017-01-04T08:40:06",
+    "email_domain": "myemma.com",
+    "email_user": "johnsmith",
+    "email": "johnsmith@myemma.com",
+    "member_status_id": "a"
+  },
+  {
+    "network": "email",
+    "share_clicks": 0,
+    "fields": {},
+    "timestamp": "@D:2018-05-02T14:40:38",
+    "member_id": 456,
+    "member_since": "@D:2018-01-03T09:33:24",
+    "email_domain": "myemma.com",
+    "email_user": "someone",
+    "email": "someone@myemma.com",
+    "member_status_id": "a"
+  }
+]
+
+</pre>
+</div>
+</p>
 </dd>
 </dl>
 <table class="docutils field-list" frame="void" rules="none">
@@ -855,7 +1112,7 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
 <tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid
-mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test mailings and
+mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test mailings, &#8216;s&#8217; for subject split test mailings, and
 &#8216;r&#8217; for trigger mailings.</td>
 </tr>
 </tbody>
@@ -872,7 +1129,26 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
 <ul class="last simple">
 <li><strong>timestamp</strong> &#8211; timestamp of the shared link click</li>
 <li><strong>network</strong> &#8211; name of the network the share happened on</li>
+<li><strong>customer_shares</strong> &#8211; number of shares</li>
 </ul>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>GET /100/response/200/customer_shares</b>
+
+[
+  {
+    "timestamp": "@D:2017-05-25T16:00:00",
+    "customer_shares": 0,
+    "network": "facebook"
+  }
+]
+
+</pre>
+</div>
+</p>
 </dd>
 </dl>
 <table class="docutils field-list" frame="void" rules="none">
@@ -882,7 +1158,7 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
 <tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid
-mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test mailings and
+mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test mailings, &#8216;s&#8217; for subject split test mailings, and
 &#8216;r&#8217; for trigger mailings.</td>
 </tr>
 </tbody>
@@ -899,8 +1175,31 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
 <ul class="last simple">
 <li><strong>timestamp</strong> &#8211; timestamp of the shared link click</li>
 <li><strong>network</strong> &#8211; name of the network the share happened on</li>
-<li><strong>clicks</strong> &#8211; number of clicks that the shared link received</li>
+<li><strong>customer_share_clicks</strong> &#8211; number of clicks that the shared link received</li>
 </ul>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>GET /100/response/200/customer_share_clicks</b>
+
+[
+  {
+    "timestamp": "@D:2017-05-25T16:00:03",
+    "network": "facebook",
+    "customer_share_clicks": 1
+  },
+  {
+    "timestamp": "@D:2017-05-25T16:00:15",
+    "network": "facebook",
+    "customer_share_clicks": 1
+  }
+]
+
+</pre>
+</div>
+</p>
 </dd>
 </dl>
 <table class="docutils field-list" frame="void" rules="none">
@@ -910,7 +1209,7 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
 <tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid
-mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test mailings and
+mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test mailings, &#8216;s&#8217; for subject split test mailings, and
 &#8216;r&#8217; for trigger mailings.</td>
 </tr>
 </tbody>
@@ -929,6 +1228,22 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
 <li><strong>network</strong> &#8211; name of the network the share happened on</li>
 <li><strong>share_status</strong> &#8211; status of the share</li>
 </ul>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>GET /100/response/300/customer_share</b>
+
+{
+  "timestamp": "@D:2018-02-17T08:33:23",
+  "network": "facebook",
+  "share_status": "c"
+}
+
+</pre>
+</div>
+</p>
 </dd>
 </dl>
 <table class="docutils field-list" frame="void" rules="none">
@@ -938,8 +1253,45 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
 <tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not valid
-mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test mailings and
+mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test mailings, &#8216;s&#8217; for subject split test mailings, and
 &#8216;r&#8217; for trigger mailings.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="put">
+<dt id="put--#account_id-response-#share_id-customer_share_status">
+<tt class="descname">PUT </tt><tt class="descname">/#account_id/response/#mailing_id/customer_share_status</tt><a class="headerlink" href="#put--#account_id-response-#share_id-customer_share_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update a customer share status.</p>
+<dl class="docutils">
+  <table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>status_to</strong> (<em>str</em>) &#8211; The status to which you want to change the customer share. Options include:
+<span>x - mailing has been cancelled, share was not posted.</span>
+<span>c - share has been successfully posted.</span>
+<span>r - network access has been revoked.</span>
+</li>
+<li><strong>share_id</strong> (<em>int</em>) &#8211; The id of the share you want to update.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dt><strong>Returns:</strong></dt>
+<dd><p class="first">The updated status of the customer share.</p>
+</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the customer share does not exist.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist</td>
 </tr>
 </tbody>
 </table>
@@ -969,7 +1321,145 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
 </tr>
 </tbody>
 </table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>GET /100/response/200/shares/overview</b>
+
+[
+  {
+    "share_count": 0,
+    "share_clicks": 0,
+    "network": "email"
+  },
+  {
+    "share_count": 0,
+    "share_clicks": 0,
+    "network": "linkedin"
+  },
+  {
+    "share_count": 0,
+    "share_clicks": 0,
+    "network": "twitter"
+  }
+]
+
+</pre>
+</div>
+</p>
+</dd>
+</dl>
+
+<dl class="get">
+<dt id="get--#account_id-response-#mailing_id-split_test_info">
+<tt class="descname">GET </tt><tt class="descname">/#account_id/response/#mailing_id/split_test_info</tt><a class="headerlink" href="#get--#account_id-response-#mailing_id-split_test_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get information about the split test for the given parent mailing_id.</p>
+<dl class="docutils">
+<dt><strong>Returns:</strong></dt>
+<dd><p class="first">An object with the following attributes:</p>
+<ul class="last simple">
+<li><strong>test_in_progress</strong> &#8211; boolean indicating whether the test is still underway</li>
+<li><strong>autosend_on</strong> &#8211; boolean indicating whether the test will (or did) autosend on completion</li>
+<li><strong>autosend_time</strong> &#8211; timestamp when the test will (or did) autosend. If autosend_on is false, this will be null</li>
+<li><strong>num_test_recipients</strong> &#8211; number of recipients that received a test message</li>
+<li><strong>test_started_ts</strong> &#8211; the timestamp of when the test started</li>
+<li><strong>test_ended_ts</strong> &#8211; the timetamp of when the test ended</li>
+<li><strong>winner_auto</strong> &#8211; the mailing id that was automatically determined to be the winner</li>
+<li><strong>winner_manual</strong> &#8211; the mailing id that was manually chosen as the winner</li>
+<li><strong>responses</strong> &#8211; an array of objects with the same fields as those returned by get_response_overview, plus:
+<div><strong>variant</strong> &#8211; - an identifier for the variant this is the response data for. It will be 'a' 'b' or 'c'.</div>
+<div><strong>opened_pct</strong> &#8211; - the percentage of sent emails that were opened</div>
+<div><strong>clicked_pct</strong> &#8211; - the percentage of sent emails that were clicked</div>
+<div><strong>shared_pct</strong> &#8211; - the percentge of opened emails that were shared</div>
+<div><strong>signed_up_pct</strong> &#8211; - the percentage of opened emails that had signups</div>
+<div><strong>opted_out_pct</strong> &#8211; - the percentage of delivered emails that had optouts</div>
+<div><strong>winner</strong> &#8211; - if present, indicates that this variant was the winner</div>
+<div><strong>subject</strong> &#8211; - the subject of the given variant</div>
+</li>
+</ul>
+</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing does not exist.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the mailing is not a split_test parent mailing</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>GET /100/response/200/split_test_info</b>
+
+{
+  "test_started_ts": "@D:2018-09-10T08:52:27",
+  "autosend_time": "@D:2018-09-10T09:52:27",
+  "responses": [
+    {
+      "clicked_pct": 0,
+      "delivered": 0,
+      "opened_pct": 00.0,
+      "clicked": 0,
+      "opened": 0,
+      "clicked_unique": 0,
+      "opted_out_pct": 0,
+      "mailing_id": 300,
+      "is_winner": true,
+      "variant": "a",
+      "subject": "A",
+      "opted_out": 0,
+      "signed_up_pct": 0,
+      "signed_up": 0,
+      "shared": 0,
+      "share_clicked": 0,
+      "bounced": 0,
+      "shared_pct": 0,
+      "sent": 0,
+      "forwarded": 0
+    },
+    {
+      "clicked_pct": 0,
+      "delivered": 0,
+      "opened_pct": 0,
+      "clicked": 0,
+      "opened": 0,
+      "clicked_unique": 0,
+      "opted_out_pct": 0,
+      "mailing_id": 400,
+      "is_winner": false,
+      "variant": "b",
+      "subject": "B",
+      "opted_out": 0,
+      "signed_up_pct": 0,
+      "signed_up": 0,
+      "shared": 0,
+      "share_clicked": 0,
+      "bounced": 0,
+      "shared_pct": 0,
+      "sent": 0,
+      "forwarded": 0
+    }
+  ],
+  "test_in_progress": false,
+  "test_ended_ts": "@D:2018-09-10T09:53:04",
+  "winner_manual": null,
+  "autosend_on": true,
+  "winner_auto": 300,
+  "num_test_recipients": 0
+}
+
+</pre>
+</div>
+</p>
 </dd></dl>
+
 
 </div>
 
