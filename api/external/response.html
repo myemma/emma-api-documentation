@@ -397,7 +397,7 @@ trigger mailings.</td>
       "last_name": "Smith",
       "favorite_food": "tacos"
     },
-    "timestamp": "@D:2018-01-12T10:27:4",
+    "timestamp": "@D:2018-01-12T10:27:40",
     "member_id": 200,
     "member_since": "@D:2017-11-12T11:23:45",
     "email_domain": "myemma.com",
@@ -411,7 +411,7 @@ trigger mailings.</td>
       "last_name": "Jones",
       "favorite_food": "toast"
     },
-    "timestamp": "@D:2018-01-12T10:27:4",
+    "timestamp": "@D:2018-01-12T10:27:40",
     "member_id": 201,
     "member_since": "@D:2018-01-03T15:54:13",
     "email_domain": "myemma.com",
@@ -678,7 +678,7 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
 </dd></dl>
 
 <dl class="get">
-<dt id="get--#account_id-response-#mailing_id-opens">
+<dt id="#get--#account_id-response-#mailing_id-opens-#member_id">
 <tt class="descname">GET </tt><tt class="descname">/#account_id/response/#mailing_id/opens/#member_id</tt><a class="headerlink" href="#get--#account_id-response-#mailing_id-opens-#member_id" title="Permalink to this definition">¶</a></dt>
 <dd><p>Determine if the specified member opened the mailing.</p>
 <dl class="docutils">
@@ -817,7 +817,7 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
 </dd></dl>
 
 <dl class="get">
-<dt id="get--#account_id-response-#mailing_id-clicks">
+<dt id="get--#account_id-response-#mailing_id-clicks-#member_id">
 <tt class="descname">GET </tt><tt class="descname">/#account_id/response/#mailing_id/clicks/#member_id</tt><a class="headerlink" href="#get--#account_id-response-#mailing_id-clicks-#member_id" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the list of clicks for this mailing for the specified member.</p>
 <dl class="docutils">
@@ -1261,7 +1261,7 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
 </dd></dl>
 
 <dl class="put">
-<dt id="get--#account_id-response-#share_id-customer_share">
+<dt id="get--#account_id-response-#share_id-customer_share_status">
 <tt class="descname">PUT </tt><tt class="descname">/#account_id/response/#mailing_id/customer_share_status</tt><a class="headerlink" href="#put--#account_id-response-#share_id-customer_share_status" title="Permalink to this definition">¶</a></dt>
 <dd><p>Update a customer share status.</p>
 <dl class="docutils">
@@ -1353,7 +1353,7 @@ mailing type - &#8216;m&#8217; for standard mailings, &#8216;t&#8217; for test m
 </dl>
 
 <dl class="get">
-<dt id="get--#account_id-response">
+<dt id="get--#account_id-response-#mailing_id-split_test_info">
 <tt class="descname">GET </tt><tt class="descname">/#account_id/response/#mailing_id/split_test_info</tt><a class="headerlink" href="#get--#account_id-response-#mailing_id-split_test_info" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get information about the split test for the given parent mailing_id.</p>
 <dl class="docutils">
