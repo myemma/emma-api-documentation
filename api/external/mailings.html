@@ -5,13 +5,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
+
     <title>Emma API Documentation | Emma, Inc.</title>
 
-    
+
     <link rel="stylesheet" href="../../_static/emma.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    
+
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
@@ -21,12 +21,11 @@
         HAS_SOURCE:  true
       };
     </script>
-    
+
     <script src="http://code.jquery.com/jquery-1.4.min.js"></script>
     <script>window.jQuery || document.write('<script src="_static/jquery.js"><\/script>')</script>
-    
-    <script type="text/javascript" src="//use.typekit.net/zfm0nfo.js"></script>
-    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="top" title="audience 0.1 documentation" href="../../index.html" />
@@ -92,15 +91,15 @@
         <li class="right" >
           <a href="groups.html" title="Groups"
              accesskey="P">previous</a> |</li>
-        <li><a href="../../index.html">audience 0.1 documentation</a> &raquo;</li> 
+        <li><a href="../../index.html">audience 0.1 documentation</a> &raquo;</li>
       </ul>
-    </div>  
+    </div>
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
           <div class="body">
-            
+
   <div class="section" id="mailings">
 <h1>Mailings<a class="headerlink" href="#mailings" title="Permalink to this headline">&para;</a></h1>
 <p>With these endpoints, you can get information about your mailings including
@@ -415,47 +414,47 @@ when none are specified.</li>
 {
   "recipient_groups": [
     {
-      "member_group_id": 151, 
+      "member_group_id": 151,
       "name": "Widget Buyers"
     }
-  ], 
-  "heads_up_emails": [], 
-  "send_started": null, 
-  "signup_form_id": null, 
+  ],
+  "heads_up_emails": [],
+  "send_started": null,
+  "signup_form_id": null,
   "links": [
     {
-      "mailing_id": 200, 
-      "plaintext": false, 
-      "link_id": 200, 
-      "link_name": "Emma", 
-      "link_target": "http://www.myemma.com", 
+      "mailing_id": 200,
+      "plaintext": false,
+      "link_id": 200,
+      "link_name": "Emma",
+      "link_target": "http://www.myemma.com",
       "link_order": 1
     }
-  ], 
-  "mailing_id": 200, 
-  "plaintext": "Hello [% member:first_name %]!", 
-  "recipient_count": 0, 
-  "public_webview_url": "http://localhost/webview/uf/6db0cc7e6fdb2da589b65f29d90c96b6", 
-  "mailing_type": "m", 
+  ],
+  "mailing_id": 200,
+  "plaintext": "Hello [% member:first_name %]!",
+  "recipient_count": 0,
+  "public_webview_url": "http://localhost/webview/uf/6db0cc7e6fdb2da589b65f29d90c96b6",
+  "mailing_type": "m",
   "recipient_segments": [],
-  "parent_mailing_id": null, 
-  "recipient_searches": [], 
+  "parent_mailing_id": null,
+  "recipient_searches": [],
   "deleted_at": null,
-  "account_id": 100, 
+  "account_id": 100,
   "recipient_members": [
     {
-      "email": "youremma@myemma.com", 
+      "email": "youremma@myemma.com",
       "member_id": 200
     }
-  ], 
-  "mailing_status": "c", 
-  "sender": "Kevin McConnell", 
-  "name": "Sample Mailing", 
-  "send_finished": null, 
-  "send_at": null, 
+  ],
+  "mailing_status": "c",
+  "sender": "Kevin McConnell",
+  "name": "Sample Mailing",
+  "send_finished": null,
+  "send_at": null,
   "reply_to": null,
-  "subject": "Sample Mailing for [% member:first_name %] [% member:last_name %]", 
-  "archived_ts": null, 
+  "subject": "Sample Mailing for [% member:first_name %] [% member:last_name %]",
+  "archived_ts": null,
   "html_body": "&lt;p&gt;Hello [% member:first_name %]!&lt;/p&gt;"
 }
 </pre>
@@ -548,8 +547,8 @@ default, or just the type of content specified by <cite>type</cite>.</p>
 <b>GET /100/mailings/200/messages/200</b>
 
 {
-  "plaintext": "Hello !", 
-  "subject": "Sample Mailing for  ", 
+  "plaintext": "Hello !",
+  "subject": "Sample Mailing for  ",
   "html_body": "&lt;p&gt;Hello !&lt;/p&gt;",
   "webview_url": "https://tracker/message/200/200"
 }
@@ -737,7 +736,7 @@ default, or just the type of content specified by <cite>type</cite>.</p>
     "deleted_at": null,
     "email": "youremma@myemma.com"
   },
-  { 
+  {
     "status": "active",
     "confirmed_opt_in": null,
     "account_id": 100,
@@ -887,7 +886,7 @@ forward the specified message.</li>
 <b>POST /100/forwards/200/200</b>
 {
   "recipient_emails": [
-    "alex@myemma.com", 
+    "alex@myemma.com",
     "chris@myemma.com"
   ]
 }

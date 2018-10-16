@@ -24,8 +24,7 @@
     <script src="http://code.jquery.com/jquery-1.4.min.js"></script>
     <script>window.jQuery || document.write('<script src="_static/jquery.js"><\/script>')</script>
 
-    <script type="text/javascript" src="//use.typekit.net/zfm0nfo.js"></script>
-    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="top" title="audience 0.1 documentation" href="../../index.html" />
@@ -425,10 +424,10 @@ actions for a single member please see the <cite>/members/add</cite> call below.
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>members</strong> (<em>array</em>) &#8211; An array of members to update A member is a dictionary of member emails and field values to import.
 The only required field is &#8220;email&#8221;. All other fields are treated as the name of a member field.</li>
-<li><strong>automate_field_changes</strong> (<em>boolean</em>) &#8211; Accepts True or False. Optional. When set to True, updates made by this call will trigger 
-field change workflows when appropriate. For more information on field change automation, visit our 
+<li><strong>automate_field_changes</strong> (<em>boolean</em>) &#8211; Accepts True or False. Optional. When set to True, updates made by this call will trigger
+field change workflows when appropriate. For more information on field change automation, visit our
 <a href="http://support.e2ma.net/Resource_Center/Guide_to_Automation/Trigger_events%3A_field_change">Resource Center.</a></li>
-<li><strong>source_filename</strong> (<em>string</em>) &#8211; An arbitrary string to associate with this import. This should generally be set to the filename 
+<li><strong>source_filename</strong> (<em>string</em>) &#8211; An arbitrary string to associate with this import. This should generally be set to the filename
 that the user uploaded.</li>
 <li><strong>add_only</strong> (<em>boolean</em>) &#8211; Optional. Only add new members, ignore existing members.</li>
 <li><strong>group_ids</strong> (<em>array of integers</em>) &#8211; Optional. Add imported members to this list of groups.</li>

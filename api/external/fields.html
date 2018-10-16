@@ -5,13 +5,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
+
     <title>Emma API Documentation | Emma, Inc.</title>
 
-    
+
     <link rel="stylesheet" href="../../_static/emma.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    
+
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
@@ -21,12 +21,11 @@
         HAS_SOURCE:  true
       };
     </script>
-    
+
     <script src="http://code.jquery.com/jquery-1.4.min.js"></script>
     <script>window.jQuery || document.write('<script src="_static/jquery.js"><\/script>')</script>
-    
-    <script type="text/javascript" src="//use.typekit.net/zfm0nfo.js"></script>
-    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="top" title="audience 0.1 documentation" href="../../index.html" />
@@ -92,15 +91,15 @@
         <li class="right" >
           <a href="../../index.html" title="Emma API"
              accesskey="P">previous</a> |</li>
-        <li><a href="../../index.html">audience 0.1 documentation</a> &raquo;</li> 
+        <li><a href="../../index.html">audience 0.1 documentation</a> &raquo;</li>
       </ul>
-    </div>  
+    </div>
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
           <div class="body">
-            
+
   <div class="section" id="fields">
 <h1>Fields<a class="headerlink" href="#fields" title="Permalink to this headline">¶</a></h1>
 <p>These endpoints let you create, edit, update and delete all of the custom
@@ -225,16 +224,16 @@ even if it has been deleted.</li>
 <b>GET /100/fields/200</b>
 
 {
-  "shortcut_name": "first_name", 
-  "display_name": "First Name", 
-  "account_id": 100, 
-  "field_type": "text", 
-  "required": false, 
-  "field_id": 200, 
-  "widget_type": "text", 
-  "short_display_name": null, 
-  "column_order": 1, 
-  "deleted_at": null, 
+  "shortcut_name": "first_name",
+  "display_name": "First Name",
+  "account_id": 100,
+  "field_type": "text",
+  "required": false,
+  "field_id": 200,
+  "widget_type": "text",
+  "short_display_name": null,
+  "column_order": 1,
+  "deleted_at": null,
   "options": null
 }
 </pre>
@@ -276,9 +275,9 @@ Accepts one of <tt class="docutils literal"><span class="pre">text</span></tt>, 
 <pre class="response">
 <b>POST /100/fields</b>
 {
-  "shortcut_name": "new_boolean", 
-  "column_order": 3, 
-  "display_name": "A New Boolean Field", 
+  "shortcut_name": "new_boolean",
+  "column_order": 3,
+  "display_name": "A New Boolean Field",
   "field_type": "boolean"
 }
 
