@@ -54,11 +54,11 @@ img.floatingflask {
 }
 
 div.footer {
-    width: 450px;
+    width: 1280px;
     margin: 20px auto 30px auto;
     font-size: 14px;
-    color: #888;
-    text-align: right;
+    color: #dadada;
+    text-align: center;
 }
 
 div.footer a {
@@ -491,7 +491,7 @@ div.sphinxsidebar {
     width: 300px;
 }
 div.sphinxsidebarwrapper {
-    padding: 0 16px;
+    padding: 0 16px 0 0;
 }
 
 /* searchbox */
@@ -529,8 +529,9 @@ pre { background:#fff; z-index:3; -webkit-border-radius:0; -moz-border-radius:0;
 
 
 /*Header - Main*/
-header[role="banner"] { height:140px; max-width:1280px; margin:16px auto 0; }
-header[role="banner"] h1 { width:342px; height:86px; margin:40px 0 0 0; background:url(img/logo.png) no-repeat; text-indent:-9999px; background-size: 50%; }
+header[role="banner"] {max-width:1280px; margin: 60px auto; }
+header[role="banner"] h1 { width:170px; height:30px; text-indent:-9999px; }
+header[role="banner"] a { display: block; background:url(img/logo.png) left/ contain no-repeat;}
 
 /*Page*/
 div.api_key_img { overflow: hidden; height:300px; }
@@ -539,7 +540,7 @@ div.document { position:relative; margin-top:0; }
 /*Sidebar*/
 div.sphinxsidebar {  }
 div.sphinxsidebarwrapper {  }
-div.sphinxsidebar a, div.sphinxsidebarwrapper > ul > li > a { color:#a1a1a1; transition: all .1s ease }
+div.sphinxsidebar a, div.sphinxsidebarwrapper > ul > li > a { color:#828282; transition: all .1s ease }
 div.sphinxsidebar a:hover { color:#FF7055; }
 div.sphinxsidebar h3, div.sphinxsidebar h3 a { position:relative; font-size:18px; margin-top:24px; padding-top:6px; font-family:'Roboto', 'Helvetica', sans-serif; /*border-top:3px solid #bababa;*/ color:#1B1B1B; font-weight: 700; text-transform: uppercase; text-decoration:none; border:none; }
 div.sphinxsidebar h3 a { border:none; }
@@ -552,7 +553,7 @@ div.sphinxsidebar ul ul ul { margin-top:8px; }
 div.sphinxsidebar li { margin-bottom:12px; font-size:16px; }
 div.sphinxsidebar li li { font-weight:normal; font-size:16px; }
 div.sphinxsidebar li ul { list-style: none; }
-div.sphinxsidebar li li a { color: #BABABA; }
+div.sphinxsidebar li li a { color: #828282; }
 div.sphinxsidebar p.searchtip { font-size: 12px !important; }
 
 /*Main Content*/
