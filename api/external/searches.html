@@ -5,13 +5,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
+
     <title>Emma API Documentation | Emma, Inc.</title>
 
-    
+
     <link rel="stylesheet" href="../../_static/emma.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    
+
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
@@ -21,12 +21,11 @@
         HAS_SOURCE:  true
       };
     </script>
-    
+
     <script src="http://code.jquery.com/jquery-1.4.min.js"></script>
     <script>window.jQuery || document.write('<script src="_static/jquery.js"><\/script>')</script>
-    
-    <script type="text/javascript" src="//use.typekit.net/zfm0nfo.js"></script>
-    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="top" title="audience 0.1 documentation" href="../../index.html" />
@@ -92,15 +91,15 @@
         <li class="right" >
           <a href="response.html" title="Response"
              accesskey="P">previous</a> |</li>
-        <li><a href="../../index.html">audience 0.1 documentation</a> &raquo;</li> 
+        <li><a href="../../index.html">audience 0.1 documentation</a> &raquo;</li>
       </ul>
-    </div>  
+    </div>
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
           <div class="body">
-            
+
   <div class="section" id="searches">
 <h1>Searches<a class="headerlink" href="#searches" title="Permalink to this headline">¶</a></h1>
 <p>These endpoints allow you to create, edit, and delete searches. You can also
@@ -194,15 +193,15 @@ deleted searches.</li>
 <b>GET /100/searches/200</b>
 
 {
-  "search_id": 200, 
-  "optout_count": 0, 
-  "error_count": 0, 
-  "name": "Test Search", 
-  "criteria": "[\"or\", [\"group\", \"eq\", \"Monthly Newsletter\"],[\"group\", \"eq\", \"Widget Buyers\"]]", 
-  "deleted_at": null, 
-  "purged_at": null, 
-  "last_run_at": null, 
-  "active_count": 0, 
+  "search_id": 200,
+  "optout_count": 0,
+  "error_count": 0,
+  "name": "Test Search",
+  "criteria": "[\"or\", [\"group\", \"eq\", \"Monthly Newsletter\"],[\"group\", \"eq\", \"Widget Buyers\"]]",
+  "deleted_at": null,
+  "purged_at": null,
+  "last_run_at": null,
+  "active_count": 0,
   "account_id": 100
 }
 </pre>
@@ -257,17 +256,17 @@ above.</li>
 <pre class="response">
 <b>POST /100/searches</b>
 {
-  "name": "New Search", 
+  "name": "New Search",
   "criteria": [
-    "or", 
+    "or",
     [
-      "group", 
-      "eq", 
+      "group",
+      "eq",
       "Monthly Newsletter"
-    ], 
+    ],
     [
-      "group", 
-      "eq", 
+      "group",
+      "eq",
       "Widget Buyers"
     ]
   ]
@@ -315,15 +314,15 @@ above (see <cite>create_search</cite>).</li>
 <b>PUT /100/searches/200</b>
 {
   "criteria": [
-    "or", 
+    "or",
     [
-      "group", 
-      "eq", 
+      "group",
+      "eq",
       "Monthly Newsletter"
-    ], 
+    ],
     [
-      "group", 
-      "eq", 
+      "group",
+      "eq",
       "Special Events"
     ]
   ]
