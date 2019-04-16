@@ -109,11 +109,11 @@ of items to retrieve in each call, with a maximum page size of 500.</p>
 of the results themselves) by appending a query parameter of <tt class="docutils literal"><span class="pre">count=true</span></tt>.</p>
 <p>So, to pull a large number of results, you start with a count:</p>
 <blockquote>
-<div>https://api.e2ma.net/123/members?count=true</div></blockquote>
+<div><tt class="docutils literal"><span class="pre">`https://api.e2ma.net/123/members?count=true`</span></tt></div></blockquote>
 <p>Then, iterate over the list in blocks of 500:</p>
 <blockquote>
-<div><p>https://api.e2ma.net/123/members?start=0&amp;end=500</p>
-<p>https://api.e2ma.net/123/members?start=500&amp;end=1000</p>
+<div><p><tt class="docutils literal"><span class="pre">`https://api.e2ma.net/123/members?start=0&amp;end=500`</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">`https://api.e2ma.net/123/members?start=500&amp;end=1000`</span></tt></p>
 </div></blockquote>
 <p>Requests for page sizes larger than 500 will limited to <tt class="docutils literal"><span class="pre">start</span></tt> + 500.</p>
 <p>Calls are rate-limited to prevent accidental overuse.  If you exceed the limit
