@@ -396,6 +396,7 @@ when none are specified.</li>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>include_segment_names</strong> (<em>boolean</em>) &#8211; Optional flag to include segment names under recipient_segments. False by default.</li>
+<li><strong>include_subscription_names</strong> (<em>boolean</em>) &#8211; Optional flag to include subscription names under recipient_subscriptions. False by default.</li>
 </tr>
 </li>
 <tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body">A mailing.</td>
@@ -416,6 +417,12 @@ when none are specified.</li>
     {
       "member_group_id": 151,
       "name": "Widget Buyers"
+    }
+  ],
+  "recipient_subscriptions": [
+    {
+      "subscription_id": 200,
+      "subscription_name": "Widgets"
     }
   ],
   "heads_up_emails": [],
@@ -602,6 +609,48 @@ default, or just the type of content specified by <cite>type</cite>.</p>
     "purged_at": null,
     "account_id": 100,
     "group_name": "Widget Buyers"
+  }
+]
+
+</pre>
+</div>
+</p>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--#account_id-mailings-#mailing_id-subscriptions">
+<tt class="descname">GET </tt><tt class="descname">/#account_id/mailings/#mailing_id/subscriptions</tt><a class="headerlink" href="#get--#account_id-mailings-#mailing_id-subscriptions" title="Permalink to this definition">&para;</a></dt>
+<dd><p>Get the subscriptions to which a particular mailing was sent.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body">An array of subscriptions.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if no mailing is found.</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>GET /100/mailings/200/subscriptions</b>
+
+[
+  {
+    "subscription_name": "Widgets",
+    "account_id": 100,
+    "member_count": 100,
+    "settings": {
+      "show_on_default_preference_form": false
+    },
+    "created_at": "Mon, 22 Jul 2019 18:45:47 GMT",
+    "description": "Widgets Subscription",
+    "modified_at": "Mon, 22 Jul 2019 18:45:47 GMT",
+    "optout_count": 0,
+    "subscription_id": 300
   }
 ]
 
@@ -917,6 +966,8 @@ notification emails will be sent to.</li>
 mailing should be sent.</li>
 <li><strong>recipient_groups</strong> (<em>array</em>) &#8211; An array of member groups to which the new
 mailing should be sent.</li>
+<li><strong>recipient_subscriptions</strong> (<em>array</em>) &#8211; An array of subscriptions to which the new
+  mailing should be sent.</li>
 <li><strong>recipient_searches</strong> (<em>array</em>) &#8211; An array of searches that this mailing should
 be sent to.</li>
 <li><strong>recipient_segments</strong> (<em>array</em>) &#8211; An array of segments that this mailing should
