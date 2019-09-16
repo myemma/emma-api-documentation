@@ -273,6 +273,27 @@ email1@email.com,234567890,2019-05-02T17:47:11 UTC,f,0,active,2019-05-02T17:47:1
 </tr>
 </tbody>
 </table>
+<p>
+    <div class="sample-response hide-response">
+    <span style="font-weight:bold;">Sample Response</span>
+    <a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+    <pre class="response">
+    <b>POST /100/exports</b>
+    {
+        "user_id": "1",
+        "criteria": {
+            "groups": [12345, 67890],
+            "member_status_ids": ["a"],
+            "include_fields": true
+        }
+    }
+    
+    {
+      "export_id": 1234
+    }
+    </pre>
+    </div>
+    </p>
 </dd></dl>
 
 <dl class="post">
