@@ -102,21 +102,22 @@
 
   <div class="section" id="subscriptions">
 <h1>Subscriptions<a class="headerlink" href="#subscriptions" title="Permalink to this headline">&para;</a></h1>
-<p>With these endpoints, you can create member exports and view information about specific exports already created in your account.</p>
+<p>Using these endpoints you can create, edit, delete and get information about subscriptions in your account.</p>
 <dl class="get">
-<dt id="get--#account_id-exports">
-<tt class="descname">GET </tt><tt class="descname">/#account_id/exports</tt><a class="headerlink" href="#get--#account_id-exports" title="Permalink to this definition">&para;</a></dt>
-<dd><p>Get a list of all exports created for an account.</p>
+<dt id="get--#account_id-subscriptions">
+<tt class="descname">GET </tt><tt class="descname">/#account_id/subscriptions</tt><a class="headerlink" href="#get--#account_id-subscriptions" title="Permalink to this definition">&para;</a></dt>
+<dd><p>Get a list of all subscriptions in an account.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>export_type</strong> (<em>string</em>) &#8211; 'a' audience, 'm' individual member export. Defaults to 'a' if no export type is specified.</li>
+<li><strong>deleted_only</strong> &#8211; true or false. Defaults to false if neither is specified.</li>
+<li><strong>include_deleted</strong> &#8211; true or false. Defaults to false if neither is specified.</li>
 </ul>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A list of exports created in the specified account over the past seven days. Status: "o" for OK, "e" for error, "q" for queued, "p" for in progress.</p>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A list of subscriptions in an account along with related information, including member count and subscription ID. </p>
 </td>
 </tr>
 </tbody>
@@ -126,34 +127,43 @@
 <span style="font-weight:bold;">Sample Response</span>
 <a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
 <pre class="response">
-<b>GET /100/exports</b>
+<b>GET /100/subscriptions?include_deleted=true</b>
 
 [
-    {
-        "account_id": 100,
-        "completed_at": "2019-09-06T19:34:30.962114+00:00",
-        "created_at": "2019-09-06T19:34:30.628190+00:00",
-        "criteria": {
-            "groups": [
-                1234
-            ],
-            "include_fields": true,
-            "member_ids": null,
-            "member_status_ids": [
-                "a",
-                "o",
-                "e"
-            ],
-            "mfv_delimiter": ",",
-            "segments": null,
-            "subscriptions": null
-        },
-        "export_id": 1,
-        "export_name": "Weekly Update",
-        "export_type": "a",
-        "status": "o",
-        "user_id": "name@myemma.com"
-    }
+  {
+    "account_id": 100,
+    "created_at": "Thu, 28 Mar 2019 20:28:21 GMT",
+    "deleted_at": "Fri, 29 Mar 2019 21:21:13 GMT",
+    "description": "Get a sneak peek at upcoming sales",
+    "import_status": null,
+    "member_count": 851,
+    "modified_at": "Thu, 28 Mar 2019 20:28:21 GMT",
+    "optout_count": 2,
+    "purged_at": null,
+    "settings": {
+      "show_on_default_preference_form": false
+    },
+    "subscription_id": 78,
+    "subscription_name": "Weekly Sale Preview",
+    "subscription_order": null
+  },
+  {
+    "account_id": 100,
+    "created_at": "Mon, 01 Apr 2019 18:40:58 GMT",
+    "deleted_at": null,
+    "description": "Company updates and news",
+    "import_status": null,
+    "member_count": 984,
+    "modified_at": "Mon, 01 Apr 2019 18:40:58 GMT",
+    "optout_count": 1,
+    "purged_at": null,
+    "settings": {
+      "show_on_default_preference_form": true
+    },
+    "subscription_id": 83,
+    "subscription_name": "General News",
+    "subscription_order": 1
+  },
 ]
 </pre>
 </div>
@@ -161,16 +171,14 @@
 </dd></dl>
 
 <dl class="get">
-<dt id="get--#account_id-exports-#export_id">
-<tt class="descname">GET </tt><tt class="descname">/#account_id/exports/#export_id</tt><a class="headerlink" href="#get--#account_id-exports-#export_id" title="Permalink to this definition">&para;</a></dt>
-<dd><p>Get detailed information for a specific export.</p>
+<dt id="get--#account_id-subscriptions-#subscription_id">
+<tt class="descname">GET </tt><tt class="descname">/#account_id/subscriptions/subscription_id</tt><a class="headerlink" href="#get--#account_id-subscriptions-#subscription_id" title="Permalink to this definition">&para;</a></dt>
+<dd><p>Get detailed information for a specific subscription.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Information about an export. Status: "o" for OK, "e" for error, "q" for queued, "p" for in progress.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if no export with the specified ID is found.</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Information about a subscription.</td>
 </tr>
 </tbody>
 </table>
@@ -179,32 +187,21 @@
 <span style="font-weight:bold;">Sample Response</span>
 <a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
 <pre class="response">
-<b>GET /100/exports/200</b>
+<b>GET /100/subscription/200</b>
 
 {
     "account_id": 100,
-    "completed_at": "2019-09-06T19:34:30.962114+00:00",
-    "created_at": "2019-09-06T19:34:30.628190+00:00",
-    "criteria": {
-        "groups": [
-            1234
-        ],
-        "include_fields": true,
-        "member_ids": null,
-        "member_status_ids": [
-            "a",
-            "o",
-            "e"
-        ],
-        "mfv_delimiter": ",",
-        "segments": null,
-        "subscriptions": null
-    },
-    "export_id": 200,
-    "export_name": "Product Release News",
-    "export_type": "a",
-    "status": "o",
-    "user_id": "name@myemma.com"
+    "created_at": "Wed, 25 Sep 2019 21:39:34 GMT",
+    "deleted_at": null,
+    "description": "Regularly donate $1,500 or more.",
+    "member_count": 0,
+    "modified_at": "Wed, 25 Sep 2019 21:39:34 GMT",
+    "optout_count": 0,
+    "purged_at": null,
+    "settings": null,
+    "subscription_id": 200,
+    "subscription_name": "Gold-Level Donors",
+    "subscription_order": null
 }
 </pre>
 </div>
@@ -212,16 +209,20 @@
 </dd></dl>
 
 <dl class="get">
-<dt id="get--#account_id-exports-#export_id-download">
-<tt class="descname">GET </tt><tt class="descname">/#account_id/exports/#export_id/download</tt><a class="headerlink" href="#get--#account_id-exports-#export_id-download" title="Permalink to this definition">&para;</a></dt>
-<dd><p>Get a CSV for the requested export.</p>
+<dt id="get--#account_id-subscriptions-#subscription_id-members">
+<tt class="descname">GET </tt><tt class="descname">/#account_id/subscriptions/#subscription_id/members</tt><a class="headerlink" href="#get--#account_id-subscriptions-#subscription_id-members" title="Permalink to this definition">&para;</a></dt>
+<dd><p>Get a list of member IDs for members subscribed to a specific subscription.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A file stream of the export document. If the export_type is 'a' (audience), download results in CSV form. If the export_type is 'm' (individual member), download results as a zip file.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>start</strong> &#8211; Defaults to 0 if not specified.</li>
+<li><strong>end</strong> &#8211; Defaults to 500 if not specified.</li>
+</ul>
+</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if no export with the specified ID is found.</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A list of member IDs.</td>
 </tr>
 </tbody>
 </table>
@@ -230,11 +231,112 @@
 <span style="font-weight:bold;">Sample Response</span>
 <a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
 <pre class="response">
-<b>GET /100/exports/200/download</b>
+<b>GET /100/subscriptions/200/members</b>
 
-email,member_id,member_since,plaintext_preferred,bounce_count,status_name,last_modified_at,status-name,last_name,custom-field-name
-email@email.com,123456789,2016-10-28T15:05:52 UTC,f,0,active,2019-05-07T20:44:21 UTC,,Last_name,,,2.0,37210,,,,b,,,,,,,,,,,,,
-email1@email.com,234567890,2019-05-02T17:47:11 UTC,f,0,active,2019-05-02T17:47:11 UTC,,Member,,,,,,,,,
+[
+  {
+    "member_id": 1
+  },
+  {
+    "member_id": 2
+  },
+  {
+    "member_id": 3
+  },
+  {
+    "member_id": 4
+  }
+]
+
+</pre>
+</div>
+</p>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--#account_id-subscriptions-#subscription_id-members">
+<tt class="descname">GET </tt><tt class="descname">/#account_id/subscriptions/#subscription_id/members</tt><a class="headerlink" href="#get--#account_id-subscriptions-#subscription_id-members" title="Permalink to this definition">&para;</a></dt>
+<dd><p>Get a list of member IDs for members subscribed to a specific subscription.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>start</strong> &#8211; Defaults to 0 if not specified.</li>
+<li><strong>end</strong> &#8211; Defaults to 500 if not specified.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A list of member IDs.</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>GET /100/subscriptions/200/members</b>
+
+[
+  {
+    "member_id": 1
+  },
+  {
+    "member_id": 2
+  },
+  {
+    "member_id": 3
+  },
+  {
+    "member_id": 4
+  }
+]
+
+</pre>
+</div>
+</p>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--#account_id-subscriptions-#subscription_id-optouts">
+<tt class="descname">GET </tt><tt class="descname">/#account_id/subscriptions/#subscription_id/optouts</tt><a class="headerlink" href="#get--#account_id-subscriptions-#subscription_id-optouts" title="Permalink to this definition">&para;</a></dt>
+<dd><p>Get a list of member IDs for members who have opted out of a specific subscription.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>start</strong> &#8211; Defaults to 0 if not specified.</li>
+<li><strong>end</strong> &#8211; Defaults to 500 if not specified.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A list of member IDs.</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>GET /100/subscriptions/200/optouts</b>
+
+[
+    {
+        "member_id": 5
+    },
+    {
+        "member_id": 6
+    },
+    {
+        "member_id": 7
+    },
+    {
+        "member_id": 8
+    }
+]
 
 </pre>
 </div>
@@ -242,9 +344,9 @@ email1@email.com,234567890,2019-05-02T17:47:11 UTC,f,0,active,2019-05-02T17:47:1
 </dd></dl>
 
 <dl class="post">
-<dt id="post--#account_id-exports">
-<tt class="descname">POST </tt><tt class="descname">/#account_id/exports</tt><a class="headerlink" href="#post--#account_id-exports" title="Permalink to this definition">&para;</a></dt>
-<dd><p>Creates an export of members.</p>
+<dt id="post--#account_id-subscriptions">
+<tt class="descname">POST </tt><tt class="descname">/#account_id/subscriptions</tt><a class="headerlink" href="#post--#account_id-subscriptions" title="Permalink to this definition">&para;</a></dt>
+<dd><p>Create a subscription.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
