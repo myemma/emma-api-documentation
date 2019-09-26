@@ -369,6 +369,7 @@
     <a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
     <pre class="response">
     <b>POST /100/subscriptions</b>
+
     {
         "name": "Cat Fanatics",
         "description": "Cat-only newsletter subscribers"
@@ -390,7 +391,7 @@
     }
     </pre>
     </div>
-    </p>
+</p>
 </dd></dl>
 
 <dl class="post">
@@ -434,6 +435,94 @@
     </pre>
     </div>
     </p>
+</dd></dl>
+
+<dl class="put">
+<dt id="put--#account_id-subscriptions-#subscription_id">
+<tt class="descname">PUT </tt><tt class="descname">/#account_id/subscriptions/#subscription_id</tt><a class="headerlink" href="#put--#account_id-subscriptions-#subscription_id" title="Permalink to this definition">&para;</a></dt>
+<dd><p>Edit a subscription's name or description.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>name</strong> (<em>string</em>) &#8211; Only required if updating the name.</li>
+<li><strong>description</strong> (<em>string</em>) &#8211; Describes the subscription.
+</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Information about the updated subscription.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+    <b>PUT /100/subscriptions/200</b>
+    {
+        "name": "Cat Fanatics Only",
+        "description": "A newsletter for those only interested in cat products"
+    }
+            
+    {
+        "account_id": 100,
+        "created_at": "Wed, 25 Sep 2019 21:39:34 GMT",
+        "deleted_at": null,
+        "description": "A newsletter for those only interested in cat products",
+        "member_count": 0,
+        "modified_at": "Fri, 27 Sep 2019 21:43:22 GMT",
+        "optout_count": 0,
+        "purged_at": null,
+        "settings": null,
+        "subscription_id": 200,
+        "subscription_name": "Cat Fanatics Only",
+        "subscription_order": null
+    }
+</pre>
+</div>
+</p>
+</dd></dl>
+
+<dl class="delete">
+<dt id="delete--#account_id-subscriptions-#subscription_id">
+<tt class="descname">DELETE </tt><tt class="descname">/#account_id/subscriptions/subscription_id</tt><a class="headerlink" href="#delete--#account_id-subscriptions-#subscription_id" title="Permalink to this definition">&para;</a></dt>
+<dd><p>Archive a subscription.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Information about the subscription, including the date and time it was archived.</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+    <b>DELETE /100/subscription/200</b>
+        
+    {
+        "account_id": 100,
+        "created_at": "Wed, 25 Sep 2019 21:39:34 GMT",
+        "deleted_at": "Thu, 26 Sep 2019 20:29:33 GMT",
+        "description": "Regularly donate $1,500 or more.",
+        "member_count": 150,
+        "modified_at": "Wed, 25 Sep 2019 21:39:34 GMT",
+        "optout_count": 8,
+        "purged_at": null,
+        "settings": null,
+        "subscription_id": 200,
+        "subscription_name": "Gold-Level Donors",
+        "subscription_order": null
+    }
+</pre>
+</div>
+</p>
 </dd></dl>
 </div>
           </div>
