@@ -352,25 +352,13 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>user_id</strong> (<em>string</em>) &#8211; Required.</li>
-<li><strong>criteria</strong> (<em>dictionary</em>) &#8211; Describes what should be exported.
-    <ul class="first simple">
-        <li><strong>groups</strong> (<em>array of integers</em>) &#8211; List of group IDs</li>
-        <li><strong>segments</strong> (<em>array of integers</em>) &#8211; List of segment IDs</li>
-        <li><strong>member_ids</strong> (<em>array of integers</em>) &#8211; List of member IDs</li>
-        <br />
-        <p>The list of members to be exported will be a union of the members included
-          in each provided group and segment, and the list of member_ids</p>
-        <br />
-        <li><strong>member_status_ids</strong> (<em>array of strings</em>) &#8211; Status of the members</li>
-        <li><strong>include_fields</strong> &#8211; Accepts True or an array of strings. Optional flag to include all member fields or a list of member fields.</li>
-      </ul>
-
+<li><strong>name</strong> (<em>string</em>) &#8211; Required.</li>
+<li><strong>description</strong> (<em>string</em>) &#8211; Describes the subscription.
 </li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">An export ID.</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Information about the created subscription, including subscription_id.</p>
 </td>
 </tr>
 </tbody>
@@ -380,18 +368,25 @@
     <span style="font-weight:bold;">Sample Response</span>
     <a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
     <pre class="response">
-    <b>POST /100/exports</b>
+    <b>POST /100/subscriptions</b>
     {
-        "user_id": "name@myemma.com",
-        "criteria": {
-            "groups": [12345, 67890],
-            "member_status_ids": ["a"],
-            "include_fields": true
-        }
+        "name": "Cat Fanatics",
+        "description": "Cat-only newsletter subscribers"
     }
     
     {
-      "export_id": 1234
+        "account_id": 100,
+        "created_at": "Wed, 25 Sep 2019 21:39:34 GMT",
+        "deleted_at": null,
+        "description": "Cat-only newsletter subscribers",
+        "member_count": 0,
+        "modified_at": "Wed, 25 Sep 2019 21:39:34 GMT",
+        "optout_count": 0,
+        "purged_at": null,
+        "settings": null,
+        "subscription_id": 200,
+        "subscription_name": "Cat Fanatics",
+        "subscription_order": null
     }
     </pre>
     </div>
@@ -399,18 +394,47 @@
 </dd></dl>
 
 <dl class="post">
-    <dt id="post--#account_id-exports-#members-#member_id">
-    <tt class="descname">POST </tt><tt class="descname">/#account_id/exports/#members/member_id</tt><a class="headerlink" href="#post--#account_id-exports-#members-#member_id" title="Permalink to this definition">&para;</a></dt>
-    <dd><p>Create an export of all information for an individual member. This will provide compliance with GDPR right to data portability.</p>
+    <dt id="post--#account_id-subscriptions-#subscription_id-members-bulk">
+    <tt class="descname">POST </tt><tt class="descname">/#account_id/subscriptions/#subscription_id/members/bulk</tt><a class="headerlink" href="#post--#account_id-subscriptions-#subscription_id-members-bulk" title="Permalink to this definition">&para;</a></dt>
+    <dd><p>Bulk subscribe members to a subscription using either a list of member IDs or a single import ID.</p>
     <table class="docutils field-list" frame="void" rules="none">
     <col class="field-name" />
     <col class="field-body" />
     <tbody valign="top">
-    <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">An export ID.</td>
+    <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if successful.</td>
     </tr>
     </tbody>
     </table>
-    </dd></dl>
+    <p>
+        <div class="sample-response hide-response">
+        <span style="font-weight:bold;">Sample Response</span>
+        <a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+        <pre class="response">
+        <b>POST /100/subscriptions/200/members/bulk</b>
+        {
+            "member_ids": [1, 2, 3, 4]
+        }
+
+        true
+    </pre>
+    </div>
+    </p>
+
+    <p>
+        <div class="sample-response hide-response">
+        <span style="font-weight:bold;">Sample Response</span>
+        <a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+        <pre class="response">
+        <b>POST /100/subscriptions/200/members/bulk</b>
+        {
+            "import_id": 1
+        }
+    
+        true
+    </pre>
+    </div>
+    </p>
+</dd></dl>
 </div>
           </div>
         </div>
