@@ -254,51 +254,6 @@
 </dd></dl>
 
 <dl class="get">
-<dt id="get--#account_id-subscriptions-#subscription_id-members">
-<tt class="descname">GET </tt><tt class="descname">/#account_id/subscriptions/#subscription_id/members</tt><a class="headerlink" href="#get--#account_id-subscriptions-#subscription_id-members" title="Permalink to this definition">&para;</a></dt>
-<dd><p>Get a list of member IDs for members subscribed to a specific subscription.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>start</strong> &#8211; Defaults to 0 if not specified.</li>
-<li><strong>end</strong> &#8211; Defaults to 500 if not specified.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A list of member IDs.</td>
-</tr>
-</tbody>
-</table>
-<p>
-<div class="sample-response hide-response">
-<span style="font-weight:bold;">Sample Response</span>
-<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
-<pre class="response">
-<b>GET /100/subscriptions/200/members</b>
-
-[
-  {
-    "member_id": 1
-  },
-  {
-    "member_id": 2
-  },
-  {
-    "member_id": 3
-  },
-  {
-    "member_id": 4
-  }
-]
-
-</pre>
-</div>
-</p>
-</dd></dl>
-
-<dl class="get">
 <dt id="get--#account_id-subscriptions-#subscription_id-optouts">
 <tt class="descname">GET </tt><tt class="descname">/#account_id/subscriptions/#subscription_id/optouts</tt><a class="headerlink" href="#get--#account_id-subscriptions-#subscription_id-optouts" title="Permalink to this definition">&para;</a></dt>
 <dd><p>Get a list of member IDs for members who have opted out of a specific subscription.</p>
