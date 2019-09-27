@@ -1,0 +1,518 @@
+
+<!doctype html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <title>Emma API Documentation | Emma, Inc.</title>
+
+
+    <link rel="stylesheet" href="../../_static/emma.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="https://code.jquery.com/jquery-1.4.min.js"></script>
+    <script>window.jQuery || document.write('<script src="_static/jquery.js"><\/script>')</script>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="audience 0.1 documentation" href="../../index.html" />
+    <link rel="next" title="Webhooks" href="webhooks.html" />
+    <link rel="prev" title="Signup Forms" href="signup_forms.html" />
+    <link rel="icon" href="https://myemma.com/static/global/favicons/favicon.ico?v=2" type="image/x-icon">
+    <link rel="shortcut icon" href="https://myemma.com/static/global/favicons/favicon.ico?v=2" type="image/x-icon">
+    <link rel="apple-touch-icon-precomposed" href="https://myemma.com/static/global/favicons/apple-iphone.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://myemma.com/static/global/favicons/apple-ipad.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://myemma.com/static/global/favicons/apple-iphone-2x.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://myemma.com/static/global/favicons/apple-ipad-2x.png" />
+
+    <style type="text/css">
+      .resp-trigger, .resp-trigger:hover {font-size:10pt;text-decoration:none;}
+      div.sample-response.hide-response pre.response {display: none;}
+      div.sample-response .tshow,
+      div.sample-response.hide-response .thide {display: none;}
+      div.sample-response .thide,
+      div.sample-response.hide-response .tshow {display: inline;}
+    </style>
+    <script>
+      $().ready(function() {
+        $("a.resp-trigger").click(function(e) {
+          e.preventDefault();
+          $(this).parents("div.sample-response").toggleClass("hide-response");
+        });
+      });
+    </script>
+
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-512410-18']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+
+  </head>
+  <body>
+  <header role="banner">
+    <a href="/index.html">
+      <h1>Emma API Documentation</h1>
+    </a>
+  </header>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../http-routingtable.html" title="HTTP Routing Table"
+             >routing table</a> |</li>
+        <li class="right" >
+          <a href="webhooks.html" title="Webhooks"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="signup_forms.html" title="Signup Forms"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">audience 0.1 documentation</a> &raquo;</li>
+      </ul>
+    </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+
+  <div class="section" id="subscriptions">
+<h1>Subscriptions<a class="headerlink" href="#subscriptions" title="Permalink to this headline">&para;</a></h1>
+<p>Using these endpoints you can create, edit, delete and get information about subscriptions in your account.</p>
+<dl class="get">
+<dt id="get--#account_id-subscriptions">
+<tt class="descname">GET </tt><tt class="descname">/#account_id/subscriptions</tt><a class="headerlink" href="#get--#account_id-subscriptions" title="Permalink to this definition">&para;</a></dt>
+<dd><p>Get a list of all subscriptions in an account.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>deleted_only</strong> &#8211; true or false. Returns deleted subscriptions only. Optional, defaults to false.</li>
+<li><strong>include_deleted</strong> &#8211; true or false. Returns deleted subscriptions along with active. Optional, defaults to false.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A list of subscriptions in an account along with related information, including member count and subscription ID. </p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>GET /100/subscriptions</b>
+
+[
+  {
+    "account_id": 100,
+    "created_at": "Mon, 01 Apr 2019 18:40:58 GMT",
+    "deleted_at": null,
+    "description": "Company updates and news",
+    "import_status": null,
+    "member_count": 984,
+    "modified_at": "Mon, 01 Apr 2019 18:40:58 GMT",
+    "optout_count": 1,
+    "purged_at": null,
+    "settings": {
+      "show_on_default_preference_form": true
+    },
+    "subscription_id": 1,
+    "subscription_name": "General News",
+    "subscription_order": 1
+  }
+]
+</pre>
+</div>
+</p>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--#account_id-subscriptions-#subscription_id">
+<tt class="descname">GET </tt><tt class="descname">/#account_id/subscriptions/subscription_id</tt><a class="headerlink" href="#get--#account_id-subscriptions-#subscription_id" title="Permalink to this definition">&para;</a></dt>
+<dd><p>Get detailed information for a specific subscription.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Information about a subscription.</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>GET /100/subscriptions/200</b>
+
+{
+    "account_id": 100,
+    "created_at": "Wed, 25 Sep 2019 21:39:34 GMT",
+    "deleted_at": null,
+    "description": "Regularly donate $1,500 or more.",
+    "member_count": 0,
+    "modified_at": "Wed, 25 Sep 2019 21:39:34 GMT",
+    "optout_count": 0,
+    "purged_at": null,
+    "settings": null,
+    "subscription_id": 200,
+    "subscription_name": "Gold-Level Donors",
+    "subscription_order": null
+}
+</pre>
+</div>
+</p>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--#account_id-subscriptions-#subscription_id-members">
+<tt class="descname">GET </tt><tt class="descname">/#account_id/subscriptions/#subscription_id/members</tt><a class="headerlink" href="#get--#account_id-subscriptions-#subscription_id-members" title="Permalink to this definition">&para;</a></dt>
+<dd><p>Get a list of member IDs for members subscribed to a specific subscription.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>start</strong> &#8211; Defaults to 0 if not specified.</li>
+<li><strong>end</strong> &#8211; Defaults to 500 if not specified.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A list of member IDs.</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>GET /100/subscriptions/200/members</b>
+
+[
+  {
+    "member_id": 1
+  },
+  {
+    "member_id": 2
+  },
+  {
+    "member_id": 3
+  },
+  {
+    "member_id": 4
+  }
+]
+
+</pre>
+</div>
+</p>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--#account_id-subscriptions-#subscription_id-optouts">
+<tt class="descname">GET </tt><tt class="descname">/#account_id/subscriptions/#subscription_id/optouts</tt><a class="headerlink" href="#get--#account_id-subscriptions-#subscription_id-optouts" title="Permalink to this definition">&para;</a></dt>
+<dd><p>Get a list of member IDs for members who have opted out of a specific subscription.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>start</strong> &#8211; Defaults to 0 if not specified.</li>
+<li><strong>end</strong> &#8211; Defaults to 500 if not specified.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A list of member IDs.</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>GET /100/subscriptions/200/optouts</b>
+
+[
+    {
+        "member_id": 5
+    },
+    {
+        "member_id": 6
+    },
+    {
+        "member_id": 7
+    },
+    {
+        "member_id": 8
+    }
+]
+
+</pre>
+</div>
+</p>
+</dd></dl>
+
+<dl class="post">
+<dt id="post--#account_id-subscriptions">
+<tt class="descname">POST </tt><tt class="descname">/#account_id/subscriptions</tt><a class="headerlink" href="#post--#account_id-subscriptions" title="Permalink to this definition">&para;</a></dt>
+<dd><p>Create a subscription.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>name</strong> (<em>string</em>) &#8211; Required. Names the subscription, and will be visible in the Subscription Center.</li>
+<li><strong>description</strong> (<em>string</em>) &#8211; Describes the subscription, and will be visible in the Subscription Center.
+</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Information about the created subscription, including the subscription ID.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>
+    <div class="sample-response hide-response">
+    <span style="font-weight:bold;">Sample Response</span>
+    <a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+    <pre class="response">
+    <b>POST /100/subscriptions</b>
+
+    {
+        "name": "Cat Fanatics",
+        "description": "Cat-only newsletter subscribers"
+    }
+    
+    {
+        "account_id": 100,
+        "created_at": "Wed, 25 Sep 2019 21:39:34 GMT",
+        "deleted_at": null,
+        "description": "Cat-only newsletter subscribers",
+        "member_count": 0,
+        "modified_at": "Wed, 25 Sep 2019 21:39:34 GMT",
+        "optout_count": 0,
+        "purged_at": null,
+        "settings": null,
+        "subscription_id": 300,
+        "subscription_name": "Cat Fanatics",
+        "subscription_order": null
+    }
+    </pre>
+    </div>
+</p>
+</dd></dl>
+
+<dl class="post">
+    <dt id="post--#account_id-subscriptions-#subscription_id-members-bulk">
+    <tt class="descname">POST </tt><tt class="descname">/#account_id/subscriptions/#subscription_id/members/bulk</tt><a class="headerlink" href="#post--#account_id-subscriptions-#subscription_id-members-bulk" title="Permalink to this definition">&para;</a></dt>
+    <dd><p>Bulk subscribe members to a subscription using either a list of member IDs or a single import ID.</p>
+    <table class="docutils field-list" frame="void" rules="none">
+    <col class="field-name" />
+    <col class="field-body" />
+    <tbody valign="top">
+    <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if successful.</td>
+    </tr>
+    </tbody>
+    </table>
+    <p>
+        <div class="sample-response hide-response">
+        <span style="font-weight:bold;">Sample Response</span>
+        <a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+        <pre class="response">
+        <b>POST /100/subscriptions/200/members/bulk</b>
+        {
+            "member_ids": [1, 2, 3, 4]
+        }
+
+        true
+    </pre>
+    </div>
+    </p>
+
+    <p>
+        <div class="sample-response hide-response">
+        <span style="font-weight:bold;">Sample Response</span>
+        <a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+        <pre class="response">
+        <b>POST /100/subscriptions/200/members/bulk</b>
+        {
+            "import_id": 1
+        }
+    
+        true
+    </pre>
+    </div>
+    </p>
+</dd></dl>
+
+<dl class="put">
+<dt id="put--#account_id-subscriptions-#subscription_id">
+<tt class="descname">PUT </tt><tt class="descname">/#account_id/subscriptions/#subscription_id</tt><a class="headerlink" href="#put--#account_id-subscriptions-#subscription_id" title="Permalink to this definition">&para;</a></dt>
+<dd><p>Edit a subscription's name or description.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>name</strong> (<em>string</em>) &#8211; Only required if updating the name. Visible in the Subscription Center.</li>
+<li><strong>description</strong> (<em>string</em>) &#8211; Describes the subscription, and is visible in the Subscription Center.
+</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Information about the updated subscription.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+    <b>PUT /100/subscriptions/300</b>
+    {
+        "name": "Cat Fanatics Only",
+        "description": "A newsletter for those only interested in cat products"
+    }
+            
+    {
+        "account_id": 100,
+        "created_at": "Wed, 25 Sep 2019 21:39:34 GMT",
+        "deleted_at": null,
+        "description": "A newsletter for those only interested in cat products",
+        "member_count": 0,
+        "modified_at": "Fri, 27 Sep 2019 21:43:22 GMT",
+        "optout_count": 0,
+        "purged_at": null,
+        "settings": null,
+        "subscription_id": 300,
+        "subscription_name": "Cat Fanatics Only",
+        "subscription_order": null
+    }
+</pre>
+</div>
+</p>
+</dd></dl>
+
+<dl class="delete">
+<dt id="delete--#account_id-subscriptions-#subscription_id">
+<tt class="descname">DELETE </tt><tt class="descname">/#account_id/subscriptions/subscription_id</tt><a class="headerlink" href="#delete--#account_id-subscriptions-#subscription_id" title="Permalink to this definition">&para;</a></dt>
+<dd><p>Delete a subscription.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Information about the subscription, including the date and time it was deleted.</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+    <b>DELETE /100/subscriptions/200</b>
+        
+    {
+        "account_id": 100,
+        "created_at": "Wed, 25 Sep 2019 21:39:34 GMT",
+        "deleted_at": "Thu, 26 Sep 2019 20:29:33 GMT",
+        "description": "Regularly donate $1,500 or more.",
+        "member_count": 150,
+        "modified_at": "Wed, 25 Sep 2019 21:39:34 GMT",
+        "optout_count": 8,
+        "purged_at": null,
+        "settings": null,
+        "subscription_id": 200,
+        "subscription_name": "Gold-Level Donors",
+        "subscription_order": null
+    }
+</pre>
+</div>
+</p>
+</dd></dl>
+</div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="signup_forms.html" title="previous chapter">Signup Forms</a></li>
+      <li>Next: <a href="webhooks.html" title="next chapter">Webhooks</a></li>
+  </ul></li>
+</ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<div id="emma-links">
+  <h3>Emma Links</h3>
+  <ul>
+    <li><a href="https://myemma.com" title="Visit Emma's homepage" target="_blank">Emma Home</a></li>
+
+    <li><a href="https://myemma.com/blog" title="Visit the Emma Blog" target="_blank">Emma Blog</a></li>
+    <li><a href="https://myemma.com/help" title="Visit Emma's help guide" target="_blank">Emma Help</a></li>
+  </ul>
+</div>
+
+<div id="inquiry">
+  <h3>Interested in Emma?</h3>
+  <p>Emma's email marketing makes communicating simple and stylish. <a href="https://myemma.com/get-started/inquire" title="Get started today.">Get started today</a>.</p>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2003-<script language="JavaScript" type="text/javascript">
+          now = new Date
+          theYear=now.getYear()
+          if (theYear < 1900)
+          theYear=theYear+1900
+          document.write(theYear)
+      </script>, Campaign Monitor
+    </div>
+  </body>
+</html>
