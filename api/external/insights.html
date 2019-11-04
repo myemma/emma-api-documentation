@@ -1,0 +1,301 @@
+<!doctype html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <title>Emma API Documentation | Emma, Inc.</title>
+
+
+    <link rel="stylesheet" href="../../_static/emma.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:    '../../',
+            VERSION:     '0.1',
+            COLLAPSE_INDEX: false,
+            FILE_SUFFIX: '.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+
+    <script src="https://code.jquery.com/jquery-1.4.min.js"></script>
+    <script>window.jQuery || document.write('<script src="_static/jquery.js"><\/script>')</script>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="audience 0.1 documentation" href="../../index.html" />
+    <link rel="next" title="Insights for HQ" href="insights_HQ.html" />
+    <link rel="prev" title="Groups" href="groups.html" />
+    <link rel="icon" href="https://myemma.com/static/global/favicons/favicon.ico?v=2" type="image/x-icon">
+    <link rel="shortcut icon" href="https://myemma.com/static/global/favicons/favicon.ico?v=2" type="image/x-icon">
+    <link rel="apple-touch-icon-precomposed" href="https://myemma.com/static/global/favicons/apple-iphone.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://myemma.com/static/global/favicons/apple-ipad.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://myemma.com/static/global/favicons/apple-iphone-2x.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://myemma.com/static/global/favicons/apple-ipad-2x.png" />
+
+    <style type="text/css">
+        .resp-trigger, .resp-trigger:hover {font-size:10pt;text-decoration:none;}
+        div.sample-response.hide-response pre.response {display: none;}
+        div.sample-response .tshow,
+        div.sample-response.hide-response .thide {display: none;}
+        div.sample-response .thide,
+        div.sample-response.hide-response .tshow {display: inline;}
+    </style>
+    <script>
+        $().ready(function() {
+            $("a.resp-trigger").click(function(e) {
+                e.preventDefault();
+                $(this).parents("div.sample-response").toggleClass("hide-response");
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-512410-18']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+
+</head>
+<body>
+<header role="banner">
+    <a href="/index.html">
+        <h1>Emma API Documentation</h1>
+    </a>
+</header>
+<div class="related">
+    <h3>Navigation</h3>
+    <ul>
+        <li class="right" style="margin-right: 10px">
+            <a href="../../genindex.html" title="General Index"
+               accesskey="I">index</a></li>
+        <li class="right" >
+            <a href="../../http-routingtable.html" title="HTTP Routing Table"
+            >routing table</a> |</li>
+        <li class="right" >
+            <a href="insights_HQ.html" title="Insights for HQ"
+               accesskey="N">next</a> |</li>
+        <li class="right" >
+            <a href="groups.html" title="Groups"
+               accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">audience 0.1 documentation</a> &raquo;</li>
+    </ul>
+</div>
+
+<div class="document">
+    <div class="documentwrapper">
+        <div class="bodywrapper">
+            <div class="body">
+
+                <div class="section" id="mailings">
+                    <h1>Insights<a class="headerlink" href="#mailings" title="Permalink to this headline">&para;</a></h1>
+                    <p>Using these endpoints you can view the overall performance of your account through mailing and audience growth aggregates.</p>
+                    <dl class="get">
+                        <dt id="get--#account_id-mailings">
+                            <tt class="descname">GET </tt><tt class="descname">/#account_id/insights/v2/mailings/summary</tt><a class="headerlink" href="#get--#account_id-mailings" title="Permalink to this definition">&para;</a></dt>
+                        <dd><p>Get information about current mailings.</p>
+                            <table class="docutils field-list" frame="void" rules="none">
+                                <col class="field-name" />
+                                <col class="field-body" />
+                                <tbody valign="top">
+                                <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+                                    <li><strong>from_date</strong> &#8211; Optional parameter that accepts a date string in the format &#8216;YYYY-MM-DD&#8217;, must be specified along with to_date. Set to 30 days prior to current date when none are specified.</li>
+                                    <li><strong>to_date</strong> &#8211; Optional parameter that accepts a date string in the format &#8216;YYYY-MM-DD&#8217;, must be specified along with to_date. Set to current date when none are specified.</li>
+                                </ul>
+                                </td>
+                                </tr>
+                                <tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body"><p class="first last">A list of mailing information.</p>
+                                </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <p>
+                            <div class="sample-response hide-response">
+                                <span style="font-weight:bold;">Sample Response</span>
+                                <a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+                                <pre class="response">
+<b>GET /100/insights/hq/mailings/summary</b>
+[
+  {
+    "request": {
+        "account_id": 100,
+        "from_date": "2019-10-02",
+        "timezone": "America/Chicago",
+        "to_date": "2019-10-31"
+    },
+    "summary": {
+        "bounces": 2,
+        "deliveries": 356,
+        "mailings_sent": 1,
+        "optouts": 0,
+        "total_clicks": 6,
+        "total_opens": 195,
+        "unique_clicks": 3,
+        "unique_opens": 101
+    }
+  }
+]
+</pre>
+                            </div>
+                            </p>
+                            <p>
+                            <div class="sample-response hide-response">
+                                <span style="font-weight:bold;">Sample Response</span>
+                                <a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+                                <pre class="response">
+<b>GET /100/insights/v2/mailings/summary?from_date=2019-09-02&to_date=2019-10-03</b>
+[
+ {
+    "request": {
+        "account_id": 100,
+        "from_date": "2019-09-01",
+        "timezone": "America/Chicago",
+        "to_date": "2019-10-31"
+    },
+    "summary": {
+        "bounces": 5,
+        "deliveries": 712,
+        "mailings_sent": 2,
+        "optouts": 0,
+        "total_clicks": 12,
+        "total_opens": 494,
+        "unique_clicks": 5,
+        "unique_opens": 205
+    }
+  }
+]
+</pre>
+                            </div>
+                            </p>
+                        </dd></dl>
+                    <dl class="get">
+                        <dt id="get--#account_id-mailings">
+                            <tt class="descname">GET </tt><tt class="descname">/#account_id/insights/v2/audience</tt><a class="headerlink" href="#get--#account_id-mailings" title="Permalink to this definition">&para;</a></dt>
+                        <dd><p>Get information about audience growth by subaccount.</p>
+                            <table class="docutils field-list" frame="void" rules="none">
+                                <col class="field-name" />
+                                <col class="field-body" />
+                                <tbody valign="top">
+                                <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+                                    <li><strong>from_date</strong> &#8211; Optional parameter that accepts a date string in the format &#8216;YYYY-MM-DD&#8217;, must be specified along with to_date. Set to 30 days prior to current date when none are specified.</li>
+                                    <li><strong>to_date</strong> &#8211; Optional parameter that accepts a date string in the format &#8216;YYYY-MM-DD&#8217;, must be specified along with to_date. Set to current date when none are specified.</li>
+                                </ul>
+                                </td>
+                                </tr>
+                                <tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body"><p class="first last">A list of audience growth information by day.</p>
+                                </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <p>
+                            <div class="sample-response hide-response">
+                                <span style="font-weight:bold;">Sample Response</span>
+                                <a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+                                <pre class="response">
+<b>GET /100/insights/v2/audience</b>
+[
+  {
+    "request": {
+        "account_id": 1745480,
+        "from_date": "2019-10-25",
+        "timezone": "America/Chicago",
+        "to_date": "2019-10-31"
+    },
+    "totals": [
+        {
+            "timestamp": "2019-10-26T03:01:53.678242+00:00",
+            "total": 860
+        },
+        {
+            "timestamp": "2019-10-27T03:01:54.140009+00:00",
+            "total": 880
+        },
+        {
+            "timestamp": "2019-10-28T03:01:52.151722+00:00",
+            "total": 900
+        },
+        {
+            "timestamp": "2019-10-29T03:01:48.642469+00:00",
+            "total": 940
+        },
+        {
+            "timestamp": "2019-10-30T03:02:09.739164+00:00",
+            "total": 945
+        },
+        {
+            "timestamp": "2019-10-31T03:01:40.403777+00:00",
+            "total": 960
+        }
+    ]
+  }
+]
+</pre>
+                            </div>
+                            </p>
+                        </dd></dl>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><h3>Related Topics</h3>
+            <ul>
+                <li><a href="../../index.html">Documentation overview</a><ul>
+                    <li>Previous: <a href="groups.html" title="previous chapter">Groups</a></li>
+                    <li>Next: <a href="insights_HQ.html" title="next chapter">Insights for HQ</a></li>
+                </ul></li>
+            </ul>
+            <div id="searchbox" style="display: none">
+                <h3>Quick search</h3>
+                <form class="search" action="../../search.html" method="get">
+                    <input type="text" name="q" />
+                    <input type="submit" value="Go" />
+                    <input type="hidden" name="check_keywords" value="yes" />
+                    <input type="hidden" name="area" value="default" />
+                </form>
+                <p class="searchtip" style="font-size: 90%">
+                    Enter search terms or a module, class or function name.
+                </p>
+            </div>
+            <script type="text/javascript">$('#searchbox').show(0);</script>
+            <div id="emma-links">
+                <h3>Emma Links</h3>
+                <ul>
+                    <li><a href="https://myemma.com" title="Visit Emma's homepage" target="_blank">Emma Home</a></li>
+
+                    <li><a href="https://myemma.com/blog" title="Visit the Emma Blog" target="_blank">Emma Blog</a></li>
+                    <li><a href="https://myemma.com/help" title="Visit Emma's help guide" target="_blank">Emma Help</a></li>
+                </ul>
+            </div>
+
+            <div id="inquiry">
+                <h3>Interested in Emma?</h3>
+                <p>Emma's email marketing makes communicating simple and stylish. <a href="https://myemma.com/get-started/inquire" title="Get started today.">Get started today</a>.</p>
+            </div>
+        </div>
+    </div>
+    <div class="clearer"></div>
+</div>
+<div class="footer">
+    &copy; Copyright 2003-<script language="JavaScript" type="text/javascript">
+    now = new Date
+    theYear=now.getYear()
+    if (theYear < 1900)
+        theYear=theYear+1900
+    document.write(theYear)
+</script>, Campaign Monitor
+</div>
+</body>
+</html>
