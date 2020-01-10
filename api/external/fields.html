@@ -279,10 +279,12 @@ Accepts one of <tt class="docutils literal"><span class="pre">text</span></tt>, 
 <pre class="response">
 <b>POST /100/fields</b>
 {
-  "shortcut_name": "new_boolean",
+  "shortcut_name": "new_dropdown",
   "column_order": 3,
-  "display_name": "A New Boolean Field",
-  "field_type": "boolean"
+  "display_name": "A New Select Box Field",
+  "field_type": "text",
+  "widget_type": "select one",
+  "options": ["first", "second", "third"]
 }
 
 1024
