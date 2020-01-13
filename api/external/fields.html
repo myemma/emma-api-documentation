@@ -256,10 +256,19 @@ even if it has been deleted.</li>
 <li><strong>field_type</strong> (<em>string</em>) &#8211; The type of value this field will contain.
 Accepts one of <tt class="docutils literal"><span class="pre">text</span></tt>, <tt class="docutils literal"><span class="pre">text[]</span></tt>, <tt class="docutils literal"><span class="pre">numeric</span></tt>, <tt class="docutils literal"><span class="pre">boolean</span></tt>,
 <tt class="docutils literal"><span class="pre">date</span></tt>, <tt class="docutils literal"><span class="pre">timestamp</span></tt>.</li>
-<li><strong>widget_type</strong> (<em>string</em>) &#8211; The type of widget this field will display as.
-Accepts one of <tt class="docutils literal"><span class="pre">text</span></tt>, <tt class="docutils literal"><span class="pre">long</span></tt>, <tt class="docutils literal"><span class="pre">checkbox</span></tt>, <tt class="docutils literal"><span class="pre">select</span> <span class="pre">multiple</span></tt>,
-<tt class="docutils literal"><span class="pre">check_multiple</span></tt>, <tt class="docutils literal"><span class="pre">radio</span></tt>, <tt class="docutils literal"><span class="pre">date</span></tt>, <tt class="docutils literal"><span class="pre">select</span> <span class="pre">one</span></tt>, <tt class="docutils literal"><span class="pre">number</span></tt>.</li>
-<li><strong>column_order</strong> (<em>integer</em>) &#8211; Order of this column in lists.</li>
+<li><strong>widget_type</strong> (<em>string</em>) &#8211; The widget used to accept field input. Valid values are based on <tt class="docutils literal"><span class="pre">field_type</span></tt>.<br/>
+  &emsp; <tt class="docutils literal"><span class="pre">text</span></tt> => <tt class="docutils literal"><span class="pre">text</span></tt>, <tt class="docutils literal"><span class="pre">long</span></tt>, <tt class="docutils literal"><span class="pre">radio</span></tt>, <tt class="docutils literal"><span class="pre">select one</span></tt>.<br/>
+  &emsp; <tt class="docutils literal"><span class="pre">text[]</span></tt> => <tt class="docutils literal"><span class="pre">select multiple</span></tt>, <tt class="docutils literal"><span class="pre">check_multiple</span></tt>.<br/>
+  &emsp; <tt class="docutils literal"><span class="pre">numeric</span></tt> => <tt class="docutils literal"><span class="pre">number</span></tt>.<br/>
+  &emsp; <tt class="docutils literal"><span class="pre">boolean</span></tt> => <tt class="docutils literal"><span class="pre">checkbox</span></tt>.<br/>
+  &emsp; <tt class="docutils literal"><span class="pre">date</span></tt> and <tt class="docutils literal"><span class="pre">timestamp</span></tt> => <tt class="docutils literal"><span class="pre">date</span></tt>.
+  </li>
+  <li><strong>options</strong> (<em>array</em>) &#8211; Options for a
+    <tt class="docutils literal"><span class="pre">check_multiple</span></tt>,
+    <tt class="docutils literal"><span class="pre">select multiple</span></tt>,
+    <tt class="docutils literal"><span class="pre">select one</span></tt>, or
+    <tt class="docutils literal"><span class="pre">radio</span></tt> widget.</li>
+  <li><strong>column_order</strong> (<em>integer</em>) &#8211; Order of this column in lists.</li>
 </ul>
 </td>
 </tr>
@@ -275,10 +284,12 @@ Accepts one of <tt class="docutils literal"><span class="pre">text</span></tt>, 
 <pre class="response">
 <b>POST /100/fields</b>
 {
-  "shortcut_name": "new_boolean",
+  "shortcut_name": "new_dropdown",
   "column_order": 3,
-  "display_name": "A New Boolean Field",
-  "field_type": "boolean"
+  "display_name": "A New Select Box Field",
+  "field_type": "text",
+  "widget_type": "select one",
+  "options": ["first", "second", "third"]
 }
 
 1024
