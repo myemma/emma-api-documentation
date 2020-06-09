@@ -595,8 +595,8 @@ be reported as &#8216;a&#8217; (active), &#8216;e&#8217; (error), or &#8216;o&#8
 <dl class="put">
 <dt id="put--#account_id-members-delete">
 <tt class="descname">PUT </tt><tt class="descname">/#account_id/members/delete</tt><a class="headerlink" href="#put--#account_id-members-delete" title="Permalink to this definition">¶</a></dt>
-<dd><p>Delete an array of members.</p>
-<p>The members will be marked as deleted and cannot be retrieved.</p>
+<dd><p>Archive an array of members.</p>
+<p>The members will be archived and will be appear in the account's Archived Items section.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -724,9 +724,8 @@ true
 <dl class="delete">
 <dt id="delete--#account_id-members-#member_id">
 <tt class="descname">DELETE </tt><tt class="descname">/#account_id/members/#member_id</tt><a class="headerlink" href="#delete--#account_id-members-#member_id" title="Permalink to this definition">¶</a></dt>
-<dd><p>Delete the specified member.</p>
-<p>The member, along with any associated response and history
-information, will be completely removed from the database.</p>
+<dd><p>Archive the specified member.</p>
+<p>The member will be archived and will appear in the account's Archived Items section.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
