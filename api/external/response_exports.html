@@ -29,8 +29,8 @@
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="top" title="audience 0.1 documentation" href="../../index.html" />
-    <link rel="next" title="Fields" href="fields.html" />
-    <link rel="prev" title="Automation" href="automation.html" />
+    <link rel="next" title="Response" href="response.html" />
+    <link rel="prev" title="Members" href="members.html" />
     <link rel="icon" href="https://myemma.com/static/global/favicons/favicon.ico?v=2" type="image/x-icon">
     <link rel="shortcut icon" href="https://myemma.com/static/global/favicons/favicon.ico?v=2" type="image/x-icon">
     <link rel="apple-touch-icon-precomposed" href="https://myemma.com/static/global/favicons/apple-iphone.png" />
@@ -132,17 +132,16 @@
 <b>POST /100/exports/response</b>
 
 {
-    "criteria:" : {
-        "mailing_ids": [12345],
-        "from_date": 2021-01-10T00:00:00+00:00,
-        "to_date": 2021-01-17T00:00:00+00:00
+    "criteria": {
+        "mailing_ids": [1234],
+        "from_date": "2021-02-01",
+        "to_date": "2021-02-17"
     }
 
 }
 
 {
-	"export_id: 123456"
-	
+    "export_id: 200"
 }
 </pre>
 </div>
@@ -151,15 +150,13 @@
 
 <dl class="get">
 <dt id="get--#account_id-exports-#export_id">
-<tt class="descname">GET </tt><tt class="descname">/#account_id/exports/#export_id</tt><a class="headerlink" href="#get--#account_id-exports-#export_id" title="Permalink to this definition">&para;</a></dt>
-<dd><p>Get detailed information for a specific export.</p>
+<tt class="descname">GET </tt><tt class="descname">/#account_id/exports/response</tt><a class="headerlink" href="#get--#account_id-exports-#export_id" title="Permalink to this definition">&para;</a></dt>
+<dd><p>Get a list of response exports.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Information about an export. Status: "o" for OK, "e" for error, "q" for queued, "p" for in progress.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if no export with the specified ID is found.</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A detailed list of response exports for an account <!-- back how far? 30 days? -->.</td>
 </tr>
 </tbody>
 </table>
@@ -168,49 +165,58 @@
 <span style="font-weight:bold;">Sample Response</span>
 <a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
 <pre class="response">
-<b>GET /100/exports/200</b>
+<b>GET /100/exports/response</b>
 
-{
-    "account_id": 100,
-    "completed_at": "2019-09-06T19:34:30.962114+00:00",
-    "created_at": "2019-09-06T19:34:30.628190+00:00",
-    "criteria": {
-        "groups": [
-            1234
-        ],
-        "include_fields": true,
-        "member_ids": null,
-        "member_status_ids": [
-            "a",
-            "o",
-            "e"
-        ],
-        "mfv_delimiter": ",",
-        "segments": null,
-        "subscriptions": null
+[
+    {
+        "account_id": 100,
+        "completed_at": "2021-02-08T23:11:35.746244+00:00",
+        "created_at": "2021-02-08T23:11:33.463881+00:00",
+        "criteria": {
+            "from_date": "2021-01-10T00:00:00+00:00",
+            "include_fields": false,
+            "mailing_ids": [],
+            "to_date": "2021-02-10T00:00:00+00:00"
+        },
+        "export_id": 200,
+        "export_name": "response_export_2021-02-08_23:11",
+        "export_type": "r",
+        "status": "o",
+        "user_id": null
     },
-    "export_id": 200,
-    "export_name": "Product Release News",
-    "export_type": "a",
-    "status": "o",
-    "user_id": "name@myemma.com"
-}
+    {
+        "account_id": 100,
+        "completed_at": "2021-02-08T22:10:41.846488+00:00",
+        "created_at": "2021-02-08T22:10:39.473941+00:00",
+        "criteria": {
+            "from_date": "2021-02-01T00:00:00+00:00",
+            "include_fields": false,
+            "mailing_ids": [],
+            "to_date": "2021-02-15T00:00:00+00:00"
+        },
+        "export_id": 300,
+        "export_name": "response_export_2021-02-08_22:10",
+        "export_type": "r",
+        "status": "o",
+        "user_id": null
+    }
+]
 </pre>
 </div>
 </p>
 </dd></dl>
 
 <dl class="get">
-<dt id="get--#account_id-exports-#export_id-download">
-<tt class="descname">GET </tt><tt class="descname">/#account_id/exports/#export_id/download</tt><a class="headerlink" href="#get--#account_id-exports-#export_id-download" title="Permalink to this definition">&para;</a></dt>
-<dd><p>Get a CSV for the requested export.</p>
+<dt id="get--#account_id-exports-response-#export_id">
+<tt class="descname">GET </tt><tt class="descname">/#account_id/exports/response/#export_id</tt><a class="headerlink" href="#get--#account_id-exports-response-#export_id" title="Permalink to this definition">&para;</a></dt>
+<dd><p>Get details about a specific response export.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A file stream of the export document. If the export_type is 'a' (audience), download results in CSV form. If the export_type is 'm' (individual member), download results as a zip file.</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Information about the specified response export, including export criteria and date the export was created.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if no export with the specified ID is found.</td>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if no response export with the specified ID is found.</td>
 </tr>
 </tbody>
 </table>
@@ -219,85 +225,68 @@
 <span style="font-weight:bold;">Sample Response</span>
 <a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
 <pre class="response">
-<b>GET /100/exports/200/download</b>
+<b>GET /100/exports/response/200</b>
 
-email,member_id,member_since,plaintext_preferred,bounce_count,status_name,last_modified_at,status-name,last_name,custom-field-name
-email@email.com,123456789,2016-10-28T15:05:52 UTC,f,0,active,2019-05-07T20:44:21 UTC,,Last_name,,,2.0,37210,,,,b,,,,,,,,,,,,,
-email1@email.com,234567890,2019-05-02T17:47:11 UTC,f,0,active,2019-05-02T17:47:11 UTC,,Member,,,,,,,,,
+{
+    "account_id": 100,
+    "completed_at": "2021-02-08T23:11:35.746244+00:00",
+    "created_at": "2021-02-08T23:11:33.463881+00:00",
+    "criteria": {
+        "from_date": "2021-01-10T00:00:00+00:00",
+        "include_fields": false,
+        "mailing_ids": [],
+        "to_date": "2021-02-10T00:00:00+00:00"
+    },
+    "export_id": 200,
+    "export_name": "response_export_2021-02-08_23:11",
+    "export_type": "r",
+    "status": "o",
+    "user_id": "abcdefg"
+}
 
 </pre>
 </div>
 </p>
 </dd></dl>
 
-<dl class="post">
-<dt id="post--#account_id-exports">
-<tt class="descname">POST </tt><tt class="descname">/#account_id/exports</tt><a class="headerlink" href="#post--#account_id-exports" title="Permalink to this definition">&para;</a></dt>
-<dd><p>Creates an export of members.</p>
+<dl class="get">
+<dt id="get--#account_id-exports-response-#export_id-download">
+<tt class="descname">GET </tt><tt class="descname">/#account_id/exports/response/#export_id/download</tt><a class="headerlink" href="#get--#account_id-exports-response-#export_id" title="Permalink to this definition">&para;</a></dt>
+<dd><p>Download a CSV for the requested response export.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>user_id</strong> (<em>string</em>) &#8211; Required.</li>
-<li><strong>criteria</strong> (<em>dictionary</em>) &#8211; Describes what should be exported.
-    <ul class="first simple">
-        <li><strong>groups</strong> (<em>array of integers</em>) &#8211; List of group IDs</li>
-        <li><strong>segments</strong> (<em>array of integers</em>) &#8211; List of segment IDs</li>
-        <li><strong>member_ids</strong> (<em>array of integers</em>) &#8211; List of member IDs</li>
-        <br />
-        <p>The list of members to be exported will be a union of the members included
-          in each provided group and segment, and the list of member_ids</p>
-        <br />
-        <li><strong>member_status_ids</strong> (<em>array of strings</em>) &#8211; Status of the members</li>
-        <li><strong>include_fields</strong> &#8211; Accepts True or an array of strings. Optional flag to include all member fields or a list of member fields.</li>
-      </ul>
-
-</li>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A zip file containing the following files in CSV format:
+<ul>
+    <li>#export_id_bounces.csv</li>
+    <li>#export_id_clicks.csv (includes link_id, and link_name if specified)</li>
+    <li>#export_id_in_progress.csv (no timestamp included)</li>
+    <li>#export_id_opens.csv</li>
+    <li>#export_id_optout.csv</li>
+    <li>#export_id_received.csv</li>
+    <li>#export_id_sent_to.csv</li>
+    <li>#export_id_shares.csv</li>
+    <li>#export_id_signups.csv</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">An export ID.</p>
-</td>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if no response export with the specified ID is found.</td>
 </tr>
 </tbody>
 </table>
 <p>
-    <div class="sample-response hide-response">
-    <span style="font-weight:bold;">Sample Response</span>
-    <a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
-    <pre class="response">
-    <b>POST /100/exports</b>
-    {
-        "user_id": "name@myemma.com",
-        "criteria": {
-            "groups": [12345, 67890],
-            "member_status_ids": ["a"],
-            "include_fields": true
-        }
-    }
-    
-    {
-      "export_id": 1234
-    }
-    </pre>
-    </div>
-    </p>
-</dd></dl>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>POST /100/exports/response/200/download</b>
 
-<dl class="post">
-    <dt id="post--#account_id-exports-#members-#member_id">
-    <tt class="descname">POST </tt><tt class="descname">/#account_id/exports/#members/member_id</tt><a class="headerlink" href="#post--#account_id-exports-#members-#member_id" title="Permalink to this definition">&para;</a></dt>
-    <dd><p>Create an export of all information for an individual member. This will provide compliance with GDPR right to data portability.</p>
-    <table class="docutils field-list" frame="void" rules="none">
-    <col class="field-name" />
-    <col class="field-body" />
-    <tbody valign="top">
-    <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">An export ID.</td>
-    </tr>
-    </tbody>
-    </table>
-    </dd></dl>
+mailing_id,timestamp,email,member_id,member_since,plaintext_preferred,bounce_count,status-name,last_modified_at,(member fields if set to 'true' in response export criteria)
+</pre>
+</div>
+</p>
+</dd></dl>
 </div>
           </div>
         </div>
@@ -306,8 +295,8 @@ email1@email.com,234567890,2019-05-02T17:47:11 UTC,f,0,active,2019-05-02T17:47:1
         <div class="sphinxsidebarwrapper"><h3>Related Topics</h3>
 <ul>
   <li><a href="../../index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="automation.html" title="previous chapter">Automation</a></li>
-      <li>Next: <a href="fields.html" title="next chapter">Fields</a></li>
+      <li>Previous: <a href="members.html" title="previous chapter">Members</a></li>
+      <li>Next: <a href="Response.html" title="next chapter">Response</a></li>
   </ul></li>
 </ul>
 <div id="searchbox" style="display: none">
