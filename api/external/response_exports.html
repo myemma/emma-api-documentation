@@ -114,8 +114,8 @@
 <tr class="field-odd field"><th class="field-name">Supported criteria:</th><td class="field-body"><ul class="first simple">
 <li><strong>include_fields</strong> (<em>boolean, list of strings</em>) &#8211; <strong>Defaults to false.</strong> If 'true', export will include all member fields in the account. If list of strings, export will include all member fields by 'shortcut_name' that exist in the account.</li>
 <li><strong>mailing_ids</strong> (<em>array of integers</em>) - <strong>Defaults to empty list.</strong> If no 'mailing_ids' are specified, the last 50 mailings ordered by 'send_started' (most recently sent mailings) will be included in the export. The maximum number of 'mailing_ids' supported is 50.</li>
-<li><strong>from_date</strong> (<em>datetime</em>) - <strong>Defaults to none.</strong> Response data exported will be limited to data gathered from the date specified, and is limited to no farther back than the previous 18 months. If paired with `to_date`, the export will be rejected if the time period is greater than 90 days.</li>
-<li><strong>to_date</strong> (<em>datetime</em>) - <strong>Defaults to none.</strong> Limits the response data exported up to the specified date. If paired with `from_date`, the export will be rejected if the time period is greater than 90 days.</li>
+<li><strong>from_date</strong> (<em>datetime</em>) - <strong>Defaults to none.</strong> Exports response data starting from the date specified, and is limited to no farther back than the previous 18 months. If paired with `to_date`, the export will be rejected if the total time period is greater than 90 days.</li>
+<li><strong>to_date</strong> (<em>datetime</em>) - <strong>Defaults to none.</strong> Limits the response data exported up to the specified date. If paired with `from_date`, the export will be rejected if the total time period is greater than 90 days.</li>
 </ul>
 </td>
 </tr>
