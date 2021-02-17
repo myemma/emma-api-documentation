@@ -122,6 +122,7 @@
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"> An export ID. </p>
 </td>
 </tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http400</span></tt> if time between 'from_date' and 'to_date' is greater than 90 days or if more than 50 'mailing_ids' are requested.</td>
 </tbody>
 </table>
 <p>
@@ -156,7 +157,7 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A detailed list of response exports for an account <!-- back how far? 30 days? -->.</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A detailed list of response exports for an account.</td>
 </tr>
 </tbody>
 </table>
@@ -252,12 +253,12 @@
 <dl class="get">
 <dt id="get--#account_id-exports-response-#export_id-download">
 <tt class="descname">GET </tt><tt class="descname">/#account_id/exports/response/#export_id/download</tt><a class="headerlink" href="#get--#account_id-exports-response-#export_id" title="Permalink to this definition">&para;</a></dt>
-<dd><p>Download a CSV for the requested response export.</p>
+<dd><p>Download a file stream for the requested response export.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A zip file containing the following files in CSV format:
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A zip file stream containing the following files in CSV format:
 <ul>
     <li>#export_id_bounces.csv</li>
     <li>#export_id_clicks.csv (includes link_id, and link_name if specified)</li>
@@ -282,7 +283,7 @@
 <pre class="response">
 <b>POST /100/exports/response/200/download</b>
 
-mailing_id,timestamp,email,member_id,member_since,plaintext_preferred,bounce_count,status-name,last_modified_at,(member fields if set to 'true' in response export criteria)
+mailing_id,timestamp (in UTC),email,member_id,member_since,plaintext_preferred,bounce_count,status-name,last_modified_at,(member fields if set to 'true' in response export criteria)
 </pre>
 </div>
 </p>
