@@ -112,17 +112,17 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Supported criteria:</th><td class="field-body"><ul class="first simple">
-<li><strong>include_fields</strong> (<em>boolean, list of strings</em>) &#8211; <strong>Defaults to false.</strong> If 'true', export will include all member fields in the account. If list of strings, export will include all member fields by 'shortcut_name' that exist in the account.</li>
-<li><strong>mailing_ids</strong> (<em>array of integers</em>) - <strong>Defaults to empty list.</strong> If no 'mailing_ids' are specified, the last 50 mailings ordered by 'send_started' (most recently sent mailings) will be included in the export. The maximum number of 'mailing_ids' supported is 50.</li>
-<li><strong>from_date</strong> (<em>datetime</em>) - <strong>Defaults to none.</strong> Exports response data starting from the date specified, and cannot be farther back than the previous 18 months. If paired with `to_date`, the export will be rejected if the total time period is greater than 90 days.</li>
-<li><strong>to_date</strong> (<em>datetime</em>) - <strong>Defaults to none.</strong> Limits the response data exported up to the specified date. If paired with `from_date`, the export will be rejected if the total time period is greater than 90 days.</li>
+<li><strong>include_fields</strong> (<em>boolean, list of strings</em>) &#8211; <strong>Defaults to false.</strong> If <tt class="docutils literal"><span class="pre"></span>true</span></tt>, export will include all member fields in the account. If list of strings, export will include all member fields by <tt class="docutils literal"><span class="pre"></span>shortcut_name</span></tt> that exist in the account.</li>
+<li><strong>mailing_ids</strong> (<em>array of integers</em>) - <strong>Defaults to empty list.</strong> If no <tt class="docutils literal"><span class="pre"></span>mailing_ids</span></tt> are specified, the last 50 mailings ordered by <tt class="docutils literal"><span class="pre"></span>send_started</span></tt> (most recently sent mailings) will be included in the export. The maximum number of <tt class="docutils literal"><span class="pre"></span>mailing_ids</span></tt> supported is 50.</li>
+<li><strong>from_date</strong> (<em>datetime</em>) - <strong>Defaults to none.</strong> Exports response data starting from the date specified, and cannot be farther back than the previous 18 months. If paired with <tt class="docutils literal"><span class="pre">to_date</span></tt>, the export will be rejected if the total time period is greater than 90 days.</li>
+<li><strong>to_date</strong> (<em>datetime</em>) - <strong>Defaults to none.</strong> Limits the response data exported up to the specified date. If paired with <tt class="docutils literal"><span class="pre"></span>from_date</span></tt>, the export will be rejected if the total time period is greater than 90 days.</li>
 </ul>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"> An export ID. </p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http400</span></tt> if time between 'from_date' and 'to_date' is greater than 90 days or if more than 50 'mailing_ids' are requested.</td>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http400</span></tt> if time between <tt class="docutils literal"><span class="pre"></span>from_date</span></tt> and <tt class="docutils literal"><span class="pre"></span>to_date</span></tt> is greater than 90 days or if more than 50 <tt class="docutils literal"><span class="pre"></span>mailing_ids</span></tt> are requested.</td>
 </tbody>
 </table>
 <p>
