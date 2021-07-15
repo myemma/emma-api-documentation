@@ -1,0 +1,221 @@
+<!doctype html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <title>Emma API Documentation | Emma, Inc.</title>
+
+
+    <link rel="stylesheet" href="../../_static/emma.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:    '../../',
+            VERSION:     '0.1',
+            COLLAPSE_INDEX: false,
+            FILE_SUFFIX: '.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+
+    <script src="https://code.jquery.com/jquery-1.4.min.js"></script>
+    <script>window.jQuery || document.write('<script src="_static/jquery.js"><\/script>')</script>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="audience 0.1 documentation" href="../../index.html" />
+    <link rel="next" title="Automation" href="automation.html" />
+    <link rel="prev" title="Emma API" href="../../index.html" />
+    <link rel="icon" href="https://myemma.com/static/global/favicons/favicon.ico?v=2" type="image/x-icon">
+    <link rel="shortcut icon" href="https://myemma.com/static/global/favicons/favicon.ico?v=2" type="image/x-icon">
+    <link rel="apple-touch-icon-precomposed" href="https://myemma.com/static/global/favicons/apple-iphone.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://myemma.com/static/global/favicons/apple-ipad.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://myemma.com/static/global/favicons/apple-iphone-2x.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://myemma.com/static/global/favicons/apple-ipad-2x.png" />
+
+    <style type="text/css">
+        .resp-trigger, .resp-trigger:hover {font-size:10pt;text-decoration:none;}
+        div.sample-response.hide-response pre.response {display: none;}
+        div.sample-response .tshow,
+        div.sample-response.hide-response .thide {display: none;}
+        div.sample-response .thide,
+        div.sample-response.hide-response .tshow {display: inline;}
+    </style>
+    <script>
+        $().ready(function() {
+            $("a.resp-trigger").click(function(e) {
+                e.preventDefault();
+                $(this).parents("div.sample-response").toggleClass("hide-response");
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-512410-18']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+
+</head>
+<body>
+<header role="banner">
+    <a href="/index.html">
+        <h1>Emma API Documentation</h1>
+    </a>
+</header>
+<div class="related">
+    <h3>Navigation</h3>
+    <ul>
+        <li class="right" style="margin-right: 10px">
+            <a href="../../genindex.html" title="General Index"
+               accesskey="I">index</a></li>
+        <li class="right" >
+            <a href="../../http-routingtable.html" title="HTTP Routing Table"
+            >routing table</a> |</li>
+        <li class="right" >
+            <a href="automation.html" title="Automation"
+               accesskey="N">next</a> |</li>
+        <li class="right" >
+            <a href="../../index.html" title="Emma API"
+               accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">audience 0.1 documentation</a> &raquo;</li>
+    </ul>
+</div>
+
+<div class="document">
+    <div class="documentwrapper">
+        <div class="bodywrapper">
+            <div class="body">
+
+                <div class="section" id="fields">
+                    <h1>Accounts<a class="headerlink" href="#fields" title="Permalink to this headline">¶</a></h1>
+                    <p>
+                        This endpoint allows you to create new subaccounts under an HQ parent account.
+                    </p>
+                    <dl class="post">
+                        <dt id="post--#account_id-fields">
+                            <tt class="descname">POST </tt><tt class="descname">/#parent_account_id/enterprise/subaccount</tt>
+                            <a class="headerlink" href="#POST--#account_id-fields" title="Permalink to this definition">¶</a>
+                        </dt>
+                        <dd>
+                            <p>Creates a subaccount under the given parent account</p>
+                            <table class="docutils field-list" frame="void" rules="none">
+                                <col class="field-name" />
+                                <col class="field-body" />
+                                <tbody valign="top">
+                                <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+                                    <li><strong>account_name</strong> (<em>string</em>) &#8211; Required. The name of the subaccount.<li>
+                                    <li><strong>account_rsvp_email</strong> (<em>string</em>) &#8211; Optional (recommended.) This is the &#8216;sender email&#8217; that the subaccount’s mailings will be shown as sent from.</li>
+                                    <li><strong>account_rsvp_name</strong> (<em>string</em>) &#8211; Optional (recommended.) This is the &#8216;sender name&#8217; displayed on the subaccount’s mailings.</li>
+                                    <li><strong>account_rsvp_address_1</strong> (<em>string</em>) &#8211; Optional (recommended.) First line of the address for the subaccount.</li>
+                                    <li><strong>account_rsvp_address_2</strong> (<em>string</em>) &#8211; Optional. Second line of the address for the subaccount.</li>
+                                    <li><strong>account_rsvp_country</strong> (<em>string</em>) &#8211; Optional (recommended.) Country for the subaccount (must match 2 letter iso code or capitalized country name.)
+                                        Including this additionally requires city & state parameters (or city & province if outside the US.)</li>
+                                    <li><strong>account_rsvp_city</strong> (<em>string</em>) &#8211; Optional (recommended.) City for the subaccount.</li>
+                                    <li><strong>account_rsvp_province</strong> (<em>string</em>) &#8211; Optional. Province for the subaccount (only for accounts outside the US.)</li>
+                                    <li><strong>account_rsvp_state</strong> (<em>string</em>) &#8211; Optional (recommended.) State for the subaccount (full capitalized state name or capitalized 2
+                                        letter abbreviation.)</li>
+                                    <li><strong>account_rsvp_zip_code</strong> (<em>string</em>) &#8211; Optional (recommended.) Zipcode or postal code for the subaccount.</li>
+                                    <li><strong>account_status</strong> (<em>string</em>) &#8211; Optional. This sets the status of the subaccount; must be &#8216;active&#8217; or &#8216;trial&#8217;. HQ parent accounts in
+                                        &#8216;trial&#8217; status that attempt to create &#8216;active&#8217; subaccounts will have those subaccounts created as &#8216;trial&#8217;.</li>
+                                    <li><strong>account_timezone</strong> (<em>string</em>) &#8211; Optional (recommended.) Time zone information for the subaccount formatted in the
+                                        <a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones">tz database name</a> standard.</li>
+                                    <li><strong>country_abbrev</strong> (<em>boolean string</em>) &#8211; Optional. &#8216;true&#8217; or &#8216;false&#8217; (used for personalization.)</li>
+                                    <li><strong>send_response_summary</strong> (<em>boolean</em>) &#8211; Optional. This setting sends relevant subaccount users a response summary email 24 hours after mailing has been sent.</li>
+                                    <li><strong>show_code_your_own</strong> (<em>boolean</em>) &#8211; Optional, This setting allows subaccount to use HTML to create mailings instead of the drag & drop editor.</li>
+                                    <li><strong>show_blank_template</strong> (<em>boolean</em>) &#8211; Optional. This setting makes a blank template available for customization.</li>
+                                </ul>
+                                </td>
+                                </tr>
+                                <tr class="field-even field">
+                                    <th class="field-name">Returns :</th>
+                                    <td class="field-body">
+                                        <p class="first last">A response with the newly created subaccount's &#8216;account_id&#8217;, the &#8216;account_name&#8217; of the newly created subaccount,
+                                            and the &#8216;parent_account_id&#8217; of the HQ parent.
+                                        </p>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <p>
+                            <div class="sample-response hide-response">
+                                <span style="font-weight:bold;">Sample Response</span>
+                                <a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+                                <pre class="response">
+<b>POST /100/enterprise/subaccount</b>
+{
+  "account_name": "Test Account Name",
+  "account_id": 101,
+  "parent_account_id": 100,
+}
+                        </pre>
+                            </div>
+                            </p>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><h3>Related Topics</h3>
+            <ul>
+                <li><a href="../../index.html">Documentation overview</a><ul>
+                    <li>Previous: <a href="../../index.html" title="previous chapter">Emma API</a></li>
+                    <li>Next: <a href="automation.html" title="next chapter">Automation</a></li>
+                </ul></li>
+            </ul>
+            <div id="searchbox" style="display: none">
+                <h3>Quick search</h3>
+                <form class="search" action="../../search.html" method="get">
+                    <input type="text" name="q" />
+                    <input type="submit" value="Go" />
+                    <input type="hidden" name="check_keywords" value="yes" />
+                    <input type="hidden" name="area" value="default" />
+                </form>
+                <p class="searchtip" style="font-size: 90%">
+                    Enter search terms or a module, class or function name.
+                </p>
+            </div>
+            <script type="text/javascript">$('#searchbox').show(0);</script>
+            <div id="emma-links">
+                <h3>Emma Links</h3>
+                <ul>
+                    <li><a href="https://myemma.com" title="Visit Emma's homepage" target="_blank">Emma Home</a></li>
+
+                    <li><a href="https://myemma.com/blog" title="Visit the Emma Blog" target="_blank">Emma Blog</a></li>
+                    <li><a href="https://myemma.com/help" title="Visit Emma's help guide" target="_blank">Emma Help</a></li>
+                </ul>
+            </div>
+
+            <div id="inquiry">
+                <h3>Interested in Emma?</h3>
+                <p>Emma's email marketing makes communicating simple and stylish. <a href="https://myemma.com/get-started/inquire" title="Get started today.">Get started today</a>.</p>
+            </div>
+        </div>
+    </div>
+    <div class="clearer"></div>
+</div>
+<div class="footer">
+    &copy; Copyright 2003-<script language="JavaScript" type="text/javascript">
+    now = new Date
+    theYear=now.getYear()
+    if (theYear < 1900)
+        theYear=theYear+1900
+    document.write(theYear)
+</script>, Campaign Monitor
+</div>
+</body>
+</html>
