@@ -194,6 +194,51 @@
                             </div>
                             </p>
                         </dd></dl>
+                    <dl class="get">
+                        <dt id="get--#account_id">
+                            <tt class="descname">GET</tt><tt class="descname">/#parent_account_id/enterprise/subaccounts</tt><a class="headerlink" href="#get--#account_id" title="Permalink to this definition">¶</a></dt>
+                        <dd><p>Gets a list of subaccounts.</p>
+                            <p>This endpoint provides a list of subaccounts that the requesting user has access to. Calling this endpoint with no query parameters will return subaccounts in &#8216;active&#8217;, &#8216;trial&#8217;, &#8216;pending_retirement&#8217;, and &#8216;retired&#8217; status. This endpoint is paginated, so if you have more than 500 subaccounts, you'll need to make multiple requests using the pagination params.</p>
+                            <table class="docutils field-list" frame="void" rules="none">
+                                <col class="field-name" />
+                                <col class="field-body" />
+                                <tbody valign="top">
+                                <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+                                    <li><strong>statuses</strong> (<em>comma separated string</em>) &#8211; Optional. Allows filtering based on subaccount status. Valid statuses are: &#8216;active&#8217;, &#8216;trial&#8217;, &#8216;pending_retirement&#8217;, and &#8216;retired&#8217;.<li>
+                                    <li><strong>searchterm</strong> (<em>string</em>) &#8211; Optional. Allows searching by the &#8216;account_name&#8217; value.</li>
+                                </ul>
+                                </td>
+                                </tr>
+                                <tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body">A response with a list of subaccounts including their &#8216;account_name&#8217;, &#8216;account_id&#8217;, and their &#8216;account_status&#8217;.</td>
+                                </tr>
+                                <tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the parent account does not exist.</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <p>
+                            <div class="sample-response hide-response">
+                                <span style="font-weight:bold;">Sample Response</span>
+                                <a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+                                <pre class="response">
+<b>GET /100/enterprise/subaccounts?start=0&end=2</b>
+{
+    "subaccounts": [
+        {
+            "account_id": 101,
+            "account_name": "Test Account Name",
+            "account_status": "active"
+        },
+        {
+            "account_id": 102,
+            "account_name": "Test Account Name 2",
+            "account_status": "retired"
+        }
+    ]
+}
+                                </pre>
+                            </div>
+                            </p>
+                        </dd></dl>
 
                 </div>
             </div>
