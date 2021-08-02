@@ -121,8 +121,6 @@
                                 </ul>
                                 </td>
                                 </tr>
-                                <tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http201</span></tt> along with a response message confirming the invite was created.</td>
-                                </tr>
                                 <tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http400</span></tt> if the role provided is invalid.</td>
                                 <tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http401</span></tt> if the requesting user is unable to create a user of that role type.</td>
                                 </tr>
@@ -135,7 +133,7 @@
                                 <pre class="response">
 <b>POST /100/invitation/team</b>
 {
-  "User invitation created"
+  "message": true
 }
 </pre>
                             </div>
