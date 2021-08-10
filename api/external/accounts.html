@@ -239,7 +239,43 @@
                             </div>
                             </p>
                         </dd></dl>
-
+                    <dl class="put">
+                        <dt id="put--#account_id">
+                            <tt class="descname">PUT</tt><tt class="descname">/#parent_account_id/enterprise/#user_id/subaccounts</tt><a class="headerlink" href="#put--#account_id" title="Permalink to this definition">¶</a></dt>
+                        <dd><p>Assign subaccounts to a user.</p>
+                            <p>This endpoint allows owners, and managers with the &#8216;manage_users&#8217; permission, to assign subaccounts to a specific &#8216;user_id&#8217;.
+                                The list of subaccounts provided in the call will overwrite the current list of subaccounts the user has access to, so you’ll need to ensure you’ve included every subaccount ID applicable to the user you are editing.
+                            </p>
+                            <table class="docutils field-list" frame="void" rules="none">
+                                <col class="field-name" />
+                                <col class="field-body" />
+                                <tbody valign="top">
+                                <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+                                    <li><strong>accounts</strong> (<em>list of integers</em>) &#8211; Required. The list of subaccounts to assign to the user.</li>
+                                </ul>
+                                </td>
+                                </tr>
+                                <tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http400</span></tt> if a non parent account is used in the route.</td>
+                                </tr>
+                                <tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http400</span></tt> if the requesting user does not have access to all accounts provided in the request body.</td>
+                                </tr>
+                                <tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http401</span></tt> if the requesting user is trying to edit a user with an equal or higher role.</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <p>
+                            <div class="sample-response hide-response">
+                                <span style="font-weight:bold;">Sample Response</span>
+                                <a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+                                <pre class="response">
+<b>GET /100/enterprise/name@myemma.com/subaccounts</b>
+{
+    "message": true
+}
+                                </pre>
+                            </div>
+                            </p>
+                        </dd></dl>
                 </div>
             </div>
         </div>

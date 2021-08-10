@@ -139,6 +139,75 @@
                             </div>
                         </dd>
                     </dl>
+                    <dl class="get">
+                        <dt id="get--#account_id">
+                            <tt class="descname">GET</tt><tt class="descname">/#account_id/account/users</tt><a class="headerlink" href="#get--#account_id" title="Permalink to this definition">¶</a></dt>
+                        <dd><p>Lists the users of an account.</p>
+                            <p>This endpoint allows owners and managers with the &#8216;manage_users&#8217; permission to list the users for either the parent account, the parent account and all subs, or a particular subaccount.The list returned will include users that have accepted their invitation, and users that have not.</p>
+                            <p>Additionally, there are params to include subaccount users, to filter via &#8216;account_id&#8217;, and to search for a specific user. This endpoint is paginated and will need to be called with pagination params if the response includes more than 500 users.</p>
+                            <table class="docutils field-list" frame="void" rules="none">
+                                <col class="field-name" />
+                                <col class="field-body" />
+                                <tbody valign="top">
+                                <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+                                    <li><strong>include_sub_users</strong> (<em>boolean</em>) &#8211; Optional. Calling the endpoint using the &#8216;parent_account_id&#8217; and this param set to &#8216;true&#8217; will return the users associated with the parent account along with any users associated with any of the parent's subaccounts as well.<li>
+                                    <li><strong>searchterm</strong> (<em>string</em>) &#8211; Optional. Allows searching by the &#8216;user_id&#8217;, &#8216;user_name_first&#8217;, and &#8216;user_name_last&#8217; values.</li>
+                                    <li><strong>filter_accounts</strong> (<em>comma separated string</em>) &#8211; Optional. Allows filtering of the results by returning users who have access to one of the passed accounts.</li>
+                                </ul>
+                                </td>
+                                </tr>
+                                <tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body">A response with a list of users including the accounts they have access to, the permissions they have, their role, and other user related data.</td>
+                                </tr>
+                                <tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the parent account or requesting user does not exist.</td>
+                                <tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http401</span></tt> if the requesting user does not have access to the account or the &#8216;manage_users&#8217; permission.</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <p>
+                            <div class="sample-response hide-response">
+                                <span style="font-weight:bold;">Sample Response</span>
+                                <a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+                                <pre class="response">
+<b>GET /100/account/users</b>
+{
+    "users": [
+        {
+            "accounts": [
+                {
+                    "account_id": 100,
+                    "account_name": "Test Parent Account"
+                }
+            ],
+            "create_ts": "Jun 21, 2012",
+            "email": "emmaHQowner@myemma.com",
+            "last_login_attempt": "Jul 22, 2021 02:47 PM",
+            "role": "Parent",
+            "user_group_list": [
+                "account_create",
+                "assets_access",
+                "billing_access",
+                "emma_account_default",
+                "emma_agency_default",
+                "emma_audience_default",
+                "emma_campaigns_default",
+                "emma_response_default",
+                "exporting_access",
+                "manage_api_key",
+                "manage_sso",
+                "manage_team",
+                "public",
+                "purging_access"
+            ],
+            "user_id": "emmaHQowner@myemma.com",
+            "user_name_first": “Test”,
+            "user_name_last": “Owner”
+        }
+    ]
+}
+                                </pre>
+                            </div>
+                            </p>
+                        </dd></dl>
                 </div>
             </div>
         </div>
@@ -147,7 +216,7 @@
         <div class="sphinxsidebarwrapper"><h3>Related Topics</h3>
             <ul>
                 <li><a href="../../index.html">Documentation overview</a><ul>
-                    <li>Previous: <a href="triggers.html" title="previous chapter">Triggers</a></li>
+                    <li>Previous: <a href="subscriptions.html" title="previous chapter">Subscriptions</a></li>
                     <li>Next: <a href="webhooks.html" title="next chapter">Webhooks</a></li>
                 </ul></li>
             </ul>
