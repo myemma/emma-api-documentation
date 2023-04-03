@@ -156,6 +156,14 @@ to completion can vary with greater system usage.</p>
       "favorite_food": "tacos"
     },
     "member_id": 200,
+    "sms": {
+      "phone_number": "+11234567890",
+      "region_code": "US",
+      "transactional_status": "a",
+      "transactional_status_updated_at": "2023-02-14T21:27:20.723208+00:00",
+      "promotional_status": "o",
+      "promotional_status_updated_at": "2023-02-14T21:27:20.723208+00:00"
+    },
     "last_modified_at": null,
     "member_status_id": "a",
     "plaintext_preferred": false,
@@ -175,6 +183,7 @@ to completion can vary with greater system usage.</p>
       "favorite_food": "toast"
     },
     "member_id": 201,
+    "sms": null,
     "last_modified_at": null,
     "member_status_id": "o",
     "plaintext_preferred": false,
@@ -207,6 +216,14 @@ to completion can vary with greater system usage.</p>
       "favorite_food": "pizza"
     },
     "member_id": 202,
+    "sms": {
+      "phone_number": "+11234567891",
+      "region_code": "US",
+      "transactional_status": "a",
+      "transactional_status_updated_at": "2023-02-14T21:27:20.723208+00:00",
+      "promotional_status": "o",
+      "promotional_status_updated_at": "2023-02-14T21:27:20.723208+00:00"
+    },
     "last_modified_at": null,
     "member_status_id": "a",
     "plaintext_preferred": false,
@@ -224,6 +241,7 @@ to completion can vary with greater system usage.</p>
 
     },
     "member_id": 203,
+    "sms": null,
     "last_modified_at": null,
     "member_status_id": "a",
     "plaintext_preferred": false,
@@ -280,6 +298,14 @@ members.</li>
     "favorite_food": "toast"
   },
   "member_id": 201,
+  "sms": {
+      "phone_number": "+11234567890",
+      "region_code": "US",
+      "transactional_status": "a",
+      "transactional_status_updated_at": "2023-02-14T21:27:20.723208+00:00",
+      "promotional_status": "o",
+      "promotional_status_updated_at": "2023-02-14T21:27:20.723208+00:00"
+  },
   "last_modified_at": null,
   "member_status_id": "o",
   "plaintext_preferred": false,
@@ -334,6 +360,7 @@ members.</li>
     "favorite_food": "pizza"
   },
   "member_id": 202,
+  "sms": null,
   "last_modified_at": null,
   "member_status_id": "a",
   "plaintext_preferred": false,
@@ -422,7 +449,7 @@ actions for a single member please see the <cite>/members/add</cite> call below.
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>members</strong> (<em>array</em>) &#8211; An array of members to update A member is a dictionary of member emails and field values to import.
+<li><strong>members</strong> (<em>array</em>) &#8211; An array of members to update A member is a dictionary of member emails, SMS phone numbers, and field values to import.
 The only required field is &#8220;email&#8221;. All other fields are treated as the name of a member field.</li>
 <li><strong>automate_field_changes</strong> (<em>boolean</em>) &#8211; Accepts True or False. Optional. When set to True, updates made by this call will trigger
 field change workflows when appropriate. For more information on field change automation, visit our
@@ -433,6 +460,7 @@ trigger contact import workflows when appropriate.</li>
 that the user uploaded.</li>
 <li><strong>add_only</strong> (<em>boolean</em>) &#8211; Optional. Only add new members, ignore existing members.</li>
 <li><strong>group_ids</strong> (<em>array of integers</em>) &#8211; Optional. Add imported members to this list of groups.</li>
+<li><strong>criteria</strong> (<em>dictionary</em>) &#8211; Optional. Set the sms promotional/transactional statuses for imported members.</li>
 </ul>
 </td>
 </tr>
@@ -450,12 +478,24 @@ that the user uploaded.</li>
 {
   "members": [
     {
-      "email": "michelle@myemma.com"
+      "email": "michelle@myemma.com",
+      "sms": {
+        "phone_number": "1234567891",
+      }
     },
     {
-      "email": "nathan@myemma.com"
+      "email": "nathan@myemma.com",
+      "sms": {
+        "phone_number": "1234567890",
+      }
     }
-  ]
+  ],
+  "criteria": {
+    "sms": {
+      "transactional_status": "a",
+      "promotional_status": "a"
+    }
+  }
 }
 
 {
@@ -483,6 +523,7 @@ on bulk members please use the <cite>/members</cite> call above.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>email</strong> (<em>string</em>) &#8211; Email address of member to add or update</li>
+<li><strong>phone_number</strong> (<em>string</em>) &#8211; A phone number of the member to add or update.</li>
 <li><strong>fields</strong> (<em>dictionary</em>) &#8211; Names and values of user-defined fields to update</li>
 <li><strong>group_ids</strong> (<em>array of integers</em>) &#8211; Optional. Add imported members to this list of groups.</li>
 <li><strong>field_triggers</strong> (<em>boolean</em>) &#8211; Optional. Fires related field change autoresponders when set to <em>true</em>.</li>
@@ -507,7 +548,10 @@ status will be reported as &#8216;a&#8217; (active), &#8216;e&#8217; (error), or
   "fields": {
     "first_name": "Benjamin"
   },
-  "email": "benjamin@myemma.com"
+  "email": "benjamin@myemma.com",
+  "sms": {
+    "phone_number": "1234567890"
+  }
 }
 
 {
@@ -685,6 +729,7 @@ true
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>email</strong> (<em>string</em>) &#8211; A new email address for the member.</li>
+<li><strong>phone_number</strong> (<em>string</em>) &#8211; A new phone number for the member.</li>
 <li><strong>status_to</strong> (<em>string</em>) &#8211; A new status for the member. Accepts one of
 &#8216;a&#8217; (active), &#8216;e&#8217; (error), &#8216;o&#8217; (opt-out).</li>
 <li><strong>fields</strong> (<em>array</em>) &#8211; An array of fields with associated values for this
@@ -714,6 +759,9 @@ member.</li>
     "last_name": "Jones"
   },
   "email": "ella@myemma.com",
+  "sms": {
+    "phone_number": "1234567891"
+  },
   "status_to": "a"
 }
 
