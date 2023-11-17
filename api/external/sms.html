@@ -120,46 +120,46 @@
                                 <span style="font-weight:bold;">Sample Response</span>
                                 <a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
                                 <pre class="response">
-                                    <b>GET /100/sms/campaigns</b>
-                                    [{
-                                    "account_id": 100,
-                                    "archived_at": null,
-                                    "bounces": 0,
-                                    "canceled_by_user_id": null,
-                                    "copied_from_sms_campaign_id": null,
-                                    "created_at": "2023-09-05T16:22:17.738757+00:00",
-                                    "deliveries": 0,
-                                    "from_phone_number": "+12345678910",
-                                    "is_promotional": true,
-                                    "is_test": false,
-                                    "media_url": null,
-                                    "message": "Hi this is a test",
-                                    "message_segments": 0,
-                                    "opt_outs": 0,
-                                    "pending_at": null,
-                                    "recipients": {
-                                        "groups": [
-                                            1234
-                                        ],
-                                        "members": [],
-                                        "segments": [],
-                                        "suppression_segments": []
-                                    },
-                                    "results_message": null,
-                                    "scheduled_at": null,
-                                    "scheduled_by_user_id": null,
-                                    "send_finished": null,
-                                    "send_started": null,
-                                    "send_status": "d",
-                                    "shorten_links": false,
-                                    "sms_campaign_id": 123,
-                                    "sms_campaign_name": "Test SMS Campaign",
-                                    "sms_campaign_type": "m",
-                                    "total_clicks": 0,
-                                    "total_sent": 0,
-                                    "unique_clicks": 0,
-                                    "updated_at": "2023-09-05T16:23:43.498598+00:00"
-                                }]
+<b>GET /100/sms/campaigns</b>
+[{
+    "account_id": 100,
+    "archived_at": null,
+    "bounces": 0,
+    "canceled_by_user_id": null,
+    "copied_from_sms_campaign_id": null,
+    "created_at": "2023-09-05T16:22:17.738757+00:00",
+    "deliveries": 0,
+    "from_phone_number": "+12345678910",
+    "is_promotional": true,
+    "is_test": false,
+    "media_url": null,
+    "message": "Hi this is a test",
+    "message_segments": 0,
+    "opt_outs": 0,
+    "pending_at": null,
+    "recipients": {
+        "groups": [
+            1234
+        ],
+        "members": [],
+        "segments": [],
+        "suppression_segments": []
+    },
+    "results_message": null,
+    "scheduled_at": null,
+    "scheduled_by_user_id": null,
+    "send_finished": null,
+    "send_started": null,
+    "send_status": "d",
+    "shorten_links": false,
+    "sms_campaign_id": 123,
+    "sms_campaign_name": "Test SMS Campaign",
+    "sms_campaign_type": "m",
+    "total_clicks": 0,
+    "total_sent": 0,
+    "unique_clicks": 0,
+    "updated_at": "2023-09-05T16:23:43.498598+00:00"
+}]
                                 </pre>
                             </div>
                         </dd>
@@ -184,46 +184,93 @@
                                 <span style="font-weight:bold;">Sample Response</span>
                                 <a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
                                 <pre class="response">
-                                    <b>GET /100/sms/campaigns/123</b>
-                                    {
-                                    "account_id": 100,
-                                    "archived_at": null,
-                                    "bounces": 0,
-                                    "canceled_by_user_id": null,
-                                    "copied_from_sms_campaign_id": null,
-                                    "created_at": "2023-09-05T16:22:17.738757+00:00",
-                                    "deliveries": 0,
-                                    "from_phone_number": "+12345678910",
-                                    "is_promotional": true,
-                                    "is_test": false,
-                                    "media_url": null,
-                                    "message": "Hi this is a test",
-                                    "message_segments": 0,
-                                    "opt_outs": 0,
-                                    "pending_at": null,
-                                    "recipients": {
-                                        "groups": [
-                                            1234
-                                        ],
-                                        "members": [],
-                                        "segments": [],
-                                        "suppression_segments": []
-                                    },
-                                    "results_message": null,
-                                    "scheduled_at": null,
-                                    "scheduled_by_user_id": null,
-                                    "send_finished": null,
-                                    "send_started": null,
-                                    "send_status": "d",
-                                    "shorten_links": false,
-                                    "sms_campaign_id": 123,
-                                    "sms_campaign_name": "Test SMS Campaign",
-                                    "sms_campaign_type": "m",
-                                    "total_clicks": 0,
-                                    "total_sent": 0,
-                                    "unique_clicks": 0,
-                                    "updated_at": "2023-09-05T16:23:43.498598+00:00"
-                                }
+<b>GET /100/sms/campaigns/123</b>
+{
+    "account_id": 100,
+    "archived_at": null,
+    "bounces": 0,
+    "canceled_by_user_id": null,
+    "copied_from_sms_campaign_id": null,
+    "created_at": "2023-09-05T16:22:17.738757+00:00",
+    "deliveries": 2,
+    "from_phone_number": "+12345678910",
+    "is_promotional": true,
+    "is_test": false,
+    "media_url": null,
+    "message": "Hi this is a test",
+    "message_segments": 0,
+    "opt_outs": 0,
+    "pending_at": null,
+    "recipients": {
+        "groups": [
+            1234
+        ],
+        "members": [],
+        "segments": [],
+        "suppression_segments": []
+    },
+    "results_message": null,
+    "scheduled_at": null,
+    "scheduled_by_user_id": null,
+    "send_finished": null,
+    "send_started": null,
+    "send_status": "d",
+    "shorten_links": false,
+    "sms_campaign_id": 123,
+    "sms_campaign_name": "Test SMS Campaign",
+    "sms_campaign_type": "m",
+    "total_clicks": 0,
+    "total_sent": 0,
+    "unique_clicks": 0,
+    "updated_at": "2023-09-05T16:23:43.498598+00:00"
+}
+                                </pre>
+                            </div>
+                        </dd>
+                    </dl>
+                    <dl class="get">
+                        <dt id="get--#account_id-sms-campaigns-#campaign_id-deliveries">
+                            <tt class="descname">GET </tt><tt class="descname">/#account_id/sms/campaigns/#campaign_id/deliveries</tt><a class="headerlink" href="#get--#account_id-sms-campaigns-#campaign_id-deliveries" title="Permalink to this definition">¶</a></dt>
+                        <dd><p>Get a list of deliveries for a specific SMS Campaign for the account ID.</p>
+                            <p>This endpoint will return a list of recipients that the specific campaign was delivered to.</p>
+                            <table class="docutils field-list" frame="void" rules="none">
+                                <col class="field-name" />
+                                <col class="field-body" />
+                                <tbody valign="top">
+                                <tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body">A response with a list of recipients for a specified campaign ID.</td>
+                                </tr>
+                                <tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the given campaign id for that account does not exist.</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <p>
+                            <div class="sample-response hide-response">
+                                <span style="font-weight:bold;">Sample Response</span>
+                                <a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+                                <pre class="response">
+<b>GET /100/sms/campaigns/123/deliveries</b>
+[
+ {
+    "account_id": 100,
+    "bounce_type": null,
+    "delivery_type": "d",
+    "from_phone_number": "+12345678910",
+    "member_id": 110,
+    "opted_out_at": null,
+    "sms_campaign_id": 123,
+    "to_phone_number": "+11098765432"
+ },
+ {
+    "account_id": 100,
+    "bounce_type": null,
+    "delivery_type": "d",
+    "from_phone_number": "+12345678910",
+    "member_id": 111,
+    "opted_out_at": null,
+    "sms_campaign_id": 123,
+    "to_phone_number": "+11098765433"
+ }
+]
                                 </pre>
                             </div>
                         </dd>
