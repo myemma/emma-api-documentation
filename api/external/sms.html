@@ -275,6 +275,49 @@
                             </div>
                         </dd>
                     </dl>
+                    <dl class="get">
+                        <dt id="get--#account_id-sms-campaigns-#campaign_id-clicks">
+                            <tt class="descname">GET </tt><tt class="descname">/#account_id/sms/campaigns/#campaign_id/clicks</tt><a class="headerlink" href="#get--#account_id-sms-campaigns-#campaign_id-clicks" title="Permalink to this definition">¶</a></dt>
+                        <dd><p>Get a list of clicks for a specific SMS Campaign for the account ID.</p>
+                            <p>This endpoint will return a list of clicks that the specific campaign was delivered to.</p>
+                            <table class="docutils field-list" frame="void" rules="none">
+                                <col class="field-name" />
+                                <col class="field-body" />
+                                <tbody valign="top">
+                                <tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body">A response with a list of clicks for a specified campaign ID.</td>
+                                </tr>
+                                <tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the given campaign id for that account does not exist.</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <p>
+                            <div class="sample-response hide-response">
+                                <span style="font-weight:bold;">Sample Response</span>
+                                <a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+                                <pre class="response">
+<b>GET /100/sms/campaigns/123/clicks</b>
+[
+    {
+        "click_timestamp": "2023-03-31T18:19:28.547464+00:00",
+        "member_id": 110,
+        "sms_campaign_id": 123,
+        "sms_link_id": 43,
+        "sms_link_target": "http://www.meetmarigold.com",
+        "to_phone_number": "+11098765432"
+    },
+    {
+        "click_timestamp": "2023-03-31T18:19:22.383613+00:00",
+        "member_id": 111,
+        "sms_campaign_id": 123,
+        "sms_link_id": 43,
+        "sms_link_target": "http://www.meetmarigold.com",
+        "to_phone_number": "+11098765433"
+    }
+]
+                                </pre>
+                            </div>
+                        </dd>
+                    </dl>
                 </div>
             </div>
         </div>
