@@ -527,6 +527,7 @@ on bulk members please use the <cite>/members</cite> call above.</p>
 <li><strong>fields</strong> (<em>dictionary</em>) &#8211; Names and values of user-defined fields to update</li>
 <li><strong>group_ids</strong> (<em>array of integers</em>) &#8211; Optional. Add imported members to this list of groups.</li>
 <li><strong>field_triggers</strong> (<em>boolean</em>) &#8211; Optional. Fires related field change autoresponders when set to <em>true</em>.</li>
+<li><strong>sms</strong> (<em>dictionary</em>) &#8211; Optional. sms phone number config for member</li>
 <li><strong>subscriber_consent_tracking</strong> (<em>boolean</em>) &#8211; Optional. Whether or not the user accepts tracking and analysis.</li>
 </ul>
 </td>
@@ -550,7 +551,9 @@ status will be reported as &#8216;a&#8217; (active), &#8216;e&#8217; (error), or
   },
   "email": "benjamin@myemma.com",
   "sms": {
-    "phone_number": "1234567890"
+    "phone_number": "1234567890",
+    "promotional_status": "o",
+    "transactional_status": "a"
   }
 }
 
