@@ -1,0 +1,376 @@
+<!doctype html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <title>Emma API Documentation | Emma, Inc.</title>
+
+
+    <link rel="stylesheet" href="../../_static/emma.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:    '../../',
+            VERSION:     '0.1',
+            COLLAPSE_INDEX: false,
+            FILE_SUFFIX: '.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+
+    <script src="https://code.jquery.com/jquery-1.4.min.js"></script>
+    <script>window.jQuery || document.write('<script src="_static/jquery.js"><\/script>')</script>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="audience 0.1 documentation" href="../../index.html" />
+    <link rel="next" title="Subscriptions" href="subscriptions.html" />
+    <link rel="prev" title="Signup Forms" href="signup_forms.html" />
+    <link rel="icon" href="https://myemma.com/static/global/favicons/favicon.ico?v=2" type="image/x-icon">
+    <link rel="shortcut icon" href="https://myemma.com/static/global/favicons/favicon.ico?v=2" type="image/x-icon">
+    <link rel="apple-touch-icon-precomposed" href="https://myemma.com/static/global/favicons/apple-iphone.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://myemma.com/static/global/favicons/apple-ipad.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://myemma.com/static/global/favicons/apple-iphone-2x.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://myemma.com/static/global/favicons/apple-ipad-2x.png" />
+
+    <style type="text/css">
+        .resp-trigger, .resp-trigger:hover {font-size:10pt;text-decoration:none;}
+        div.sample-response.hide-response pre.response {display: none;}
+        div.sample-response .tshow,
+        div.sample-response.hide-response .thide {display: none;}
+        div.sample-response .thide,
+        div.sample-response.hide-response .tshow {display: inline;}
+    </style>
+    <script>
+        $().ready(function() {
+            $("a.resp-trigger").click(function(e) {
+                e.preventDefault();
+                $(this).parents("div.sample-response").toggleClass("hide-response");
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-512410-18']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+
+</head>
+<body>
+<header role="banner">
+    <a href="/index.html">
+        <h1>Emma API Documentation</h1>
+    </a>
+</header>
+<div class="related">
+    <h3>Navigation</h3>
+    <ul>
+        <li class="right" style="margin-right: 10px">
+            <a href="../../genindex.html" title="General Index"
+               accesskey="I">index</a></li>
+        <li class="right" >
+            <a href="../../http-routingtable.html" title="HTTP Routing Table"
+            >routing table</a> |</li>
+        <li class="right" >
+            <a href="subscriptions.html" title="Subscriptions"
+               accesskey="N">next</a> |</li>
+        <li class="right" >
+            <a href="signup_forms.html" title="Signup Forms"
+               accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">audience 0.1 documentation</a> &raquo;</li>
+    </ul>
+</div>
+
+<div class="document">
+    <div class="documentwrapper">
+        <div class="bodywrapper">
+            <div class="body">
+
+                <div class="section" id="sms">
+                    <h1>SMS<a class="headerlink" href="#sms" title="Permalink to this headline">¶</a></h1>
+                    <p>These endpoints allow for users to get information about their sms campaigns.</p>
+                    <dl class="get">
+                        <dt id="get--#account_id-sms-campaigns">
+                            <tt class="descname">GET </tt><tt class="descname">/#account_id/sms/campaigns</tt><a class="headerlink" href="#get--#account_id-sms-campaigns" title="Permalink to this definition">¶</a></dt>
+                        <dd><p>Get sms campaigns for account.</p>
+                            <p>This endpoint will return a list of sms campaigns for the account ID.</p>
+                            <table class="docutils field-list" frame="void" rules="none">
+                                <col class="field-name" />
+                                <col class="field-body" />
+                                <tbody valign="top">
+                                <tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body">A response with a list of of campaigns for the given account ID.</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <p>
+                            <div class="sample-response hide-response">
+                                <span style="font-weight:bold;">Sample Response</span>
+                                <a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+                                <pre class="response">
+<b>GET /100/sms/campaigns</b>
+[
+    {
+        "account_id": 100,
+        "archived_at": null,
+        "bounces": 0,
+        "canceled_by_user_id": null,
+        "copied_from_sms_campaign_id": null,
+        "created_at": "2023-09-05T16:22:17.738757+00:00",
+        "deliveries": 0,
+        "from_phone_number": "+12345678910",
+        "is_promotional": true,
+        "is_test": false,
+        "media_url": null,
+        "message": "Hi this is a test",
+        "message_segments": 0,
+        "opt_outs": 0,
+        "pending_at": null,
+        "recipients": {
+            "groups": [
+                1234
+            ],
+            "members": [],
+            "segments": [],
+            "suppression_segments": []
+        },
+        "results_message": null,
+        "scheduled_at": null,
+        "scheduled_by_user_id": null,
+        "send_finished": null,
+        "send_started": null,
+        "send_status": "d",
+        "shorten_links": false,
+        "sms_campaign_id": 123,
+        "sms_campaign_name": "Test SMS Campaign",
+        "sms_campaign_type": "m",
+        "total_clicks": 0,
+        "total_sent": 0,
+        "unique_clicks": 0,
+        "updated_at": "2023-09-05T16:23:43.498598+00:00"
+    }
+]
+                                </pre>
+                            </div>
+                        </dd>
+                    </dl>
+                    <dl class="get">
+                        <dt id="get--#account_id-sms-campaigns-#campaign_id">
+                            <tt class="descname">GET </tt><tt class="descname">/#account_id/sms/campaigns/#campaign_id</tt><a class="headerlink" href="#get--#account_id-sms-campaigns-#campaign_id" title="Permalink to this definition">¶</a></dt>
+                        <dd><p>Get specific sms campaign.</p>
+                            <p>This endpoint will return a campaign for the account that matches the given campaign ID.</p>
+                            <table class="docutils field-list" frame="void" rules="none">
+                                <col class="field-name" />
+                                <col class="field-body" />
+                                <tbody valign="top">
+                                <tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body">A response with a campaign for a specified campaign ID.</td>
+                                </tr>
+                                <tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the given campaign id for that account does not exist.</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <p>
+                            <div class="sample-response hide-response">
+                                <span style="font-weight:bold;">Sample Response</span>
+                                <a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+                                <pre class="response">
+<b>GET /100/sms/campaigns/123</b>
+{
+    "account_id": 100,
+    "archived_at": null,
+    "bounces": 0,
+    "canceled_by_user_id": null,
+    "copied_from_sms_campaign_id": null,
+    "created_at": "2023-09-05T16:22:17.738757+00:00",
+    "deliveries": 2,
+    "from_phone_number": "+12345678910",
+    "is_promotional": true,
+    "is_test": false,
+    "media_url": null,
+    "message": "Hi this is a test",
+    "message_segments": 0,
+    "opt_outs": 0,
+    "pending_at": null,
+    "recipients": {
+        "groups": [
+            1234
+        ],
+        "members": [],
+        "segments": [],
+        "suppression_segments": []
+    },
+    "results_message": null,
+    "scheduled_at": null,
+    "scheduled_by_user_id": null,
+    "send_finished": null,
+    "send_started": null,
+    "send_status": "d",
+    "shorten_links": false,
+    "sms_campaign_id": 123,
+    "sms_campaign_name": "Test SMS Campaign",
+    "sms_campaign_type": "m",
+    "total_clicks": 0,
+    "total_sent": 0,
+    "unique_clicks": 0,
+    "updated_at": "2023-09-05T16:23:43.498598+00:00"
+}
+                                </pre>
+                            </div>
+                        </dd>
+                    </dl>
+                    <dl class="get">
+                        <dt id="get--#account_id-sms-campaigns-#campaign_id-deliveries">
+                            <tt class="descname">GET </tt><tt class="descname">/#account_id/sms/campaigns/#campaign_id/deliveries</tt><a class="headerlink" href="#get--#account_id-sms-campaigns-#campaign_id-deliveries" title="Permalink to this definition">¶</a></dt>
+                        <dd><p>Get a list of deliveries for an sms campaign.</p>
+                            <p>This endpoint will return a list of deliveries for the given campaign ID.</p>
+                            <table class="docutils field-list" frame="void" rules="none">
+                                <col class="field-name" />
+                                <col class="field-body" />
+                                <tbody valign="top">
+                                <tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body">A response with a list of deliveries for a specified campaign ID.</td>
+                                </tr>
+                                <tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the given campaign id for that account does not exist.</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <p>
+                            <div class="sample-response hide-response">
+                                <span style="font-weight:bold;">Sample Response</span>
+                                <a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+                                <pre class="response">
+<b>GET /100/sms/campaigns/123/deliveries</b>
+[
+    {
+        "account_id": 100,
+        "bounce_type": null,
+        "delivery_type": "d",
+        "from_phone_number": "+12345678910",
+        "member_id": 110,
+        "opted_out_at": null,
+        "sms_campaign_id": 123,
+        "to_phone_number": "+11098765432"
+    },
+    {
+        "account_id": 100,
+        "bounce_type": null,
+        "delivery_type": "d",
+        "from_phone_number": "+12345678910",
+        "member_id": 111,
+        "opted_out_at": null,
+        "sms_campaign_id": 123,
+        "to_phone_number": "+11098765433"
+    }
+]
+                                </pre>
+                            </div>
+                        </dd>
+                    </dl>
+                    <dl class="get">
+                        <dt id="get--#account_id-sms-campaigns-#campaign_id-clicks">
+                            <tt class="descname">GET </tt><tt class="descname">/#account_id/sms/campaigns/#campaign_id/clicks</tt><a class="headerlink" href="#get--#account_id-sms-campaigns-#campaign_id-clicks" title="Permalink to this definition">¶</a></dt>
+                        <dd><p>Get a list of clicks for an sms campaign.</p>
+                            <p>This endpoint will return a list of clicks for the given campaign ID.</p>
+                            <table class="docutils field-list" frame="void" rules="none">
+                                <col class="field-name" />
+                                <col class="field-body" />
+                                <tbody valign="top">
+                                <tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body">A response with a list of clicks for a specified campaign ID.</td>
+                                </tr>
+                                <tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the given campaign id for that account does not exist.</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <p>
+                            <div class="sample-response hide-response">
+                                <span style="font-weight:bold;">Sample Response</span>
+                                <a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+                                <pre class="response">
+<b>GET /100/sms/campaigns/123/clicks</b>
+[
+    {
+        "click_timestamp": "2023-03-31T18:19:28.547464+00:00",
+        "member_id": 110,
+        "sms_campaign_id": 123,
+        "sms_link_id": 43,
+        "sms_link_target": "http://www.meetmarigold.com",
+        "to_phone_number": "+11098765432"
+    },
+    {
+        "click_timestamp": "2023-03-31T18:19:22.383613+00:00",
+        "member_id": 111,
+        "sms_campaign_id": 123,
+        "sms_link_id": 43,
+        "sms_link_target": "http://www.meetmarigold.com",
+        "to_phone_number": "+11098765433"
+    }
+]
+                                </pre>
+                            </div>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><h3>Related Topics</h3>
+            <ul>
+                <li><a href="../../index.html">Documentation overview</a><ul>
+                    <li>Previous: <a href="signup_forms.html" title="previous chapter">Signup Forms</a></li>
+                    <li>Next: <a href="subscriptions.html" title="next chapter">Subscriptions</a></li>
+                </ul></li>
+            </ul>
+            <div id="searchbox" style="display: none">
+                <h3>Quick search</h3>
+                <form class="search" action="../../search.html" method="get">
+                    <input type="text" name="q" />
+                    <input type="submit" value="Go" />
+                    <input type="hidden" name="check_keywords" value="yes" />
+                    <input type="hidden" name="area" value="default" />
+                </form>
+                <p class="searchtip" style="font-size: 90%">
+                    Enter search terms or a module, class or function name.
+                </p>
+            </div>
+            <script type="text/javascript">$('#searchbox').show(0);</script>
+            <div id="emma-links">
+                <h3>Emma Links</h3>
+                <ul>
+                    <li><a href="https://myemma.com" title="Visit Emma's homepage" target="_blank">Emma Home</a></li>
+
+                    <li><a href="https://myemma.com/blog" title="Visit the Emma Blog" target="_blank">Emma Blog</a></li>
+                    <li><a href="https://myemma.com/help" title="Visit Emma's help guide" target="_blank">Emma Help</a></li>
+                </ul>
+            </div>
+
+            <div id="inquiry">
+                <h3>Interested in Emma?</h3>
+                <p>Emma's email marketing makes communicating simple and stylish. <a href="https://myemma.com/get-started/inquire" title="Get started today.">Get started today</a>.</p>
+            </div>
+        </div>
+    </div>
+    <div class="clearer"></div>
+</div>
+<div class="footer">
+    &copy; Copyright 2003-<script language="JavaScript" type="text/javascript">
+    now = new Date
+    theYear=now.getYear()
+    if (theYear < 1900)
+        theYear=theYear+1900
+    document.write(theYear)
+</script>, Marigold
+</div>
+</body>
+</html>
