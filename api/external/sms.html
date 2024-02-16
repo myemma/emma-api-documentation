@@ -320,6 +320,36 @@
                             </div>
                         </dd>
                     </dl>
+                    <dl class="get">
+                        <dt id="get--#account_id-sms-billing-credit-usage">
+                            <tt class="descname">GET </tt><tt class="descname">/#account_id/sms/billing/credit_usage</tt><a class="headerlink" href="#get--#account_id-sms-billing-credit-usage" title="Permalink to this definition">¶</a></dt>
+                        <dd><p>Get sms credit usage for account.</p>
+                            <p>This endpoint will return the credit usage for the account ID. You must specify query parameters 'from_date' and 'to_date'. The returned credit usage is inclusive of the 'from_date' and exclusive of the 'to_date'. The dates are based in the UTC timezone.</p>
+                            <table class="docutils field-list" frame="void" rules="none">
+                                <col class="field-name" />
+                                <col class="field-body" />
+                                <tbody valign="top">
+                                <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+                                    <li><strong>from_date</strong> (<em>string</em>) &#8211; Required. The start date of the requested credit usage in ISO format (YYYY-MM-DD)</li>
+                                    <li><strong>to_date</strong> (<em>string</em>) &#8211; Required. The end date of the requested credit usage in ISO format (YYYY-MM-DD)</li>
+                                </ul>
+                                </td>
+                                </tr>
+                                <tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body">A response with an integer that is the credit usage for the given account ID.</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <p>
+                            <div class="sample-response hide-response">
+                                <span style="font-weight:bold;">Sample Response</span>
+                                <a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+                                <pre class="response">
+<b>GET /100/sms/billing/credit_usage?from_date=2023-03-22&to_date=2024-01-29</b>
+123
+                                </pre>
+                            </div>
+                        </dd>
+                    </dl>
                 </div>
             </div>
         </div>
