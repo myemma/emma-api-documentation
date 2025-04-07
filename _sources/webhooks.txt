@@ -6,17 +6,17 @@ Webhook Usage
 Webhook Overview
 ----------------
 
-Webhooks are an easy way to have Emma's system notify you when certain events 
-occur. In general, you will use our API to tell us which events you want to 
-be notified about. When those events occur, we will make a POST to the URL 
+Webhooks are an easy way to have Emma's system notify you when certain events
+occur. In general, you will use our API to tell us which events you want to
+be notified about. When those events occur, we will make a POST to the URL
 you have provided with a particular set of data.
 
-We have a broad array of triggering events and an easy API interface 
-to create webhooks for each event. We do have :doc:`documentation of the webhook 
+We have a broad array of triggering events and an easy API interface
+to create webhooks for each event. We do have :doc:`documentation of the webhook
 API </api/external/webhooks>`.
 
-Below is a list of each triggering event we currently support and the data 
-that will be sent when that event occurs. 
+Below is a list of each triggering event we currently support and the data
+that will be sent when that event occurs.
 
 Webhook Post Data
 -----------------
@@ -199,9 +199,9 @@ Member Delete
 Member Add To Group
 ~~~~~~~~~~~~~~~~~~~
 
-It's possible that instead of an array for `member_ids` or `group_ids` you 
-may receive a string with the text `all`. Because of calls that can add a 
-member to all groups or add all members to a single group, this is easier 
+It's possible that instead of an array for `member_ids` or `group_ids` you
+may receive a string with the text `all`. Because of calls that can add a
+member to all groups or add all members to a single group, this is easier
 than returning a giant list of IDs.
 
 ::
@@ -219,9 +219,9 @@ than returning a giant list of IDs.
 Member Remove From Group
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-It's possible that instead of an array for `member_ids` or `group_ids` you 
-may receive a string with the text `all`. Because of calls that can remove a 
-member from all groups or remove all members from a single group, this is 
+It's possible that instead of an array for `member_ids` or `group_ids` you
+may receive a string with the text `all`. Because of calls that can remove a
+member from all groups or remove all members from a single group, this is
 easier than returning a giant list of IDs.
 
 ::
@@ -334,4 +334,31 @@ Member Status Update
 		    "new_status": new_status,
 		    "timestamp": timestamp
 		    }
+	}
+
+Subscriptions Member Opted Out
+~~~~~~~~~~~~~~~~~~~~
+::
+
+	{
+		"event_name": "subscriptions-member-opted-out",
+		"data": {
+            "member_id": member_id,
+            "subscripition_id": subscripition_id,
+            "account_id": account_id,
+		}
+	}
+
+SMS Change Opt Out Status
+~~~~~~~~~~~~~~~~~~~~
+::
+
+	{
+		"event_name": "sms-change-optout-status",
+		"data": {
+			"sms_phone_number": sms_phone_number,
+			"status_changed_to": status_changed_to,
+			"status_type": status_type,
+			"timestamp": timestamp,
+		}
 	}
