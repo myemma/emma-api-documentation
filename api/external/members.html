@@ -523,7 +523,6 @@ on bulk members please use the <cite>/members</cite> call above.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>email</strong> (<em>string</em>) &#8211; Email address of member to add or update</li>
-<li><strong>phone_number</strong> (<em>string</em>) &#8211; A phone number of the member to add or update.</li>
 <li><strong>fields</strong> (<em>dictionary</em>) &#8211; Names and values of user-defined fields to update</li>
 <li><strong>group_ids</strong> (<em>array of integers</em>) &#8211; Optional. Add imported members to this list of groups.</li>
 <li><strong>field_triggers</strong> (<em>boolean</em>) &#8211; Optional. Fires related field change autoresponders when set to <em>true</em>.</li>
@@ -737,6 +736,10 @@ true
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>email</strong> (<em>string</em>) &#8211; A new email address for the member.</li>
+<li><strong>sms</strong> (<em>dictionary</em>) &#8211; SMS phone number config for member</li>
+  <ul class="first simple">
+    <li><strong>phone_number</strong> (<em>string</em>) &#8211; Phone Number</li>
+  </ul>
 <li><strong>phone_number</strong> (<em>string</em>) &#8211; A new phone number for the member.</li>
 <li><strong>status_to</strong> (<em>string</em>) &#8211; A new status for the member. Accepts one of
 &#8216;a&#8217; (active), &#8216;e&#8217; (error), &#8216;o&#8217; (opt-out).</li>
