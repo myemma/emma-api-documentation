@@ -381,6 +381,91 @@ true
 
 </div>
 
+<div class="section" id="field_relationships"></div>
+<h1>Field Relationships<a class="headerlink" href="#field_relationships" title="Permalink to this headline">¶</a></h1>
+<p>These endpoints let you create, edit, update and delete all of the field relationships in your account.
+  A field relationship links a primary field to a dependent field where the selected value of the primary field determines
+  the available options in the dependent field. For example, a &#8220;State&#8221; field could be linked to a &#8220;City&#8221;
+  field such that when &#8220;Texas&#8221; is selected in the &#8220;State&#8221; field, only cities in Texas are
+  available in the &#8220;City&#8221; field.
+</p>
+
+
+<dl class="get">
+<dt id="get--#account_id-fields-relationships">
+<tt class="descname">GET </tt><tt class="descname">/#account_id/fields/relationships</tt><a class="headerlink" href="#get--#account_id-fields-relationships" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a list of this account's field relationships.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body">An array of field relationships.</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>PUT /100/fields/relationships</b>
+[
+  {
+    "relationship_id": 123456,
+    "relationship_name": "Location",
+    "account_id": 100,
+    "parent_field": {
+        "field_id": 1234,
+        "shortcut_name": "states",
+        "display_name": "States",
+        "options": [
+            "ME",
+            "TN",
+            "CA"
+        ],
+        "widget_type": "select one"
+    },
+    "child_field": {
+        "field_id": 4321,
+        "shortcut_name": "cities",
+        "display_name": "Cities",
+        "options": [
+          "Bangor",
+          "Portland",
+          "Nashville",
+          "Memphis",
+          "Los Angeles",
+          "San Francisco"
+        ],
+        "widget_type": "select one"
+    },
+    "created_at": "@D:2025-10-23T09:36:33",
+    "options": {
+      "ME": [
+        "Bangor",
+        "Portland"
+      ],
+      "TN": [
+        "Nashville",
+        "Memphis"
+      ],
+      "CA": [
+        "Los Angeles",
+        "San Francisco"
+      ]
+    }
+  }
+]
+
+200
+</pre>
+</div>
+</p>
+</dd></dl>
+
+
+</div>
+
 
           </div>
         </div>
