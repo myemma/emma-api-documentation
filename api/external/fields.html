@@ -535,6 +535,106 @@ true
 </dd></dl>
 
 
+<dl class="post">
+<dt id="post--#account_id-fields-relationships">
+<tt class="descname">POST </tt><tt class="descname">/#account_id/fields/relationships</tt><a class="headerlink" href="#post--#account_id-fields-relationships" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new field relationship.</p>
+<p>There must not already be a field relationship with this name.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>relationship_name</strong> (<em>string</em>) &#8211; The display name for this field relationshiop.</li>
+<li><strong>parent_field_id</strong> (<em>integer</em>) &#8211; The primary field id.</li>
+<li><strong>child_field_id</strong> (<em>integer</em>) &#8211; The dependent field id.</li>
+<li><strong>options</strong> (<em>dictionary</em>) &#8211; A mapping of parent options to available options in the child field. Keys must be options in the parent field, and values must be arrays of options in the child field.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first last">The new field relationship.</p></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http400</span></tt> for duplicate name or invalid options.</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>POST /100/fields/relationships</b>
+{
+  "relationship_name": "Location",
+  "parent_field_id": 1234,
+  "child_field_id": 4321,
+  "options": {
+    "ME": [
+      "Bangor",
+      "Portland"
+    ],
+    "TN": [
+      "Nashville",
+      "Memphis"
+    ],
+    "CA": [
+      "Los Angeles",
+      "San Francisco"
+    ]
+  }
+}
+
+{
+  "relationship_id": 123456,
+  "relationship_name": "Location",
+  "account_id": 100,
+  "parent_field": {
+    "field_id": 1234,
+    "shortcut_name": "states",
+    "display_name": "States",
+    "options": [
+      "ME",
+      "TN",
+      "CA"
+    ],
+    "widget_type": "select one"
+  },
+  "child_field": {
+    "field_id": 4321,
+    "shortcut_name": "cities",
+    "display_name": "Cities",
+    "options": [
+      "Bangor",
+      "Portland",
+      "Nashville",
+      "Memphis",
+      "Los Angeles",
+      "San Francisco"
+    ],
+    "widget_type": "select one"
+  },
+  "created_at": "@D:2025-10-23T09:36:33",
+  "options": {
+    "ME": [
+      "Bangor",
+      "Portland"
+    ],
+    "TN": [
+      "Nashville",
+      "Memphis"
+    ],
+    "CA": [
+      "Los Angeles",
+      "San Francisco"
+    ]
+  }
+}
+</pre>
+</div>
+</p>
+</dd></dl>
+
+
 </div>
 
 
