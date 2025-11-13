@@ -387,7 +387,7 @@ true
   A field relationship links a primary field to a dependent field where the selected value of the primary field determines
   the available options in the dependent field. For example, a &#8220;State&#8221; field could be linked to a &#8220;City&#8221;
   field such that when &#8220;Texas&#8221; is selected in the &#8220;State&#8221; field, only cities in Texas are
-  available in the &#8220;City&#8221; field.
+  available in the &#8220;City&#8221; field. A field can only be part of one relationship as either a primary or dependent field.
 </p>
 
 
@@ -548,7 +548,8 @@ true
 <li><strong>relationship_name</strong> (<em>string</em>) &#8211; The display name for this field relationshiop.</li>
 <li><strong>parent_field_id</strong> (<em>integer</em>) &#8211; The primary field id.</li>
 <li><strong>child_field_id</strong> (<em>integer</em>) &#8211; The dependent field id.</li>
-<li><strong>options</strong> (<em>dictionary</em>) &#8211; A mapping of parent options to available options in the child field. Keys must be options in the parent field, and values must be arrays of options in the child field.</li>
+<li><strong>options</strong> (<em>dictionary</em>) &#8211; A mapping of parent options to available options in the child field.
+  Keys must be options in the parent field, and values must be arrays of options in the child field.</li>
 </ul>
 </td>
 </tr>
