@@ -382,7 +382,7 @@ true
 </div>
 
 <div class="section" id="field_relationships">
-<h1>Field Relationships<a class="headerlink" href="#field_relationships" title="Permalink to this headline">¶</a></h1>
+<h1>Conditional Field Relationships<a class="headerlink" href="#field_relationships" title="Permalink to this headline">¶</a></h1>
 <p>These endpoints let you create, edit, update and delete all of the field relationships in your account.
   A field relationship links a primary field to a dependent field where the selected value of the primary field determines
   the available options in the dependent field. For example, a &#8220;State&#8221; field could be linked to a &#8220;City&#8221;
@@ -539,7 +539,7 @@ true
 <dt id="post--#account_id-fields-relationships">
 <tt class="descname">POST </tt><tt class="descname">/#account_id/fields/relationships</tt><a class="headerlink" href="#post--#account_id-fields-relationships" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a new field relationship.</p>
-<p>There must not already be a field relationship with this name.</p>
+<p>There must not already be a field relationship with the provided name.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -667,7 +667,7 @@ true
 <dl class="put">
 <dt id="put--#account_id-fields-relationships-#relationship_id">
 <tt class="descname">PUT </tt><tt class="descname">/#account_id/fields/relationships/#relationship_id</tt><a class="headerlink" href="#put--#account_id-fields-relationships-#relationship_id" title="Permalink to this definition">¶</a></dt>
-<dd><p>Updates an existing field relationship.</p>
+<dd><p>Updates an existing field relationship. Can take any of the same parameters as the POST endpoint.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
