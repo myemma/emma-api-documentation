@@ -381,6 +381,367 @@ true
 
 </div>
 
+<div class="section" id="field_relationships">
+<h1>Conditional Field Relationships<a class="headerlink" href="#field_relationships" title="Permalink to this headline">¶</a></h1>
+<p>These endpoints let you create, edit, update and delete all of the field relationships in your account.
+  A field relationship links a primary field to a dependent field where the selected value of the primary field determines
+  the available options in the dependent field. For example, a &#8220;State&#8221; field could be linked to a &#8220;City&#8221;
+  field such that when &#8220;Texas&#8221; is selected in the &#8220;State&#8221; field, only cities in Texas are
+  available in the &#8220;City&#8221; field. A field can only be part of one relationship as either a primary or dependent field.
+</p>
+
+
+<dl class="get">
+<dt id="get--#account_id-fields-relationships">
+<tt class="descname">GET </tt><tt class="descname">/#account_id/fields/relationships</tt><a class="headerlink" href="#get--#account_id-fields-relationships" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a list of this account's field relationships.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body">An array of field relationships.</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>GET /100/fields/relationships</b>
+
+[
+  {
+    "relationship_id": 123456,
+    "relationship_name": "Location",
+    "account_id": 100,
+    "parent_field": {
+      "field_id": 1234,
+      "shortcut_name": "states",
+      "display_name": "States",
+      "options": [
+        "ME",
+        "TN",
+        "CA"
+      ],
+      "widget_type": "select one"
+    },
+    "child_field": {
+      "field_id": 4321,
+      "shortcut_name": "cities",
+      "display_name": "Cities",
+      "options": [
+        "Bangor",
+        "Portland",
+        "Nashville",
+        "Memphis",
+        "Los Angeles",
+        "San Francisco"
+      ],
+      "widget_type": "select one"
+    },
+    "created_at": "@D:2025-10-23T09:36:33",
+    "options": {
+      "ME": [
+        "Bangor",
+        "Portland"
+      ],
+      "TN": [
+        "Nashville",
+        "Memphis"
+      ],
+      "CA": [
+        "Los Angeles",
+        "San Francisco"
+      ]
+    }
+  }
+]
+</pre>
+</div>
+</p>
+</dd></dl>
+
+
+<dl class="get">
+<dt id="get--#account_id-fields-relationships-#relationship_id">
+<tt class="descname">GET </tt><tt class="descname">/#account_id/fields/relationships/#relationship_id</tt><a class="headerlink" href="#get--#account_id-fields-relationships-#relationship_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a field relationship in this account by ID.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body">A field relationship.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the field relationship does not exist.</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>GET /100/fields/relationships/123456</b>
+
+{
+  "relationship_id": 123456,
+  "relationship_name": "Location",
+  "account_id": 100,
+  "parent_field": {
+    "field_id": 1234,
+    "shortcut_name": "states",
+    "display_name": "States",
+    "options": [
+      "ME",
+      "TN",
+      "CA"
+    ],
+    "widget_type": "select one"
+  },
+  "child_field": {
+    "field_id": 4321,
+    "shortcut_name": "cities",
+    "display_name": "Cities",
+    "options": [
+      "Bangor",
+      "Portland",
+      "Nashville",
+      "Memphis",
+      "Los Angeles",
+      "San Francisco"
+    ],
+    "widget_type": "select one"
+  },
+  "created_at": "@D:2025-10-23T09:36:33",
+  "options": {
+    "ME": [
+      "Bangor",
+      "Portland"
+    ],
+    "TN": [
+      "Nashville",
+      "Memphis"
+    ],
+    "CA": [
+      "Los Angeles",
+      "San Francisco"
+    ]
+  }
+}
+</pre>
+</div>
+</p>
+</dd></dl>
+
+
+<dl class="post">
+<dt id="post--#account_id-fields-relationships">
+<tt class="descname">POST </tt><tt class="descname">/#account_id/fields/relationships</tt><a class="headerlink" href="#post--#account_id-fields-relationships" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new field relationship.</p>
+<p>There must not already be a field relationship with the provided name.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>relationship_name</strong> (<em>string</em>) &#8211; The display name for this field relationshiop.</li>
+<li><strong>parent_field_id</strong> (<em>integer</em>) &#8211; The primary field id.</li>
+<li><strong>child_field_id</strong> (<em>integer</em>) &#8211; The dependent field id.</li>
+<li><strong>options</strong> (<em>dictionary</em>) &#8211; A mapping of parent options to available options in the child field.
+  Keys must be options in the parent field, and values must be arrays of options in the child field.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first last">The new field relationship.</p></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http400</span></tt> for duplicate name or invalid options.</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>POST /100/fields/relationships</b>
+{
+  "relationship_name": "Location",
+  "parent_field_id": 1234,
+  "child_field_id": 4321,
+  "options": {
+    "ME": [
+      "Bangor",
+      "Portland"
+    ],
+    "TN": [
+      "Nashville",
+      "Memphis"
+    ],
+    "CA": [
+      "Los Angeles",
+      "San Francisco"
+    ]
+  }
+}
+
+{
+  "relationship_id": 123456,
+  "relationship_name": "Location",
+  "account_id": 100,
+  "parent_field": {
+    "field_id": 1234,
+    "shortcut_name": "states",
+    "display_name": "States",
+    "options": [
+      "ME",
+      "TN",
+      "CA"
+    ],
+    "widget_type": "select one"
+  },
+  "child_field": {
+    "field_id": 4321,
+    "shortcut_name": "cities",
+    "display_name": "Cities",
+    "options": [
+      "Bangor",
+      "Portland",
+      "Nashville",
+      "Memphis",
+      "Los Angeles",
+      "San Francisco"
+    ],
+    "widget_type": "select one"
+  },
+  "created_at": "@D:2025-10-23T09:36:33",
+  "options": {
+    "ME": [
+      "Bangor",
+      "Portland"
+    ],
+    "TN": [
+      "Nashville",
+      "Memphis"
+    ],
+    "CA": [
+      "Los Angeles",
+      "San Francisco"
+    ]
+  }
+}
+</pre>
+</div>
+</p>
+</dd></dl>
+
+
+<dl class="delete">
+<dt id="delete--#account_id-fields-relationships-#relationship_id">
+<tt class="descname">DELETE </tt><tt class="descname">/#account_id/fields/relationships/#relationship_id</tt><a class="headerlink" href="#delete--#account_id-fields-relationships-#relationship_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes a field relationship.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body">True if the field relationship is deleted.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the field relationship does not exist.</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>DELETE /100/fields/relationships/123456</b>
+
+true
+</pre>
+</div>
+</p>
+</dd></dl>
+
+
+<dl class="put">
+<dt id="put--#account_id-fields-relationships-#relationship_id">
+<tt class="descname">PUT </tt><tt class="descname">/#account_id/fields/relationships/#relationship_id</tt><a class="headerlink" href="#put--#account_id-fields-relationships-#relationship_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates an existing field relationship. Can take any of the same parameters as the POST endpoint.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body">The updated field relationship.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http400</span></tt> if an invalid configuration is detected.</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>PUT /100/fields/123456</b>
+{
+  "relatinship_name": "States and Cities"
+}
+
+{
+  "relationship_id": 123456,
+  "relationship_name": "States and Cities",
+  "account_id": 100,
+  "parent_field": {
+    "field_id": 1234,
+    "shortcut_name": "states",
+    "display_name": "States",
+    "options": [
+      "ME",
+      "TN",
+      "CA"
+    ],
+    "widget_type": "select one"
+  },
+  "child_field": {
+    "field_id": 4321,
+    "shortcut_name": "cities",
+    "display_name": "Cities",
+    "options": [
+      "Bangor",
+      "Portland",
+      "Nashville",
+      "Memphis",
+      "Los Angeles",
+      "San Francisco"
+    ],
+    "widget_type": "select one"
+  },
+  "created_at": "@D:2025-10-23T09:36:33",
+  "options": {
+    "ME": [
+      "Bangor",
+      "Portland"
+    ],
+    "TN": [
+      "Nashville",
+      "Memphis"
+    ],
+    "CA": [
+      "Los Angeles",
+      "San Francisco"
+    ]
+  }
+}
+</pre>
+</div>
+</p>
+</dd></dl>
+
+
+
+</div>
+
 
           </div>
         </div>
