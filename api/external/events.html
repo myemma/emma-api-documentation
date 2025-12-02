@@ -1,0 +1,527 @@
+
+<!doctype html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <title>Emma API Documentation | Emma, Inc.</title>
+
+    <link rel="stylesheet" href="../../_static/emma.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:    '../../',
+            VERSION:     '0.1',
+            COLLAPSE_INDEX: false,
+            FILE_SUFFIX: '.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+
+    <script src="https://code.jquery.com/jquery-1.4.min.js"></script>
+    <script>window.jQuery || document.write('<script src="_static/jquery.js"><\/script>')</script>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="audience 0.1 documentation" href="../../index.html" />
+    <link rel="next" title="Fields" href="fields.html" />
+    <link rel="prev" title="Automation" href="automation.html" />
+    <link rel="icon" href="https://myemma.com/static/global/favicons/favicon.ico?v=2" type="image/x-icon">
+    <link rel="shortcut icon" href="https://myemma.com/static/global/favicons/favicon.ico?v=2" type="image/x-icon">
+    <link rel="apple-touch-icon-precomposed" href="https://myemma.com/static/global/favicons/apple-iphone.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://myemma.com/static/global/favicons/apple-ipad.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://myemma.com/static/global/favicons/apple-iphone-2x.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://myemma.com/static/global/favicons/apple-ipad-2x.png" />
+
+    <style type="text/css">
+        .resp-trigger, .resp-trigger:hover {font-size:10pt;text-decoration:none;}
+        div.sample-response.hide-response pre.response {display: none;}
+        div.sample-response .tshow,
+        div.sample-response.hide-response .thide {display: none;}
+        div.sample-response .thide,
+        div.sample-response.hide-response .tshow {display: inline;}
+    </style>
+    <script>
+        $().ready(function() {
+            $("a.resp-trigger").click(function(e) {
+                e.preventDefault();
+                $(this).parents("div.sample-response").toggleClass("hide-response");
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-512410-18']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+
+</head>
+<body>
+    <header role="banner">
+        <a href="/index.html">
+            <h1>Emma API Documentation</h1>
+        </a>
+    </header>
+
+    <div class="related">
+        <h3>Navigation</h3>
+        <ul>
+            <li class="right" style="margin-right: 10px">
+                <a href="../../genindex.html" title="General Index"
+                   accesskey="I">index</a></li>
+            <li class="right" >
+                <a href="../../http-routingtable.html" title="HTTP Routing Table"
+                >routing table</a> |</li>
+            <li class="right" >
+                <a href="fields.html" title="Fields"
+                   accesskey="N">next</a> |</li>
+            <li class="right" >
+                <a href="automation.html" title="Automation"
+                   accesskey="P">previous</a> |</li>
+            <li><a href="../../index.html">audience 0.1 documentation</a> &raquo;</li>
+        </ul>
+    </div>
+
+    <div class="document">
+        <div class="documentwrapper">
+            <div class="bodywrapper">
+                <div class="body">
+                    <div class="section" id="events">
+                        <h1>Events<a class="headerlink" href="#events" title="Permalink to this headline">&para;</a></h1>
+                        <p>With these endpoints, you can create member event types and view information about specific event types already created in your account.</p>
+                        <dl class="post">
+                            <dt id="post--#account_id-member-event-type">
+                                <tt class="descname">POST </tt>
+                                <tt class="descname">/#account_id/events</tt>
+                                <a class="headerlink" href="#post--#account_id-member-event-type" title="Permalink to this definition">&para;</a>
+                            </dt>
+                            <dd>
+                                <p>Create a member event type.</p>
+                                <table class="docutils field-list" frame="void" rules="none">
+                                    <col class="field-name" />
+                                    <col class="field-body" />
+                                    <tbody valign="top">
+                                        <tr class="field-odd field"><th class="field-name">Parameters:</th>
+                                            <td class="field-body">
+                                                <ul class="first simple">
+                                                    <li><strong>event_type</strong> (<em>string</em>) &#8211; Required. The type of the event.</li>
+                                                    <li><strong>display_name</strong> (<em>string</em>) &#8211; Required. A name for displaying the event in the UI.</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr class="field-even field">
+                                            <th class="field-name">Returns:</th>
+                                            <td class="field-body">
+                                                <p class="first">Information for the new member event type.</p>
+                                            </td>
+                                        </tr>
+                                        <tr class="field-even field">
+                                            <th class="field-name">Raises:</th>
+                                            <td class="field-body">
+                                                <tt class="docutils literal">
+                                                    <span class="pre">Http400</span>
+                                                </tt>
+                                                if no display name and event type are provided.
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p>
+                                    <div class="sample-response hide-response">
+                                        <span style="font-weight:bold;">Sample Response</span>
+                                        <a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+    <b>POST /100/events</b>
+    {
+        "account_id": 100,
+        "created_at": "@D:2025-11-24T10:23:10",
+        "display_name": "Visited Website",
+        "event_type": "visited_website",
+        "event_type_id": 300
+    }
+</pre>
+                                    </div>
+                                </p>
+                            </dd>
+                        </dl>
+                        <dl class="get">
+                            <dt id="get--#account_id-member-event-type">
+                                <tt class="descname">GET </tt><tt class="descname">/#account_id/events</tt>
+                                <a class="headerlink" href="#get--#account_id-member-event-type" title="Permalink to this definition">&para;</a>
+                            </dt>
+                            <dd>
+                                <p>Get a list of all member event types created for an account.</p>
+                                <table class="docutils field-list" frame="void" rules="none">
+                                    <col class="field-name" />
+                                    <col class="field-body" />
+                                    <tbody valign="top">
+                                        <tr class="field-odd field">
+                                            <th class="field-name">Returns:</th>
+                                            <td class="field-body">
+                                                <p class="first last">A list of member event types created in the specified account.</p>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p>
+                                    <div class="sample-response hide-response">
+                                        <span style="font-weight:bold;">Sample Response</span>
+                                        <a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+    <b>GET /100/events</b>
+    [
+        {
+            "account_id": 100,
+            "created_at": "@D:2025-11-24T10:23:10",
+            "display_name": "Visited Website",
+            "event_type": "visited_website",
+            "event_type_id": 300
+        },
+        {
+            "account_id": 100,
+            "created_at": "@D:2025-11-25T10:32:44",
+            "event_type": "Purchased Tickets",
+            "display_name": "purchased_tickets",
+            "event_type_id": 200
+        }
+    ]
+</pre>
+                                    </div>
+                                </p>
+                            </dd>
+                        </dl>
+                        <dl class="get">
+                            <dt id="get--#account_id-member-event-type_by_id">
+                                <tt class="descname">GET </tt><tt class="descname">/#account_id/events/#event_type_id</tt>
+                                <a class="headerlink" href="#get--#account_id-member-event-type_by_id" title="Permalink to this definition">&para;</a>
+                            </dt>
+                            <dd>
+                                <p>Get a specific member event type.</p>
+                                    <table class="docutils field-list" frame="void" rules="none">
+                                        <col class="field-name" />
+                                        <col class="field-body" />
+                                        <tbody valign="top">
+                                        <tr class="field-odd field">
+                                            <th class="field-name">Returns:</th>
+                                            <td class="field-body">Information for the specific member event type.</td>
+                                        </tr>
+                                        <tr class="field-even field">
+                                            <th class="field-name">Raises:</th>
+                                            <td class="field-body">
+                                                <tt class="docutils literal">
+                                                    <span class="pre">Http404</span>
+                                                </tt>
+                                                if no member event type with the specified ID is found.
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                <p>
+                                <div class="sample-response hide-response">
+                                    <span style="font-weight:bold;">Sample Response</span>
+                                    <a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>GET /100/events/200</b>
+{
+    "account_id": 100,
+    "created_at": "@D:2025-11-25T10:32:44",
+    "event_type": "New Purchased Tickets",
+    "display_name": "new_purchased_tickets",
+    "event_type_id": 200
+}
+</pre>
+                                </div>
+                                </p>
+                            </dd>
+                        </dl>
+                        <dl class="put">
+                            <dt id="put--#account_id-member_event_type_event_by_id">
+                                <tt class="descname">PUT </tt>
+                                <tt class="descname">/#account_id/events/#event_type_id</tt>
+                                <a class="headerlink" href="#put--#account_id-member_event_type_event_by_id" title="Permalink to this definition">&para;</a>
+                            </dt>
+                            <dd>
+                                <p>Update a specific member event type.</p>
+                                <table class="docutils field-list" frame="void" rules="none">
+                                    <col class="field-name" />
+                                    <col class="field-body" />
+                                    <tbody valign="top">
+                                        <tr class="field-odd field"><th class="field-name">Parameters:</th>
+                                            <td class="field-body">
+                                                <ul class="first simple">
+                                                    <li><strong>event_type</strong> (<em>string</em>) &#8211; Required. The type of the event.</li>
+                                                    <li><strong>display_name</strong> (<em>string</em>) &#8211; Required. A name for displaying the event in the UI.</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr class="field-odd field">
+                                            <th class="field-name">Returns:</th>
+                                            <td class="field-body">Information for the updated member event type.</td>
+                                        </tr>
+                                        <tr class="field-even field">
+                                            <th class="field-name">Raises:</th>
+                                            <td class="field-body">
+                                                <ul style="margin: 0; padding: 0;">
+                                                    <li>
+                                                        <tt class="docutils literal">
+                                                            <span class="pre">Http404</span>
+                                                        </tt>
+                                                        if no member event type with the specified ID is found.
+                                                    </li>
+                                                    <li>
+                                                        <tt class="docutils literal">
+                                                            <span class="pre">Http400</span>
+                                                        </tt>
+                                                        if no display name and event type are provided.
+                                                    </li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p>
+                                    <div class="sample-response hide-response">
+                                        <span style="font-weight:bold;">Sample Response</span>
+                                        <a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+    <b>PUT /100/events/200</b>
+    {
+        "account_id": 100,
+        "created_at": "@D:2025-11-25T10:32:44",
+        "event_type": "Purchased Tickets",
+        "display_name": "purchased_tickets",
+        "event_type_id": 200
+    }
+</pre>
+                                    </div>
+                                </p>
+                            </dd>
+                        </dl>
+                        <dl class="delete">
+                            <dt id="delete--#account_id-member_event_type_by_id">
+                                <tt class="descname">Delete </tt>
+                                <tt class="descname">/#account_id/events/#event_type_id</tt>
+                                <a class="headerlink" href="#delete--#account_id-member_event_type_by_id" title="Permalink to this definition">&para;</a>
+                            </dt>
+                            <dd>
+                                <p>Delete a specific member event type.</p>
+                                <table class="docutils field-list" frame="void" rules="none">
+                                    <col class="field-name" />
+                                    <col class="field-body" />
+                                    <tbody valign="top">
+                                    <tr class="field-even field">
+                                        <th class="field-name">Raises:</th>
+                                        <td class="field-body">
+                                            <tt class="docutils literal">
+                                                <span class="pre">Http404</span>
+                                            </tt>
+                                            if no event type with the specified ID is found.
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </dd>
+                        </dl>
+                        <p>With these endpoints, you can create member events and view information about specific member's events.</p>
+                        <dl class="post">
+                            <dt id="post--#account_id-member_event">
+                                <tt class="descname">POST </tt>
+                                <tt class="descname">/#account_id/events/members</tt>
+                                <a class="headerlink" href="#post--#account_id-member_event" title="Permalink to this definition">&para;</a>
+                            </dt>
+                            <dd>
+                                <p>Create up to 10 member events.</p>
+                                <table class="docutils field-list" frame="void" rules="none">
+                                    <col class="field-name" />
+                                    <col class="field-body" />
+                                    <tbody valign="top">
+                                    <tr class="field-odd field"><th class="field-name">Parameters:</th>
+                                        <td class="field-body">
+                                            <ul class="first simple">
+                                                <li><strong>events</strong> (<em>array of dictionaries</em>) &#8211; Required. A list of member event dictionaries.
+                                                    <ul class="first simple">
+                                                        <li><strong>email</strong> (<em>string</em>) &#8211; The member email.</li>
+                                                        <li><strong>member_id</strong> (<em>string</em>) &#8211; The member ID.</li>
+                                                        <li><strong>event_type_id</strong> (<em>string</em>) &#8211; The event type ID.</li>
+                                                        <li><strong>event_type</strong> (<em>string</em>) &#8211; The event type display name.</li>
+                                                    </ul>
+
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr class="field-even field">
+                                        <th class="field-name">Returns:</th>
+                                        <td class="field-body">
+                                            <p class="first">Information for the new member events.</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="field-even field">
+                                        <th class="field-name">Raises:</th>
+                                        <td class="field-body">
+                                            <tt class="docutils literal">
+                                                <span class="pre">Http400</span>
+                                            </tt>
+                                            if no events are provided.
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <p>
+                                <div class="sample-response hide-response">
+                                    <span style="font-weight:bold;">Sample Response</span>
+                                    <a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+                                    <pre class="response">
+    <b>POST /100/events/members</b>
+    [
+        {
+            "account_id": 100,
+            "event_timestamp": "@D:2025-12-02T11:23:47",
+            "event_type_id": 300,
+            "event_value": 8.0,
+            "inserted_at": "@D:2025-12-02T11:23:47"
+            "mailing_id": null,
+            "member_id": 555,
+        },
+        {
+            "account_id": 100,
+            "event_timestamp": "@D:2025-12-02T11:23:47",
+            "event_type_id": 300,
+            "event_value": 2.0,
+            "inserted_at": "@D:2025-12-02T11:23:47"
+            "mailing_id": null,
+            "member_id": 444,
+        }
+    ]
+</pre>
+                                </div>
+                                </p>
+                            </dd>
+                        </dl>
+                        <dl class="get">
+                            <dt id="get--#account_id-member_event">
+                                <tt class="descname">GET </tt>
+                                <tt class="descname">/#account_id/events/members/#member_id</tt>
+                                <a class="headerlink" href="#get--#account_id-member_event" title="Permalink to this definition">&para;</a>
+                            </dt>
+                            <dd>
+                                <p>Get a list of all member events for a specific member.</p>
+                                <table class="docutils field-list" frame="void" rules="none">
+                                    <col class="field-name" />
+                                    <col class="field-body" />
+                                    <tbody valign="top">
+                                    <tr class="field-even field">
+                                        <th class="field-name">Returns:</th>
+                                        <td class="field-body">
+                                            <p class="first">Member events for a specific member.</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="field-even field">
+                                        <th class="field-name">Raises:</th>
+                                        <td class="field-body">
+                                            <tt class="docutils literal">
+                                                <span class="pre">Http404</span>
+                                            </tt>
+                                            if no member with the specified ID is found.
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <p>
+                                <div class="sample-response hide-response">
+                                    <span style="font-weight:bold;">Sample Response</span>
+                                    <a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+                                    <pre class="response">
+    <b>GET /100/events/members/555</b>
+    [
+        {
+            "account_id": 100,
+            "event_timestamp": "@D:2025-12-02T11:23:47",
+            "event_type_id": 300,
+            "event_value": 8.0,
+            "inserted_at": "@D:2025-12-02T11:23:47"
+            "mailing_id": null,
+            "member_id": 444,
+        },
+        {
+            "account_id": 100,
+            "event_timestamp": "@D:2025-12-02T11:23:47",
+            "event_type_id": 400,
+            "event_value": 2.0,
+            "inserted_at": "@D:2025-12-02T11:23:47"
+            "mailing_id": null,
+            "member_id": 444,
+        }
+    ]
+</pre>
+                                </div>
+                                </p>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sphinxsidebar">
+            <div class="sphinxsidebarwrapper"><h3>Related Topics</h3>
+                <ul>
+                    <li><a href="../../index.html">Documentation overview</a><ul>
+                        <li>Previous: <a href="automation.html" title="previous chapter">Automation</a></li>
+                        <li>Next: <a href="exports.html" title="next chapter">Exports</a></li>
+                    </ul></li>
+                </ul>
+                <div id="searchbox" style="display: none">
+                    <h3>Quick search</h3>
+                    <form class="search" action="../../search.html" method="get">
+                        <input type="text" name="q" />
+                        <input type="submit" value="Go" />
+                        <input type="hidden" name="check_keywords" value="yes" />
+                        <input type="hidden" name="area" value="default" />
+                    </form>
+                    <p class="searchtip" style="font-size: 90%">
+                        Enter search terms or a module, class or function name.
+                    </p>
+                </div>
+                <script type="text/javascript">$('#searchbox').show(0);</script>
+                <div id="emma-links">
+                    <h3>Emma Links</h3>
+                    <ul>
+                        <li><a href="https://myemma.com" title="Visit Emma's homepage" target="_blank">Emma Home</a></li>
+
+                        <li><a href="https://myemma.com/blog" title="Visit the Emma Blog" target="_blank">Emma Blog</a></li>
+                        <li><a href="https://myemma.com/help" title="Visit Emma's help guide" target="_blank">Emma Help</a></li>
+                    </ul>
+                </div>
+
+                <div id="inquiry">
+                    <h3>Interested in Emma?</h3>
+                    <p>Emma's email marketing makes communicating simple and stylish. <a href="https://myemma.com/pricing" title="Get started today.">Get started today</a>.</p>
+                </div>
+            </div>
+        </div>
+        <div class="clearer"></div>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2003-<script language="JavaScript" type="text/javascript">
+        now = new Date
+        theYear=now.getYear()
+        if (theYear < 1900)
+            theYear=theYear+1900
+        document.write(theYear)
+    </script>, Campaign Monitor
+    </div>
+</body>
+</html>
