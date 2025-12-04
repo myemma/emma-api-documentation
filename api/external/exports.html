@@ -232,9 +232,9 @@
 <pre class="response">
 <b>GET /100/exports/200/download</b>
 
-email,member_id,member_since,plaintext_preferred,bounce_count,status_name,last_modified_at,status-name,last_name,custom-field-name
-email@email.com,123456789,2016-10-28T15:05:52 UTC,f,0,active,2019-05-07T20:44:21 UTC,,Last_name,,,2.0,37210,,,,b,,,,,,,,,,,,,
-email1@email.com,234567890,2019-05-02T17:47:11 UTC,f,0,active,2019-05-02T17:47:11 UTC,,Member,,,,,,,,,
+email,member_id,member_since,plaintext_preferred,bounce_count,status_name,last_modified_at,first_name,last_name,sms-test,sms_phone_number,promotional_status,transactional_status,region_code
+email@email.com,123456789,2022-09-16T20:39:39 UTC,f,0,active,,first_name,last_name,,,,,
+email@email.com,123456789,2022-09-19T15:04:01 UTC,f,0,active,2022-09-19T15:22:14 UTC,,,,+16155555555,a,a,
 
 </pre>
 </div>
@@ -265,6 +265,12 @@ email1@email.com,234567890,2019-05-02T17:47:11 UTC,f,0,active,2019-05-02T17:47:1
         <li><strong>sms</strong> (<em>dictionary</em>) &#8211; Describes what should be exported from SMS related fields. </li>
         <ul class="first simple">
           <li><strong>fields</strong> (<em>array of strings</em>) &#8211; SMS fields to be exported.</li>
+          <ul class="first simple">
+            <li><strong>phone_numnber</strong></li>
+            <li><strong>promotional_status</strong></li>
+            <li><strong>transactional_status</strong></li>
+            <li><strong>region_code</strong></li>
+          </ul>
         </ul>
       </ul>
 
@@ -288,7 +294,15 @@ email1@email.com,234567890,2019-05-02T17:47:11 UTC,f,0,active,2019-05-02T17:47:1
         "criteria": {
             "groups": [12345, 67890],
             "member_status_ids": ["a"],
-            "include_fields": true
+            "include_fields": true,
+            "sms": {
+                "fields": [
+                    "phone_number",
+                    "promotional_status",
+                    "transactional_status",
+                    "region_code"
+                ]
+            }
         }
     }
 
