@@ -312,27 +312,12 @@
                         </dl>
                         <dl class="delete">
                             <dt id="delete--#account_id-member_event_type_by_id">
-                                <tt class="descname">Delete </tt>
+                                <tt class="descname">DELETE </tt>
                                 <tt class="descname">/#account_id/events/#event_type_id</tt>
                                 <a class="headerlink" href="#delete--#account_id-member_event_type_by_id" title="Permalink to this definition">&para;</a>
                             </dt>
                             <dd>
                                 <p>Delete a specific member event type.</p>
-                                <table class="docutils field-list" frame="void" rules="none">
-                                    <col class="field-name" />
-                                    <col class="field-body" />
-                                    <tbody valign="top">
-                                    <tr class="field-even field">
-                                        <th class="field-name">Raises:</th>
-                                        <td class="field-body">
-                                            <tt class="docutils literal">
-                                                <span class="pre">Http404</span>
-                                            </tt>
-                                            if no event type with the specified ID is found.
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
                             </dd>
                         </dl>
                         <p>With these endpoints, you can create member events and view information about specific member's events.</p>
@@ -351,15 +336,15 @@
                                     <tr class="field-odd field"><th class="field-name">Parameters:</th>
                                         <td class="field-body">
                                             <ul class="first simple">
-                                                <li><strong>events</strong> (<em>array of dictionaries</em>) &#8211; Required. A list of member event dictionaries.
+                                                <li><strong>events</strong> (<em>array of JSON objects</em>) &#8211; Required. A list of member event JSON objects.
                                                     <ul class="first simple">
                                                         <li><strong>email</strong> (<em>string</em>) &#8211; The member email.</li>
                                                         <li><strong>member_id</strong> (<em>string</em>) &#8211; The member ID.</li>
                                                         <li><strong>event_type_id</strong> (<em>string</em>) &#8211; The event type ID.</li>
-                                                        <li><strong>event_type</strong> (<em>string</em>) &#8211; The event type display name.</li>
+                                                        <li><strong>event_type</strong> (<em>string</em>) &#8211; An existing defined event_type.</li>
                                                         <li><strong>event_monetary_value</strong> (<em>number</em>) &#8211; A monetary value associated with the event.</li>
                                                         <li><strong>mailing_id</strong> (<em>string</em>) &#8211; A mailing ID to associate with the event.</li>
-
+                                                        <li><strong>attributes</strong> (<em>JSON object</em>) &#8211; A generic JSON object that contains additional attributes about the event.</li>
                                                     </ul>
 
                                                 </li>
