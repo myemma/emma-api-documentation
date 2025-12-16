@@ -101,7 +101,7 @@
 
                 <div class="section" id="sms">
                     <h1>SMS<a class="headerlink" href="#sms" title="Permalink to this headline">¶</a></h1>
-                    <p>These endpoints allow for users to get information about their sms campaigns.</p>
+                    <p>These endpoints allow for users to get information about their sms campaigns and sms settings.</p>
                     <dl class="get">
                         <dt id="get--#account_id-sms-campaigns">
                             <tt class="descname">GET </tt><tt class="descname">/#account_id/sms/campaigns</tt><a class="headerlink" href="#get--#account_id-sms-campaigns" title="Permalink to this definition">¶</a></dt>
@@ -348,6 +348,89 @@
 123
                                 </pre>
                             </div>
+                        </dd>
+                    </dl>
+                    <dl class="get">
+                        <dt id="get--#account_id">
+                            <tt class="descname">GET </tt><tt class="descname">/#account_id/accounts/sms_settings</tt><a class="headerlink" href="#get--#account_id" title="Permalink to this definition">¶</a></dt>
+                        <dd><p>Get SMS account settings.</p>
+                            <p>This endpoint returns an account's SMS settings if the requesting user has billing access.
+                            </p>
+                            <table class="docutils field-list" frame="void" rules="none">
+                                <col class="field-name" />
+                                <col class="field-body" />
+                                <tbody valign="top">
+                                <tr class="field-even field">
+                                    <th class="field-name">Returns&nbsp;:</th>
+                                    <td class="field-body">
+                                        <p class="first last">For the given &#8216;account_id&#8217;, a response with the SMS account settings, &#8216;sub_message_segment_limit&#8217; and &#8216;sub_message_segment_limit_visible&#8217;, is returned.
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the the &#8216;account_id&#8217; does not exist.</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <p>
+                            <div class="sample-response hide-response">
+                                <span style="font-weight:bold;">Sample Response</span>
+                                <a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+                                <pre class="response">
+<b>GET /100/accounts/sms_settings</b>
+{
+    "sub_message_segment_limit": 1500,
+    "sub_message_segment_limit_visible": True
+}
+                                </pre>
+                            </div>
+                            </p>
+                        </dd></dl>
+                    <dl class="patch">
+                        <dt id="patch--#account_id">
+                            <tt class="descname">PATCH </tt><tt class="descname">/#account_id/accounts/sms_settings</tt><a class="headerlink" href="#get--#account_id" title="Permalink to this definition">¶</a></dt>
+                        <dd><p>Update SMS account settings.</p>
+                            <p>This endpoint allows users with access to billing to update an account's SMS settings.
+                            </p>
+                            <table class="docutils field-list" frame="void" rules="none">
+                                <col class="field-name" />
+                                <col class="field-body" />
+                                <tbody valign="top">
+                                <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+                                    <li><strong>sub_message_segment_limit</strong> (<em>integer</em>) &#8211; Optional. This settings is the number of segments this account has access to.<li>
+                                    <li><strong>sub_message_segment_limit_visible</strong> (<em>boolean</em>) &#8211; Optional. This setting allows this account to see the number of segments that are available to them.</li>
+                                </ul>
+                                </td>
+                                </tr>
+                                <tr class="field-even field">
+                                    <th class="field-name">Returns :</th>
+                                    <td class="field-body">
+                                        <p class="first last">A response with the updated SMS account settings for the given &#8216;account_id&#8217;, &#8216;sub_message_segment_limit&#8217; and &#8216;sub_message_segment_limit_visible&#8217;.
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http400</span></tt> if the fields requested are not &#8216;sub_message_segment_limit&#8217; or &#8216;sub_message_segment_limit_visible&#8217;.</td>
+                                </tr>
+                                <tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http400</span></tt> if the value passed in for &#8216;sub_message_segment_limit_visible&#8217; is not a boolean.</td>
+                                </tr>
+                                <tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http400</span></tt> if the value passed in for &#8216;sub_message_segment_limit&#8217; is negative or not an integer.</td>
+                                </tr>
+                                <tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><tt class="docutils literal"><span class="pre">Http404</span></tt> if the the &#8216;account_id&#8217; does not exist.</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <p>
+                            <div class="sample-response hide-response">
+                                <span style="font-weight:bold;">Sample Response</span>
+                                <a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+                                <pre class="response">
+<b>PATCH /100/accounts/sms_settings</b>
+{
+    "sub_message_segment_limit": 5000,
+    "sub_message_segment_limit_visible": False
+}
+                                </pre>
+                            </div>
+                            </p>
                         </dd>
                     </dl>
                 </div>
