@@ -285,7 +285,7 @@
                                                         <tt class="docutils literal">
                                                             <span class="pre">Http400</span>
                                                         </tt>
-                                                        if no display name and event type are provided.
+                                                        if the event type already exists.
                                                     </li>
                                                 </ul>
                                             </td>
@@ -338,13 +338,13 @@
                                             <ul class="first simple">
                                                 <li><strong>events</strong> (<em>array of JSON objects</em>) &#8211; Required. A list of member event JSON objects.
                                                     <ul class="first simple">
+                                                        <li><strong>attributes</strong> (<em>JSON object</em>) &#8211; A generic JSON object that contains additional attributes about the event.</li>
                                                         <li><strong>email</strong> (<em>string</em>) &#8211; The member email.</li>
                                                         <li><strong>member_id</strong> (<em>string</em>) &#8211; The member ID.</li>
                                                         <li><strong>event_type_id</strong> (<em>string</em>) &#8211; The event type ID.</li>
                                                         <li><strong>event_type</strong> (<em>string</em>) &#8211; An existing defined event_type.</li>
                                                         <li><strong>event_monetary_value</strong> (<em>number</em>) &#8211; A monetary value associated with the event.</li>
                                                         <li><strong>mailing_id</strong> (<em>string</em>) &#8211; A mailing ID to associate with the event.</li>
-                                                        <li><strong>attributes</strong> (<em>JSON object</em>) &#8211; A generic JSON object that contains additional attributes about the event.</li>
                                                     </ul>
 
                                                 </li>
@@ -377,7 +377,9 @@
     [
         {
             "account_id": 100,
+            "attributes": null,
             "event_timestamp": "@D:2025-12-02T11:23:47",
+            "event_id": 1,
             "event_type_id": 300,
             "event_monetary_value": 8.0,
             "inserted_at": "@D:2025-12-02T11:23:47"
@@ -386,7 +388,9 @@
         },
         {
             "account_id": 100,
+            "attributes": null,
             "event_timestamp": "@D:2025-12-02T11:23:47",
+            "event_id": 1,
             "event_type_id": 300,
             "event_monetary_value": 2.0,
             "inserted_at": "@D:2025-12-02T11:23:47"
