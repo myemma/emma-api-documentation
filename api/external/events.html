@@ -99,17 +99,17 @@
         <div class="documentwrapper">
             <div class="bodywrapper">
                 <div class="body">
-                    <div class="section" id="events">
-                        <h1>Events<a class="headerlink" href="#events" title="Permalink to this headline">&para;</a></h1>
-                        <p>With these endpoints, you can create member event types and view information about specific event types already created in your account.</p>
+                    <div class="section" id="touchpoints">
+                        <h1>Touchpoints<a class="headerlink" href="#touchpoints" title="Permalink to this headline">&para;</a></h1>
+                        <p>With these endpoints, you can create member touchpoint types and view information about specific touchpoint types already created in your account.</p>
                         <dl class="post">
-                            <dt id="post--#account_id-member-event-type">
+                            <dt id="post--#account_id-member-touchpoint-type">
                                 <tt class="descname">POST </tt>
-                                <tt class="descname">/#account_id/events</tt>
-                                <a class="headerlink" href="#post--#account_id-member-event-type" title="Permalink to this definition">&para;</a>
+                                <tt class="descname">/#account_id/touchpoints</tt>
+                                <a class="headerlink" href="#post--#account_id-member-touchpoint-type" title="Permalink to this definition">&para;</a>
                             </dt>
                             <dd>
-                                <p>Create a member event type.</p>
+                                <p>Create a member touchpoint type.</p>
                                 <table class="docutils field-list" frame="void" rules="none">
                                     <col class="field-name" />
                                     <col class="field-body" />
@@ -117,15 +117,15 @@
                                         <tr class="field-odd field"><th class="field-name">Parameters:</th>
                                             <td class="field-body">
                                                 <ul class="first simple">
-                                                    <li><strong>event_type</strong> (<em>string</em>) &#8211; Required. The type of the event.</li>
-                                                    <li><strong>display_name</strong> (<em>string</em>) &#8211; Required. A name for displaying the event in the UI.</li>
+                                                    <li><strong>touchpoint_type</strong> (<em>string</em>) &#8211; Required. The type of the touchpoint.</li>
+                                                    <li><strong>display_name</strong> (<em>string</em>) &#8211; Required. A name for displaying the touchpoint in the UI.</li>
                                                 </ul>
                                             </td>
                                         </tr>
                                         <tr class="field-even field">
                                             <th class="field-name">Returns:</th>
                                             <td class="field-body">
-                                                <p class="first">Information for the new member event type.</p>
+                                                <p class="first">Information for the new member touchpoint type.</p>
                                             </td>
                                         </tr>
                                         <tr class="field-even field">
@@ -134,7 +134,7 @@
                                                 <tt class="docutils literal">
                                                     <span class="pre">Http400</span>
                                                 </tt>
-                                                if no display name or event type are provided.
+                                                if no display name or touchpoint type are provided.
                                             </td>
                                         </tr>
                                     </tbody>
@@ -144,13 +144,13 @@
                                         <span style="font-weight:bold;">Sample Response</span>
                                         <a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
 <pre class="response">
-    <b>POST /100/events</b>
+    <b>POST /100/touchpoints</b>
     {
         "account_id": 100,
         "created_at": "@D:2025-11-24T10:23:10",
         "display_name": "Visited Website",
-        "event_type": "visited_website",
-        "event_type_id": 300
+        "touchpoint_type": "visited_website",
+        "touchpoint_type_id": 300
     }
 </pre>
                                     </div>
@@ -158,12 +158,12 @@
                             </dd>
                         </dl>
                         <dl class="get">
-                            <dt id="get--#account_id-member-event-type">
-                                <tt class="descname">GET </tt><tt class="descname">/#account_id/events</tt>
-                                <a class="headerlink" href="#get--#account_id-member-event-type" title="Permalink to this definition">&para;</a>
+                            <dt id="get--#account_id-member-touchpoint-type">
+                                <tt class="descname">GET </tt><tt class="descname">/#account_id/touchpoints</tt>
+                                <a class="headerlink" href="#get--#account_id-member-touchpoint-type" title="Permalink to this definition">&para;</a>
                             </dt>
                             <dd>
-                                <p>Get a list of all member event types created for an account.</p>
+                                <p>Get a list of all member touchpoint types created for an account.</p>
                                 <table class="docutils field-list" frame="void" rules="none">
                                     <col class="field-name" />
                                     <col class="field-body" />
@@ -171,7 +171,7 @@
                                         <tr class="field-odd field">
                                             <th class="field-name">Returns:</th>
                                             <td class="field-body">
-                                                <p class="first last">A list of member event types created in the specified account.</p>
+                                                <p class="first last">A list of member touchpoint types created in the specified account.</p>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -181,21 +181,21 @@
                                         <span style="font-weight:bold;">Sample Response</span>
                                         <a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
 <pre class="response">
-    <b>GET /100/events</b>
+    <b>GET /100/touchpoints</b>
     [
         {
             "account_id": 100,
             "created_at": "@D:2025-11-24T10:23:10",
             "display_name": "Visited Website",
-            "event_type": "visited_website",
-            "event_type_id": 300
+            "touchpoint_type": "visited_website",
+            "touchpoint_type_id": 300
         },
         {
             "account_id": 100,
             "created_at": "@D:2025-11-25T10:32:44",
-            "event_type": "Purchased Tickets",
+            "touchpoint_type": "Purchased Tickets",
             "display_name": "purchased_tickets",
-            "event_type_id": 200
+            "touchpoint_type_id": 200
         }
     ]
 </pre>
@@ -204,19 +204,19 @@
                             </dd>
                         </dl>
                         <dl class="get">
-                            <dt id="get--#account_id-member-event-type_by_id">
-                                <tt class="descname">GET </tt><tt class="descname">/#account_id/events/#event_type_id</tt>
-                                <a class="headerlink" href="#get--#account_id-member-event-type_by_id" title="Permalink to this definition">&para;</a>
+                            <dt id="get--#account_id-member-touchpoint-type_by_id">
+                                <tt class="descname">GET </tt><tt class="descname">/#account_id/touchpoints/#touchpoint_type_id</tt>
+                                <a class="headerlink" href="#get--#account_id-member-touchpoint-type_by_id" title="Permalink to this definition">&para;</a>
                             </dt>
                             <dd>
-                                <p>Get a specific member event type.</p>
+                                <p>Get a specific member touchpoint type.</p>
                                     <table class="docutils field-list" frame="void" rules="none">
                                         <col class="field-name" />
                                         <col class="field-body" />
                                         <tbody valign="top">
                                         <tr class="field-odd field">
                                             <th class="field-name">Returns:</th>
-                                            <td class="field-body">Information for the specific member event type.</td>
+                                            <td class="field-body">Information for the specific member touchpoint type.</td>
                                         </tr>
                                         <tr class="field-even field">
                                             <th class="field-name">Raises:</th>
@@ -224,7 +224,7 @@
                                                 <tt class="docutils literal">
                                                     <span class="pre">Http404</span>
                                                 </tt>
-                                                if no member event type with the specified ID is found.
+                                                if no member touchpoint type with the specified ID is found.
                                             </td>
                                         </tr>
                                         </tbody>
@@ -234,13 +234,13 @@
                                     <span style="font-weight:bold;">Sample Response</span>
                                     <a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
 <pre class="response">
-<b>GET /100/events/200</b>
+<b>GET /100/touchpoints/200</b>
 {
     "account_id": 100,
     "created_at": "@D:2025-11-25T10:32:44",
-    "event_type": "New Purchased Tickets",
+    "touchpoint_type": "New Purchased Tickets",
     "display_name": "new_purchased_tickets",
-    "event_type_id": 200
+    "touchpoint_type_id": 200
 }
 </pre>
                                 </div>
@@ -248,13 +248,13 @@
                             </dd>
                         </dl>
                         <dl class="put">
-                            <dt id="put--#account_id-member_event_type_event_by_id">
+                            <dt id="put--#account_id-member_touchpoint_type_touchpoint_by_id">
                                 <tt class="descname">PUT </tt>
-                                <tt class="descname">/#account_id/events/#event_type_id</tt>
-                                <a class="headerlink" href="#put--#account_id-member_event_type_event_by_id" title="Permalink to this definition">&para;</a>
+                                <tt class="descname">/#account_id/touchpoints/#touchpoint_type_id</tt>
+                                <a class="headerlink" href="#put--#account_id-member_touchpoint_type_touchpoint_by_id" title="Permalink to this definition">&para;</a>
                             </dt>
                             <dd>
-                                <p>Update a specific member event type.</p>
+                                <p>Update a specific member touchpoint type.</p>
                                 <table class="docutils field-list" frame="void" rules="none">
                                     <col class="field-name" />
                                     <col class="field-body" />
@@ -262,14 +262,14 @@
                                         <tr class="field-odd field"><th class="field-name">Parameters:</th>
                                             <td class="field-body">
                                                 <ul class="first simple">
-                                                    <li><strong>event_type</strong> (<em>string</em>) &#8211; Required. The type of the event.</li>
-                                                    <li><strong>display_name</strong> (<em>string</em>) &#8211; Required. A name for displaying the event in the UI.</li>
+                                                    <li><strong>touchpoint_type</strong> (<em>string</em>) &#8211; Required. The type of the touchpoint.</li>
+                                                    <li><strong>display_name</strong> (<em>string</em>) &#8211; Required. A name for displaying the touchpoint in the UI.</li>
                                                 </ul>
                                             </td>
                                         </tr>
                                         <tr class="field-odd field">
                                             <th class="field-name">Returns:</th>
-                                            <td class="field-body">Information for the updated member event type.</td>
+                                            <td class="field-body">Information for the updated member touchpoint type.</td>
                                         </tr>
                                         <tr class="field-even field">
                                             <th class="field-name">Raises:</th>
@@ -279,13 +279,13 @@
                                                         <tt class="docutils literal">
                                                             <span class="pre">Http404</span>
                                                         </tt>
-                                                        if no member event type with the specified ID is found.
+                                                        if no member touchpoint type with the specified ID is found.
                                                     </li>
                                                     <li>
                                                         <tt class="docutils literal">
                                                             <span class="pre">Http400</span>
                                                         </tt>
-                                                        if the event type already exists.
+                                                        if the touchpoint type already exists.
                                                     </li>
                                                 </ul>
                                             </td>
@@ -297,13 +297,13 @@
                                         <span style="font-weight:bold;">Sample Response</span>
                                         <a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
 <pre class="response">
-    <b>PUT /100/events/200</b>
+    <b>PUT /100/touchpoints/200</b>
     {
         "account_id": 100,
         "created_at": "@D:2025-11-25T10:32:44",
-        "event_type": "Purchased Tickets",
+        "touchpoint_type": "Purchased Tickets",
         "display_name": "purchased_tickets",
-        "event_type_id": 200
+        "touchpoint_type_id": 200
     }
 </pre>
                                     </div>
@@ -311,24 +311,24 @@
                             </dd>
                         </dl>
                         <dl class="delete">
-                            <dt id="delete--#account_id-member_event_type_by_id">
+                            <dt id="delete--#account_id-member_touchpoint_type_by_id">
                                 <tt class="descname">DELETE </tt>
-                                <tt class="descname">/#account_id/events/#event_type_id</tt>
-                                <a class="headerlink" href="#delete--#account_id-member_event_type_by_id" title="Permalink to this definition">&para;</a>
+                                <tt class="descname">/#account_id/touchpoints/#touchpoint_type_id</tt>
+                                <a class="headerlink" href="#delete--#account_id-member_touchpoint_type_by_id" title="Permalink to this definition">&para;</a>
                             </dt>
                             <dd>
-                                <p>Delete a specific member event type. This will also delete all events of this event type. This action is not reversable.</p>
+                                <p>Delete a specific member touchpoint type. This will also delete all touchpoints of this touchpoint type. This action is not reversable.</p>
                             </dd>
                         </dl>
-                        <p>With these endpoints, you can create member events and view information about specific member's events.</p>
+                        <p>With these endpoints, you can create member touchpoints and view information about specific member's touchpoints.</p>
                         <dl class="post">
-                            <dt id="post--#account_id-member_event">
+                            <dt id="post--#account_id-member_touchpoint">
                                 <tt class="descname">POST </tt>
-                                <tt class="descname">/#account_id/events/members</tt>
-                                <a class="headerlink" href="#post--#account_id-member_event" title="Permalink to this definition">&para;</a>
+                                <tt class="descname">/#account_id/touchpoints/members</tt>
+                                <a class="headerlink" href="#post--#account_id-member_touchpoint" title="Permalink to this definition">&para;</a>
                             </dt>
                             <dd>
-                                <p>Create up to 10 member events.</p>
+                                <p>Create up to 10 member touchpoints.</p>
                                 <table class="docutils field-list" frame="void" rules="none">
                                     <col class="field-name" />
                                     <col class="field-body" />
@@ -336,16 +336,16 @@
                                     <tr class="field-odd field"><th class="field-name">Parameters:</th>
                                         <td class="field-body">
                                             <ul class="first simple">
-                                                <li><strong>events</strong> (<em>array of JSON objects</em>) &#8211; Required. A list of member event JSON objects.
+                                                <li><strong>touchpoints</strong> (<em>array of JSON objects</em>) &#8211; Required. A list of member touchpoint JSON objects.
                                                     <ul class="first simple">
-                                                        <li><strong>attributes</strong> (<em>JSON object</em>) &#8211; A generic JSON object that contains additional attributes about the event.</li>
+                                                        <li><strong>attributes</strong> (<em>JSON object</em>) &#8211; A generic JSON object that contains additional attributes about the touchpoint.</li>
                                                         <li><strong>email</strong> (<em>string</em>) &#8211; Required if member_id is not present. The member email.</li>
                                                         <li><strong>member_id</strong> (<em>integer</em>) &#8211; Required if email is not present. The member ID.</li>
-                                                        <li><strong>event_type_id</strong> (<em>integer</em>) &#8211; Required if event_type is not present. The event type ID.</li>
-                                                        <li><strong>event_type</strong> (<em>string</em>) &#8211; Required if event_type_id is not present. An existing defined event_type.</li>
-                                                        <li><strong>event_monetary_value</strong> (<em>number</em>) &#8211; A monetary value associated with the event.</li>
-                                                        <li><strong>mailing_id</strong> (<em>integer</em>) &#8211; A mailing ID to associate with the event.</li>
-                                                        <li><strong>event_timestamp</strong> (<em>datetime</em>) &#8211; Timestamp of the event.</li>
+                                                        <li><strong>touchpoint_type_id</strong> (<em>integer</em>) &#8211; Required if touchpoint_type is not present. The touchpoint type ID.</li>
+                                                        <li><strong>touchpoint_type</strong> (<em>string</em>) &#8211; Required if touchpoint_type_id is not present. An existing defined touchpoint_type.</li>
+                                                        <li><strong>touchpoint_monetary_value</strong> (<em>number</em>) &#8211; A monetary value associated with the touchpoint.</li>
+                                                        <li><strong>mailing_id</strong> (<em>integer</em>) &#8211; A mailing ID to associate with the touchpoint.</li>
+                                                        <li><strong>touchpoint_timestamp</strong> (<em>datetime</em>) &#8211; Timestamp of the touchpoint.</li>
                                                     </ul>
 
                                                 </li>
@@ -355,7 +355,7 @@
                                     <tr class="field-even field">
                                         <th class="field-name">Returns:</th>
                                         <td class="field-body">
-                                            <p class="first">Information for the new member events.</p>
+                                            <p class="first">Information for the new member touchpoints.</p>
                                         </td>
                                     </tr>
                                     <tr class="field-even field">
@@ -364,7 +364,7 @@
                                             <tt class="docutils literal">
                                                 <span class="pre">Http400</span>
                                             </tt>
-                                            if no events are provided.
+                                            if no touchpoints are provided.
                                         </td>
                                     </tr>
                                     </tbody>
@@ -374,15 +374,15 @@
                                     <span style="font-weight:bold;">Sample Response</span>
                                     <a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
                                     <pre class="response">
-    <b>POST /100/events/members</b>
+    <b>POST /100/touchpoints/members</b>
     [
         {
             "account_id": 100,
             "attributes": null,
-            "event_timestamp": "@D:2025-12-02T11:23:47",
-            "event_id": 1,
-            "event_type_id": 300,
-            "event_monetary_value": 8.0,
+            "touchpoint_timestamp": "@D:2025-12-02T11:23:47",
+            "touchpoint_id": 1,
+            "touchpoint_type_id": 300,
+            "touchpoint_monetary_value": 8.0,
             "inserted_at": "@D:2025-12-02T11:23:47"
             "mailing_id": null,
             "member_id": 555,
@@ -390,10 +390,10 @@
         {
             "account_id": 100,
             "attributes": null,
-            "event_timestamp": "@D:2025-12-02T11:23:47",
-            "event_id": 1,
-            "event_type_id": 300,
-            "event_monetary_value": 2.0,
+            "touchpoint_timestamp": "@D:2025-12-02T11:23:47",
+            "touchpoint_id": 1,
+            "touchpoint_type_id": 300,
+            "touchpoint_monetary_value": 2.0,
             "inserted_at": "@D:2025-12-02T11:23:47"
             "mailing_id": null,
             "member_id": 444,
@@ -405,13 +405,13 @@
                             </dd>
                         </dl>
                         <dl class="get">
-                            <dt id="get--#account_id-member_event">
+                            <dt id="get--#account_id-member_touchpoint">
                                 <tt class="descname">GET </tt>
-                                <tt class="descname">/#account_id/events/members/#member_id</tt>
-                                <a class="headerlink" href="#get--#account_id-member_event" title="Permalink to this definition">&para;</a>
+                                <tt class="descname">/#account_id/touchpoints/members/#member_id</tt>
+                                <a class="headerlink" href="#get--#account_id-member_touchpoint" title="Permalink to this definition">&para;</a>
                             </dt>
                             <dd>
-                                <p>Get a list of all member events for a specific member.</p>
+                                <p>Get a list of all member touchpoints for a specific member.</p>
                                 <table class="docutils field-list" frame="void" rules="none">
                                     <col class="field-name" />
                                     <col class="field-body" />
@@ -419,7 +419,7 @@
                                     <tr class="field-even field">
                                         <th class="field-name">Returns:</th>
                                         <td class="field-body">
-                                            <p class="first">Member events for a specific member.</p>
+                                            <p class="first">Member touchpoints for a specific member.</p>
                                         </td>
                                     </tr>
                                     <tr class="field-even field">
@@ -438,22 +438,22 @@
                                     <span style="font-weight:bold;">Sample Response</span>
                                     <a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
                                     <pre class="response">
-    <b>GET /100/events/members/555</b>
+    <b>GET /100/touchpoints/members/555</b>
     [
         {
             "account_id": 100,
-            "event_timestamp": "@D:2025-12-02T11:23:47",
-            "event_type_id": 300,
-            "event_monetary_value": 8.0,
+            "touchpoint_timestamp": "@D:2025-12-02T11:23:47",
+            "touchpoint_type_id": 300,
+            "touchpoint_monetary_value": 8.0,
             "inserted_at": "@D:2025-12-02T11:23:47"
             "mailing_id": null,
             "member_id": 444,
         },
         {
             "account_id": 100,
-            "event_timestamp": "@D:2025-12-02T11:23:47",
-            "event_type_id": 400,
-            "event_monetary_value": 2.0,
+            "touchpoint_timestamp": "@D:2025-12-02T11:23:47",
+            "touchpoint_type_id": 400,
+            "touchpoint_monetary_value": 2.0,
             "inserted_at": "@D:2025-12-02T11:23:47"
             "mailing_id": null,
             "member_id": 444,
