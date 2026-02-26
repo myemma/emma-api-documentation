@@ -117,7 +117,7 @@
                                         <tr class="field-odd field"><th class="field-name">Parameters:</th>
                                             <td class="field-body">
                                                 <ul class="first simple">
-                                                    <li><strong>touchpoint_type</strong> (<em>string</em>) &#8211; Required. The type of the touchpoint.</li>
+                                                    <li><strong>type_name</strong> (<em>string</em>) &#8211; Required. The type of the touchpoint.</li>
                                                     <li><strong>display_name</strong> (<em>string</em>) &#8211; Required. A name for displaying the touchpoint in the UI.</li>
                                                 </ul>
                                             </td>
@@ -134,7 +134,7 @@
                                                 <tt class="docutils literal">
                                                     <span class="pre">Http400</span>
                                                 </tt>
-                                                if no display name or touchpoint type are provided.
+                                                if no display name or type name are provided.
                                             </td>
                                         </tr>
                                     </tbody>
@@ -149,7 +149,7 @@
         "account_id": 100,
         "created_at": "@D:2025-11-24T10:23:10",
         "display_name": "Visited Website",
-        "touchpoint_type": "visited_website",
+        "type_name": "visited_website",
         "touchpoint_type_id": 300
     }
 </pre>
@@ -187,14 +187,14 @@
             "account_id": 100,
             "created_at": "@D:2025-11-24T10:23:10",
             "display_name": "Visited Website",
-            "touchpoint_type": "visited_website",
+            "type_name": "visited_website",
             "touchpoint_type_id": 300
         },
         {
             "account_id": 100,
             "created_at": "@D:2025-11-25T10:32:44",
-            "touchpoint_type": "Purchased Tickets",
-            "display_name": "purchased_tickets",
+            "display_name": "Purchased Tickets",
+            "type_name": "purchased_tickets",
             "touchpoint_type_id": 200
         }
     ]
@@ -238,8 +238,8 @@
 {
     "account_id": 100,
     "created_at": "@D:2025-11-25T10:32:44",
-    "touchpoint_type": "New Purchased Tickets",
-    "display_name": "new_purchased_tickets",
+    "display_name": "New Purchased Tickets",
+    "type_name": "new_purchased_tickets",
     "touchpoint_type_id": 200
 }
 </pre>
@@ -262,7 +262,7 @@
                                         <tr class="field-odd field"><th class="field-name">Parameters:</th>
                                             <td class="field-body">
                                                 <ul class="first simple">
-                                                    <li><strong>touchpoint_type</strong> (<em>string</em>) &#8211; Required. The type of the touchpoint.</li>
+                                                    <li><strong>type_name</strong> (<em>string</em>) &#8211; Required. The type of the touchpoint.</li>
                                                     <li><strong>display_name</strong> (<em>string</em>) &#8211; Required. A name for displaying the touchpoint in the UI.</li>
                                                 </ul>
                                             </td>
@@ -301,8 +301,8 @@
     {
         "account_id": 100,
         "created_at": "@D:2025-11-25T10:32:44",
-        "touchpoint_type": "Purchased Tickets",
-        "display_name": "purchased_tickets",
+        "display_name": "Purchased Tickets",
+        "type_name": "purchased_tickets",
         "touchpoint_type_id": 200
     }
 </pre>
@@ -341,8 +341,8 @@
                                                         <li><strong>attributes</strong> (<em>JSON object</em>) &#8211; A generic JSON object that contains additional attributes about the touchpoint.</li>
                                                         <li><strong>email</strong> (<em>string</em>) &#8211; Required if member_id is not present. The member email.</li>
                                                         <li><strong>member_id</strong> (<em>integer</em>) &#8211; Required if email is not present. The member ID.</li>
-                                                        <li><strong>touchpoint_type_id</strong> (<em>integer</em>) &#8211; Required if touchpoint_type is not present. The touchpoint type ID.</li>
-                                                        <li><strong>touchpoint_type</strong> (<em>string</em>) &#8211; Required if touchpoint_type_id is not present. An existing defined touchpoint_type.</li>
+                                                        <li><strong>touchpoint_type_id</strong> (<em>integer</em>) &#8211; Required if type_name is not present. The touchpoint type ID.</li>
+                                                        <li><strong>type_name</strong> (<em>string</em>) &#8211; Required if touchpoint_type_id is not present. An existing defined touchpoint type_name.</li>
                                                         <li><strong>touchpoint_monetary_value</strong> (<em>number</em>) &#8211; A monetary value associated with the touchpoint.</li>
                                                         <li><strong>mailing_id</strong> (<em>integer</em>) &#8211; A mailing ID to associate with the touchpoint.</li>
                                                         <li><strong>touchpoint_timestamp</strong> (<em>datetime</em>) &#8211; Timestamp of the touchpoint.</li>
