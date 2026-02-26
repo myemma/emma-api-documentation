@@ -464,6 +464,62 @@
                                 </p>
                             </dd>
                         </dl>
+                        <dl class="get">
+                            <dt id="get--#account_id-member-touchpoint_by_id">
+                                <tt class="descname">GET </tt><tt class="descname">/#account_id/touchpoints/members/touchpoints/#touchpoint_id</tt>
+                                <a class="headerlink" href="#get--#account_id-member-touchpoint_by_id" title="Permalink to this definition">&para;</a>
+                            </dt>
+                            <dd>
+                                <p>Get a specific touchpoint.</p>
+                                    <table class="docutils field-list" frame="void" rules="none">
+                                        <col class="field-name" />
+                                        <col class="field-body" />
+                                        <tbody valign="top">
+                                        <tr class="field-odd field">
+                                            <th class="field-name">Returns:</th>
+                                            <td class="field-body">Information for the specific touchpoint.</td>
+                                        </tr>
+                                        <tr class="field-even field">
+                                            <th class="field-name">Raises:</th>
+                                            <td class="field-body">
+                                                <tt class="docutils literal">
+                                                    <span class="pre">Http404</span>
+                                                </tt>
+                                                if no touchpoint with the specified ID is found.
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                <p>
+                                <div class="sample-response hide-response">
+                                    <span style="font-weight:bold;">Sample Response</span>
+                                    <a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>GET /100/touchpoints/members/touchpoints/200</b>
+{
+    "account_id": 100,
+    "touchpoint_timestamp": "@D:2025-12-02T11:23:47",
+    "touchpoint_type_id": 300,
+    "touchpoint_monetary_value": 8.0,
+    "inserted_at": "@D:2025-12-02T11:23:47"
+    "mailing_id": null,
+    "member_id": 444,
+}
+</pre>
+                                    </div>
+                                </p>
+                            </dd>
+                        </dl>
+                        <dl class="delete">
+                            <dt id="delete--#account_id-member_touchpoint_by_id">
+                                <tt class="descname">DELETE </tt>
+                                <tt class="descname">/#account_id/touchpoints/members/touchpoints/#touchpoint_id</tt>
+                                <a class="headerlink" href="#delete--#account_id-member_touchpoint_by_id" title="Permalink to this definition">&para;</a>
+                            </dt>
+                            <dd>
+                                <p>Delete a specific touchpoint. This action is not reversable.</p>
+                            </dd>
+                        </dl>
                     </div>
                 </div>
             </div>
