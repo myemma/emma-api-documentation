@@ -101,15 +101,15 @@
                 <div class="body">
                     <div class="section" id="touchpoints">
                         <h1>Touchpoints<a class="headerlink" href="#touchpoints" title="Permalink to this headline">&para;</a></h1>
-                        <p>With these endpoints, you can create member touchpoint types and view information about specific touchpoint types already created in your account.</p>
+                        <p>With these endpoints, you can create touchpoint types and view information about specific touchpoint types already created in your account.</p>
                         <dl class="post">
-                            <dt id="post--#account_id-member-touchpoint-type">
+                            <dt id="post--#account_id-touchpoint-type">
                                 <tt class="descname">POST </tt>
                                 <tt class="descname">/#account_id/touchpoints</tt>
-                                <a class="headerlink" href="#post--#account_id-member-touchpoint-type" title="Permalink to this definition">&para;</a>
+                                <a class="headerlink" href="#post--#account_id-touchpoint-type" title="Permalink to this definition">&para;</a>
                             </dt>
                             <dd>
-                                <p>Create a member touchpoint type.</p>
+                                <p>Create a touchpoint type.</p>
                                 <table class="docutils field-list" frame="void" rules="none">
                                     <col class="field-name" />
                                     <col class="field-body" />
@@ -125,7 +125,7 @@
                                         <tr class="field-even field">
                                             <th class="field-name">Returns:</th>
                                             <td class="field-body">
-                                                <p class="first">Information for the new member touchpoint type.</p>
+                                                <p class="first">Information for the new touchpoint type.</p>
                                             </td>
                                         </tr>
                                         <tr class="field-even field">
@@ -158,12 +158,12 @@
                             </dd>
                         </dl>
                         <dl class="get">
-                            <dt id="get--#account_id-member-touchpoint-type">
+                            <dt id="get--#account_id-touchpoint-type">
                                 <tt class="descname">GET </tt><tt class="descname">/#account_id/touchpoints</tt>
-                                <a class="headerlink" href="#get--#account_id-member-touchpoint-type" title="Permalink to this definition">&para;</a>
+                                <a class="headerlink" href="#get--#account_id-touchpoint-type" title="Permalink to this definition">&para;</a>
                             </dt>
                             <dd>
-                                <p>Get a list of all member touchpoint types created for an account.</p>
+                                <p>Get a list of all touchpoint types created for an account.</p>
                                 <table class="docutils field-list" frame="void" rules="none">
                                     <col class="field-name" />
                                     <col class="field-body" />
@@ -171,7 +171,7 @@
                                         <tr class="field-odd field">
                                             <th class="field-name">Returns:</th>
                                             <td class="field-body">
-                                                <p class="first last">A list of member touchpoint types created in the specified account.</p>
+                                                <p class="first last">A list of touchpoint types created in the specified account.</p>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -204,19 +204,19 @@
                             </dd>
                         </dl>
                         <dl class="get">
-                            <dt id="get--#account_id-member-touchpoint-type_by_id">
+                            <dt id="get--#account_id-touchpoint-type_by_id">
                                 <tt class="descname">GET </tt><tt class="descname">/#account_id/touchpoints/#touchpoint_type_id</tt>
-                                <a class="headerlink" href="#get--#account_id-member-touchpoint-type_by_id" title="Permalink to this definition">&para;</a>
+                                <a class="headerlink" href="#get--#account_id-touchpoint-type_by_id" title="Permalink to this definition">&para;</a>
                             </dt>
                             <dd>
-                                <p>Get a specific member touchpoint type.</p>
+                                <p>Get a specific touchpoint type.</p>
                                     <table class="docutils field-list" frame="void" rules="none">
                                         <col class="field-name" />
                                         <col class="field-body" />
                                         <tbody valign="top">
                                         <tr class="field-odd field">
                                             <th class="field-name">Returns:</th>
-                                            <td class="field-body">Information for the specific member touchpoint type.</td>
+                                            <td class="field-body">Information for the specific touchpoint type.</td>
                                         </tr>
                                         <tr class="field-even field">
                                             <th class="field-name">Raises:</th>
@@ -224,7 +224,7 @@
                                                 <tt class="docutils literal">
                                                     <span class="pre">Http404</span>
                                                 </tt>
-                                                if no member touchpoint type with the specified ID is found.
+                                                if no touchpoint type with the specified ID is found.
                                             </td>
                                         </tr>
                                         </tbody>
@@ -248,13 +248,13 @@
                             </dd>
                         </dl>
                         <dl class="put">
-                            <dt id="put--#account_id-member_touchpoint_type_touchpoint_by_id">
+                            <dt id="put--#account_id-touchpoint_type_touchpoint_by_id">
                                 <tt class="descname">PUT </tt>
                                 <tt class="descname">/#account_id/touchpoints/#touchpoint_type_id</tt>
-                                <a class="headerlink" href="#put--#account_id-member_touchpoint_type_touchpoint_by_id" title="Permalink to this definition">&para;</a>
+                                <a class="headerlink" href="#put--#account_id-touchpoint_type_touchpoint_by_id" title="Permalink to this definition">&para;</a>
                             </dt>
                             <dd>
-                                <p>Update a specific member touchpoint type.</p>
+                                <p>Update a specific touchpoint type.</p>
                                 <table class="docutils field-list" frame="void" rules="none">
                                     <col class="field-name" />
                                     <col class="field-body" />
@@ -269,7 +269,7 @@
                                         </tr>
                                         <tr class="field-odd field">
                                             <th class="field-name">Returns:</th>
-                                            <td class="field-body">Information for the updated member touchpoint type.</td>
+                                            <td class="field-body">Information for the updated touchpoint type.</td>
                                         </tr>
                                         <tr class="field-even field">
                                             <th class="field-name">Raises:</th>
@@ -279,7 +279,7 @@
                                                         <tt class="docutils literal">
                                                             <span class="pre">Http404</span>
                                                         </tt>
-                                                        if no member touchpoint type with the specified ID is found.
+                                                        if no touchpoint type with the specified ID is found.
                                                     </li>
                                                     <li>
                                                         <tt class="docutils literal">
@@ -311,24 +311,24 @@
                             </dd>
                         </dl>
                         <dl class="delete">
-                            <dt id="delete--#account_id-member_touchpoint_type_by_id">
+                            <dt id="delete--#account_id-touchpoint_type_by_id">
                                 <tt class="descname">DELETE </tt>
                                 <tt class="descname">/#account_id/touchpoints/#touchpoint_type_id</tt>
-                                <a class="headerlink" href="#delete--#account_id-member_touchpoint_type_by_id" title="Permalink to this definition">&para;</a>
+                                <a class="headerlink" href="#delete--#account_id-touchpoint_type_by_id" title="Permalink to this definition">&para;</a>
                             </dt>
                             <dd>
-                                <p>Delete a specific member touchpoint type. This will also delete all touchpoints of this touchpoint type. This action is not reversable.</p>
+                                <p>Delete a specific touchpoint type. This will also delete all touchpoints of this touchpoint type. This action is not reversable.</p>
                             </dd>
                         </dl>
-                        <p>With these endpoints, you can create member touchpoints and view information about specific member's touchpoints.</p>
+                        <p>With these endpoints, you can create touchpoints and view information about specific member's touchpoints.</p>
                         <dl class="post">
-                            <dt id="post--#account_id-member_touchpoint">
+                            <dt id="post--#account_id-touchpoint">
                                 <tt class="descname">POST </tt>
                                 <tt class="descname">/#account_id/touchpoints/members</tt>
-                                <a class="headerlink" href="#post--#account_id-member_touchpoint" title="Permalink to this definition">&para;</a>
+                                <a class="headerlink" href="#post--#account_id-touchpoint" title="Permalink to this definition">&para;</a>
                             </dt>
                             <dd>
-                                <p>Create up to 10 member touchpoints.</p>
+                                <p>Create up to 10 touchpoints.</p>
                                 <table class="docutils field-list" frame="void" rules="none">
                                     <col class="field-name" />
                                     <col class="field-body" />
@@ -336,7 +336,7 @@
                                     <tr class="field-odd field"><th class="field-name">Parameters:</th>
                                         <td class="field-body">
                                             <ul class="first simple">
-                                                <li><strong>touchpoints</strong> (<em>array of JSON objects</em>) &#8211; Required. A list of member touchpoint JSON objects.
+                                                <li><strong>touchpoints</strong> (<em>array of JSON objects</em>) &#8211; Required. A list of touchpoint JSON objects.
                                                     <ul class="first simple">
                                                         <li><strong>attributes</strong> (<em>JSON object</em>) &#8211; A generic JSON object that contains additional attributes about the touchpoint.</li>
                                                         <li><strong>email</strong> (<em>string</em>) &#8211; Required if member_id is not present. The member email.</li>
@@ -355,7 +355,7 @@
                                     <tr class="field-even field">
                                         <th class="field-name">Returns:</th>
                                         <td class="field-body">
-                                            <p class="first">Information for the new member touchpoints.</p>
+                                            <p class="first">Information for the new touchpoints.</p>
                                         </td>
                                     </tr>
                                     <tr class="field-even field">
@@ -405,13 +405,13 @@
                             </dd>
                         </dl>
                         <dl class="get">
-                            <dt id="get--#account_id-member_touchpoint">
+                            <dt id="get--#account_id-touchpoint">
                                 <tt class="descname">GET </tt>
                                 <tt class="descname">/#account_id/touchpoints/members/#member_id</tt>
-                                <a class="headerlink" href="#get--#account_id-member_touchpoint" title="Permalink to this definition">&para;</a>
+                                <a class="headerlink" href="#get--#account_id-touchpoint" title="Permalink to this definition">&para;</a>
                             </dt>
                             <dd>
-                                <p>Get a list of all member touchpoints for a specific member.</p>
+                                <p>Get a list of all touchpoints for a specific member.</p>
                                 <table class="docutils field-list" frame="void" rules="none">
                                     <col class="field-name" />
                                     <col class="field-body" />
@@ -419,7 +419,7 @@
                                     <tr class="field-even field">
                                         <th class="field-name">Returns:</th>
                                         <td class="field-body">
-                                            <p class="first">Member touchpoints for a specific member.</p>
+                                            <p class="first">Touchpoints for a specific member.</p>
                                         </td>
                                     </tr>
                                     <tr class="field-even field">
@@ -465,9 +465,9 @@
                             </dd>
                         </dl>
                         <dl class="get">
-                            <dt id="get--#account_id-member-touchpoint_by_id">
+                            <dt id="get--#account_id-touchpoint_by_id">
                                 <tt class="descname">GET </tt><tt class="descname">/#account_id/touchpoints/members/touchpoints/#touchpoint_id</tt>
-                                <a class="headerlink" href="#get--#account_id-member-touchpoint_by_id" title="Permalink to this definition">&para;</a>
+                                <a class="headerlink" href="#get--#account_id-touchpoint_by_id" title="Permalink to this definition">&para;</a>
                             </dt>
                             <dd>
                                 <p>Get a specific touchpoint.</p>
@@ -511,10 +511,10 @@
                             </dd>
                         </dl>
                         <dl class="delete">
-                            <dt id="delete--#account_id-member_touchpoint_by_id">
+                            <dt id="delete--#account_id-touchpoint_by_id">
                                 <tt class="descname">DELETE </tt>
                                 <tt class="descname">/#account_id/touchpoints/members/touchpoints/#touchpoint_id</tt>
-                                <a class="headerlink" href="#delete--#account_id-member_touchpoint_by_id" title="Permalink to this definition">&para;</a>
+                                <a class="headerlink" href="#delete--#account_id-touchpoint_by_id" title="Permalink to this definition">&para;</a>
                             </dt>
                             <dd>
                                 <p>Delete a specific touchpoint. This action is not reversable.</p>
