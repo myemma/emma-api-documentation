@@ -61,7 +61,8 @@ Message Click
 		    "mailing_id": mailing_id,
 		    "subject": mailing_subject,
 		    "timestamp": timestamp,
-		    "link_id": link_id
+		    "link_id": link_id,
+		    "link_target": "http://example.com"
 		    }
 	}
 
