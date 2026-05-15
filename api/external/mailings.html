@@ -1018,6 +1018,63 @@ true
 </p>
 </dd></dl>
 
+<dl class="post">
+<dt id="post--#account_id-mailings-recipients">
+<tt class="descname">POST </tt><tt class="descname">/#account_id/mailings/recipients</tt><a class="headerlink" href="#post--#account_id-mailings-recipients" title="Permalink to this definition">&para;</a></dt>
+<dd><p>Get id and name for recipient groups, segments, subscriptions and suppressed segments for the given ids.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>recipient_groups</strong> (<em>list of integers</em>) &#8211; A list of recipient group ids to get details for.</li>
+<li><strong>recipient_segments</strong> (<em>list of integers</em>) &#8211; A list of recipient segment ids to get details for.</li>
+<li><strong>recipient_subscriptions</strong> (<em>list of integers</em>) &#8211; A list of recipient subscription ids to get details for.</li>
+<li><strong>suppressed_segments</strong> (<em>list of integers</em>) &#8211; A list of suppressed segment ids to get details for.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first">A dictionary with keys <tt class="docutils literal"><span class="pre">recipient_groups</span></tt>, <tt class="docutils literal"><span class="pre">recipient_segments</span></tt>, <tt class="docutils literal"><span class="pre">recipient_subscriptions</span></tt> and <tt class="docutils literal"><span class="pre">suppressed_segments</span></tt>. The value for each key is a list of dictionaries with id and name for each recipient group, segment or subscription.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first last"><tt class="docutils literal"><span class="pre">Http400</span></tt> if any of the input lists are not a list of integers.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>
+<div class="sample-response hide-response">
+<span style="font-weight:bold;">Sample Response</span>
+<a href="#" class="resp-trigger">[<span class="tshow">show</span><span class="thide">hide</span>]</a>
+<pre class="response">
+<b>POST /100/mailings/recipients</b>
+{
+  "recipient_groups": [101, 102],
+  "recipient_segments": [1024],
+  "recipient_subscriptions": [10],
+  "suppressed_segments": [2048]
+}
+
+{
+  "recipient_groups": [
+    {"member_group_id": 101, "name": "Chris's Group"},
+    {"member_group_id": 102, "name": "Selena's Group"}
+  ],
+  "recipient_segments": [
+    {"segment_id": 1024, "name": "Engaged Members"}
+  ],
+  "recipient_subscriptions": [
+    {"subscription_id": 10, "name": "Weekly Digest"}
+  ],
+  "suppressed_segments": [
+    {"segment_id": 2048, "name": "Recent Unsubscribers"}
+  ]
+}
+</pre>
+</div>
+</p>
+</dd></dl>
+
 </div>
 
 
