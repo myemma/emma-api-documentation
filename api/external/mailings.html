@@ -286,6 +286,7 @@ when none are specified.</li>
 <dt id="get--#account_id-mailings-#mailing_id">
 <tt class="descname">GET </tt><tt class="descname">/#account_id/mailings/#mailing_id</tt><a class="headerlink" href="#get--#account_id-mailings-#mailing_id" title="Permalink to this definition">&para;</a></dt>
 <dd><p>Get detailed information for one mailing.</p>
+<p><strong>Note for automated campaigns:</strong> Automated campaigns trigger individually for each contact, so each send generates its own unique mailing ID. When using this endpoint with an automated campaign mailing ID, the response will only include information for a single mailing.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -370,6 +371,7 @@ when none are specified.</li>
 <tt class="descname">GET </tt><tt class="descname">/#account_id/mailings/#mailing_id/members</tt><a class="headerlink" href="#get--#account_id-mailings-#mailing_id-members" title="Permalink to this definition">&para;</a></dt>
 <dd><p>Get the list of members to whom the given mailing was sent. This
 does not include groups or searches.</p>
+<p><strong>Note for automated campaigns:</strong> Automated campaigns trigger individually for each contact, so each send generates its own unique mailing ID. When using this endpoint with an automated campaign mailing ID, the response will only include one member.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
