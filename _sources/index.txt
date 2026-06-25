@@ -40,7 +40,7 @@ This collection is young, but growing, and includes wrappers commissioned by Emm
     `Emma <https://github.com/markroland/emma>`_: Built by Nashville-based `Abenity, Inc <http://www.abenity.com/>`_.
 
 **Python**
-    `EmmaPython <https://github.com/myemma/EmmaPython>`_: Built by Emma's own `Doug Hurst <https://github.com/dalanhurst>`_.
+    `EmmaPython <https://github.com/myemma/EmmaPython>`_: Built by Emma's own `Doug Hurst <https://github.com/robotsnowfall>`_.
 
 **Ruby**
     `EmmaRuby <https://github.com/myemma/EmmaRuby>`_: Commissioned by Emma and built by Nashville developer `Dennis Monsewicz <https://github.com/dennismonsewicz>`_.
